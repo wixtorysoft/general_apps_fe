@@ -1,0 +1,38 @@
+# ==============================================================================
+# DOCKER COMPOSE CONFIGURATION FOR GENERAL_APPS_FE (WIXTORY)
+# ==============================================================================
+#
+# Ön Koşul (Eğer ağ yoksa):
+#   docker network create wixtory_network
+#
+# Çalıştırma:
+#   docker compose up --build -d
+#
+# Durdurma:
+#   docker compose down
+#
+# Loglar:
+#   docker compose logs -f
+# ==============================================================================
+
+services:
+  general_apps_fe:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: general_apps_fe
+    container_name: general_apps_fe
+    restart: always
+    ports:
+      - "5113:5113"
+    environment:
+      - NODE_ENV=production
+      - PORT=5113
+      - HOSTNAME=0.0.0.0
+    networks:
+      - wixtory_network
+
+networks:
+  wixtory_network:
+    name: wixtory_network
+    external: true
