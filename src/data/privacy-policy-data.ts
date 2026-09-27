@@ -33,7 +33,7 @@ export const PRIVACY_POLICY_DATA_TR: PrivacyPolicyData = {
   lastUpdated: "24 Eylül 2026",
   effectiveDate: "08 Şubat 2026",
   companyName: "Wixtory Software & Digital Technologies",
-  contactEmail: "wixtorysoft@gmail.com",
+  contactEmail: "wixtoryy@gmail.com",
   supportedAppsSummary: "Bu gizlilik politikası; AstroVibe ve Excuse uygulamaları için bağlayıcı ortak yasal çerçevedir.",
   sections: [
     {
@@ -119,7 +119,7 @@ export const PRIVACY_POLICY_DATA_TR: PrivacyPolicyData = {
       content: [
         "Bu politika hakkında herhangi bir sorunuz için lütfen iletişime geçin:",
         "Developer: Hacı Celal Aygar",
-        "E-posta: wixtorysoft@gmail.com",
+        "E-posta: wixtoryy@gmail.com",
         "Konum: Ankara, Yenimahalle, Turkey",
         "Web Sitesi: https://www.wixtory.com",
       ],
@@ -133,7 +133,7 @@ export const PRIVACY_POLICY_DATA_EN: PrivacyPolicyData = {
   lastUpdated: "September 24, 2026",
   effectiveDate: "February 08, 2026",
   companyName: "Wixtory Software & Digital Technologies",
-  contactEmail: "wixtorysoft@gmail.com",
+  contactEmail: "wixtoryy@gmail.com",
   supportedAppsSummary: "This unified privacy policy acts as the binding legal framework across AstroVibe and Excuse applications.",
   sections: [
     {
@@ -219,7 +219,7 @@ export const PRIVACY_POLICY_DATA_EN: PrivacyPolicyData = {
       content: [
         "For any questions regarding this policy, please contact:",
         "Developer: Hacı Celal Aygar",
-        "Email: wixtorysoft@gmail.com",
+        "Email: wixtoryy@gmail.com",
         "Location: Ankara, Yenimahalle, Turkey",
         "Website: https://www.wixtory.com",
       ],

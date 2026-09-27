@@ -27,7 +27,7 @@ export default function DeveloperPage() {
   const isTr = language === "tr";
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText("wixtorysoft@gmail.com");
+    navigator.clipboard.writeText("wixtoryy@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -274,7 +274,7 @@ export default function DeveloperPage() {
                   </button>
                 </div>
                 <a
-                  href="mailto:wixtorysoft@gmail.com"
+                  href="mailto:wixtoryy@gmail.com"
                   style={{
                     fontSize: "15px",
                     fontWeight: 700,
@@ -286,7 +286,7 @@ export default function DeveloperPage() {
                   }}
                 >
                   <Mail size={16} color="var(--primary)" />
-                  <span>wixtorysoft@gmail.com</span>
+                  <span>wixtoryy@gmail.com</span>
                 </a>
               </div>
 

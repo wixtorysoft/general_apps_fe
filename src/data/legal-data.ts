@@ -46,7 +46,7 @@ export const PRIVACY_POLICY_TR: LegalDocument = {
   effectiveDate: "08 Şubat 2026",
   companyName: "Wixtory Software & Digital Technologies",
   developerName: "Hacı Celal Aygar",
-  contactEmail: "wixtorysoft@gmail.com",
+  contactEmail: "wixtoryy@gmail.com",
   developerLocation: "Ankara, Yenimahalle, Turkey",
   website: "https://www.wixtory.com",
   sections: [
@@ -133,7 +133,7 @@ export const PRIVACY_POLICY_TR: LegalDocument = {
       content: [
         "Bu politika hakkında herhangi bir sorunuz için lütfen iletişime geçin:",
         "Developer: Hacı Celal Aygar",
-        "E-posta: wixtorysoft@gmail.com",
+        "E-posta: wixtoryy@gmail.com",
         "Konum: Ankara, Yenimahalle, Turkey",
         "Web Sitesi: https://www.wixtory.com",
       ],
@@ -150,7 +150,7 @@ export const PRIVACY_POLICY_EN: LegalDocument = {
   effectiveDate: "February 08, 2026",
   companyName: "Wixtory Software & Digital Technologies",
   developerName: "Hacı Celal Aygar",
-  contactEmail: "wixtorysoft@gmail.com",
+  contactEmail: "wixtoryy@gmail.com",
   developerLocation: "Ankara, Yenimahalle, Turkey",
   website: "https://www.wixtory.com",
   sections: [
@@ -237,7 +237,7 @@ export const PRIVACY_POLICY_EN: LegalDocument = {
       content: [
         "For any questions regarding this policy, please contact:",
         "Developer: Hacı Celal Aygar",
-        "Email: wixtorysoft@gmail.com",
+        "Email: wixtoryy@gmail.com",
         "Location: Ankara, Yenimahalle, Turkey",
         "Website: https://www.wixtory.com",
       ],
@@ -257,7 +257,7 @@ export const COOKIE_POLICY_TR: LegalDocument = {
   effectiveDate: "01 Ocak 2026",
   companyName: "Wixtory Software & Digital Technologies",
   developerName: "Hacı Celal Aygar",
-  contactEmail: "wixtorysoft@gmail.com",
+  contactEmail: "wixtoryy@gmail.com",
   developerLocation: "Ankara, Yenimahalle, Turkey",
   website: "https://www.wixtory.com",
   sections: [
@@ -370,7 +370,7 @@ export const COOKIE_POLICY_EN: LegalDocument = {
   effectiveDate: "January 01, 2026",
   companyName: "Wixtory Software & Digital Technologies",
   developerName: "Hacı Celal Aygar",
-  contactEmail: "wixtorysoft@gmail.com",
+  contactEmail: "wixtoryy@gmail.com",
   developerLocation: "Ankara, Yenimahalle, Turkey",
   website: "https://www.wixtory.com",
   sections: [
@@ -478,7 +478,7 @@ export const KVKK_TEXT_TR: LegalDocument = {
   effectiveDate: "01 Ocak 2026",
   companyName: "Wixtory Software & Digital Technologies",
   developerName: "Hacı Celal Aygar",
-  contactEmail: "wixtorysoft@gmail.com",
+  contactEmail: "wixtoryy@gmail.com",
   developerLocation: "Ankara, Yenimahalle, Turkey",
   website: "https://www.wixtory.com",
   sections: [
@@ -489,7 +489,7 @@ export const KVKK_TEXT_TR: LegalDocument = {
       content: [
         "6698 sayılı Kişisel Verilerin Korunması Kanunu ('KVKK') uyarınca, veri sorumlusu sıfatıyla hareket eden Hacı Celal Aygar (Wixtory Yazılım), kişisel verilerinizin güvenliği hususunda en üst düzeyde hassasiyet göstermektedir.",
         "Bu aydınlatma metni; AstroVibe ve Excuse mobil uygulamalarımızı indiren, kullanan ve wixtory.com portalını ziyaret eden ilgili kişileri bilgilendirmek amacıyla hazırlanmıştır.",
-        "Veri Sorumlusu İletişim: Hacı Celal Aygar - wixtorysoft@gmail.com - Yenimahalle / Ankara / Türkiye",
+        "Veri Sorumlusu İletişim: Hacı Celal Aygar - wixtoryy@gmail.com - Yenimahalle / Ankara / Türkiye",
       ],
     },
     {
@@ -581,7 +581,7 @@ export const KVKK_TEXT_TR: LegalDocument = {
       badge: "Başvuru Usulü",
       content: [
         "Yukarıda belirtilen haklarınızı kullanmak için taleplerinizi içeren başvurunuzu;",
-        "• Kayıtlı e-posta adresinizden wixtorysoft@gmail.com adresine yazılı olarak gönderebilirsiniz.",
+        "• Kayıtlı e-posta adresinizden wixtoryy@gmail.com adresine yazılı olarak gönderebilirsiniz.",
         "Başvurularınız, talebin niteliğine göre en kısa sürede ve en geç otuz (30) gün içinde ücretsiz olarak sonuçlandırılacaktır. Ancak işlemin ayrıca bir maliyet gerektirmesi hâlinde Kişisel Verileri Koruma Kurulu tarafından belirlenen tarifedeki ücret alınabilir.",
       ],
     },
@@ -597,7 +597,7 @@ export const KVKK_TEXT_EN: LegalDocument = {
   effectiveDate: "January 01, 2026",
   companyName: "Wixtory Software & Digital Technologies",
   developerName: "Hacı Celal Aygar",
-  contactEmail: "wixtorysoft@gmail.com",
+  contactEmail: "wixtoryy@gmail.com",
   developerLocation: "Ankara, Yenimahalle, Turkey",
   website: "https://www.wixtory.com",
   sections: [
@@ -607,7 +607,7 @@ export const KVKK_TEXT_EN: LegalDocument = {
       badge: "KVKK Art. 10/a",
       content: [
         "In accordance with Law No. 6698 on the Protection of Personal Data ('KVKK'), Hacı Celal Aygar (Wixtory Software), acting in the capacity of Data Controller, ensures rigorous security measures over your data.",
-        "Data Controller Contact: Hacı Celal Aygar - wixtorysoft@gmail.com - Yenimahalle / Ankara / Turkey",
+        "Data Controller Contact: Hacı Celal Aygar - wixtoryy@gmail.com - Yenimahalle / Ankara / Turkey",
       ],
     },
     {
@@ -639,7 +639,7 @@ export const KVKK_TEXT_EN: LegalDocument = {
       badge: "KVKK Art. 11",
       content: [
         "Under Article 11 of the KVKK, you have the right to learn whether your data is processed, request information, request correction or erasure, and claim compensation for damages in case of unlawful processing.",
-        "To exercise these rights, submit your written request to wixtorysoft@gmail.com. We respond within thirty (30) days.",
+        "To exercise these rights, submit your written request to wixtoryy@gmail.com. We respond within thirty (30) days.",
       ],
     },
   ],
