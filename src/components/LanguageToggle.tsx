@@ -22,35 +22,56 @@ export function LanguageToggle() {
   return (
     <div style={{ position: "relative" }} ref={dropdownRef}>
       <button
+        type="button"
+        role="combobox"
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Dil Seçimi"
         style={{
-          display: "flex",
+          display: "inline-flex",
           alignItems: "center",
           gap: "8px",
-          padding: "8px 14px",
-          borderRadius: "9999px",
+          padding: "7px 12px",
+          borderRadius: "12px",
           background: "var(--bg-glass)",
-          border: "1px solid var(--border-subtle)",
+          border: `1px solid ${isOpen ? "var(--primary)" : "var(--border-subtle)"}`,
           color: "var(--text-main)",
           fontSize: "13px",
           fontWeight: 600,
           cursor: "pointer",
           backdropFilter: "blur(12px)",
-          transition: "all 0.2s ease",
+          WebkitBackdropFilter: "blur(12px)",
+          boxShadow: isOpen ? "0 0 0 2px var(--primary-glow)" : "var(--shadow-card)",
+          transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
+          userSelect: "none",
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = "var(--border-active)";
-          e.currentTarget.style.transform = "translateY(-1px)";
+          if (!isOpen) {
+            e.currentTarget.style.borderColor = "var(--border-active)";
+            e.currentTarget.style.transform = "translateY(-1px)";
+          }
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = "var(--border-subtle)";
-          e.currentTarget.style.transform = "translateY(0)";
+          if (!isOpen) {
+            e.currentTarget.style.borderColor = "var(--border-subtle)";
+            e.currentTarget.style.transform = "translateY(0)";
+          }
         }}
       >
-        <span style={{ fontSize: "16px" }}>{currentLanguageMeta.flag}</span>
-        <span style={{ textTransform: "uppercase" }}>{currentLanguageMeta.code}</span>
-        <ChevronDown size={14} style={{ color: "var(--text-secondary)" }} />
+        <span style={{ fontSize: "16px", lineHeight: 1 }}>{currentLanguageMeta.flag}</span>
+        <span style={{ textTransform: "uppercase", fontWeight: 700, fontSize: "12.5px" }}>
+          {currentLanguageMeta.code}
+        </span>
+        <ChevronDown
+          size={14}
+          style={{
+            color: "var(--text-secondary)",
+            transition: "transform 0.2s ease",
+            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+            marginLeft: "2px",
+          }}
+        />
       </button>
 
       {isOpen && (

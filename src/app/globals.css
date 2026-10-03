@@ -296,3 +296,62 @@ h1, h2, h3, h4, h5, h6 {
 .animate-spin-slow {
   animation: spinSlow 30s linear infinite;
 }
+
+/* ==============================================================================
+   HUB TOP NAVBAR STYLES
+   ============================================================================== */
+
+.hub-desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hub-mobile-toggle {
+  display: none !important;
+}
+
+.hub-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.hub-nav-pill:hover {
+  color: var(--text-main);
+  background: var(--bg-glass);
+  border-color: var(--border-subtle);
+  transform: translateY(-1px);
+}
+
+.hub-nav-pill-featured {
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: var(--text-main);
+}
+
+.hub-nav-pill-featured:hover {
+  background: rgba(139, 92, 246, 0.22);
+  border-color: rgba(139, 92, 246, 0.55);
+  box-shadow: 0 4px 16px -2px rgba(139, 92, 246, 0.35);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1040px) {
+  .hub-desktop-nav {
+    display: none !important;
+  }
+  .hub-mobile-toggle {
+    display: inline-flex !important;
+  }
+}

@@ -1,0 +1,435 @@
+/* ==============================================================================
+   DOMAIN TRACK OFFICIAL DESIGN SYSTEM & STYLES
+   Tailored Chromatic Deep Blue Palette (#0F1E2B / #0B1A27 / #0D1C29 / #12202E)
+   Specular Glassmorphism, Dynamic Gradients, Responsive Grids & Micro-Interactions
+   ============================================================================== */
+
+/* Base container & typography */
+.dt-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #0F1E2B;
+  color: #ffffff;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: clip;
+  position: relative;
+}
+
+.dt-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Sections */
+.dt-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dt-section-main {
+  background-color: #0F1E2B;
+}
+
+.dt-section-alt1 {
+  background-color: #0B1A27;
+}
+
+.dt-section-alt2 {
+  background-color: #0D1C29;
+}
+
+.dt-section-alt3 {
+  background-color: #12202E;
+}
+
+.dt-section-footer {
+  background-color: #0A1621;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Headings with Gradients */
+.dt-gradient-purple-pink {
+  background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dt-gradient-pink-orange {
+  background: linear-gradient(135deg, #f472b6 0%, #fb923c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dt-gradient-cyan-blue {
+  background: linear-gradient(135deg, #22d3ee 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dt-gradient-emerald-cyan {
+  background: linear-gradient(135deg, #34d399 0%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dt-gradient-emerald-teal {
+  background: linear-gradient(135deg, #34d399 0%, #2dd4bf 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism Cards */
+.dt-card {
+  position: relative;
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+.dt-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
+}
+
+.dt-card-topline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  transition: width 0.35s ease;
+  z-index: 2;
+}
+
+.dt-card:hover .dt-card-topline {
+  width: 100%;
+}
+
+.dt-shimmer {
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dt-card:hover .dt-shimmer {
+  transform: translateX(100%);
+}
+
+/* Grids */
+.dt-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.dt-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.dt-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .dt-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dt-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .dt-grid-3,
+  .dt-grid-2,
+  .dt-grid-4 {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Pill Badges & Chips */
+.dt-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 13.5px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+  transition: all 0.25s ease;
+}
+
+.dt-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.dt-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+
+.dt-card:hover .dt-tag {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+/* Floating animation */
+@keyframes dtFloat {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-16px); }
+  100% { transform: translateY(0px); }
+}
+
+.dt-floating-logo {
+  animation: dtFloat 5s ease-in-out infinite;
+}
+
+/* Phone Mockup */
+.dt-phone-mockup {
+  position: relative;
+  background: #1a1a2e;
+  border: 12px solid rgba(255, 255, 255, 0.08);
+  border-radius: 42px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8),
+              0 0 0 1px rgba(255, 255, 255, 0.06),
+              0 0 80px -20px rgba(139, 92, 246, 0.18);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.dt-phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 24px;
+  background: #1a1a2e;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  z-index: 20;
+}
+
+.dt-phone-screen {
+  width: 272px;
+  height: 572px;
+  background: #000000;
+  border-radius: 30px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Navigation items */
+.dt-nav-link {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.dt-nav-link:hover,
+.dt-nav-link.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Accordion */
+.dt-accordion-item {
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.dt-accordion-item:hover {
+  border-color: rgba(192, 132, 252, 0.3);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4);
+}
+
+.dt-accordion-item.open {
+  border-color: rgba(192, 132, 252, 0.5);
+  box-shadow: 0 12px 32px -4px rgba(192, 132, 252, 0.15);
+}
+
+.dt-accordion-trigger {
+  width: 100%;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.dt-accordion-trigger:hover {
+  color: #c084fc;
+}
+
+.dt-accordion-content {
+  padding: 0 24px 20px 24px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* Store buttons */
+.dt-store-buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.dt-store-buttons-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 220px;
+}
+
+.dt-store-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  height: 60px;
+  padding: 10px 20px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #101F2C 0%, #09131B 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Equal, consistent width in row layout */
+.dt-store-buttons-row .dt-store-btn {
+  width: 210px;
+  min-width: 210px;
+  flex: 0 0 210px;
+}
+
+/* Equal, consistent full width in column layout */
+.dt-store-buttons-col .dt-store-btn {
+  width: 100%;
+  max-width: 100%;
+}
+
+.dt-store-btn:hover {
+  background: linear-gradient(180deg, #182B3D 0%, #0D1A25 100%);
+  border-color: rgba(139, 92, 246, 0.7);
+  box-shadow: 0 10px 28px -4px rgba(139, 92, 246, 0.4), 0 2px 10px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.dt-store-btn:active {
+  transform: translateY(0);
+}
+
+.dt-store-btn-icon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justifyContent: center;
+  flex-shrink: 0;
+}
+
+.dt-store-btn-content {
+  display: flex;
+  flex-direction: column;
+  justifyContent: center;
+  align-items: flex-start;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.dt-store-btn-prefix {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 130px;
+}
+
+.dt-store-btn-title {
+  font-size: 16.5px;
+  font-weight: 750;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+  .dt-store-buttons-row {
+    width: 100%;
+  }
+  .dt-store-buttons-row .dt-store-btn {
+    width: 100%;
+    min-width: 100%;
+    flex: 1 1 100%;
+  }
+}
+

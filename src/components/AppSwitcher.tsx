@@ -1,9 +1,10 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { AppModel } from "@/data/apps-data";
 import { useLanguage } from "@/context/LanguageContext";
-import { Sparkles, MessageSquareQuote, CheckCircle2, ChevronRight } from "lucide-react";
+import { Sparkles, MessageSquareQuote, CheckCircle2, ChevronRight, Globe } from "lucide-react";
 
 interface AppSwitcherProps {
   apps: AppModel[];
@@ -66,6 +67,7 @@ export function AppSwitcher({ apps, selectedApp, onSelectApp }: AppSwitcherProps
           {apps.map((app) => {
             const isSelected = app.id === selectedApp.id;
             const isAstro = app.id === "astrovibe";
+            const isDomainTrack = app.id === "domain-track";
 
             return (
               <div
@@ -77,7 +79,11 @@ export function AppSwitcher({ apps, selectedApp, onSelectApp }: AppSwitcherProps
                   borderColor: isSelected ? app.primaryColor : "var(--border-subtle)",
                   background: isSelected
                     ? `linear-gradient(145deg, var(--bg-card-hover) 0%, rgba(${
-                        isAstro ? "139, 92, 246" : "6, 182, 212"
+                        isAstro
+                          ? "139, 92, 246"
+                          : isDomainTrack
+                          ? "139, 92, 246"
+                          : "6, 182, 212"
                       }, 0.12) 100%)`
                     : "var(--bg-card)",
                   boxShadow: isSelected
@@ -123,16 +129,33 @@ export function AppSwitcher({ apps, selectedApp, onSelectApp }: AppSwitcherProps
                         width: "52px",
                         height: "52px",
                         borderRadius: "16px",
-                        background: `linear-gradient(135deg, ${app.primaryColor} 0%, ${app.secondaryColor} 100%)`,
+                        background: isDomainTrack
+                          ? "linear-gradient(135deg, #0F1E2B, #1A1A2E)"
+                          : `linear-gradient(135deg, ${app.primaryColor} 0%, ${app.secondaryColor} 100%)`,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         color: "#ffffff",
                         boxShadow: `0 8px 20px -4px ${app.glowColor}`,
                         flexShrink: 0,
+                        overflow: "hidden",
+                        border: isDomainTrack ? "1.5px solid rgba(139, 92, 246, 0.4)" : "none",
+                        padding: isDomainTrack ? "4px" : "0",
                       }}
                     >
-                      {isAstro ? <Sparkles size={26} /> : <MessageSquareQuote size={26} />}
+                      {isDomainTrack ? (
+                        <Image
+                          src="/domain-track-logo.png"
+                          alt="Domain Track"
+                          width={44}
+                          height={44}
+                          style={{ objectFit: "contain", borderRadius: "10px" }}
+                        />
+                      ) : isAstro ? (
+                        <Sparkles size={26} />
+                      ) : (
+                        <MessageSquareQuote size={26} />
+                      )}
                     </div>
 
                     <div>

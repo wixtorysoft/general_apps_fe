@@ -46,6 +46,7 @@ export interface AppModel {
   fullDesc: string;
   category: string;
   badge: string;
+  logoUrl?: string;
   version: string;
   rating: number;
   reviewsCount: string;
@@ -67,6 +68,188 @@ export interface AppModel {
 }
 
 export const APPS_DATA: AppModel[] = [
+  {
+    id: "domain-track",
+    slug: "domain-track",
+    name: "Wixtory: Domain Track",
+    tagline: "Gerçek Zamanlı Alan Adı Sorgulama, Müsaitlik & Portföy Takip Asistanı",
+    shortDesc: "Yüzlerce uzantıda anında alan adı müsaitliği kontrol edin, favorilerinizi cihazınızda güvenle takip edin.",
+    fullDesc:
+      "Wixtory: Domain Track, girişimciler, geliştiriciler ve marka sahipleri için tasarlanmış yüksek performanslı alan adı sorgulama ve portföy takip asistanıdır. .com, .net, .org, .io, .ai gibi popüler uzantılarda gerçek zamanlı kontrol sağlar. Tamamen cihaz içi önbellek mimarisiyle sıfır veri toplama güvencesi sunar.",
+    category: "Geliştirici Araçları & Alan Adı Yönetimi",
+    badge: "Müsaitlik & Portföy",
+    logoUrl: "/domain-track-logo.png",
+    version: "v1.0.0",
+    rating: 4.9,
+    reviewsCount: "2.8K",
+    downloads: "15.000+",
+    primaryColor: "#8B5CF6",
+    secondaryColor: "#EC4899",
+    glowColor: "rgba(139, 92, 246, 0.45)",
+    contactEmail: "wixtoryy@gmail.com",
+    storeLinks: {
+      appStore: "https://apps.apple.com/tr/app/wixtory-domain-track/id6790164419",
+      playStore: "https://play.google.com/store/apps/details?id=com.wixtory.domain_track",
+      webDemo: "/domain-track",
+    },
+    whyUse: [
+      {
+        title: "Çoklu Uzantıda Anında Müsaitlik",
+        problem: "Tek tek her uzantıyı kontrol etmek zaman alır ve aradığınız alan adını kaçırmanıza yol açar.",
+        solution: "Wixtory: Domain Track, .com, .net, .org, .io, .dev ve onlarca TLD'de tek sorguyla aynı anda müsaitliği kontrol eder.",
+        iconName: "Search",
+      },
+      {
+        title: "%100 Cihaz İçi Gizlilik & Güvenlik",
+        problem: "Birçok arama motoru aradığınız alan adlarını kaydeder ve fiyatları yapay olarak yükseltebilir.",
+        solution: "Aramalarınız ve favorileriniz sunucularımızda asla saklanmaz; yalnızca cihazınızın yerel önbelleğinde tutulur.",
+        iconName: "Shield",
+      },
+      {
+        title: "Favori Portföyü ve Hızlı Geçmiş",
+        problem: "Beğendiğiniz potansiyel isimleri unutursunuz veya tekrar aramak için zaman kaybedersiniz.",
+        solution: "Tek dokunuşla favorilere ekleyin, arama geçmişinizden anında geri çağırın ve portföyünüzü çevrimdışı yönetin.",
+        iconName: "Star",
+      },
+    ],
+    benefits: [
+      {
+        title: "Gerçek Zamanlı Hızlı Arama",
+        desc: "Saniyeler içinde yüzlerce uzantıda alan adı müsaitlik durumunu sorgular.",
+        statNumber: "< 1 sn",
+        statLabel: "Sorgu Yanıt Süresi",
+      },
+      {
+        title: "Geniş Uzantı Yelpazesi",
+        desc: "En popüler küresel ve yerel TLD uzantı desteği.",
+        statNumber: "100+",
+        statLabel: "Desteklenen TLD",
+      },
+      {
+        title: "Sıfır Kişisel Veri Toplama",
+        desc: "Arama geçmişi ve favoriler yalnızca telefonunuzda saklanır.",
+        statNumber: "%100",
+        statLabel: "Cihaz İçi Gizlilik",
+      },
+      {
+        title: "10 Küresel Dil Desteği",
+        desc: "Türkçe, İngilizce, Fransızca, Almanca, İspanyolca dahil 10 dil.",
+        statNumber: "10",
+        statLabel: "Küresel Dil",
+      },
+    ],
+    features: [
+      {
+        id: "instant_search",
+        title: "Anında Alan Adı Sorgulama",
+        description: "İstediğiniz alan adını yazın; müsaitlik durumunu renk kodlu rozetlerle anında görün.",
+        iconName: "Search",
+        badge: "Gerçek Zamanlı",
+      },
+      {
+        id: "extension_filter",
+        title: "Çoklu Uzantı Filtreleme",
+        description: ".com, .net, .org, .io, .ai gibi farklı TLD kategorilerini seçip filtreleyin.",
+        iconName: "Filter",
+        badge: "Geniş Kapsam",
+      },
+      {
+        id: "local_history",
+        title: "Yerel Arama Geçmişi",
+        description: "Geçmişte yaptığınız aramalar cihazınızda güvenle tutulur, tek tıkla tekrar açılır.",
+        iconName: "History",
+        badge: "Hızlı Erişim",
+      },
+      {
+        id: "favorites_tracker",
+        title: "Favori Alan Adları Takibi",
+        description: "Kayıt etmeyi düşündüğünüz isimleri yıldızlayarak favori listenize ekleyin.",
+        iconName: "Star",
+        badge: "Portföy",
+      },
+      {
+        id: "multilingual",
+        title: "10 Farklı Dil Desteği",
+        description: "Uygulama arayüzünü 10 farklı dünya dilinde tam yerelleştirme ile kullanın.",
+        iconName: "Globe",
+        badge: "i18n",
+      },
+      {
+        id: "clean_ui",
+        title: "Modern & Ergonomik Tasarım",
+        description: "Göz yormayan koyu mavi estetik ve parmak dostu mobil gezinme deneyimi.",
+        iconName: "Palette",
+        badge: "Koyu Tema",
+      },
+    ],
+    showcaseTabs: [
+      {
+        id: "search_showcase",
+        label: "Alan Adı Arama",
+        title: "Çoklu Uzantı Müsaitlik Kontrolü",
+        subtitle: "Tek bir kelime girin, tüm popüler uzantılardaki durumunu saniyeler içinde görün",
+        badge: "Anlık Arama",
+        accentColor: "#8B5CF6",
+        tags: [".com", ".net", ".org", ".io", ".dev"],
+        mockupContent: {
+          heading: "wixtory.com — Müsait!",
+          subheading: "Kayıt Durumu: Uygun · Önerilen TLD: .com",
+          details: [
+            "🟢 wixtory.com — Müsait (Hemen Kaydet)",
+            "🔴 wixtory.net — Alınmış (Whois İncele)",
+            "🟢 wixtory.io — Müsait (Girişimler İçin İdeal)",
+          ],
+          gradient: "linear-gradient(145deg, #0d1e2e 0%, #152d42 50%, #1c3b57 100%)",
+          previewType: "card",
+        },
+      },
+      {
+        id: "favorites_showcase",
+        label: "Favori Takip",
+        title: "Portföy & Takip Listesi",
+        subtitle: "Satın almayı planladığınız alan adlarını kategorilere göre düzenleyin",
+        badge: "Yıldızlı İsimler",
+        accentColor: "#EC4899",
+        tags: ["Girişim Fikirleri", "Kişisel Blog", "E-Ticaret"],
+        mockupContent: {
+          heading: "Kişisel Takip Portföyünüz",
+          subheading: "Toplam 5 Kayıtlı Alan Adı",
+          details: [
+            "⭐ mystartup.io — Öncelikli",
+            "⭐ cloudsuite.dev — İncelemede",
+            "🔒 Tüm favoriler telefonunuzda şifreli saklanır",
+          ],
+          gradient: "linear-gradient(145deg, #1b0c26 0%, #351347 50%, #4f1a66 100%)",
+          previewType: "feed",
+        },
+      },
+      {
+        id: "history_showcase",
+        label: "Arama Geçmişi",
+        title: "Çevrimdışı Arama Kayıtları",
+        subtitle: "İnternet olmasa dahi geçmişte aradığınız isimlere ve sonuçlarına anında ulaşın",
+        badge: "Önbellek",
+        accentColor: "#06B6D4",
+        tags: ["Hızlı Tekrar", "Önbelleği Temizle", "Sıfır Sunucu Kaydı"],
+        mockupContent: {
+          heading: "Son Yapılan Aramalar",
+          subheading: "Cihaz İçi Önbellek Aktif",
+          details: [
+            "🕐 15 dakika önce — 4 uzantı kontrol edildi",
+            "🗑️ 'Önbelleği Temizle' butonu ile anında silme imkanı",
+            "🛡️ Sıfır log ve sıfır kişisel profil kaydı",
+          ],
+          gradient: "linear-gradient(145deg, #081d24 0%, #0d3642 50%, #135263 100%)",
+          previewType: "card",
+        },
+      },
+    ],
+    privacyHighlights: [
+      "Aradığınız veya favorilediğiniz hiçbir alan adı harici sunucularda toplanmaz.",
+      "Kişisel kullanıcı hesabı açmanız veya e-posta girmeniz kesinlikle gerekmez.",
+      "İstediğiniz an uygulama ayarlarından 'Önbelleği Temizle' butonuyla tüm verileri silebilirsiniz.",
+    ],
+  },
   {
     id: "astrovibe",
     slug: "astrovibe",

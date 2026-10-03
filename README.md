@@ -1,10 +1,32 @@
 # General Apps (Wixtory) - Çoklu Dilli Uygulama Portalı & Ortak Gizlilik Platformu
 
-Bu proje; **AstroVibe** (Kozmik Astroloji, Tarot ve Protez Tırnak Stil Rehberi) ile **Excuse** (Zeki, Eğlenceli ve Yaratıcı Bahanematik) uygulamalarını tanıtan, gelecekte eklenecek yeni uygulamalara hazır, modern çoklu tema (multi-theme) ve **11 dil desteğine** sahip, tüm ekosistem için ortak yasal **Gizlilik Politikası (Privacy Policy)** sunan Next.js web portalıdır.
+Bu proje; **Wixtory: Domain Track** (Gerçek Zamanlı Alan Adı Sorgulama & Portföy Takip), **AstroVibe** (Kozmik Astroloji, Tarot ve Protez Tırnak Stil Rehberi) ile **Excuse** (Zeki, Eğlenceli ve Yaratıcı Bahanematik) uygulamalarını tanıtan, gelecekte eklenecek yeni uygulamalara hazır, modern çoklu tema (multi-theme) ve **11 dil desteğine** sahip, tüm ekosistem için ortak yasal **Gizlilik Politikası (Privacy Policy)** sunan Next.js web portalıdır.
 
 ---
 
-## 🌍 Desteklenen 11 Dil (Multi-Language Engine)
+## 📱 Ekosistem Projeleri & Sayfaları
+
+1. **Wixtory: Domain Track (`/domain-track`)**:
+   - Ana Sayfa: `/domain-track`
+   - Ekran Görüntüleri & 3D Telefon Vitrini: `/domain-track/screenshots`
+   - Özellikler: `/domain-track/features`
+   - Neden Biz?: `/domain-track/why-us`
+   - Sıkça Sorulan Sorular: `/domain-track/faq`
+   - Gizlilik Politikası: `/domain-track/privacy-policy`
+   - 10 Dünya Dili: Türkçe, İngilizce, Fransızca, Almanca, İtalyanca, İspanyolca, Portekizce, Rusça, Çince, Korece.
+
+2. **AstroVibe (`/astrovibe`)**:
+   - Kozmik Astroloji, 3D Tarot & Burca Özel Protez Tırnak Stil Rehberi.
+
+3. **Excuse AI (`/excuse`)**:
+   - Hayatın her anı için zeki, diplomatik ve esprili mazeret asistanı.
+
+4. **Evrensel Gizlilik Platformu (`/privacy-policy`, `/privacy`, `/privacy-policy.md`)**:
+   - Tüm Wixtory projeleri için tek, ortak, bağlayıcı yasal gizlilik sözleşmesi (Sıfır kişisel veri toplama, tamamen cihaz içi önbellek, AdMob ve 18 yaş altı güvencesi).
+
+---
+
+## 🌍 Desteklenen Diller (Multi-Language Engine)
 
 Portal; yerel `localStorage` kalıcılığı ve Arapça için otomatik **RTL (Sağdan Sola)** yerleşim desteği ile aşağıdaki 11 dilde eksiksiz çalışır:
 
@@ -25,7 +47,7 @@ Portal; yerel `localStorage` kalıcılığı ve Arapça için otomatik **RTL (Sa
 ## 🌟 Öne Çıkan Özellikler
 
 1. **İnteraktif Uygulama Seçici (App Switcher)**:
-   - Ana sayfada yer alan kartlar veya üst menüdeki hızlı hap butonlar üzerinden **AstroVibe** ve **Excuse** arasında anında geçiş.
+   - Ana sayfada yer alan kartlar veya üst menüdeki hızlı hap butonlar üzerinden **Domain Track**, **AstroVibe** ve **Excuse** arasında anında geçiş.
    - Sayfa seçilen uygulamaya göre renklerini, başlığını, neden kullanılmalı (problem/çözüm) kartlarını, metriklerini ve vitrinini dinamik olarak adapte eder.
 
 2. **Dinamik Çoklu Tema Desteği (Multi-Theme System)**:
@@ -40,16 +62,16 @@ Portal; yerel `localStorage` kalıcılığı ve Arapça için otomatik **RTL (Sa
    - Yüksek başarı oranları, indirme sayıları ve kullanıcı puanları göstergeleri.
 
 4. **Canlı Arayüz Vitrini (Interactive Mockup Showcase)**:
+   - Domain Track için: Alan Adı Arama, Favori Takip ve Arama Geçmişi sekmeleri.
    - AstroVibe için: Protez Tırnak, 3D Tarot Açılımı ve Burç Analizi sekmeleri.
    - Excuse için: İş & Toplantı, Sosyal & Parti ve Şans Çarkı sekmeleri.
 
-5. **İletişim & Hızlı Destek Formu**:
-   - İlgili uygulamanın resmi destek e-posta adresi (`astrovibe@wixtory.com` / `excuse@wixtory.com`), yayıncı firma bilgileri ve geri bildirim formu.
+5. **İletişim & Hızlı Destek**:
+   - Destek e-posta adresi (`wixtoryy@gmail.com`), yayıncı firma bilgileri ve geri bildirim formu.
 
-6. **Ortak Gizlilik Politikası (`/privacy`)**:
+6. **Ortak Gizlilik Politikası (`/privacy-policy`)**:
    - **Tüm uygulamalar için ortak tek bir yasal metin** (KVKK & GDPR & App Store & Google Play uyumlu).
-   - Sayfa üzerinde **"Genel Politika" | "AstroVibe Özel İzinleri" | "Excuse Özel İzinleri" | "Gelecek Uygulamalar"** filtreleri.
-   - Gelecekte eklenecek tüm uygulamalar doğrudan bu çatı politikanın güvencesi altındadır.
+   - Domain Track, AstroVibe, Excuse AI ve gelecekteki tüm projeleri kapsayan sıfır kişisel veri güvencesi.
 
 ---
 
