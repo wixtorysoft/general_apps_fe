@@ -1,0 +1,1562 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@source "../app/language-box";
+@source "../components/language-box";
+@source "../components/ui";
+@source "../data";
+@source "../lib";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+.language-box-scope {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.language-box-scope {
+  --radius: 0.625rem;
+  --background: lab(8.11897% .811279 -12.254);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+
+  /* Section backgrounds - Lab color space tonal variations */
+  --section-hero: lab(8.12% .811 -12.254);
+  --section-videos: lab(8.85% .811 -12.254);
+  --section-screenshots: lab(8.62% .811 -12.254);
+  --section-games: lab(7.62% .811 -12.254);
+  --section-features: lab(9.12% .811 -12.254);
+  --section-advantages: lab(7.87% .811 -12.254);
+  --section-faq: lab(8.87% .811 -12.254);
+  --section-developer: lab(7.37% .811 -12.254);
+  --section-footer: lab(6.87% .811 -12.254);
+
+  /* Card backgrounds - slightly lighter than sections */
+  --card-videos: lab(10.5% .811 -12.254);
+  --card-videos-hover: lab(12.0% .811 -12.254);
+  --card-games: lab(10.12% .811 -12.254);
+  --card-games-hover: lab(11.62% .811 -12.254);
+  --card-features: lab(11.62% .811 -12.254);
+  --card-features-hover: lab(13.12% .811 -12.254);
+  --card-advantages: lab(10.37% .811 -12.254);
+  --card-advantages-hover: lab(11.87% .811 -12.254);
+  --card-faq: lab(11.37% .811 -12.254);
+  --card-faq-hover: lab(12.87% .811 -12.254);
+  --card-developer: lab(9.87% .811 -12.254);
+  --card-developer-hover: lab(11.37% .811 -12.254);
+}
+
+.language-box-scope.light,
+.language-box-scope .light {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #059669;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #475569;
+  --accent: #e2e8f0;
+  --accent-foreground: #0f172a;
+  --destructive: #ef4444;
+  --border: #e2e8f0;
+  --input: #cbd5e1;
+  --ring: #059669;
+
+  --section-hero: #ffffff;
+  --section-videos: #f1f5f9;
+  --section-screenshots: #ffffff;
+  --section-games: #f8fafc;
+  --section-features: #ffffff;
+  --section-advantages: #f8fafc;
+  --section-faq: #ffffff;
+  --section-developer: #f8fafc;
+  --section-footer: #f1f5f9;
+
+  --card-videos: #ffffff;
+  --card-videos-hover: #ffffff;
+  --card-games: #ffffff;
+  --card-games-hover: #ffffff;
+  --card-features: #ffffff;
+  --card-features-hover: #ffffff;
+  --card-advantages: #ffffff;
+  --card-advantages-hover: #ffffff;
+  --card-faq: #ffffff;
+  --card-faq-hover: #ffffff;
+  --card-developer: #ffffff;
+  --card-developer-hover: #ffffff;
+}
+
+.language-box-scope.emerald,
+.language-box-scope .emerald {
+  --background: #f0fdf4;
+  --foreground: #064e3b;
+  --card: #ffffff;
+  --card-foreground: #064e3b;
+  --popover: #ffffff;
+  --popover-foreground: #064e3b;
+  --primary: #059669;
+  --primary-foreground: #ffffff;
+  --secondary: #dcfce7;
+  --secondary-foreground: #064e3b;
+  --muted: #e6f4ea;
+  --muted-foreground: #047857;
+  --accent: #bbf7d0;
+  --accent-foreground: #064e3b;
+  --border: #bbf7d0;
+  --input: #a7f3d0;
+  --ring: #059669;
+
+  --section-hero: #f0fdf4;
+  --section-videos: #e6f7ec;
+  --section-screenshots: #ffffff;
+  --section-games: #f0fdf4;
+  --section-features: #e6f4ea;
+  --section-advantages: #ffffff;
+  --section-faq: #e6f4ea;
+  --section-developer: #f0fdf4;
+  --section-footer: #064e3b;
+
+  --card-videos: #ffffff;
+  --card-videos-hover: #ffffff;
+  --card-games: #ffffff;
+  --card-games-hover: #ffffff;
+  --card-features: #ffffff;
+  --card-features-hover: #ffffff;
+  --card-advantages: #ffffff;
+  --card-advantages-hover: #ffffff;
+  --card-faq: #ffffff;
+  --card-faq-hover: #ffffff;
+  --card-developer: #ffffff;
+  --card-developer-hover: #ffffff;
+}
+
+.language-box-scope.amber,
+.language-box-scope .amber {
+  --background: #fefce8;
+  --foreground: #713f12;
+  --card: #ffffff;
+  --card-foreground: #713f12;
+  --popover: #ffffff;
+  --popover-foreground: #713f12;
+  --primary: #d97706;
+  --primary-foreground: #ffffff;
+  --secondary: #fef3c7;
+  --secondary-foreground: #713f12;
+  --muted: #fef9c3;
+  --muted-foreground: #854d0e;
+  --accent: #fde68a;
+  --accent-foreground: #713f12;
+  --border: #fef08a;
+  --input: #fde047;
+  --ring: #d97706;
+
+  --section-hero: #fefce8;
+  --section-videos: #fef3c7;
+  --section-screenshots: #ffffff;
+  --section-games: #fefce8;
+  --section-features: #fffbeb;
+  --section-advantages: #ffffff;
+  --section-faq: #fffbeb;
+  --section-developer: #fefce8;
+  --section-footer: #713f12;
+
+  --card-videos: #ffffff;
+  --card-videos-hover: #ffffff;
+  --card-games: #ffffff;
+  --card-games-hover: #ffffff;
+  --card-features: #ffffff;
+  --card-features-hover: #ffffff;
+  --card-advantages: #ffffff;
+  --card-advantages-hover: #ffffff;
+  --card-faq: #ffffff;
+  --card-faq-hover: #ffffff;
+  --card-developer: #ffffff;
+  --card-developer-hover: #ffffff;
+}
+
+.language-box-scope.dark,
+.language-box-scope .dark {
+  --background: lab(8.11897% .811279 -12.254);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+
+  /* Section backgrounds - Lab color space tonal variations */
+  --section-hero: lab(8.12% .811 -12.254);
+  --section-videos: lab(8.85% .811 -12.254);
+  --section-screenshots: lab(8.62% .811 -12.254);
+  --section-games: lab(7.62% .811 -12.254);
+  --section-features: lab(9.12% .811 -12.254);
+  --section-advantages: lab(7.87% .811 -12.254);
+  --section-faq: lab(8.87% .811 -12.254);
+  --section-developer: lab(7.37% .811 -12.254);
+  --section-footer: lab(6.87% .811 -12.254);
+
+  /* Card backgrounds - slightly lighter than sections */
+  --card-videos: lab(10.5% .811 -12.254);
+  --card-videos-hover: lab(12.0% .811 -12.254);
+  --card-games: lab(10.12% .811 -12.254);
+  --card-games-hover: lab(11.62% .811 -12.254);
+  --card-features: lab(11.62% .811 -12.254);
+  --card-features-hover: lab(13.12% .811 -12.254);
+  --card-advantages: lab(10.37% .811 -12.254);
+  --card-advantages-hover: lab(11.87% .811 -12.254);
+  --card-faq: lab(11.37% .811 -12.254);
+  --card-faq-hover: lab(12.87% .811 -12.254);
+  --card-developer: lab(9.87% .811 -12.254);
+  --card-developer-hover: lab(11.37% .811 -12.254);
+}
+
+/* Light Mode Text Overrides */
+.language-box-scope.light .text-white {
+  color: #0f172a;
+}
+
+.language-box-scope.light .text-white\/20,
+.language-box-scope.light .text-white\/30,
+.language-box-scope.light .text-white\/40,
+.language-box-scope.light .text-white\/50 {
+  color: #475569;
+}
+
+.language-box-scope.light .text-white\/60,
+.language-box-scope.light .text-white\/70,
+.language-box-scope.light .text-white\/80 {
+  color: #334155;
+}
+
+.language-box-scope.light .text-white\/90 {
+  color: #0f172a;
+}
+
+/* Light Mode Badge Text Color Overrides for Readability */
+.language-box-scope.light .text-indigo-300 { color: #4338ca !important; }
+.language-box-scope.light .text-emerald-300 { color: #047857 !important; }
+.language-box-scope.light .text-rose-300 { color: #be123c !important; }
+.language-box-scope.light .text-amber-300 { color: #b45309 !important; }
+.language-box-scope.light .text-violet-300 { color: #6d28d9 !important; }
+.language-box-scope.light .text-cyan-300 { color: #0369a1 !important; }
+.language-box-scope.light .text-teal-300 { color: #0f766e !important; }
+
+/* Light Mode Badge Background Overrides */
+.language-box-scope.light .bg-indigo-500\/10 { background-color: rgba(99, 102, 241, 0.12) !important; }
+.language-box-scope.light .bg-emerald-500\/10 { background-color: rgba(16, 185, 129, 0.12) !important; }
+.language-box-scope.light .bg-rose-500\/10 { background-color: rgba(244, 63, 94, 0.12) !important; }
+.language-box-scope.light .bg-amber-500\/10 { background-color: rgba(245, 158, 11, 0.12) !important; }
+.language-box-scope.light .bg-violet-500\/10 { background-color: rgba(139, 92, 246, 0.12) !important; }
+.language-box-scope.light .bg-cyan-500\/10 { background-color: rgba(6, 182, 212, 0.12) !important; }
+.language-box-scope.light .bg-emerald-400\/10 { background-color: rgba(16, 185, 129, 0.12) !important; }
+
+/* Light Mode Logo Container Background Overrides */
+.language-box-scope.light .bg-slate-950\/60,
+.language-box-scope.light .bg-slate-950\/70,
+.language-box-scope.light .bg-slate-950\/80 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Light Mode Gradient Contrast Enhancements */
+.language-box-scope.light .from-emerald-400 {
+  --tw-gradient-from: #059669 !important;
+}
+.language-box-scope.light .to-teal-400 {
+  --tw-gradient-to: #0d9488 !important;
+}
+.language-box-scope.light .from-rose-400 {
+  --tw-gradient-from: #e11d48 !important;
+}
+.language-box-scope.light .to-orange-400 {
+  --tw-gradient-to: #ea580c !important;
+}
+.language-box-scope.light .from-cyan-400 {
+  --tw-gradient-from: #0284c7 !important;
+}
+.language-box-scope.light .to-sky-400 {
+  --tw-gradient-to: #0369a1 !important;
+}
+
+/* Navbar styling in Light mode */
+.language-box-scope.light nav {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05) !important;
+}
+
+.language-box-scope.light nav button {
+  color: #334155 !important;
+}
+
+.language-box-scope.light nav button:hover {
+  color: #059669 !important;
+  background-color: rgba(5, 150, 105, 0.08) !important;
+}
+
+/* Card System in Light Mode */
+.language-box-scope.light .card-modern {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.04), 0 2px 6px -1px rgba(15, 23, 42, 0.02) !important;
+}
+
+.language-box-scope.light .card-modern:hover {
+  transform: translateY(-4px);
+  border-color: rgba(5, 150, 105, 0.3) !important;
+  box-shadow: 0 16px 32px -6px rgba(5, 150, 105, 0.12), 0 0 0 1px rgba(5, 150, 105, 0.1) !important;
+}
+
+/* Light Mode Badges & Tags */
+.language-box-scope.light .border-white\/10 {
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+.language-box-scope.light .bg-white\/5,
+.language-box-scope.light .bg-white\/10 {
+  background-color: rgba(15, 23, 42, 0.05) !important;
+  color: #1e293b !important;
+}
+
+/* Store Buttons on Light Mode */
+.language-box-scope.light .bg-\[\#000000\],
+.language-box-scope.light .bg-\[\#000000\] * {
+  color: #ffffff !important;
+}
+
+.language-box-scope.light .bg-\[\#000000\] .text-white\/70 {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Select & Dropdown menus in Light Mode */
+.language-box-scope.light [role="menu"],
+.language-box-scope.light [role="listbox"],
+.language-box-scope.light [data-radix-popper-content-wrapper] > div {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.1) !important;
+}
+
+.language-box-scope.light [role="option"],
+.language-box-scope.light [role="menuitem"] {
+  color: #334155 !important;
+}
+
+.language-box-scope.light [role="option"]:hover,
+.language-box-scope.light [role="option"]:focus,
+.language-box-scope.light [role="menuitem"]:hover,
+.language-box-scope.light [role="menuitem"]:focus {
+  background-color: rgba(5, 150, 105, 0.1) !important;
+  color: #059669 !important;
+}
+
+/* Footer elements light mode override */
+.language-box-scope.light footer {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #e2e8f0 !important;
+}
+
+.language-box-scope.light footer .border-white\/5,
+.language-box-scope.light footer .border-white\/10 {
+  border-color: #e2e8f0 !important;
+}
+
+.language-box-scope.light footer h3 {
+  color: #0f172a !important;
+}
+
+.language-box-scope.light footer p,
+.language-box-scope.light footer .text-white\/30,
+.language-box-scope.light footer .text-white\/40,
+.language-box-scope.light footer .text-white\/50,
+.language-box-scope.light footer .text-white\/60,
+.language-box-scope.light footer .text-white\/70 {
+  color: #475569 !important;
+}
+
+.language-box-scope.light footer a:not(.bg-\[\#000000\]) {
+  color: #334155 !important;
+}
+
+.language-box-scope.light footer a:not(.bg-\[\#000000\]):hover {
+  color: #059669 !important;
+}
+
+.language-box-scope.light footer .text-white\/20,
+.language-box-scope.light footer .text-white\/25 {
+  color: #64748b !important;
+}
+
+/* Social icon buttons in footer */
+.language-box-scope.light footer a.w-9.h-9 {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+.language-box-scope.light footer a.w-9.h-9:hover {
+  border-color: rgba(5, 150, 105, 0.4) !important;
+  color: #059669 !important;
+  background-color: #ffffff !important;
+}
+
+/* App Store & Google Play buttons inside footer stay black badges */
+.language-box-scope.light footer .bg-\[\#000000\],
+.language-box-scope.light footer .bg-\[\#000000\] * {
+  color: #ffffff !important;
+}
+
+.language-box-scope.light footer .bg-\[\#000000\] .text-white\/70 {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* -------------------------------------------------------------
+ * EMERALD MINT THEME OVERRIDES
+ * ------------------------------------------------------------- */
+.language-box-scope.emerald .text-white {
+  color: #064e3b;
+}
+
+.language-box-scope.emerald .text-white\/40,
+.language-box-scope.emerald .text-white\/50 {
+  color: #047857;
+}
+
+.language-box-scope.emerald .text-white\/60,
+.language-box-scope.emerald .text-white\/70,
+.language-box-scope.emerald .text-white\/80 {
+  color: #065f46;
+}
+
+.language-box-scope.emerald .text-white\/90 {
+  color: #064e3b;
+}
+
+.language-box-scope.emerald nav {
+  background-color: rgba(240, 253, 244, 0.95) !important;
+  border-color: rgba(187, 247, 208, 0.8) !important;
+  box-shadow: 0 4px 20px -2px rgba(5, 150, 105, 0.08) !important;
+}
+
+.language-box-scope.emerald nav button {
+  color: #065f46 !important;
+}
+
+.language-box-scope.emerald nav button:hover {
+  color: #047857 !important;
+  background-color: rgba(16, 185, 129, 0.12) !important;
+}
+
+.language-box-scope.emerald .card-modern {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(187, 247, 208, 0.8) !important;
+  box-shadow: 0 4px 16px -2px rgba(5, 150, 105, 0.06) !important;
+}
+
+.language-box-scope.emerald .card-modern:hover {
+  transform: translateY(-4px);
+  border-color: rgba(5, 150, 105, 0.4) !important;
+  box-shadow: 0 16px 32px -6px rgba(5, 150, 105, 0.18) !important;
+}
+
+.language-box-scope.emerald .border-white\/10 {
+  border-color: rgba(187, 247, 208, 0.8) !important;
+}
+
+.language-box-scope.emerald .bg-white\/5,
+.language-box-scope.emerald .bg-white\/10 {
+  background-color: rgba(187, 247, 208, 0.4) !important;
+  color: #064e3b !important;
+}
+
+.language-box-scope.emerald .bg-slate-950\/60,
+.language-box-scope.emerald .bg-slate-950\/70,
+.language-box-scope.emerald .bg-slate-950\/80 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Emerald Dropdowns */
+.language-box-scope.emerald [role="menu"],
+.language-box-scope.emerald [role="listbox"],
+.language-box-scope.emerald [data-slot="dropdown-menu-content"],
+.language-box-scope.emerald [data-radix-popper-content-wrapper] > div {
+  background-color: #f0fdf4 !important;
+  color: #064e3b !important;
+  border-color: #bbf7d0 !important;
+  box-shadow: 0 12px 32px -4px rgba(5, 150, 105, 0.15) !important;
+}
+
+.language-box-scope.emerald [role="option"],
+.language-box-scope.emerald [role="menuitem"] {
+  color: #064e3b !important;
+}
+
+.language-box-scope.emerald [role="option"]:hover,
+.language-box-scope.emerald [role="option"]:focus,
+.language-box-scope.emerald [role="menuitem"]:hover,
+.language-box-scope.emerald [role="menuitem"]:focus {
+  background-color: #dcfce7 !important;
+  color: #047857 !important;
+}
+
+.language-box-scope.emerald footer {
+  background-color: #064e3b !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.language-box-scope.emerald footer h3 {
+  color: #ffffff !important;
+}
+
+.language-box-scope.emerald footer p,
+.language-box-scope.emerald footer .text-white\/30,
+.language-box-scope.emerald footer .text-white\/40,
+.language-box-scope.emerald footer .text-white\/50,
+.language-box-scope.emerald footer .text-white\/60,
+.language-box-scope.emerald footer .text-white\/70 {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.language-box-scope.emerald footer a:not(.bg-\[\#000000\]) {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.language-box-scope.emerald footer a:not(.bg-\[\#000000\]):hover {
+  color: #a7f3d0 !important;
+}
+
+.language-box-scope.emerald footer a.w-9.h-9 {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+}
+
+.language-box-scope.emerald footer a.w-9.h-9:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #a7f3d0 !important;
+}
+
+.language-box-scope.emerald footer .bg-\[\#000000\],
+.language-box-scope.emerald footer .bg-\[\#000000\] * {
+  color: #ffffff !important;
+}
+
+.language-box-scope.emerald footer .bg-\[\#000000\] .text-white\/70 {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* -------------------------------------------------------------
+ * AMBER SUNSET GOLD THEME OVERRIDES
+ * ------------------------------------------------------------- */
+.language-box-scope.amber .text-white {
+  color: #713f12;
+}
+
+.language-box-scope.amber .text-white\/40,
+.language-box-scope.amber .text-white\/50 {
+  color: #a16207;
+}
+
+.language-box-scope.amber .text-white\/60,
+.language-box-scope.amber .text-white\/70,
+.language-box-scope.amber .text-white\/80 {
+  color: #854d0e;
+}
+
+.language-box-scope.amber .text-white\/90 {
+  color: #713f12;
+}
+
+.language-box-scope.amber nav {
+  background-color: rgba(254, 252, 232, 0.95) !important;
+  border-color: rgba(254, 240, 138, 0.8) !important;
+  box-shadow: 0 4px 20px -2px rgba(217, 119, 6, 0.08) !important;
+}
+
+.language-box-scope.amber nav button {
+  color: #854d0e !important;
+}
+
+.language-box-scope.amber nav button:hover {
+  color: #713f12 !important;
+  background-color: rgba(245, 158, 11, 0.12) !important;
+}
+
+.language-box-scope.amber .card-modern {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(254, 240, 138, 0.8) !important;
+  box-shadow: 0 4px 16px -2px rgba(217, 119, 6, 0.06) !important;
+}
+
+.language-box-scope.amber .card-modern:hover {
+  transform: translateY(-4px);
+  border-color: rgba(217, 119, 6, 0.4) !important;
+  box-shadow: 0 16px 32px -6px rgba(217, 119, 6, 0.18) !important;
+}
+
+.language-box-scope.amber .border-white\/10 {
+  border-color: rgba(254, 240, 138, 0.8) !important;
+}
+
+.language-box-scope.amber .bg-white\/5,
+.language-box-scope.amber .bg-white\/10 {
+  background-color: rgba(254, 240, 138, 0.4) !important;
+  color: #713f12 !important;
+}
+
+.language-box-scope.amber .bg-slate-950\/60,
+.language-box-scope.amber .bg-slate-950\/70,
+.language-box-scope.amber .bg-slate-950\/80 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Amber Dropdowns */
+.language-box-scope.amber [role="menu"],
+.language-box-scope.amber [role="listbox"],
+.language-box-scope.amber [data-slot="dropdown-menu-content"],
+.language-box-scope.amber [data-radix-popper-content-wrapper] > div {
+  background-color: #fefce8 !important;
+  color: #713f12 !important;
+  border-color: #fef08a !important;
+  box-shadow: 0 12px 32px -4px rgba(217, 119, 6, 0.15) !important;
+}
+
+.language-box-scope.amber [role="option"],
+.language-box-scope.amber [role="menuitem"] {
+  color: #713f12 !important;
+}
+
+.language-box-scope.amber [role="option"]:hover,
+.language-box-scope.amber [role="option"]:focus,
+.language-box-scope.amber [role="menuitem"]:hover,
+.language-box-scope.amber [role="menuitem"]:focus {
+  background-color: #fef3c7 !important;
+  color: #b45309 !important;
+}
+
+.language-box-scope.amber footer {
+  background-color: #713f12 !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.language-box-scope.amber footer h3 {
+  color: #ffffff !important;
+}
+
+.language-box-scope.amber footer p,
+.language-box-scope.amber footer .text-white\/30,
+.language-box-scope.amber footer .text-white\/40,
+.language-box-scope.amber footer .text-white\/50,
+.language-box-scope.amber footer .text-white\/60,
+.language-box-scope.amber footer .text-white\/70 {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.language-box-scope.amber footer a:not(.bg-\[\#000000\]) {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.language-box-scope.amber footer a:not(.bg-\[\#000000\]):hover {
+  color: #fde68a !important;
+}
+
+.language-box-scope.amber footer a.w-9.h-9 {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+}
+
+.language-box-scope.amber footer a.w-9.h-9:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #fde68a !important;
+}
+
+.language-box-scope.amber footer .bg-\[\#000000\],
+.language-box-scope.amber footer .bg-\[\#000000\] * {
+  color: #ffffff !important;
+}
+
+.language-box-scope.amber footer .bg-\[\#000000\] .text-white\/70 {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+@layer base {
+  .language-box-scope * {
+    border-color: var(--border);
+    outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
+  }
+}
+
+/* Section hover effects */
+.section-hover {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-hover:hover {
+  box-shadow: inset 0 0 120px 40px rgba(255, 255, 255, 0.015);
+}
+
+/* Modern card system */
+.card-modern {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-modern:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 20px 40px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 0 30px -5px var(--hover-accent, rgba(16, 185, 129, 0.1));
+}
+
+/* Shimmer sweep on hover */
+.card-modern::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.03) 55%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.card-modern:hover::after {
+  transform: translateX(100%);
+}
+
+/* Border glow on hover */
+.card-modern::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    transparent 30%,
+    var(--hover-accent, rgba(16, 185, 129, 0.15)) 50%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.card-modern:hover::before {
+  opacity: 1;
+}
+
+/* =============================================================
+ * COMING SOON SECTION - MULTI-THEME HARMONY
+ * Harmonizes light (Aydınlık/Sistem), emerald (Ferah Zümrüt), and amber (Sıcak Kehribar)
+ * ============================================================= */
+
+/* Light Theme (Aydınlık / Sistem Açık) */
+.language-box-scope.light .coming-soon-visual-glow {
+  background: radial-gradient(circle, rgba(5, 150, 105, 0.12) 0%, rgba(15, 23, 42, 0.03) 70%) !important;
+}
+
+.language-box-scope.light .coming-soon-diagram-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.06), 0 2px 8px -2px rgba(15, 23, 42, 0.04) !important;
+}
+
+.language-box-scope.light .coming-soon-device-box {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.03) !important;
+}
+
+.language-box-scope.light .coming-soon-device-box:hover {
+  border-color: rgba(5, 150, 105, 0.4) !important;
+}
+
+.language-box-scope.light .coming-soon-device-icon {
+  background-color: rgba(5, 150, 105, 0.1) !important;
+  border: 1px solid rgba(5, 150, 105, 0.25) !important;
+  color: #047857 !important;
+}
+
+.language-box-scope.light .coming-soon-device-title {
+  color: #0f172a !important;
+}
+
+.language-box-scope.light .coming-soon-device-sub {
+  color: #475569 !important;
+}
+
+.language-box-scope.light .coming-soon-badge-export,
+.language-box-scope.light .coming-soon-badge-import {
+  background-color: rgba(5, 150, 105, 0.08) !important;
+  color: #047857 !important;
+  border: 1px solid rgba(5, 150, 105, 0.2) !important;
+}
+
+.language-box-scope.light .coming-soon-packet-box {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%) !important;
+  border: 1px solid rgba(5, 150, 105, 0.3) !important;
+  box-shadow: 0 6px 16px -2px rgba(5, 150, 105, 0.1) !important;
+}
+
+.language-box-scope.light .coming-soon-packet-icon {
+  color: #059669 !important;
+}
+
+.language-box-scope.light .coming-soon-packet-text {
+  color: #047857 !important;
+}
+
+.language-box-scope.light .coming-soon-arrow {
+  color: #059669 !important;
+}
+
+.language-box-scope.light .coming-soon-status-pill {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  color: #334155 !important;
+}
+
+.language-box-scope.light .coming-soon-check-icon {
+  color: #059669 !important;
+}
+
+.language-box-scope.light .coming-soon-feature-pill {
+  background-color: rgba(5, 150, 105, 0.08) !important;
+  border: 1px solid rgba(5, 150, 105, 0.2) !important;
+  color: #047857 !important;
+}
+
+.language-box-scope.light .coming-soon-highlight-item {
+  background-color: #f8fafc !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+.language-box-scope.light .coming-soon-highlight-icon {
+  background-color: rgba(5, 150, 105, 0.1) !important;
+  color: #047857 !important;
+}
+
+.language-box-scope.light .coming-soon-tag-badge {
+  background-color: rgba(5, 150, 105, 0.08) !important;
+  border-color: rgba(5, 150, 105, 0.2) !important;
+  color: #047857 !important;
+}
+
+
+/* Ferah Zümrüt (Mint Green Theme) */
+.language-box-scope.emerald .coming-soon-visual-glow {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, rgba(5, 150, 105, 0.06) 70%) !important;
+}
+
+.language-box-scope.emerald .coming-soon-diagram-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%) !important;
+  border: 1px solid rgba(167, 243, 208, 0.9) !important;
+  box-shadow: 0 16px 36px -8px rgba(5, 150, 105, 0.12), 0 2px 8px -2px rgba(5, 150, 105, 0.06) !important;
+}
+
+.language-box-scope.emerald .coming-soon-device-box {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(187, 247, 208, 0.9) !important;
+  box-shadow: 0 4px 12px -2px rgba(5, 150, 105, 0.05) !important;
+}
+
+.language-box-scope.emerald .coming-soon-device-box:hover {
+  border-color: rgba(5, 150, 105, 0.5) !important;
+}
+
+.language-box-scope.emerald .coming-soon-device-icon {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  border: 1px solid rgba(5, 150, 105, 0.3) !important;
+  color: #047857 !important;
+}
+
+.language-box-scope.emerald .coming-soon-device-title {
+  color: #064e3b !important;
+}
+
+.language-box-scope.emerald .coming-soon-device-sub {
+  color: #047857 !important;
+}
+
+.language-box-scope.emerald .coming-soon-badge-export,
+.language-box-scope.emerald .coming-soon-badge-import {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+  color: #047857 !important;
+  border: 1px solid rgba(5, 150, 105, 0.25) !important;
+}
+
+.language-box-scope.emerald .coming-soon-packet-box {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.15) 100%) !important;
+  border: 1px solid rgba(5, 150, 105, 0.4) !important;
+  box-shadow: 0 6px 16px -2px rgba(5, 150, 105, 0.15) !important;
+}
+
+.language-box-scope.emerald .coming-soon-packet-icon {
+  color: #059669 !important;
+}
+
+.language-box-scope.emerald .coming-soon-packet-text {
+  color: #047857 !important;
+}
+
+.language-box-scope.emerald .coming-soon-arrow {
+  color: #059669 !important;
+}
+
+.language-box-scope.emerald .coming-soon-status-pill {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(187, 247, 208, 0.9) !important;
+  color: #065f46 !important;
+}
+
+.language-box-scope.emerald .coming-soon-check-icon {
+  color: #059669 !important;
+}
+
+.language-box-scope.emerald .coming-soon-feature-pill {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+  border: 1px solid rgba(5, 150, 105, 0.3) !important;
+  color: #047857 !important;
+}
+
+.language-box-scope.emerald .coming-soon-accent-line {
+  background: linear-gradient(to right, #059669, #10b981, #34d399) !important;
+}
+
+.language-box-scope.emerald .coming-soon-header-badge {
+  background: rgba(16, 185, 129, 0.12) !important;
+  border-color: rgba(5, 150, 105, 0.3) !important;
+  color: #047857 !important;
+}
+
+.language-box-scope.emerald .coming-soon-highlight-item {
+  background-color: rgba(240, 253, 244, 0.7) !important;
+  border-color: rgba(187, 247, 208, 0.9) !important;
+}
+
+.language-box-scope.emerald .coming-soon-highlight-icon {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  color: #047857 !important;
+}
+
+.language-box-scope.emerald .coming-soon-tag-badge {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+  border-color: rgba(5, 150, 105, 0.25) !important;
+  color: #047857 !important;
+}
+
+.language-box-scope.emerald #coming-soon h2 {
+  background: linear-gradient(to right, #047857, #059669, #10b981) !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+
+/* Sıcak Kehribar (Sunset Gold Theme) */
+.language-box-scope.amber .coming-soon-visual-glow {
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, rgba(217, 119, 6, 0.06) 70%) !important;
+}
+
+.language-box-scope.amber .coming-soon-diagram-card {
+  background: linear-gradient(135deg, #ffffff 0%, #fefce8 100%) !important;
+  border: 1px solid rgba(254, 240, 138, 0.9) !important;
+  box-shadow: 0 16px 36px -8px rgba(217, 119, 6, 0.12), 0 2px 8px -2px rgba(217, 119, 6, 0.06) !important;
+}
+
+.language-box-scope.amber .coming-soon-device-box {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(254, 240, 138, 0.9) !important;
+  box-shadow: 0 4px 12px -2px rgba(217, 119, 6, 0.05) !important;
+}
+
+.language-box-scope.amber .coming-soon-device-box:hover {
+  border-color: rgba(217, 119, 6, 0.5) !important;
+}
+
+.language-box-scope.amber .coming-soon-device-icon {
+  background-color: rgba(245, 158, 11, 0.15) !important;
+  border: 1px solid rgba(217, 119, 6, 0.3) !important;
+  color: #b45309 !important;
+}
+
+.language-box-scope.amber .coming-soon-device-title {
+  color: #713f12 !important;
+}
+
+.language-box-scope.amber .coming-soon-device-sub {
+  color: #854d0e !important;
+}
+
+.language-box-scope.amber .coming-soon-badge-export,
+.language-box-scope.amber .coming-soon-badge-import {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+  color: #b45309 !important;
+  border: 1px solid rgba(217, 119, 6, 0.25) !important;
+}
+
+.language-box-scope.amber .coming-soon-packet-box {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.15) 100%) !important;
+  border: 1px solid rgba(217, 119, 6, 0.4) !important;
+  box-shadow: 0 6px 16px -2px rgba(217, 119, 6, 0.15) !important;
+}
+
+.language-box-scope.amber .coming-soon-packet-icon {
+  color: #d97706 !important;
+}
+
+.language-box-scope.amber .coming-soon-packet-text {
+  color: #b45309 !important;
+}
+
+.language-box-scope.amber .coming-soon-arrow {
+  color: #d97706 !important;
+}
+
+.language-box-scope.amber .coming-soon-status-pill {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(254, 240, 138, 0.9) !important;
+  color: #713f12 !important;
+}
+
+.language-box-scope.amber .coming-soon-check-icon {
+  color: #d97706 !important;
+}
+
+.language-box-scope.amber .coming-soon-feature-pill {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+  border: 1px solid rgba(217, 119, 6, 0.3) !important;
+  color: #b45309 !important;
+}
+
+.language-box-scope.amber .coming-soon-accent-line {
+  background: linear-gradient(to right, #d97706, #f59e0b, #fbbf24) !important;
+}
+
+.language-box-scope.amber .coming-soon-header-badge {
+  background: rgba(245, 158, 11, 0.12) !important;
+  border-color: rgba(217, 119, 6, 0.3) !important;
+  color: #b45309 !important;
+}
+
+.language-box-scope.amber .coming-soon-highlight-item {
+  background-color: rgba(254, 252, 232, 0.7) !important;
+  border-color: rgba(254, 240, 138, 0.9) !important;
+}
+
+.language-box-scope.amber .coming-soon-highlight-icon {
+  background-color: rgba(245, 158, 11, 0.15) !important;
+  color: #b45309 !important;
+}
+
+.language-box-scope.amber .coming-soon-tag-badge {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+  border-color: rgba(217, 119, 6, 0.25) !important;
+  color: #b45309 !important;
+}
+
+.language-box-scope.amber #coming-soon h2 {
+  background: linear-gradient(to right, #b45309, #d97706, #f59e0b) !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+/* =============================================================
+ * VIDEO SHOWCASE SECTION THEME ADAPTATIONS
+ * ============================================================= */
+
+/* LIGHT THEME (AYDINLIK) */
+.language-box-scope.light #videos {
+  background: #f1f5f9 !important;
+}
+
+.language-box-scope.light #videos .video-player-frame {
+  background-color: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08) !important;
+}
+
+.language-box-scope.light #videos .video-info-bar {
+  border-top-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+.language-box-scope.light #videos .video-tab-btn:not(.active) {
+  background-color: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  color: #334155 !important;
+  box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.05) !important;
+}
+
+.language-box-scope.light #videos .video-tab-btn:not(.active):hover {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+}
+
+.language-box-scope.light #videos .video-subscribe-banner {
+  background: linear-gradient(135deg, rgba(254, 242, 242, 0.95) 0%, rgba(255, 255, 255, 0.98) 50%, rgba(241, 245, 249, 0.95) 100%) !important;
+  border: 1px solid rgba(239, 68, 68, 0.25) !important;
+  box-shadow: 0 16px 36px -8px rgba(239, 68, 68, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04) !important;
+}
+
+.language-box-scope.light #videos .video-ambient-glow {
+  opacity: 0.25 !important;
+}
+
+/* EMERALD MINT THEME (FERAH) */
+.language-box-scope.emerald #videos {
+  background: #e6f7ec !important;
+}
+
+.language-box-scope.emerald #videos .video-player-frame {
+  background-color: #ffffff !important;
+  border-color: rgba(187, 247, 208, 0.9) !important;
+  box-shadow: 0 20px 40px -15px rgba(5, 150, 105, 0.1) !important;
+}
+
+.language-box-scope.emerald #videos .video-info-bar {
+  border-top-color: rgba(187, 247, 208, 0.8) !important;
+}
+
+.language-box-scope.emerald #videos .video-tab-btn:not(.active) {
+  background-color: #ffffff !important;
+  border-color: rgba(187, 247, 208, 0.9) !important;
+  color: #065f46 !important;
+  box-shadow: 0 2px 6px -1px rgba(5, 150, 105, 0.05) !important;
+}
+
+.language-box-scope.emerald #videos .video-tab-btn:not(.active):hover {
+  background-color: #f0fdf4 !important;
+  color: #064e3b !important;
+  border-color: rgba(5, 150, 105, 0.4) !important;
+}
+
+.language-box-scope.emerald #videos .video-subscribe-banner {
+  background: linear-gradient(135deg, rgba(236, 253, 245, 0.95) 0%, rgba(255, 255, 255, 0.98) 50%, rgba(254, 242, 242, 0.75) 100%) !important;
+  border: 1px solid rgba(5, 150, 105, 0.3) !important;
+  box-shadow: 0 16px 36px -8px rgba(5, 150, 105, 0.12) !important;
+}
+
+.language-box-scope.emerald #videos .video-ambient-glow {
+  opacity: 0.3 !important;
+}
+
+/* AMBER SUNSET GOLD THEME (SICAK) */
+.language-box-scope.amber #videos {
+  background: #fef3c7 !important;
+}
+
+.language-box-scope.amber #videos .video-player-frame {
+  background-color: #ffffff !important;
+  border-color: rgba(254, 240, 138, 0.9) !important;
+  box-shadow: 0 20px 40px -15px rgba(217, 119, 6, 0.1) !important;
+}
+
+.language-box-scope.amber #videos .video-info-bar {
+  border-top-color: rgba(254, 240, 138, 0.8) !important;
+}
+
+.language-box-scope.amber #videos .video-tab-btn:not(.active) {
+  background-color: #ffffff !important;
+  border-color: rgba(254, 240, 138, 0.9) !important;
+  color: #854d0e !important;
+  box-shadow: 0 2px 6px -1px rgba(217, 119, 6, 0.05) !important;
+}
+
+.language-box-scope.amber #videos .video-tab-btn:not(.active):hover {
+  background-color: #fefce8 !important;
+  color: #713f12 !important;
+  border-color: rgba(217, 119, 6, 0.4) !important;
+}
+
+.language-box-scope.amber #videos .video-subscribe-banner {
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.95) 0%, rgba(255, 255, 255, 0.98) 50%, rgba(254, 242, 242, 0.75) 100%) !important;
+  border: 1px solid rgba(217, 119, 6, 0.3) !important;
+  box-shadow: 0 16px 36px -8px rgba(217, 119, 6, 0.12) !important;
+}
+
+.language-box-scope.amber #videos .video-ambient-glow {
+  opacity: 0.3 !important;
+}
+
+/* =============================================================
+ * SCREENSHOTS SECTION THEME ADAPTATIONS
+ * ============================================================= */
+
+/* LIGHT THEME (AYDINLIK) */
+.language-box-scope.light #screenshots {
+  background: #ffffff !important;
+}
+
+.language-box-scope.light #screenshots .screens-header-badge {
+  background: rgba(5, 150, 105, 0.1) !important;
+  border-color: rgba(5, 150, 105, 0.3) !important;
+  color: #065f46 !important;
+}
+
+.language-box-scope.light #screenshots h2 {
+  background: linear-gradient(to right, #0f172a, #047857, #0d9488) !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+.language-box-scope.light #screenshots p {
+  color: #334155 !important;
+}
+
+.language-box-scope.light .screen-cat-btn.active {
+  background-color: #d1fae5 !important;
+  border-color: #059669 !important;
+  color: #064e3b !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 12px -2px rgba(5, 150, 105, 0.2) !important;
+}
+
+.language-box-scope.light .screen-cat-btn.active svg {
+  color: #064e3b !important;
+}
+
+.language-box-scope.light .screen-cat-btn.active .screen-cat-count {
+  background-color: #064e3b !important;
+  color: #ffffff !important;
+}
+
+.language-box-scope.light .screen-cat-btn:not(.active) {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.language-box-scope.light .screen-cat-btn:not(.active):hover {
+  background-color: #f8fafc !important;
+  color: #047857 !important;
+  border-color: #059669 !important;
+}
+
+.language-box-scope.light .screen-cat-btn:not(.active) .screen-cat-count {
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+}
+
+/* EMERALD MINT THEME (FERAH) */
+.language-box-scope.emerald #screenshots {
+  background: #ffffff !important;
+}
+
+.language-box-scope.emerald #screenshots .screens-header-badge {
+  background: rgba(5, 150, 105, 0.12) !important;
+  border-color: rgba(5, 150, 105, 0.35) !important;
+  color: #064e3b !important;
+}
+
+.language-box-scope.emerald #screenshots h2 {
+  background: linear-gradient(to right, #064e3b, #059669, #0d9488) !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+.language-box-scope.emerald #screenshots p {
+  color: #065f46 !important;
+}
+
+.language-box-scope.emerald .screen-cat-btn.active {
+  background-color: #a7f3d0 !important;
+  border-color: #059669 !important;
+  color: #064e3b !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 14px -2px rgba(5, 150, 105, 0.25) !important;
+}
+
+.language-box-scope.emerald .screen-cat-btn.active svg {
+  color: #064e3b !important;
+}
+
+.language-box-scope.emerald .screen-cat-btn.active .screen-cat-count {
+  background-color: #064e3b !important;
+  color: #ffffff !important;
+}
+
+.language-box-scope.emerald .screen-cat-btn:not(.active) {
+  background-color: #ffffff !important;
+  border-color: rgba(187, 247, 208, 0.9) !important;
+  color: #064e3b !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 6px -1px rgba(5, 150, 105, 0.05) !important;
+}
+
+.language-box-scope.emerald .screen-cat-btn:not(.active):hover {
+  background-color: #f0fdf4 !important;
+  color: #047857 !important;
+  border-color: #059669 !important;
+}
+
+.language-box-scope.emerald .screen-cat-btn:not(.active) .screen-cat-count {
+  background-color: #dcfce7 !important;
+  color: #065f46 !important;
+}
+
+/* AMBER SUNSET GOLD THEME (SICAK) */
+.language-box-scope.amber #screenshots {
+  background: #ffffff !important;
+}
+
+.language-box-scope.amber #screenshots .screens-header-badge {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-color: rgba(217, 119, 6, 0.35) !important;
+  color: #78350f !important;
+}
+
+.language-box-scope.amber #screenshots h2 {
+  background: linear-gradient(to right, #78350f, #b45309, #d97706) !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+.language-box-scope.amber #screenshots p {
+  color: #78350f !important;
+}
+
+.language-box-scope.amber .screen-cat-btn.active {
+  background-color: #fde68a !important;
+  border-color: #d97706 !important;
+  color: #78350f !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 14px -2px rgba(217, 119, 6, 0.25) !important;
+}
+
+.language-box-scope.amber .screen-cat-btn.active svg {
+  color: #78350f !important;
+}
+
+.language-box-scope.amber .screen-cat-btn.active .screen-cat-count {
+  background-color: #78350f !important;
+  color: #ffffff !important;
+}
+
+.language-box-scope.amber .screen-cat-btn:not(.active) {
+  background-color: #ffffff !important;
+  border-color: rgba(254, 240, 138, 0.9) !important;
+  color: #713f12 !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 6px -1px rgba(217, 119, 6, 0.05) !important;
+}
+
+.language-box-scope.amber .screen-cat-btn:not(.active):hover {
+  background-color: #fefce8 !important;
+  color: #78350f !important;
+  border-color: #d97706 !important;
+}
+
+.language-box-scope.amber .screen-cat-btn:not(.active) .screen-cat-count {
+  background-color: #fef3c7 !important;
+  color: #854d0e !important;
+}
+
+/* Default / Dark Mode screen-cat-btn styling */
+.screen-cat-btn {
+  cursor: pointer;
+}
+
+.screen-cat-btn.active {
+  background-color: rgba(16, 185, 129, 0.22);
+  border-color: rgba(16, 185, 129, 0.6);
+  color: #6ee7b7;
+  font-weight: 700;
+  box-shadow: 0 4px 14px -2px rgba(16, 185, 129, 0.25);
+}
+
+.screen-cat-btn.active svg {
+  color: #6ee7b7;
+}
+
+.screen-cat-btn.active .screen-cat-count {
+  background-color: rgba(16, 185, 129, 0.35);
+  color: #a7f3d0;
+}
+
+.screen-cat-btn:not(.active) {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.screen-cat-btn:not(.active):hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.screen-cat-btn:not(.active) .screen-cat-count {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Slider Side Arrow Navigation Buttons */
+.slider-arrow-btn {
+  cursor: pointer;
+  background: rgba(18, 24, 38, 0.85);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.slider-arrow-btn:hover {
+  background: rgba(28, 36, 56, 0.95);
+  border-color: rgba(16, 185, 129, 0.6);
+  color: #34d399;
+}
+
+.language-box-scope.light .slider-arrow-btn {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.language-box-scope.light .slider-arrow-btn:hover {
+  background: #f8fafc !important;
+  border-color: #059669 !important;
+  color: #059669 !important;
+}
+
+.language-box-scope.emerald .slider-arrow-btn {
+  background: #ffffff !important;
+  border-color: rgba(187, 247, 208, 0.9) !important;
+  color: #064e3b !important;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.12) !important;
+}
+
+.language-box-scope.emerald .slider-arrow-btn:hover {
+  background: #f0fdf4 !important;
+  border-color: #059669 !important;
+  color: #047857 !important;
+}
+
+.language-box-scope.amber .slider-arrow-btn {
+  background: #ffffff !important;
+  border-color: rgba(254, 240, 138, 0.9) !important;
+  color: #78350f !important;
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.12) !important;
+}
+
+.language-box-scope.amber .slider-arrow-btn:hover {
+  background: #fefce8 !important;
+  border-color: #d97706 !important;
+  color: #b45309 !important;
+}
+

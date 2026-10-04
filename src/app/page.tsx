@@ -143,13 +143,15 @@ export default function HubPortalPage() {
             >
               {isTr ? (
                 <>
-                  Gerçek zamanlı alan adı takip platformu <strong>Wixtory: Domain Track</strong>, 
+                  Oyun temelli çok dilli öğrenme platformu <strong>Wixtory Language Box</strong>, 
+                  gerçek zamanlı alan adı takip asistanı <strong>Wixtory: Domain Track</strong>, 
                   astrolojiyi editoryal stile dönüştüren <strong>AstroVibe</strong> ve 
                   zeki yapay zeka asistanı <strong>Excuse AI</strong>. İncelemek istediğiniz uygulamayı seçin.
                 </>
               ) : (
                 <>
-                  Real-time domain availability tracker with <strong>Wixtory: Domain Track</strong>, 
+                  Gamified multilingual learning with <strong>Wixtory Language Box</strong>, 
+                  real-time domain availability tracker with <strong>Wixtory: Domain Track</strong>, 
                   editorial astrological lifestyle in <strong>AstroVibe</strong>, and 
                   smart assistant <strong>Excuse AI</strong>. Choose an app below to explore.
                 </>
@@ -176,21 +178,21 @@ export default function HubPortalPage() {
                   gap: "10px",
                   padding: "14px 30px",
                   borderRadius: "16px",
-                  background: "linear-gradient(135deg, #8B5CF6 0%, #D946EF 100%)",
+                  background: "linear-gradient(135deg, #10B981 0%, #06B6D4 100%)",
                   color: "#ffffff",
                   fontSize: "15px",
                   fontWeight: 700,
                   textDecoration: "none",
-                  boxShadow: "0 10px 28px -6px rgba(139, 92, 246, 0.55)",
+                  boxShadow: "0 10px 28px -6px rgba(16, 185, 129, 0.55)",
                   transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-2px) scale(1.02)";
-                  e.currentTarget.style.boxShadow = "0 14px 36px -4px rgba(139, 92, 246, 0.7)";
+                  e.currentTarget.style.boxShadow = "0 14px 36px -4px rgba(16, 185, 129, 0.7)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0) scale(1)";
-                  e.currentTarget.style.boxShadow = "0 10px 28px -6px rgba(139, 92, 246, 0.55)";
+                  e.currentTarget.style.boxShadow = "0 10px 28px -6px rgba(16, 185, 129, 0.55)";
                 }}
               >
                 <span>{isTr ? "Uygulamaları Keşfet" : "Explore Applications"}</span>
@@ -242,8 +244,8 @@ export default function HubPortalPage() {
             >
               {[
                 {
-                  icon: <Zap size={16} color="#8B5CF6" />,
-                  title: isTr ? "3 Amiral Uygulama" : "3 Flagship Apps",
+                  icon: <Zap size={16} color="#10B981" />,
+                  title: isTr ? "4 Amiral Uygulama" : "4 Flagship Apps",
                   desc: isTr ? "Tek ekosistem, sıfır karmaşa" : "Unified ecosystem, zero bloat",
                 },
                 {
@@ -345,7 +347,195 @@ export default function HubPortalPage() {
                 gap: "32px",
               }}
             >
-              {/* CARD 1: DOMAIN TRACK */}
+              {/* CARD 1: WIXTORY LANGUAGE BOX (#1 RANKED) */}
+              <div
+                className="glass-panel"
+                style={{
+                  padding: "44px 36px",
+                  borderRadius: "28px",
+                  border: "1.5px solid rgba(16, 185, 129, 0.45)",
+                  background: "var(--bg-card)",
+                  boxShadow: "0 20px 50px -15px rgba(16, 185, 129, 0.25)",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-6px)";
+                  e.currentTarget.style.borderColor = "#10B981";
+                  e.currentTarget.style.boxShadow = "0 30px 60px -15px rgba(16, 185, 129, 0.4)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.borderColor = "rgba(16, 185, 129, 0.45)";
+                  e.currentTarget.style.boxShadow = "0 20px 50px -15px rgba(16, 185, 129, 0.25)";
+                }}
+              >
+                <div>
+                  {/* Top Header Row: Logo + Title + Rating */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      marginBottom: "24px",
+                      gap: "12px",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+                      <div
+                        style={{
+                          width: "56px",
+                          height: "56px",
+                          borderRadius: "16px",
+                          background: "linear-gradient(135deg, #06281e 0%, #0d4637 100%)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          border: "1.5px solid rgba(16, 185, 129, 0.5)",
+                          boxShadow: "0 10px 24px -4px rgba(16, 185, 129, 0.5)",
+                          flexShrink: 0,
+                          overflow: "hidden",
+                          padding: "6px",
+                        }}
+                      >
+                        <Image
+                          src="/apps/language-box-icon.png"
+                          alt="Wixtory Language Box Logo"
+                          width={44}
+                          height={44}
+                          style={{ objectFit: "contain", borderRadius: "10px" }}
+                        />
+                      </div>
+
+                      <div>
+                        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                          <span
+                            style={{
+                              fontSize: "11px",
+                              fontWeight: 800,
+                              color: "#10B981",
+                              textTransform: "uppercase",
+                              letterSpacing: "0.06em",
+                            }}
+                          >
+                            {isTr ? "EĞİTİM & ÇOK DİLLİ" : "EDUCATION & GAMING"}
+                          </span>
+                          <span
+                            style={{
+                              fontSize: "10px",
+                              fontWeight: 800,
+                              color: "#fff",
+                              background: "linear-gradient(135deg, #10B981, #06B6D4)",
+                              padding: "2px 8px",
+                              borderRadius: "9999px",
+                            }}
+                          >
+                            {isTr ? "#1 SIRADA" : "#1 RANKED"}
+                          </span>
+                        </div>
+                        <h3
+                          style={{
+                            fontSize: "26px",
+                            fontWeight: 850,
+                            letterSpacing: "-0.02em",
+                            margin: "4px 0 0 0",
+                            color: "var(--text-main)",
+                          }}
+                        >
+                          Language Box
+                        </h3>
+                      </div>
+                    </div>
+
+                    <div
+                      style={{
+                        padding: "6px 12px",
+                        borderRadius: "20px",
+                        background: "rgba(245, 158, 11, 0.12)",
+                        border: "1px solid rgba(245, 158, 11, 0.3)",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "6px",
+                        color: "#F59E0B",
+                        fontSize: "12.5px",
+                        fontWeight: 700,
+                      }}
+                    >
+                      <Star size={13} fill="#F59E0B" />
+                      <span>4.9 (3.4K)</span>
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      color: "var(--text-secondary)",
+                      lineHeight: "1.65",
+                      marginBottom: "24px",
+                    }}
+                  >
+                    {isTr
+                      ? "Sentence Builder, Word Matrix, Word Compass gibi 6 eğlenceli oyunla yeni dilleri keşfedin. Üyeliksiz, %100 yerel cihaz önbelleğinde çalışan güvenli öğrenme deneyimi."
+                      : "Master new languages through 6 engaging interactive games. Sentence Builder, Word Matrix, Word Compass with 100% on-device local cache and zero signup."}
+                  </p>
+
+                  {/* Bullet Highlights */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "32px" }}>
+                    {(isTr
+                      ? [
+                          "6 Özgün Mini Oyun (Sentence Builder, Word Matrix, Word Compass)",
+                          "Sıfır üyelik & e-posta: Tamamen cihazınızın önbelleğinde saklanır",
+                          "İstediğiniz an 'Önbelleği Temizle' butonu ile tam kullanıcı kontrolü",
+                          "10+ küresel dilde sesli telaffuz ve zümrüt yeşili modern arayüz",
+                        ]
+                      : [
+                          "6 Unique Interactive Games (Sentence Builder, Word Matrix, Compass)",
+                          "Zero signup & no personal data: Strictly in on-device local cache",
+                          "Full user control anytime with instant 'Clear Cache' button",
+                          "Native pronunciation audio across 10+ global languages",
+                        ]
+                    ).map((item, idx) => (
+                      <div key={idx} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
+                        <CheckCircle2 size={16} color="#10B981" style={{ flexShrink: 0, marginTop: "2px" }} />
+                        <span style={{ fontSize: "13.5px", color: "var(--text-secondary)", lineHeight: 1.45 }}>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Direct Action Link */}
+                <Link
+                  href="/language-box"
+                  style={{
+                    padding: "14px 24px",
+                    borderRadius: "14px",
+                    background: "linear-gradient(135deg, #10B981 0%, #06B6D4 100%)",
+                    color: "#fff",
+                    fontWeight: 700,
+                    fontSize: "15px",
+                    textDecoration: "none",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
+                    boxShadow: "0 10px 24px -4px rgba(16, 185, 129, 0.45)",
+                    transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.filter = "brightness(1.1)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.filter = "brightness(1.0)")}
+                >
+                  <span>{isTr ? "Language Box Sayfasına Git" : "Explore Language Box"}</span>
+                  <ArrowRight size={17} />
+                </Link>
+              </div>
+
+              {/* CARD 2: DOMAIN TRACK */}
               <div
                 className="glass-panel"
                 style={{

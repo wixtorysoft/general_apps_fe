@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Moon, Sun, Monitor, Leaf, Sparkles } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/components/language-box/theme-provider";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,

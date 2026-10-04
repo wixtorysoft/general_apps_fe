@@ -45,13 +45,50 @@ export function AppDetailHero({ app }: AppDetailHeroProps) {
           {/* Left Column: Text, Badges, CTAs */}
           <div>
             {/* Top Badges */}
-            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "20px" }}>
+            <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "20px", alignItems: "center" }}>
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  padding: "7px 18px",
+                  borderRadius: "9999px",
+                  border: `1px solid ${localizedApp.primaryColor}40`,
+                  background: `${localizedApp.primaryColor}15`,
+                  backdropFilter: "blur(12px)",
+                  boxShadow: `0 0 18px ${localizedApp.glowColor}`,
+                }}
+              >
+                <span
+                  style={{
+                    width: "8px",
+                    height: "8px",
+                    borderRadius: "50%",
+                    background: localizedApp.primaryColor,
+                    boxShadow: `0 0 8px ${localizedApp.primaryColor}`,
+                    display: "inline-block",
+                  }}
+                />
+                <span
+                  style={{
+                    fontSize: "13.5px",
+                    fontWeight: 800,
+                    letterSpacing: "0.02em",
+                    background: `linear-gradient(135deg, ${localizedApp.primaryColor} 0%, ${localizedApp.secondaryColor} 100%)`,
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  Wixtory: {localizedApp.name}
+                </span>
+              </div>
+
               <span
                 className="pill-badge"
                 style={{
                   color: localizedApp.primaryColor,
-                  borderColor: localizedApp.primaryColor,
-                  background: `${localizedApp.primaryColor}18`,
+                  borderColor: `${localizedApp.primaryColor}30`,
+                  background: `${localizedApp.primaryColor}10`,
                 }}
               >
                 <Sparkles size={13} />

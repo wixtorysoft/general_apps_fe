@@ -12,7 +12,7 @@ export function GamesSection() {
   return (
     <section
       id="games"
-      className="py-20 relative section-hover"
+      className="py-20 relative section-hover scroll-mt-24"
       style={{ background: "var(--section-games)" }}
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

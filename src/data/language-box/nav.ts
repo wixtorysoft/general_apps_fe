@@ -5,13 +5,13 @@ export interface NavLinkData {
 }
 
 export const navLinks: NavLinkData[] = [
-  { i18nKey: "nav_home", sectionId: "hero", href: "/" },
-  { i18nKey: "nav_screenshots", sectionId: "screenshots", href: "/screenshots" },
-  { i18nKey: "nav_games", sectionId: "games", href: "/games" },
-  { i18nKey: "nav_features", sectionId: "features", href: "/features" },
-  { i18nKey: "nav_advantages", sectionId: "advantages", href: "/advantages" },
-  { i18nKey: "nav_faq", sectionId: "faq", href: "/faq" },
-  { i18nKey: "nav_privacy", sectionId: "", href: "/privacy-policy" },
+  { i18nKey: "nav_home", sectionId: "hero", href: "/language-box" },
+  { i18nKey: "nav_screenshots", sectionId: "screenshots", href: "/language-box/screenshots" },
+  { i18nKey: "nav_games", sectionId: "games", href: "/language-box/games" },
+  { i18nKey: "nav_features", sectionId: "features", href: "/language-box/features" },
+  { i18nKey: "nav_advantages", sectionId: "advantages", href: "/language-box/advantages" },
+  { i18nKey: "nav_faq", sectionId: "faq", href: "/language-box/faq" },
+  { i18nKey: "nav_privacy", sectionId: "", href: "/language-box/privacy-policy" },
 ];
 
 export const LOGO_URL =

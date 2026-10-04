@@ -24,7 +24,8 @@
   --secondary: #06b6d4;
   --secondary-glow: rgba(6, 182, 212, 0.2);
   --accent: #2563eb;
-  --badge-bg: rgba(2, 132, 199, 0.08);
+  --badge-bg: rgba(2, 132, 199, 0.1);
+  --shadow-glow: rgba(2, 132, 199, 0.35);
   --hero-gradient: radial-gradient(circle at 50% 20%, rgba(2, 132, 199, 0.12) 0%, rgba(6, 182, 212, 0.06) 45%, transparent 70%);
   --grid-color: rgba(2, 132, 199, 0.04);
   --shadow-card: 0 16px 36px -12px rgba(2, 132, 199, 0.12);
@@ -51,6 +52,7 @@
   --secondary-glow: rgba(34, 211, 238, 0.28);
   --accent: #818cf8;
   --badge-bg: rgba(99, 102, 241, 0.15);
+  --shadow-glow: rgba(99, 102, 241, 0.45);
   --hero-gradient: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.18) 0%, rgba(34, 211, 238, 0.09) 45%, transparent 70%);
   --grid-color: rgba(255, 255, 255, 0.025);
   --shadow-card: 0 20px 48px -12px rgba(0, 0, 0, 0.7);
@@ -58,14 +60,11 @@
 }
 
 /* ==============================================================================
-   BASE STYLES & RESET
+   BASE STYLES & RESET (Scoped to Wixtory portal, isolated from child apps)
    ============================================================================== */
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease, box-shadow 0.3s ease;
 }
 
 html {
@@ -79,6 +78,8 @@ html {
 }
 
 body {
+  margin: 0;
+  padding: 0;
   min-height: 100vh;
   position: relative;
   overflow-x: clip;
@@ -99,6 +100,45 @@ button {
   border: none;
   background: none;
   cursor: pointer;
+}
+
+/* Dedicated integration styling for Language Box standalone app */
+html:has(.language-box-scope),
+body:has(.language-box-scope) {
+  background-color: var(--background) !important;
+  background-image: none !important;
+  color: var(--foreground) !important;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+html.light:has(.language-box-scope),
+body.light:has(.language-box-scope) {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+html.emerald:has(.language-box-scope),
+body.emerald:has(.language-box-scope) {
+  background-color: #f0fdf4 !important;
+  color: #064e3b !important;
+}
+
+html.amber:has(.language-box-scope),
+body.amber:has(.language-box-scope) {
+  background-color: #fefce8 !important;
+  color: #713f12 !important;
+}
+
+html.dark:has(.language-box-scope),
+body.dark:has(.language-box-scope) {
+  background-color: lab(8.11897% .811279 -12.254) !important;
+  color: oklch(0.985 0 0) !important;
+}
+
+html:has(.language-box-scope) {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Custom Scrollbar */
@@ -128,7 +168,12 @@ button {
   font-family: 'Space Grotesk', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -159,10 +204,13 @@ h1, h2, h3, h4, h5, h6 {
    ============================================================================== */
 
 .container {
-  width: 100%;
+  width: 100% !important;
   max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 24px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  box-sizing: border-box !important;
 }
 
 .glass-panel {

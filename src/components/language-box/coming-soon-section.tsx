@@ -39,7 +39,7 @@ export function ComingSoonSection() {
   return (
     <section
       id="coming-soon"
-      className="py-20 relative overflow-hidden section-hover"
+      className="py-20 relative overflow-hidden section-hover scroll-mt-24"
       style={{ background: "var(--section-games)" }}
     >
       {/* Background Ambient Glows */}

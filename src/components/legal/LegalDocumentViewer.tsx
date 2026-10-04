@@ -2,28 +2,38 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { LegalDocument } from "@/data/legal-data";
+import { LegalDocument, getAppSpecificLegalDoc } from "@/data/legal-data";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { useLanguage } from "@/context/LanguageContext";
 import {
+  Shield,
   ShieldCheck,
   ArrowLeft,
-  Calendar,
-  Building,
   Mail,
-  CheckCircle2,
   Sparkles,
   Smartphone,
   Lock,
-  DownloadCloud,
+  Download,
   Code,
   Cookie,
   Scale,
-  MapPin,
   Globe,
   ExternalLink,
+  BarChart3,
+  Server,
+  Users,
+  Layers,
+  Check,
+  Copy,
+  BookOpen,
+  MessageSquare,
+  Sliders,
+  Database,
+  Building,
 } from "lucide-react";
+
+export type EcosystemAppId = "all" | "domain-track" | "language-box" | "astrovibe" | "excuse";
 
 interface LegalDocumentViewerProps {
   document: LegalDocument;
@@ -34,77 +44,196 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
   const { t, language } = useLanguage();
   const isTr = language === "tr";
 
-  // Markdown Download Generator
+  const [selectedApp, setSelectedApp] = useState<EcosystemAppId>("all");
+  const [copiedEmail, setCopiedEmail] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(doc.contactEmail || "wixtoryy@gmail.com");
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2200);
+  };
+
+  // Determine active document dynamically based on selected app and current type
+  const activeDoc: LegalDocument = currentType === "privacy"
+    ? getAppSpecificLegalDoc("privacy", selectedApp, language)
+    : doc;
+
+  // 4 Core Ecosystem Applications Definition
+  const ECOSYSTEM_APPS = [
+    {
+      id: "all" as const,
+      name: isTr ? "Tüm Ekosistem" : "All Ecosystem",
+      shortName: isTr ? "Tüm Ekosistem" : "All Ecosystem",
+      pillBadge: isTr ? "4 Uygulama" : "4 Apps",
+      icon: Layers,
+      href: "/",
+      githubUrl: "https://github.com/celalaygar/main/blob/main/project/wixtory-privacy-policy.md",
+      heroSubtitle: isTr ? "Wixtory Ekosistemi için" : "for Wixtory Ecosystem",
+      downloadName: "wixtory-ecosystem-privacy-policy.md",
+    },
+    {
+      id: "language-box" as const,
+      name: "Wixtory Language Box",
+      shortName: "Language Box",
+      pillBadge: isTr ? "Kelime & Dil" : "Language & Vocab",
+      icon: BookOpen,
+      href: "/language-box",
+      githubUrl: "https://github.com/celalaygar/main/blob/main/project/language-box/privacy-policy.md",
+      heroSubtitle: isTr ? "Wixtory Language Box için" : "for Wixtory Language Box",
+      downloadName: "language-box-privacy-policy.md",
+    },
+    {
+      id: "domain-track" as const,
+      name: "Wixtory: Domain Track",
+      shortName: "Domain Track",
+      pillBadge: isTr ? "Alan Adı & DNS" : "Domain & DNS",
+      icon: Globe,
+      href: "/domain-track",
+      githubUrl: "https://github.com/celalaygar/main/blob/main/project/wixtory-domain-track/privacy-policy.md",
+      heroSubtitle: isTr ? "Wixtory: Domain Track için" : "for Wixtory: Domain Track",
+      downloadName: "domain-track-privacy-policy.md",
+    },
+    {
+      id: "astrovibe" as const,
+      name: "AstroVibe",
+      shortName: "AstroVibe",
+      pillBadge: isTr ? "Astroloji & Stil" : "Astrology & Style",
+      icon: Sparkles,
+      href: "/astrovibe",
+      githubUrl: "https://github.com/celalaygar/main/blob/main/project/astrovibe/privacy-policy.md",
+      heroSubtitle: isTr ? "AstroVibe için" : "for AstroVibe",
+      downloadName: "astrovibe-privacy-policy.md",
+    },
+    {
+      id: "excuse" as const,
+      name: "Excuse AI",
+      shortName: "Excuse AI",
+      pillBadge: isTr ? "Bahanematik" : "Excuse Generator",
+      icon: MessageSquare,
+      href: "/excuse",
+      githubUrl: "https://github.com/celalaygar/main/blob/main/project/excuse/privacy-policy.md",
+      heroSubtitle: isTr ? "Excuse AI için" : "for Excuse AI",
+      downloadName: "excuse-ai-privacy-policy.md",
+    },
+  ];
+
+  const activeAppMeta = ECOSYSTEM_APPS.find((a) => a.id === selectedApp) || ECOSYSTEM_APPS[0];
+
+  // Helper icon selector for numbered policy sections (handles both 6-section apps and 14-section ecosystem)
+  const getSectionIcon = (index: number) => {
+    if (selectedApp === "language-box" || selectedApp === "domain-track") {
+      switch (index) {
+        case 0:
+          return Shield; // 1. Kişisel Veri Toplama Yok
+        case 1:
+          return Smartphone; // 2. Yerel İlerleme Takibi (Önbellek) / Yerel Veri Depolama
+        case 2:
+          return BarChart3; // 3. İstatistikler / Arama İstatistikleri
+        case 3:
+          return Server; // 4. Üçüncü Taraf Hizmetleri ve Reklamlar
+        case 4:
+          return Lock; // 5. Veri Güvenliği
+        case 5:
+        default:
+          return Mail; // 6. İletişim
+      }
+    }
+
+    switch (index) {
+      case 0:
+        return Shield; // 1. Sıfır Üyelik & Sıfır Veri
+      case 1:
+        return Smartphone; // 2. Yerel Veri Depolama & Cihaz İçi Önbellek
+      case 2:
+        return BarChart3; // 3. Arama İstatistikleri & Çevrimdışı Çalışma
+      case 3:
+        return Sliders; // 4. Cihaz İzinleri & Donanım Erişimi
+      case 4:
+        return Sparkles; // 5. Yapay Zeka & Algoritmik Şeffaflık
+      case 5:
+        return Globe; // 6. Gerçek Zamanlı Ağ & HTTPS/TLS
+      case 6:
+        return Server; // 7. Reklamlar & AdMob
+      case 7:
+        return Users; // 8. 18 Yaş Altı / Çocuk Gizliliği
+      case 8:
+        return Database; // 9. Veri Saklama Süresi & Kaldırma
+      case 9:
+        return ShieldCheck; // 10. Sınır Ötesi Aktarım Yok
+      case 10:
+        return Scale; // 11. KVKK & GDPR Yasal Haklar
+      case 11:
+        return Lock; // 12. Veri Güvenliği, Teknik Tedbirler & Zafiyet Bildirimi
+      case 12:
+        return Building; // 13. Uygulanacak Hukuk & Uyuşmazlık Çözümü
+      case 13:
+      default:
+        return Mail; // 14. Kapsam, Politika Güncellemeleri ve İletişim
+    }
+  };
+
+  // Markdown Download Generator with Dynamic Tailoring for selected application
   const handleDownloadMarkdown = () => {
     let downloadFileName = "privacy-policy.md";
     let md = "";
 
-    if (doc.id === "privacy") {
-      downloadFileName = "privacy-policy.md";
-      if (isTr) {
-        md = `# Gizlilik Politikası\n\n`;
-        md += `AstroVibe ve Excuse AI için\n\n`;
-        md += `Yürürlük Tarihi: ${doc.effectiveDate}\n\n`;
+    if (currentType === "privacy") {
+      downloadFileName = activeAppMeta.downloadName || "privacy-policy.md";
+      const targetDoc = activeDoc;
 
-        doc.sections.forEach((section) => {
-          md += `## ${section.title}\n\n`;
-          section.content.forEach((paragraph) => {
-            md += `${paragraph}\n\n`;
-          });
+      md = `# ${targetDoc.title}\n\n`;
+      md += `**${targetDoc.subtitle}**\n`;
+      md += `*${isTr ? `Yürürlük Tarihi: ${targetDoc.effectiveDate}` : `Effective Date: ${targetDoc.effectiveDate}`}*\n\n`;
+      md += `---\n\n`;
+
+      if (selectedApp === "domain-track" || selectedApp === "language-box") {
+        targetDoc.sections.forEach((section, sIdx) => {
+          md += `## ${sIdx + 1}. ${section.title.replace(/^[0-9]+\.\s*/, "")}\n\n`;
+          if (section.content && section.content.length > 0) {
+            section.content.forEach((paragraph) => {
+              md += `${paragraph}\n\n`;
+            });
+          }
 
           if (section.subsections && section.subsections.length > 0) {
             section.subsections.forEach((sub) => {
-              if (sub.subcontent.length === 1 && !sub.subcontent[0].includes(":")) {
-                md += `- **${sub.subtitle}**: ${sub.subcontent[0]}\n\n`;
-              } else {
-                md += `- **${sub.subtitle}**:\n`;
-                sub.subcontent.forEach((item) => {
-                  if (item.includes(":")) {
-                    const colonIdx = item.indexOf(":");
-                    const label = item.substring(0, colonIdx).trim();
-                    const rest = item.substring(colonIdx + 1).trim();
-                    md += `  - **${label}**: ${rest}\n`;
-                  } else {
-                    md += `  - ${item}\n`;
-                  }
-                });
-                md += `\n`;
-              }
+              md += `### ${sub.subtitle}\n`;
+              sub.subcontent.forEach((item) => {
+                md += `${item}\n\n`;
+              });
             });
+          }
+
+          if (sIdx === targetDoc.sections.length - 1 && targetDoc.contactEmail) {
+            md += `[${isTr ? "E-Posta" : "Email"}: ${targetDoc.contactEmail}](mailto:${targetDoc.contactEmail})\n\n`;
           }
         });
       } else {
-        md = `# Privacy Policy\n\n`;
-        md += `For AstroVibe & Excuse AI\n\n`;
-        md += `Effective Date: ${doc.effectiveDate}\n\n`;
-
-        doc.sections.forEach((section) => {
-          md += `## ${section.title}\n\n`;
-          section.content.forEach((paragraph) => {
-            md += `${paragraph}\n\n`;
-          });
+        targetDoc.sections.forEach((section, sIdx) => {
+          md += `## ${sIdx + 1}. ${section.title.replace(/^[0-9]+\.\s*/, "")}\n\n`;
+          if (section.content && section.content.length > 0) {
+            section.content.forEach((paragraph) => {
+              md += `${paragraph}\n\n`;
+            });
+          }
 
           if (section.subsections && section.subsections.length > 0) {
             section.subsections.forEach((sub) => {
-              if (sub.subcontent.length === 1 && !sub.subcontent[0].includes(":")) {
-                md += `- **${sub.subtitle}**: ${sub.subcontent[0]}\n\n`;
-              } else {
-                md += `- **${sub.subtitle}**:\n`;
-                sub.subcontent.forEach((item) => {
-                  if (item.includes(":")) {
-                    const colonIdx = item.indexOf(":");
-                    const label = item.substring(0, colonIdx).trim();
-                    const rest = item.substring(colonIdx + 1).trim();
-                    md += `  - **${label}**: ${rest}\n`;
-                  } else {
-                    md += `  - ${item}\n`;
-                  }
-                });
-                md += `\n`;
-              }
+              md += `### ${sub.subtitle}\n`;
+              sub.subcontent.forEach((item) => {
+                md += `${item}\n\n`;
+              });
             });
           }
         });
+
+        if (targetDoc.contactEmail) {
+          md += `\n---\n\n## ${isTr ? "İletişim & Geliştirici" : "Contact & Developer"}\n`;
+          md += `- **${isTr ? "E-Posta" : "Email"}:** ${targetDoc.contactEmail}\n`;
+          md += `- **${isTr ? "Geliştirici" : "Developer"}:** ${targetDoc.developerName}\n`;
+          md += `- **${isTr ? "Konum" : "Location"}:** ${targetDoc.developerLocation}\n`;
+          md += `- **${isTr ? "Resmi Web Sitesi" : "Website"}:** [${targetDoc.website}](${targetDoc.website})\n`;
+        }
       }
     } else {
       downloadFileName = doc.id === "cookie" ? "cookie-policy.md" : "kvkk-aydinlatma-metni.md";
@@ -121,10 +250,7 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
       md += `---\n\n`;
 
       doc.sections.forEach((section, sIdx) => {
-        md += `## ${section.title}\n\n`;
-        if (section.badge) {
-          md += `*Etiket / Badge: ${section.badge}*\n\n`;
-        }
+        md += `## ${sIdx + 1}. ${section.title}\n\n`;
         section.content.forEach((paragraph) => {
           md += `${paragraph}\n\n`;
         });
@@ -146,26 +272,7 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
             });
           });
         }
-
-        if (section.appSpecific && section.appSpecific.length > 0) {
-          md += `### Projeler Bazında Detaylar (AstroVibe & Excuse Details)\n\n`;
-          section.appSpecific.forEach((app) => {
-            md += `#### ${app.appName}\n`;
-            app.details.forEach((item) => {
-              md += `- ${item}\n`;
-            });
-            md += `\n`;
-          });
-        }
-
-        md += `---\n\n`;
       });
-
-      md += `\n## Wixtory İletişim / Developer Verification\n`;
-      md += `- **Geliştirici / Developer:** ${doc.developerName}\n`;
-      md += `- **E-Posta:** ${doc.contactEmail}\n`;
-      md += `- **Konum:** ${doc.developerLocation}\n`;
-      md += `- **Web:** [${doc.website}](${doc.website})\n`;
     }
 
     const blob = new Blob([md], { type: "text/markdown;charset=utf-8" });
@@ -184,37 +291,32 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
       id: "privacy",
       href: "/privacy-policy",
       label: isTr ? "Gizlilik Sözleşmesi" : "Privacy Policy",
-      icon: ShieldCheck,
-      badge: "KVKK & GDPR",
     },
     {
       id: "cookie",
       href: "/cookie-policy",
       label: isTr ? "Çerez Politikası" : "Cookie Policy",
-      icon: Cookie,
-      badge: isTr ? "Yerel Depolama" : "Local Storage",
     },
     {
       id: "kvkk",
       href: "/kvkk",
       label: isTr ? "KVKK Aydınlatma Metni" : "KVKK Disclosure",
-      icon: Scale,
-      badge: "6698 SK",
     },
   ];
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      {/* Sticky Top Navbar */}
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--bg-primary)" }}>
+      {/* Top Navbar */}
       <nav
         style={{
           position: "sticky",
           top: 0,
           zIndex: 900,
           background: "var(--bg-glass)",
-          backdropFilter: "blur(20px)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
           borderBottom: "1px solid var(--border-subtle)",
-          padding: "14px 0",
+          padding: "12px 0",
         }}
       >
         <div
@@ -238,6 +340,7 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
                 fontWeight: 600,
                 color: "var(--text-main)",
                 textDecoration: "none",
+                transition: "opacity 0.2s ease",
               }}
             >
               <ArrowLeft size={16} />
@@ -250,54 +353,22 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "6px",
-                fontSize: "13px",
-                fontWeight: 600,
-                color: "var(--primary)",
+                fontSize: "12.5px",
+                fontWeight: 650,
+                color: "var(--text-muted)",
                 textDecoration: "none",
-                padding: "4px 12px",
+                padding: "3px 10px",
                 borderRadius: "9999px",
-                background: "var(--badge-bg)",
-                border: "1px solid var(--border-active)",
+                backgroundColor: "var(--bg-card)",
+                border: "1px solid var(--border-subtle)",
               }}
             >
-              <Code size={14} />
+              <Code size={13} />
               <span>Developer (Hacı Celal Aygar)</span>
             </Link>
           </div>
 
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            {/* Download as Markdown Button */}
-            <button
-              onClick={handleDownloadMarkdown}
-              id="download-md-btn"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "7px",
-                fontSize: "12.5px",
-                fontWeight: 700,
-                padding: "6px 14px",
-                borderRadius: "9999px",
-                backgroundColor: "var(--bg-card)",
-                color: "var(--text-main)",
-                border: "1.5px solid var(--border-active)",
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "var(--primary)";
-                e.currentTarget.style.transform = "translateY(-1px)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "var(--border-active)";
-                e.currentTarget.style.transform = "translateY(0)";
-              }}
-              title="Download Document as Markdown file"
-            >
-              <DownloadCloud size={15} color="var(--primary)" />
-              <span>{isTr ? "MD Olarak İndir" : "Download .MD"}</span>
-            </button>
-
             <LanguageToggle />
             <ThemeToggle />
           </div>
@@ -305,414 +376,489 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
       </nav>
 
       {/* Main Content */}
-      <main style={{ flex: 1, padding: "40px 0 80px 0" }}>
-        <div className="container" style={{ maxWidth: "980px" }}>
-          {/* Legal Hub Switcher Tabs */}
+      <main style={{ flex: 1, padding: "36px 0 64px 0" }}>
+        <div className="container" style={{ maxWidth: "860px" }}>
+          {/* Subtle Legal Tabs Switcher */}
           <div
             style={{
               display: "flex",
               justifyContent: "center",
-              gap: "10px",
-              marginBottom: "36px",
+              gap: "6px",
+              marginBottom: "32px",
               flexWrap: "wrap",
             }}
           >
             {navTabs.map((tab) => {
-              const Icon = tab.icon;
               const isActive = currentType === tab.id;
               return (
                 <Link
                   key={tab.id}
                   href={tab.href}
                   style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    padding: "10px 20px",
-                    borderRadius: "16px",
-                    background: isActive ? "var(--primary)" : "var(--bg-card)",
-                    color: isActive ? "#ffffff" : "var(--text-secondary)",
-                    border: isActive ? "1.5px solid var(--primary)" : "1.5px solid var(--border-subtle)",
-                    fontSize: "14px",
-                    fontWeight: isActive ? 750 : 600,
+                    padding: "6px 14px",
+                    borderRadius: "9999px",
+                    fontSize: "13px",
+                    fontWeight: isActive ? 700 : 500,
+                    color: isActive ? "#10b981" : "var(--text-muted)",
+                    backgroundColor: isActive ? "rgba(16, 185, 129, 0.1)" : "transparent",
+                    border: isActive ? "1px solid rgba(16, 185, 129, 0.25)" : "1px solid transparent",
                     textDecoration: "none",
-                    boxShadow: isActive ? "0 8px 20px -4px var(--shadow-glow)" : "none",
                     transition: "all 0.2s ease",
                   }}
                 >
-                  <Icon size={16} />
-                  <span>{tab.label}</span>
-                  <span
-                    style={{
-                      fontSize: "10.5px",
-                      padding: "2px 6px",
-                      borderRadius: "6px",
-                      background: isActive ? "rgba(255, 255, 255, 0.2)" : "var(--badge-bg)",
-                      color: isActive ? "#ffffff" : "var(--primary)",
-                      fontWeight: 700,
-                    }}
-                  >
-                    {tab.badge}
-                  </span>
+                  {tab.label}
                 </Link>
               );
             })}
           </div>
 
-          {/* Header Banner */}
+          {/* Hero Section (Clean & Matching Language Box Privacy Policy) */}
           <div style={{ textAlign: "center", marginBottom: "36px" }}>
-            <span
-              className="pill-badge"
+            {/* Eyebrow Badge: YASAL */}
+            <div
               style={{
-                marginBottom: "14px",
-                background: "var(--badge-bg)",
-                borderColor: "var(--border-active)",
-                color: "var(--primary)",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+                padding: "5px 14px",
+                borderRadius: "9999px",
+                backgroundColor: "rgba(16, 185, 129, 0.1)",
+                border: "1px solid rgba(16, 185, 129, 0.2)",
+                color: "#10b981",
+                fontSize: "11.5px",
+                fontWeight: 700,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                marginBottom: "16px",
               }}
             >
-              <Sparkles size={14} />
-              <span>{isTr ? "Wixtory Yasal & Güvenlik Merkezi" : "Wixtory Legal & Security Hub"}</span>
-            </span>
+              <Shield size={14} color="#10b981" />
+              <span>{isTr ? "YASAL" : "LEGAL"}</span>
+            </div>
 
+            {/* Clean Solid Title */}
             <h1
               style={{
-                fontSize: "clamp(28px, 4.5vw, 42px)",
-                fontWeight: 850,
-                letterSpacing: "-0.025em",
-                marginBottom: "14px",
+                fontSize: "clamp(30px, 5vw, 44px)",
+                fontWeight: 800,
+                letterSpacing: "-0.03em",
                 color: "var(--text-main)",
+                margin: "0 0 10px 0",
+                lineHeight: "1.2",
               }}
             >
-              {doc.title}
+              {currentType === "privacy"
+                ? (isTr ? "Gizlilik Politikası" : "Privacy Policy")
+                : activeDoc.title}
             </h1>
 
+            {/* Clean Subtitle */}
             <p
               style={{
                 fontSize: "16px",
                 color: "var(--text-secondary)",
-                lineHeight: "1.65",
-                maxWidth: "760px",
-                margin: "0 auto 20px auto",
+                margin: "0 0 14px 0",
+                fontWeight: 500,
               }}
             >
-              {doc.subtitle}
+              {activeDoc.subtitle}
             </p>
 
-            {/* Metadata Pills */}
+            {/* Date line with green dot */}
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                fontSize: "13.5px",
+                color: "var(--text-muted)",
+                marginBottom: "28px",
+              }}
+            >
+              <span
+                style={{
+                  width: "7px",
+                  height: "7px",
+                  borderRadius: "50%",
+                  backgroundColor: "#10b981",
+                  display: "inline-block",
+                }}
+              />
+              <span>{isTr ? `Yürürlük Tarihi: ${activeDoc.effectiveDate}` : `Effective Date: ${activeDoc.effectiveDate}`}</span>
+            </div>
+
+            {/* Modern Application Selector Icon Buttons Bar */}
+            {currentType === "privacy" && (
+              <div
+                style={{
+                  display: "inline-flex",
+                  flexWrap: "wrap",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "8px",
+                  padding: "6px",
+                  borderRadius: "20px",
+                  backgroundColor: "var(--bg-glass)",
+                  border: "1px solid var(--border-subtle)",
+                  boxShadow: "0 2px 10px rgba(0,0,0,0.03)",
+                  marginBottom: "20px",
+                  maxWidth: "100%",
+                }}
+              >
+                {ECOSYSTEM_APPS.map((app) => {
+                  const IconComp = app.icon;
+                  const isSelected = selectedApp === app.id;
+                  return (
+                    <button
+                      key={app.id}
+                      type="button"
+                      onClick={() => setSelectedApp(app.id)}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        padding: "8px 16px",
+                        borderRadius: "14px",
+                        fontSize: "13.5px",
+                        fontWeight: isSelected ? 700 : 550,
+                        color: isSelected ? "#10b981" : "var(--text-secondary)",
+                        backgroundColor: isSelected ? "rgba(16, 185, 129, 0.12)" : "transparent",
+                        border: isSelected
+                          ? "1.5px solid rgba(16, 185, 129, 0.45)"
+                          : "1.5px solid transparent",
+                        cursor: "pointer",
+                        transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
+                        boxShadow: isSelected ? "0 4px 14px rgba(16, 185, 129, 0.15)" : "none",
+                      }}
+                    >
+                      <IconComp
+                        size={17}
+                        color={isSelected ? "#10b981" : "currentColor"}
+                        style={{ flexShrink: 0, transition: "color 0.2s ease" }}
+                      />
+                      <span>{app.shortName}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Utility Action Buttons: Download Policy & View on GitHub */}
             <div
               style={{
                 display: "flex",
                 justifyContent: "center",
-                alignItems: "center",
-                gap: "16px",
-                fontSize: "13px",
-                color: "var(--text-muted)",
+                gap: "10px",
                 flexWrap: "wrap",
-                marginBottom: "20px",
+                alignItems: "center",
               }}
             >
-              <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                <Calendar size={14} />
-                {t("last_updated")}: {doc.lastUpdated}
-              </span>
-              <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                <Building size={14} />
-                {doc.companyName}
-              </span>
-              <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                <Mail size={14} />
-                {doc.contactEmail}
-              </span>
-              <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                <MapPin size={14} />
-                {doc.developerLocation}
-              </span>
-            </div>
-
-            {/* Quick Action Button */}
-            <div style={{ display: "flex", justifyContent: "center", gap: "12px", marginTop: "16px" }}>
+              {/* Button: Politikayı İndir */}
               <button
+                type="button"
                 onClick={handleDownloadMarkdown}
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "8px",
-                  padding: "10px 22px",
-                  borderRadius: "9999px",
-                  background: "var(--primary)",
-                  color: "#ffffff",
+                  padding: "9px 20px",
+                  borderRadius: "12px",
+                  backgroundColor: "var(--bg-card)",
+                  color: "var(--text-main)",
+                  border: "1px solid var(--border-subtle)",
                   fontSize: "13.5px",
-                  fontWeight: 700,
-                  border: "none",
+                  fontWeight: 600,
                   cursor: "pointer",
-                  boxShadow: "0 8px 20px -4px var(--shadow-glow)",
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
                   transition: "all 0.2s ease",
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
+              >
+                <Download size={15} color="#10b981" />
+                <span>{isTr ? "Politikayı İndir" : "Download Policy"}</span>
+              </button>
+
+              {/* Button: GitHub'da Görüntüle */}
+              <a
+                href={activeAppMeta.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  padding: "9px 20px",
+                  borderRadius: "12px",
+                  backgroundColor: "var(--bg-card)",
+                  color: "var(--text-main)",
+                  border: "1px solid var(--border-subtle)",
+                  fontSize: "13.5px",
+                  fontWeight: 600,
+                  textDecoration: "none",
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+                  transition: "all 0.2s ease",
                 }}
               >
-                <DownloadCloud size={17} />
-                <span>{isTr ? `${doc.title} Metnini (.md) İndir` : `Download ${doc.title} (.md)`}</span>
-              </button>
+                <ExternalLink size={15} color="#10b981" />
+                <span>{isTr ? "GitHub'da Görüntüle" : "View on GitHub"}</span>
+              </a>
             </div>
           </div>
 
-          {/* Policy Sections Cards */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            {doc.sections.map((section) => {
+          {/* Policy Sections Cards (Clean, Sleek & Dynamic for Selected App) */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            {activeDoc.sections.map((section, sIdx) => {
+              const SectionIcon = getSectionIcon(sIdx);
               return (
-                <div
-                  key={section.id}
+                <section
+                  key={section.id || sIdx}
                   id={section.id}
-                  className="glass-card"
                   style={{
-                    padding: "clamp(24px, 4vw, 36px)",
-                    borderRadius: "24px",
+                    padding: "24px 28px",
+                    borderRadius: "20px",
+                    border: "1px solid var(--border-subtle)",
+                    backgroundColor: "var(--bg-card)",
+                    boxShadow: "0 1px 3px rgba(0,0,0,0.02)",
+                    transition: "all 0.2s ease",
                   }}
                 >
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      marginBottom: "16px",
-                      flexWrap: "wrap",
-                      gap: "8px",
-                    }}
-                  >
-                    <h2
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "16px" }}>
+                    {/* Icon in Rounded Square w-10 h-10 */}
+                    <div
                       style={{
-                        fontSize: "20px",
-                        fontWeight: 750,
-                        color: "var(--text-main)",
+                        width: "40px",
+                        height: "40px",
+                        borderRadius: "12px",
+                        backgroundColor: "rgba(16, 185, 129, 0.1)",
+                        border: "1px solid rgba(16, 185, 129, 0.2)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                        color: "#10b981",
                       }}
                     >
-                      {section.title}
-                    </h2>
-                    {section.badge && (
-                      <span
-                        style={{
-                          fontSize: "11px",
-                          fontWeight: 700,
-                          padding: "3px 10px",
-                          borderRadius: "9999px",
-                          background: "var(--badge-bg)",
-                          color: "var(--primary)",
-                          border: "1px solid var(--border-active)",
-                        }}
-                      >
-                        {section.badge}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Paragraphs */}
-                  <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "16px" }}>
-                    {section.content.map((p, idx) => (
-                      <p
-                        key={idx}
-                        style={{
-                          fontSize: "14.5px",
-                          color: "var(--text-secondary)",
-                          lineHeight: "1.65",
-                        }}
-                      >
-                        {p}
-                      </p>
-                    ))}
-                  </div>
-
-                  {/* Table Data (Cookies / KVKK Categories) */}
-                  {section.tableData && (
-                    <div style={{ overflowX: "auto", margin: "20px 0" }}>
-                      <table
-                        style={{
-                          width: "100%",
-                          borderCollapse: "collapse",
-                          fontSize: "13.5px",
-                          textAlign: "left",
-                          background: "var(--bg-glass)",
-                          borderRadius: "14px",
-                          overflow: "hidden",
-                          border: "1px solid var(--border-subtle)",
-                        }}
-                      >
-                        <thead>
-                          <tr style={{ background: "var(--badge-bg)", borderBottom: "1px solid var(--border-subtle)" }}>
-                            {section.tableData.headers.map((header, hIdx) => (
-                              <th
-                                key={hIdx}
-                                style={{
-                                  padding: "12px 16px",
-                                  fontWeight: 700,
-                                  color: "var(--text-main)",
-                                }}
-                              >
-                                {header}
-                              </th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {section.tableData.rows.map((row, rIdx) => (
-                            <tr
-                              key={rIdx}
-                              style={{
-                                borderBottom: rIdx < section.tableData!.rows.length - 1 ? "1px solid var(--border-subtle)" : "none",
-                              }}
-                            >
-                              {row.map((cell, cIdx) => (
-                                <td
-                                  key={cIdx}
-                                  style={{
-                                    padding: "12px 16px",
-                                    color: cIdx === 0 ? "var(--primary)" : "var(--text-secondary)",
-                                    fontWeight: cIdx === 0 ? 600 : 400,
-                                  }}
-                                >
-                                  {cell}
-                                </td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                      <SectionIcon size={18} color="#10b981" />
                     </div>
-                  )}
 
-                  {/* App Specific Details */}
-                  {section.appSpecific && (
-                    <div style={{ display: "flex", flexDirection: "column", gap: "16px", marginTop: "20px" }}>
-                      {section.appSpecific.map((appItem, aIdx) => (
-                          <div
-                            key={aIdx}
+                    {/* Content */}
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <h2
+                        style={{
+                          fontSize: "18px",
+                          fontWeight: 700,
+                          color: "var(--text-main)",
+                          margin: "0 0 10px 0",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "6px",
+                        }}
+                      >
+                        <span style={{ color: "#10b981", fontWeight: 700 }}>{sIdx + 1}.</span>
+                        <span>{section.title.replace(/^[0-9]+\.\s*/, "")}</span>
+                      </h2>
+
+                      {/* Paragraphs */}
+                      <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                        {section.content.map((p, pIdx) => (
+                          <p
+                            key={pIdx}
                             style={{
-                              padding: "20px",
-                              borderRadius: "16px",
-                              background: "var(--bg-glass)",
-                              border: "1px solid var(--border-active)",
+                              fontSize: "14.5px",
+                              color: "var(--text-secondary)",
+                              lineHeight: 1.65,
+                              margin: 0,
                             }}
                           >
+                            {p}
+                          </p>
+                        ))}
+                      </div>
+
+                      {/* Subsections with clean left border */}
+                      {section.subsections && section.subsections.length > 0 && (
+                        <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginTop: "14px" }}>
+                          {section.subsections.map((sub, subIdx) => (
                             <div
+                              key={subIdx}
                               style={{
-                                display: "flex",
-                                alignItems: "center",
-                                gap: "8px",
-                                fontSize: "16px",
-                                fontWeight: 700,
-                                color: "var(--primary)",
-                                marginBottom: "12px",
+                                paddingLeft: "14px",
+                                borderLeft: "2px solid rgba(16, 185, 129, 0.3)",
+                                paddingTop: "2px",
+                                paddingBottom: "2px",
                               }}
                             >
-                              <Smartphone size={18} />
-                              <span>{appItem.appName}</span>
+                              <h3
+                                style={{
+                                  fontSize: "14px",
+                                  fontWeight: 650,
+                                  color: "var(--text-main)",
+                                  margin: "0 0 4px 0",
+                                }}
+                              >
+                                {sub.subtitle}
+                              </h3>
+                              <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+                                {sub.subcontent.map((item, iIdx) => (
+                                  <p
+                                    key={iIdx}
+                                    style={{
+                                      fontSize: "13.5px",
+                                      color: "var(--text-secondary)",
+                                      lineHeight: 1.6,
+                                      margin: 0,
+                                    }}
+                                  >
+                                    {item}
+                                  </p>
+                                ))}
+                              </div>
                             </div>
+                          ))}
+                        </div>
+                      )}
 
-                            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "8px" }}>
-                              {appItem.details.map((detail, dIdx) => (
-                                <li
-                                  key={dIdx}
+                      {/* Table Data (for Cookies & KVKK) */}
+                      {section.tableData && (
+                        <div style={{ overflowX: "auto", margin: "16px 0" }}>
+                          <table
+                            style={{
+                              width: "100%",
+                              borderCollapse: "collapse",
+                              fontSize: "13px",
+                              textAlign: "left",
+                              background: "var(--bg-glass)",
+                              borderRadius: "12px",
+                              overflow: "hidden",
+                              border: "1px solid var(--border-subtle)",
+                            }}
+                          >
+                            <thead>
+                              <tr style={{ background: "rgba(16, 185, 129, 0.08)", borderBottom: "1px solid var(--border-subtle)" }}>
+                                {section.tableData.headers.map((header, hIdx) => (
+                                  <th
+                                    key={hIdx}
+                                    style={{
+                                      padding: "10px 14px",
+                                      fontWeight: 700,
+                                      color: "var(--text-main)",
+                                    }}
+                                  >
+                                    {header}
+                                  </th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {section.tableData.rows.map((row, rIdx) => (
+                                <tr
+                                  key={rIdx}
                                   style={{
-                                    fontSize: "13.5px",
-                                    color: "var(--text-secondary)",
-                                    lineHeight: "1.55",
-                                    display: "flex",
-                                    alignItems: "flex-start",
-                                    gap: "8px",
+                                    borderBottom:
+                                      rIdx < section.tableData!.rows.length - 1
+                                        ? "1px solid var(--border-subtle)"
+                                        : "none",
                                   }}
                                 >
-                                  <CheckCircle2 size={15} style={{ color: "#10B981", flexShrink: 0, marginTop: "3px" }} />
-                                  <span>{detail}</span>
-                                </li>
+                                  {row.map((cell, cIdx) => (
+                                    <td
+                                      key={cIdx}
+                                      style={{
+                                        padding: "10px 14px",
+                                        color: cIdx === 0 ? "#10b981" : "var(--text-secondary)",
+                                        fontWeight: cIdx === 0 ? 650 : 400,
+                                      }}
+                                    >
+                                      {cell}
+                                    </td>
+                                  ))}
+                                </tr>
                               ))}
-                            </ul>
-                          </div>
-                        ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )}
+
+                      {/* Email Pill on Last Section */}
+                      {sIdx === activeDoc.sections.length - 1 && (
+                        <div
+                          style={{
+                            marginTop: "16px",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "8px",
+                            padding: "8px 14px",
+                            borderRadius: "10px",
+                            backgroundColor: "rgba(16, 185, 129, 0.1)",
+                            border: "1px solid rgba(16, 185, 129, 0.2)",
+                          }}
+                        >
+                          <Mail size={15} color="#10b981" />
+                          <a
+                            href={`mailto:${activeDoc.contactEmail}`}
+                            style={{
+                              color: "#10b981",
+                              textDecoration: "none",
+                              fontWeight: 650,
+                              fontSize: "13.5px",
+                            }}
+                          >
+                            {isTr ? "E-Posta: " : "Email: "}{activeDoc.contactEmail}
+                          </a>
+                          <button
+                            onClick={handleCopyEmail}
+                            type="button"
+                            title="Copy email"
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                              gap: "4px",
+                              padding: "3px 7px",
+                              borderRadius: "6px",
+                              backgroundColor: "var(--bg-card)",
+                              color: "var(--text-main)",
+                              fontSize: "11px",
+                              fontWeight: 600,
+                              border: "1px solid var(--border-subtle)",
+                              cursor: "pointer",
+                              marginLeft: "4px",
+                            }}
+                          >
+                            {copiedEmail ? <Check size={11} color="#10b981" /> : <Copy size={11} />}
+                            <span>{copiedEmail ? (isTr ? "Kopyalandı" : "Copied") : (isTr ? "Kopyala" : "Copy")}</span>
+                          </button>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
+                  </div>
+                </section>
               );
             })}
           </div>
 
-          {/* Developer Contact Card */}
-          <div
-            className="glass-panel"
-            style={{
-              padding: "36px",
-              marginTop: "48px",
-              borderRadius: "28px",
-              textAlign: "center",
-              border: "1.5px solid var(--border-active)",
-            }}
-          >
-            <Lock size={32} style={{ color: "var(--primary)", marginBottom: "14px" }} />
-            <h2 style={{ fontSize: "22px", fontWeight: 800, marginBottom: "8px" }}>
-              {isTr ? "Kişisel Veri ve Gizlilik Talepleriniz İçin" : "Privacy & Data Protection Inquiries"}
-            </h2>
-            <p
+          {/* Bottom Note (Exact Replica of Language Box) */}
+          <div style={{ marginTop: "36px", textAlign: "center" }}>
+            <div
               style={{
-                fontSize: "14px",
-                color: "var(--text-secondary)",
-                maxWidth: "600px",
-                margin: "0 auto 20px auto",
-                lineHeight: "1.6",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "12px 22px",
+                borderRadius: "16px",
+                border: "1px solid rgba(16, 185, 129, 0.2)",
+                backgroundColor: "rgba(16, 185, 129, 0.08)",
+                color: "#10b981",
+                fontWeight: 600,
+                fontSize: "13.5px",
+                lineHeight: "1.5",
+                maxWidth: "680px",
               }}
             >
-              {isTr
-                ? "KVKK 11. Madde ve GDPR kapsamındaki tüm haklarınız, veri silme veya çerez tercihleri için doğrudan veri sorumlusu Hacı Celal Aygar ile iletişime geçebilirsiniz."
-                : "For any GDPR/KVKK requests, data erasure, or cookie preferences, feel free to directly contact Data Controller Hacı Celal Aygar."}
-            </p>
-
-            <div style={{ display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap" }}>
-              <a
-                href={`mailto:${doc.contactEmail}`}
-                className="btn-primary"
-                style={{
-                  textDecoration: "none",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px",
-                }}
-              >
-                <Mail size={16} />
-                <span>{doc.contactEmail}</span>
-              </a>
-
-              <Link
-                href="/developer"
-                className="btn-secondary"
-                style={{
-                  textDecoration: "none",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px",
-                }}
-              >
-                <Code size={16} />
-                <span>Developer Info</span>
-              </Link>
-
-              <a
-                href="https://www.wixtory.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary"
-                style={{
-                  textDecoration: "none",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "8px",
-                }}
-              >
-                <Globe size={16} />
-                <span>www.wixtory.com</span>
-                <ExternalLink size={13} />
-              </a>
+              <Lock size={16} color="#10b981" style={{ flexShrink: 0 }} />
+              <span>
+                {isTr
+                  ? `Wixtory ekosisteminde gizliliğiniz bir ayar veya sonradan eklenen bir özellik değil; değişmez temel mimaridir.`
+                  : `Across the Wixtory ecosystem, privacy is not a setting or an afterthought—it is the immutable core architecture.`}
+              </span>
             </div>
           </div>
         </div>

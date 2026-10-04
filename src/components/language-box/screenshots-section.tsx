@@ -23,7 +23,6 @@ import {
   SlidersHorizontal,
   LayoutGrid,
   Tv,
-  Youtube,
   Play,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -117,7 +116,7 @@ export function ScreenshotsSection({
   return (
     <section
       id="screenshots"
-      className="py-16 sm:py-24 relative overflow-hidden section-hover transition-colors duration-300"
+      className="py-16 sm:py-24 relative overflow-hidden section-hover transition-colors duration-300 scroll-mt-24"
       style={{ background: "var(--section-screenshots, rgba(13, 17, 28, 0.7))" }}
     >
       {/* Background Ambient Glows */}

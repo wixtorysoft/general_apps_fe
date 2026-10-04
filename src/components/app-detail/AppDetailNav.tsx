@@ -90,6 +90,7 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
               gap: "10px",
               textDecoration: "none",
             }}
+            title={localizedApp.name}
           >
             <div
               style={{
@@ -105,34 +106,6 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
               }}
             >
               <Sparkles size={18} />
-            </div>
-            <div>
-              <div
-                style={{
-                  fontSize: "18px",
-                  fontWeight: 800,
-                  letterSpacing: "-0.02em",
-                  color: "var(--text-main)",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "6px",
-                }}
-              >
-                <span>{localizedApp.name}</span>
-                <span
-                  style={{
-                    fontSize: "10px",
-                    padding: "2px 6px",
-                    borderRadius: "4px",
-                    background: `${localizedApp.primaryColor}22`,
-                    color: localizedApp.primaryColor,
-                    border: `1px solid ${localizedApp.primaryColor}55`,
-                    fontWeight: 700,
-                  }}
-                >
-                  {localizedApp.version}
-                </span>
-              </div>
             </div>
           </Link>
         </div>

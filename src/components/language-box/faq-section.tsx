@@ -16,7 +16,7 @@ export function FAQSection() {
   return (
     <section
       id="faq"
-      className="py-20 relative section-hover"
+      className="py-20 relative section-hover scroll-mt-24"
       style={{ background: "var(--section-faq)" }}
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

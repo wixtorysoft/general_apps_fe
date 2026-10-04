@@ -11,7 +11,7 @@ export function FeaturesSection() {
   return (
     <section
       id="features"
-      className="py-20 relative section-hover"
+      className="py-20 relative section-hover scroll-mt-24"
       style={{ background: "var(--section-features)" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

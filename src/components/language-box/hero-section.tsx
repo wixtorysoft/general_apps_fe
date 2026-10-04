@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { Gamepad2, Languages, TrendingUp } from "lucide-react";
 import { LOGO_URL } from "@/data";
-import { StoreButtons } from "@/components/store-buttons";
+import { StoreButtons } from "@/components/language-box/store-buttons";
 
 export function HeroSection() {
   const { t } = useLanguage();
@@ -13,7 +13,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden pt-20 section-hover"
+      className="relative min-h-screen flex items-center overflow-hidden pt-20 section-hover scroll-mt-24"
       style={{ background: "var(--section-hero)" }}
     >
       {/* Animated Background Lines */}

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Youtube,
   Play,
   ExternalLink,
   Sparkles,
@@ -14,6 +13,18 @@ import {
   Volume2,
   Share2,
 } from "lucide-react";
+
+function YouTubeBrandIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path
+        fill="#FF0000"
+        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"
+      />
+      <path fill="#FFFFFF" d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    </svg>
+  );
+}
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -52,7 +63,7 @@ export function VideoShowcaseSection({
   return (
     <section
       id="videos"
-      className={cn("py-16 sm:py-24 relative overflow-hidden transition-colors duration-300", className)}
+      className={cn("py-16 sm:py-24 relative overflow-hidden transition-colors duration-300 scroll-mt-24", className)}
       style={{ background: "var(--section-videos)" }}
     >
       {/* Ambient background glow */}
@@ -74,7 +85,7 @@ export function VideoShowcaseSection({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 hover:bg-red-500/20 text-xs sm:text-sm font-medium transition-all mb-4 group shadow-sm shadow-red-500/10"
               >
-                <Youtube className="w-4 h-4 text-red-600 dark:text-red-500 group-hover:scale-110 transition-transform" />
+                <YouTubeBrandIcon className="w-4 h-4 text-red-600 dark:text-red-500 group-hover:scale-110 transition-transform" />
                 <span>YouTube @WixtorySoft</span>
                 <ExternalLink className="w-3 h-3 text-red-500/70" />
               </a>
@@ -341,7 +352,7 @@ export function VideoShowcaseSection({
         >
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-2xl bg-red-600/15 border border-red-500/30 flex items-center justify-center shrink-0 shadow-inner">
-              <Youtube className="w-8 h-8 text-red-600 dark:text-red-500" />
+              <YouTubeBrandIcon className="w-8 h-8 text-red-600 dark:text-red-500" />
             </div>
             <div>
               <h4 className="text-lg font-bold text-foreground flex items-center gap-2">
@@ -362,7 +373,7 @@ export function VideoShowcaseSection({
             rel="noopener noreferrer"
             className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-sm shadow-lg shadow-red-600/30 hover:scale-105 transition-all"
           >
-            <Youtube className="w-4 h-4 fill-white" />
+            <YouTubeBrandIcon className="w-4 h-4 fill-white" />
             <span>Subscribe on YouTube</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </a>

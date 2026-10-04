@@ -100,7 +100,7 @@ export default function AppsPage() {
         <section style={{ padding: "20px 0" }}>
           <div className="container" style={{ maxWidth: "1140px" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "80px" }}>
-              {/* APP 1: DOMAIN TRACK (Icon Left, Text Right) */}
+              {/* APP 1: WIXTORY LANGUAGE BOX (Icon Left, Text Right) */}
               <div
                 style={{
                   display: "grid",
@@ -125,9 +125,9 @@ export default function AppsPage() {
                       aspectRatio: "1 / 1",
                       borderRadius: "48px",
                       overflow: "hidden",
-                      boxShadow: "0 24px 56px -12px rgba(139, 92, 246, 0.3)",
-                      border: "2px solid rgba(139, 92, 246, 0.35)",
-                      background: "linear-gradient(135deg, #0F1E2B 0%, #1A1A2E 100%)",
+                      boxShadow: "0 24px 56px -12px rgba(16, 185, 129, 0.35)",
+                      border: "2px solid rgba(16, 185, 129, 0.4)",
+                      background: "linear-gradient(135deg, #06281e 0%, #0d4637 100%)",
                       position: "relative",
                       transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                       display: "flex",
@@ -139,8 +139,8 @@ export default function AppsPage() {
                     onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
                   >
                     <Image
-                      src="/apps/domain-track-icon.png"
-                      alt="Wixtory: Domain Track App Icon"
+                      src="/apps/language-box-icon.png"
+                      alt="Wixtory Language Box App Icon"
                       width={300}
                       height={300}
                       priority
@@ -151,6 +151,103 @@ export default function AppsPage() {
 
                 {/* Right: Content */}
                 <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                    <span
+                      style={{
+                        fontSize: "11px",
+                        fontWeight: 850,
+                        color: "#10B981",
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {isTr ? "EĞİTİM & ÇOK DİLLİ ÖĞRENME" : "EDUCATION & LANGUAGE GAMING"}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "10px",
+                        fontWeight: 850,
+                        color: "#fff",
+                        background: "linear-gradient(135deg, #10B981, #06B6D4)",
+                        padding: "2px 8px",
+                        borderRadius: "9999px",
+                      }}
+                    >
+                      {isTr ? "#1 SIRADA" : "#1 RANKED"}
+                    </span>
+                  </div>
+
+                  <h2
+                    style={{
+                      fontSize: "clamp(32px, 4vw, 44px)",
+                      fontWeight: 850,
+                      letterSpacing: "-0.03em",
+                      margin: 0,
+                      color: "var(--text-main)",
+                    }}
+                  >
+                    Wixtory Language Box
+                  </h2>
+
+                  <p
+                    style={{
+                      fontSize: "16px",
+                      color: "var(--text-secondary)",
+                      lineHeight: "1.65",
+                      margin: 0,
+                    }}
+                  >
+                    {isTr
+                      ? "Sentence Builder, Word Matrix, Word Compass, Dinleme ve Konuşma gibi 6 etkileşimli oyun ile yabancı dil öğrenmeyi eğlenceli ve kalıcı bir deneyime dönüştürün."
+                      : "Master new languages through 6 engaging interactive games including Sentence Builder, Word Matrix, and Word Compass with speech and pronunciation practice."}
+                  </p>
+
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      color: "var(--text-secondary)",
+                      lineHeight: "1.6",
+                      margin: 0,
+                    }}
+                  >
+                    {isTr
+                      ? "Üyelik veya hesap oluşturma zorunluluğu yok! İlerleme ve istatistikleriniz %100 yerel cihaz önbelleğinde güvenle tutulur. İstediğiniz an 'Önbelleği Temizle' ile tam denetim."
+                      : "Zero account registration or login required! 100% of your progress and scores stay in on-device local cache. Full control anytime with 'Clear Cache'."}
+                  </p>
+
+                  <div
+                    style={{
+                      fontSize: "11.5px",
+                      color: "var(--text-muted)",
+                      lineHeight: "1.5",
+                      marginTop: "2px",
+                    }}
+                  >
+                    Wixtory Language Box © 2026 Wixtory Software. All rights reserved.
+                  </div>
+
+                  {/* App Store & Google Play Badges + Details Link */}
+                  <StoreBadgesRow
+                    appleUrl="https://apps.apple.com/tr/app/wixtory-language-box/id6761607811"
+                    googleUrl="https://play.google.com/store/apps/details?id=com.wixbook.language_box"
+                    detailUrl="/language-box"
+                    detailText={isTr ? "Uygulamayı İncele" : "Explore App"}
+                  />
+                </div>
+              </div>
+
+              {/* APP 2: DOMAIN TRACK (Text Left, Icon Right - Alternating!) */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+                  gap: "clamp(32px, 5vw, 70px)",
+                  alignItems: "center",
+                  padding: "20px 0",
+                }}
+              >
+                {/* Left: Content */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "14px", order: 1 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                     <span
                       style={{
@@ -234,9 +331,49 @@ export default function AppsPage() {
                     detailText={isTr ? "Uygulamayı İncele" : "Explore App"}
                   />
                 </div>
+
+                {/* Right: App Icon */}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    order: 2,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "100%",
+                      maxWidth: "340px",
+                      aspectRatio: "1 / 1",
+                      borderRadius: "48px",
+                      overflow: "hidden",
+                      boxShadow: "0 24px 56px -12px rgba(139, 92, 246, 0.3)",
+                      border: "2px solid rgba(139, 92, 246, 0.35)",
+                      background: "linear-gradient(135deg, #0F1E2B 0%, #1A1A2E 100%)",
+                      position: "relative",
+                      transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "20px",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                  >
+                    <Image
+                      src="/apps/domain-track-icon.png"
+                      alt="Wixtory: Domain Track App Icon"
+                      width={300}
+                      height={300}
+                      priority
+                      style={{ objectFit: "contain", borderRadius: "32px" }}
+                    />
+                  </div>
+                </div>
               </div>
 
-              {/* APP 2: ASTROVIBE (Text Left, Icon Right - Alternating!) */}
+              {/* APP 3: ASTROVIBE (Icon Left, Text Right) */}
               <div
                 style={{
                   display: "grid",
@@ -246,8 +383,47 @@ export default function AppsPage() {
                   padding: "20px 0",
                 }}
               >
-                {/* Left: Content */}
-                <div style={{ display: "flex", flexDirection: "column", gap: "14px", order: 1 }}>
+                {/* Left: App Icon */}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "100%",
+                      maxWidth: "340px",
+                      aspectRatio: "1 / 1",
+                      borderRadius: "48px",
+                      overflow: "hidden",
+                      boxShadow: "0 24px 56px -12px rgba(99, 102, 241, 0.3)",
+                      border: "2px solid rgba(99, 102, 241, 0.35)",
+                      position: "relative",
+                      transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "linear-gradient(135deg, #130D24 0%, #1E1538 100%)",
+                      padding: "20px",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                  >
+                    <Image
+                      src="/apps/astrovibe-icon.png"
+                      alt="AstroVibe App Icon"
+                      width={300}
+                      height={300}
+                      priority
+                      style={{ objectFit: "contain", borderRadius: "32px" }}
+                    />
+                  </div>
+                </div>
+
+                {/* Right: Content */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                     <span
                       style={{
@@ -317,49 +493,9 @@ export default function AppsPage() {
                     detailText={isTr ? "Uygulamayı İncele" : "Explore App"}
                   />
                 </div>
-
-                {/* Right: App Icon */}
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    order: 2,
-                  }}
-                >
-                  <div
-                    style={{
-                      width: "100%",
-                      maxWidth: "340px",
-                      aspectRatio: "1 / 1",
-                      borderRadius: "48px",
-                      overflow: "hidden",
-                      boxShadow: "0 24px 56px -12px rgba(99, 102, 241, 0.3)",
-                      border: "2px solid rgba(99, 102, 241, 0.35)",
-                      position: "relative",
-                      transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      background: "linear-gradient(135deg, #130D24 0%, #1E1538 100%)",
-                      padding: "20px",
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-                  >
-                    <Image
-                      src="/apps/astrovibe-icon.png"
-                      alt="AstroVibe App Icon"
-                      width={300}
-                      height={300}
-                      priority
-                      style={{ objectFit: "contain", borderRadius: "32px" }}
-                    />
-                  </div>
-                </div>
               </div>
 
-              {/* APP 3: EXCUSE AI (Icon Left, Text Right) */}
+              {/* APP 4: EXCUSE AI (Text Left, Icon Right) */}
               <div
                 style={{
                   display: "grid",
@@ -369,46 +505,8 @@ export default function AppsPage() {
                   padding: "20px 0",
                 }}
               >
-                {/* Left: App Icon */}
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: "100%",
-                      maxWidth: "340px",
-                      aspectRatio: "1 / 1",
-                      borderRadius: "48px",
-                      overflow: "hidden",
-                      boxShadow: "0 24px 56px -12px rgba(16, 185, 129, 0.3)",
-                      border: "2px solid rgba(16, 185, 129, 0.35)",
-                      position: "relative",
-                      transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      background: "linear-gradient(135deg, #0A231C 0%, #133A2E 100%)",
-                      padding: "20px",
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-                  >
-                    <Image
-                      src="/apps/excuse-icon.png"
-                      alt="Excuse AI App Icon"
-                      width={300}
-                      height={300}
-                      style={{ objectFit: "contain", borderRadius: "32px" }}
-                    />
-                  </div>
-                </div>
-
-                {/* Right: Content */}
-                <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+                {/* Left: Content */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "14px", order: 1 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                     <span
                       style={{
@@ -477,6 +575,45 @@ export default function AppsPage() {
                     detailUrl="/excuse"
                     detailText={isTr ? "Uygulamayı İncele" : "Explore App"}
                   />
+                </div>
+
+                {/* Right: App Icon */}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    order: 2,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "100%",
+                      maxWidth: "340px",
+                      aspectRatio: "1 / 1",
+                      borderRadius: "48px",
+                      overflow: "hidden",
+                      boxShadow: "0 24px 56px -12px rgba(16, 185, 129, 0.3)",
+                      border: "2px solid rgba(16, 185, 129, 0.35)",
+                      position: "relative",
+                      transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "linear-gradient(135deg, #0A231C 0%, #133A2E 100%)",
+                      padding: "20px",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                  >
+                    <Image
+                      src="/apps/excuse-icon.png"
+                      alt="Excuse AI App Icon"
+                      width={300}
+                      height={300}
+                      style={{ objectFit: "contain", borderRadius: "32px" }}
+                    />
+                  </div>
                 </div>
               </div>
 

@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Globe, Layers, ChevronDown, Check } from "lucide-react";
+import { Menu, X, Globe, Layers, ChevronDown, Check, ArrowLeft } from "lucide-react";
 import { useDomainTrackLanguageStore } from "@/store/domain-track-language-store";
 import { languages, Language } from "@/data/domain-track-translations";
 
@@ -70,16 +70,39 @@ export function Navbar() {
           height: "74px",
         }}
       >
-        {/* Brand Logo & Title */}
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+        {/* Brand Logo & Wixtory Apps Back Button (Matching Language Box) */}
+        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <Link
+            href="/"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              padding: "6px 12px",
+              borderRadius: "8px",
+              background: "rgba(255, 255, 255, 0.08)",
+              border: "1px solid rgba(255, 255, 255, 0.14)",
+              color: "rgba(255, 255, 255, 0.85)",
+              fontSize: "12px",
+              fontWeight: 600,
+              textDecoration: "none",
+              transition: "all 0.2s ease",
+            }}
+            title="Wixtory Apps Ana Sayfasına Dön"
+          >
+            <ArrowLeft size={14} />
+            <span className="hidden-mobile">Wixtory Apps</span>
+          </Link>
+
           <Link
             href="/domain-track"
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "12px",
+              gap: "10px",
               textDecoration: "none",
             }}
+            title="Wixtory Domain Track"
           >
             <Image
               src="https://raw.githubusercontent.com/celalaygar/main/refs/heads/main/project/wixtory-domain-track/domain-track-logo.png"
@@ -89,40 +112,6 @@ export function Navbar() {
               style={{ height: "38px", width: "auto" }}
               priority
             />
-            <span
-              className="dt-gradient-purple-pink"
-              style={{
-                fontSize: "19px",
-                fontWeight: 800,
-                letterSpacing: "-0.02em",
-                display: "inline-block",
-              }}
-            >
-              Domain Track
-            </span>
-          </Link>
-
-          {/* Quick link to Ecosystem Portal */}
-          <Link
-            href="/"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "6px",
-              padding: "4px 10px",
-              borderRadius: "8px",
-              background: "rgba(255, 255, 255, 0.06)",
-              border: "1px solid rgba(255, 255, 255, 0.12)",
-              color: "rgba(255, 255, 255, 0.75)",
-              fontSize: "12px",
-              fontWeight: 600,
-              textDecoration: "none",
-              transition: "all 0.2s ease",
-            }}
-            title="Wixtory Apps Ecosystem Hub"
-          >
-            <Layers size={13} color="#22d3ee" />
-            <span className="hidden-mobile">Wixtory Apps</span>
           </Link>
         </div>
 

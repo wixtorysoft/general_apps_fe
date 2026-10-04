@@ -53,6 +53,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     try {
+      document.documentElement.classList.remove("light", "emerald", "amber", "dark");
       const saved = localStorage.getItem("wixtory_app_theme") as ThemeType | null;
       if (saved && THEMES.some((t) => t.id === saved)) {
         // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -69,6 +70,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const setTheme = (newTheme: ThemeType) => {
     setThemeState(newTheme);
     try {
+      document.documentElement.classList.remove("light", "emerald", "amber", "dark");
       localStorage.setItem("wixtory_app_theme", newTheme);
       document.documentElement.setAttribute("data-theme", newTheme);
     } catch {

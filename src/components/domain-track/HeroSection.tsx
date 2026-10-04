@@ -65,24 +65,44 @@ export function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Pulsing Pill Badge */}
+            {/* Pill Badge matching Language Box style */}
             <div
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: "8px",
-                padding: "8px 18px",
+                gap: "10px",
+                padding: "8px 20px",
                 borderRadius: "9999px",
-                background: "rgba(168, 85, 247, 0.16)",
+                background: "rgba(168, 85, 247, 0.12)",
                 border: "1px solid rgba(168, 85, 247, 0.35)",
-                color: "#d8b4fe",
-                fontSize: "13.5px",
-                fontWeight: 700,
+                backdropFilter: "blur(12px)",
                 marginBottom: "24px",
+                boxShadow: "0 0 20px rgba(168, 85, 247, 0.15)",
               }}
             >
-              <Globe size={16} />
-              <span>{t.hero_badge}</span>
+              <span
+                style={{
+                  width: "10px",
+                  height: "10px",
+                  borderRadius: "50%",
+                  background: "#38bdf8",
+                  boxShadow: "0 0 10px #38bdf8",
+                  display: "inline-block",
+                  animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                }}
+              />
+              <span
+                style={{
+                  fontSize: "14px",
+                  fontWeight: 800,
+                  letterSpacing: "0.02em",
+                  background: "linear-gradient(135deg, #c084fc 0%, #f472b6 45%, #38bdf8 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Wixtory Domain Track
+              </span>
             </div>
 
             {/* Main Gradient H1 */}

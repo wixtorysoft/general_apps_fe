@@ -69,8 +69,7 @@ export function StoreButtons() {
         href={APP_STORE_URL || undefined}
         target="_blank"
         rel="noopener noreferrer"
-        className={`group inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-[#000000] border border-[#424242] hover:border-[#6e6e6e] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-white/5"
-        }`}
+        className="group inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-[#000000] border border-[#424242] hover:border-[#6e6e6e] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-white/5"
       >
         <AppleLogo className="h-7 w-7 text-white shrink-0" />
         <div className="flex flex-col leading-none">
