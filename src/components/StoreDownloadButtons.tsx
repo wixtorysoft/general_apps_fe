@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Apple, Mail } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface StoreDownloadButtonsProps {
   appStoreUrl?: string;
@@ -10,6 +11,8 @@ interface StoreDownloadButtonsProps {
   showBadge?: boolean;
   badgeLabel?: string;
   className?: string;
+  isComingSoon?: boolean;
+  comingSoonText?: string;
 }
 
 export function GooglePlayIcon({ size = 28 }: { size?: number }) {
@@ -49,7 +52,10 @@ export function StoreDownloadButtons({
   showBadge = false,
   badgeLabel = "DOWNLOAD & CONTACT",
   className = "",
+  isComingSoon = false,
+  comingSoonText,
 }: StoreDownloadButtonsProps) {
+  const { t } = useLanguage();
   const isHorizontal = layout === "horizontal";
 
   return (
@@ -61,6 +67,38 @@ export function StoreDownloadButtons({
         alignItems: "center",
       }}
     >
+      {/* Coming Soon Notice Pill */}
+      {isComingSoon && (
+        <div
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "8px",
+            padding: "6px 16px",
+            borderRadius: "9999px",
+            background: "rgba(245, 158, 11, 0.15)",
+            border: "1px solid rgba(245, 158, 11, 0.4)",
+            color: "#F59E0B",
+            fontSize: "12.5px",
+            fontWeight: 800,
+            letterSpacing: "0.04em",
+            textTransform: "uppercase",
+            marginBottom: "14px",
+          }}
+        >
+          <span
+            style={{
+              width: "7px",
+              height: "7px",
+              borderRadius: "50%",
+              backgroundColor: "#F59E0B",
+              boxShadow: "0 0 8px #F59E0B",
+              display: "inline-block",
+            }}
+          />
+          <span>{comingSoonText || t("coming_soon_badge")}</span>
+        </div>
+      )}
       {/* Optional Cyan Badge matching Reference Image */}
       {showBadge && (
         <div
@@ -135,7 +173,7 @@ export function StoreDownloadButtons({
                 marginBottom: "2px",
               }}
             >
-              Download on the
+              {isComingSoon ? t("app_store_coming_soon") : "Download on the"}
             </span>
             <span
               style={{
@@ -188,12 +226,12 @@ export function StoreDownloadButtons({
                 fontSize: "10px",
                 fontWeight: 600,
                 letterSpacing: "0.06em",
-                color: "rgba(255, 255, 255, 0.75)",
+                color: isComingSoon ? "#F59E0B" : "rgba(255, 255, 255, 0.75)",
                 textTransform: "uppercase",
                 marginBottom: "2px",
               }}
             >
-              Get it on
+              {isComingSoon ? t("google_play_coming_soon") : "Get it on"}
             </span>
             <span
               style={{

@@ -107,6 +107,21 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
             >
               <Sparkles size={18} />
             </div>
+            <span
+              style={{
+                fontSize: "10px",
+                fontWeight: 800,
+                letterSpacing: "0.06em",
+                padding: "3px 8px",
+                borderRadius: "6px",
+                background: "rgba(245, 158, 11, 0.15)",
+                border: "1px solid rgba(245, 158, 11, 0.4)",
+                color: "#F59E0B",
+                textTransform: "uppercase",
+              }}
+            >
+              {t("coming_soon")}
+            </span>
           </Link>
         </div>
 

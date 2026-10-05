@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 
 export default function DeveloperPage() {
-  const { language } = useLanguage();
+  const { t, language } = useLanguage();
   const [copied, setCopied] = useState(false);
   const isTr = language === "tr";
 
@@ -67,11 +67,12 @@ export default function DeveloperPage() {
     {
       id: "astrovibe",
       name: "AstroVibe",
-      badge: isTr ? "Astroloji & Stil Stüdyosu" : "Astrology & Style Studio",
+      badge: isTr ? "Astroloji & Stil Stüdyosu (Yakında)" : "Astrology & Style Studio (Coming Soon)",
+      isComingSoon: true,
       description: isTr
-        ? "7 periyotlu derinlikli burç analizleri, tırnak sanatı (nail art) modelleri, mücevher ilhamı ve kozmik yaşam rehberi."
-        : "7-period in-depth horoscope analysis, cosmic nail art designs, jewelry inspiration, and celestial lifestyle guide.",
-      tags: ["Flutter 60FPS", "Spring Boot", "MinIO CDN", "7-Period Horoscopes"],
+        ? "7 periyotlu derinlikli burç analizleri, tırnak sanatı (nail art) modelleri, mücevher ilhamı ve kozmik yaşam rehberi. Çok yakında yayında!"
+        : "7-period in-depth horoscope analysis, cosmic nail art designs, jewelry inspiration, and celestial lifestyle guide. Launching soon!",
+      tags: ["Flutter", "Spring Boot", "MinIO CDN", "7-Period Horoscopes"],
       href: "/astrovibe",
       icon: Sparkles,
       accentColor: "#ec4899",
@@ -80,10 +81,11 @@ export default function DeveloperPage() {
     {
       id: "excuse",
       name: "Excuse AI",
-      badge: isTr ? "Akıllı Bahane & Sosyal Kurtarıcı" : "Smart Excuse & Social Lifesaver",
+      badge: isTr ? "Akıllı Bahane & Sosyal Kurtarıcı (Yakında)" : "Smart Excuse & Social Lifesaver (Coming Soon)",
+      isComingSoon: true,
       description: isTr
-        ? "Beklenmedik krizler, geç kalmalar ve zorlu sosyal durumlar için mizahi ve zeki yanıtlar üreten yapay zeka asistanı."
-        : "AI-powered quick social excuse assistant generating clever, contextual, and polite responses for awkward moments.",
+        ? "Beklenmedik krizler, geç kalmalar ve zorlu sosyal durumlar için mizahi ve zeki yanıtlar üreten yapay zeka asistanı. Çok yakında yayında!"
+        : "AI-powered quick social excuse assistant generating clever, contextual, and polite responses for awkward moments. Launching soon!",
       tags: ["Spring Boot", "NLP Engine", "Flutter", "Responsive UI"],
       href: "/excuse",
       icon: MessageSquare,
@@ -103,13 +105,13 @@ export default function DeveloperPage() {
         : "Zero telemetry and zero accounts. No personal information is ever collected or tracked on remote servers. All queries, learning history, and favorites stay strictly inside the client's local sandbox storage.",
     },
     {
-      title: isTr ? "60 FPS Donanım Hızlandırmalı Akıcılık" : "Fluid 60 FPS Native Graphics",
+      title: isTr ? "Yüksek Performanslı Yerel Arayüzler" : "High-Performance Native Interfaces",
       subtitle: isTr ? "Performans & Haptik" : "Performance & Haptics",
       icon: Zap,
       color: "#38bdf8",
       description: isTr
-        ? "Flutter'ın grafik motoru ile iOS ve Android platformlarında 60 FPS tavizsiz akıcılık, fizik tabanlı mikro-etkileşimler, dokunsal (haptic) geri bildirimler ve bellek sızıntılarından arındırılmış kaynak yönetimi."
-        : "Hardware-accelerated 60 FPS performance across iOS and Android with spring physics, responsive micro-animations, tactile haptic feedback, and lean memory footprint.",
+        ? "Flutter'ın modern grafik motoru ile iOS ve Android platformlarında tavizsiz akıcılık, fizik tabanlı mikro-etkileşimler, dokunsal (haptic) geri bildirimler ve bellek sızıntılarından arındırılmış kaynak yönetimi."
+        : "High-performance native interfaces across iOS and Android with spring physics, responsive micro-animations, tactile haptic feedback, and lean memory footprint.",
     },
     {
       title: isTr ? "Tip Güvenli Domain Modelleri & i18n" : "Type-Safe Domain Enums & i18n",
@@ -194,8 +196,8 @@ export default function DeveloperPage() {
               }}
             >
               {isTr
-                ? "Gizlilik öncelikli yerel mimariler, Flutter 60 FPS mobil deneyimler ve kurumsal Spring Boot sistemleri inşa eden yazılım mühendisi."
-                : "Architecting privacy-first on-device mobile applications with 60 FPS Flutter performance and resilient Spring Boot backends."}
+                ? "Gizlilik öncelikli yerel mimariler, modern Flutter mobil deneyimleri ve kurumsal Spring Boot sistemleri inşa eden yazılım mühendisi."
+                : "Architecting privacy-first on-device mobile applications with modern Flutter performance and resilient Spring Boot backends."}
             </p>
           </div>
 
@@ -492,19 +494,36 @@ export default function DeveloperPage() {
                         >
                           <IconComponent size={22} />
                         </div>
-                        <span
-                          style={{
-                            fontSize: "11.5px",
-                            fontWeight: 700,
-                            padding: "4px 10px",
-                            borderRadius: "9999px",
-                            backgroundColor: `${app.accentColor}15`,
-                            color: app.accentColor,
-                            border: `1px solid ${app.accentColor}30`,
-                          }}
-                        >
-                          {app.badge}
-                        </span>
+                        <div style={{ display: "flex", alignItems: "center", gap: "6px", flexWrap: "wrap", justifyContent: "flex-end" }}>
+                          {app.isComingSoon && (
+                            <span
+                              style={{
+                                fontSize: "11px",
+                                fontWeight: 800,
+                                padding: "4px 8px",
+                                borderRadius: "9999px",
+                                backgroundColor: "rgba(245, 158, 11, 0.15)",
+                                color: "#F59E0B",
+                                border: "1px solid rgba(245, 158, 11, 0.35)",
+                              }}
+                            >
+                              🚀 {t("coming_soon")}
+                            </span>
+                          )}
+                          <span
+                            style={{
+                              fontSize: "11.5px",
+                              fontWeight: 700,
+                              padding: "4px 10px",
+                              borderRadius: "9999px",
+                              backgroundColor: `${app.accentColor}15`,
+                              color: app.accentColor,
+                              border: `1px solid ${app.accentColor}30`,
+                            }}
+                          >
+                            {app.badge}
+                          </span>
+                        </div>
                       </div>
 
                       {/* App Title */}

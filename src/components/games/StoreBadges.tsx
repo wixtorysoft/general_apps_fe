@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function AppleStoreBadge({ href = "#" }: { href?: string }) {
   return (
@@ -124,49 +125,87 @@ export function StoreBadgesRow({
   googleUrl = "#",
   detailUrl,
   detailText,
+  isComingSoon = false,
+  comingSoonText,
 }: {
   appleUrl?: string;
   googleUrl?: string;
   detailUrl?: string;
   detailText?: string;
+  isComingSoon?: boolean;
+  comingSoonText?: string;
 }) {
+  const { t } = useLanguage();
+
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap", marginTop: "20px" }}>
-      <AppleStoreBadge href={appleUrl} />
-      <GooglePlayBadge href={googleUrl} />
-      {detailUrl && (
-        <Link
-          href={detailUrl}
+    <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginTop: "20px" }}>
+      {isComingSoon && (
+        <div
           style={{
             display: "inline-flex",
             alignItems: "center",
             gap: "8px",
-            height: "46px",
-            padding: "0 18px",
-            borderRadius: "10px",
-            background: "var(--bg-glass)",
-            border: "1px solid var(--border-subtle)",
-            color: "var(--text-main)",
-            fontSize: "13.5px",
-            fontWeight: 700,
-            textDecoration: "none",
-            transition: "all 0.2s ease",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = "var(--border-active)";
-            e.currentTarget.style.color = "var(--primary)";
-            e.currentTarget.style.transform = "translateY(-2px)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = "var(--border-subtle)";
-            e.currentTarget.style.color = "var(--text-main)";
-            e.currentTarget.style.transform = "translateY(0)";
+            padding: "5px 14px",
+            borderRadius: "9999px",
+            background: "rgba(245, 158, 11, 0.12)",
+            border: "1px solid rgba(245, 158, 11, 0.35)",
+            color: "#F59E0B",
+            fontSize: "12.5px",
+            fontWeight: 750,
+            width: "fit-content",
           }}
         >
-          <span>{detailText || "İncele"}</span>
-          <ArrowRight size={15} />
-        </Link>
+          <span
+            style={{
+              width: "7px",
+              height: "7px",
+              borderRadius: "50%",
+              backgroundColor: "#F59E0B",
+              display: "inline-block",
+              boxShadow: "0 0 8px #F59E0B",
+            }}
+          />
+          <span>{comingSoonText || t("coming_soon_stores")}</span>
+        </div>
       )}
+
+      <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
+        <AppleStoreBadge href={appleUrl} />
+        <GooglePlayBadge href={googleUrl} />
+        {detailUrl && (
+          <Link
+            href={detailUrl}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              height: "46px",
+              padding: "0 18px",
+              borderRadius: "10px",
+              background: "var(--bg-glass)",
+              border: "1px solid var(--border-subtle)",
+              color: "var(--text-main)",
+              fontSize: "13.5px",
+              fontWeight: 700,
+              textDecoration: "none",
+              transition: "all 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "var(--border-active)";
+              e.currentTarget.style.color = "var(--primary)";
+              e.currentTarget.style.transform = "translateY(-2px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "var(--border-subtle)";
+              e.currentTarget.style.color = "var(--text-main)";
+              e.currentTarget.style.transform = "translateY(0)";
+            }}
+          >
+            <span>{detailText || t("explore_app")}</span>
+            <ArrowRight size={15} />
+          </Link>
+        )}
+      </div>
     </div>
   );
 }

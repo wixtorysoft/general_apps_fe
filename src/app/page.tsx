@@ -29,7 +29,7 @@ import { MainNavbar } from "@/components/MainNavbar";
 import { MainFooter } from "@/components/MainFooter";
 
 export default function HubPortalPage() {
-  const { language } = useLanguage();
+  const { t, language } = useLanguage();
   const isTr = language === "tr";
 
   return (
@@ -145,15 +145,15 @@ export default function HubPortalPage() {
                 <>
                   Oyun temelli çok dilli öğrenme platformu <strong>Wixtory Language Box</strong>, 
                   gerçek zamanlı alan adı takip asistanı <strong>Wixtory: Domain Track</strong>, 
-                  astrolojiyi editoryal stile dönüştüren <strong>AstroVibe</strong> ve 
-                  zeki yapay zeka asistanı <strong>Excuse AI</strong>. İncelemek istediğiniz uygulamayı seçin.
+                  astrolojiyi editoryal stile dönüştüren <strong>AstroVibe</strong> <span style={{ color: "#F59E0B", fontWeight: 700 }}>({t("coming_soon")})</span> ve 
+                  zeki yapay zeka asistanı <strong>Excuse AI</strong> <span style={{ color: "#F59E0B", fontWeight: 700 }}>({t("coming_soon")})</span>. İncelemek istediğiniz uygulamayı seçin.
                 </>
               ) : (
                 <>
                   Gamified multilingual learning with <strong>Wixtory Language Box</strong>, 
                   real-time domain availability tracker with <strong>Wixtory: Domain Track</strong>, 
-                  editorial astrological lifestyle in <strong>AstroVibe</strong>, and 
-                  smart assistant <strong>Excuse AI</strong>. Choose an app below to explore.
+                  editorial astrological lifestyle in <strong>AstroVibe</strong> <span style={{ color: "#F59E0B", fontWeight: 700 }}>({t("coming_soon")})</span>, and 
+                  smart assistant <strong>Excuse AI</strong> <span style={{ color: "#F59E0B", fontWeight: 700 }}>({t("coming_soon")})</span>. Choose an app below to explore.
                 </>
               )}
             </p>
@@ -435,7 +435,7 @@ export default function HubPortalPage() {
                               borderRadius: "9999px",
                             }}
                           >
-                            {isTr ? "#1 SIRADA" : "#1 RANKED"}
+                            {t("live_badge")}
                           </span>
                         </div>
                         <h3
@@ -592,7 +592,7 @@ export default function HubPortalPage() {
                         }}
                       >
                         <Image
-                          src="/domain-track-logo.png"
+                          src="/domain-track/logo.png"
                           alt="Wixtory: Domain Track Logo"
                           width={44}
                           height={44}
@@ -623,7 +623,7 @@ export default function HubPortalPage() {
                               borderRadius: "9999px",
                             }}
                           >
-                            {isTr ? "ÖNE ÇIKAN" : "FEATURED"}
+                            {t("live_badge")}
                           </span>
                         </div>
                         <h3
@@ -808,22 +808,34 @@ export default function HubPortalPage() {
                       </div>
                     </div>
 
-                    <div
-                      style={{
-                        padding: "6px 12px",
-                        borderRadius: "20px",
-                        background: "rgba(245, 158, 11, 0.12)",
-                        border: "1px solid rgba(245, 158, 11, 0.3)",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "6px",
-                        color: "#F59E0B",
-                        fontSize: "12.5px",
-                        fontWeight: 700,
-                      }}
-                    >
-                      <Star size={13} fill="#F59E0B" />
-                      <span>4.8 (12K+)</span>
+                    <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                      <span
+                        style={{
+                          padding: "5px 12px",
+                          borderRadius: "20px",
+                          background: "rgba(245, 158, 11, 0.16)",
+                          border: "1px solid rgba(245, 158, 11, 0.4)",
+                          color: "#F59E0B",
+                          fontSize: "12px",
+                          fontWeight: 800,
+                          letterSpacing: "0.03em",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "6px",
+                        }}
+                      >
+                        <span
+                          style={{
+                            width: "7px",
+                            height: "7px",
+                            borderRadius: "50%",
+                            backgroundColor: "#F59E0B",
+                            boxShadow: "0 0 8px #F59E0B",
+                            display: "inline-block",
+                          }}
+                        />
+                        <span>{t("coming_soon")}</span>
+                      </span>
                     </div>
                   </div>
 
@@ -886,7 +898,7 @@ export default function HubPortalPage() {
                   onMouseEnter={(e) => (e.currentTarget.style.filter = "brightness(1.1)")}
                   onMouseLeave={(e) => (e.currentTarget.style.filter = "brightness(1.0)")}
                 >
-                  <span>{isTr ? "AstroVibe Sayfasına Git" : "Explore AstroVibe"}</span>
+                  <span>AstroVibe ({t("coming_soon")})</span>
                   <ArrowRight size={17} />
                 </Link>
               </div>
@@ -976,22 +988,34 @@ export default function HubPortalPage() {
                       </div>
                     </div>
 
-                    <div
-                      style={{
-                        padding: "6px 12px",
-                        borderRadius: "20px",
-                        background: "rgba(245, 158, 11, 0.12)",
-                        border: "1px solid rgba(245, 158, 11, 0.3)",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "6px",
-                        color: "#F59E0B",
-                        fontSize: "12.5px",
-                        fontWeight: 700,
-                      }}
-                    >
-                      <Star size={13} fill="#F59E0B" />
-                      <span>4.8 (8.5K+)</span>
+                    <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                      <span
+                        style={{
+                          padding: "5px 12px",
+                          borderRadius: "20px",
+                          background: "rgba(245, 158, 11, 0.16)",
+                          border: "1px solid rgba(245, 158, 11, 0.4)",
+                          color: "#F59E0B",
+                          fontSize: "12px",
+                          fontWeight: 800,
+                          letterSpacing: "0.03em",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "6px",
+                        }}
+                      >
+                        <span
+                          style={{
+                            width: "7px",
+                            height: "7px",
+                            borderRadius: "50%",
+                            backgroundColor: "#F59E0B",
+                            boxShadow: "0 0 8px #F59E0B",
+                            display: "inline-block",
+                          }}
+                        />
+                        <span>{t("coming_soon")}</span>
+                      </span>
                     </div>
                   </div>
 
@@ -1054,7 +1078,7 @@ export default function HubPortalPage() {
                   onMouseEnter={(e) => (e.currentTarget.style.filter = "brightness(1.1)")}
                   onMouseLeave={(e) => (e.currentTarget.style.filter = "brightness(1.0)")}
                 >
-                  <span>{isTr ? "Excuse AI Sayfasına Git" : "Explore Excuse AI"}</span>
+                  <span>Excuse AI ({t("coming_soon")})</span>
                   <ArrowRight size={17} />
                 </Link>
               </div>

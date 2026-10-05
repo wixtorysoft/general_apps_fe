@@ -11,7 +11,7 @@ interface FinalCallToActionProps {
 }
 
 export function FinalCallToAction({ app }: FinalCallToActionProps) {
-  const { language } = useLanguage();
+  const { t, language } = useLanguage();
   const localizedApp = getLocalizedAppDetails(app.id, language);
   const isTr = language === "tr";
 
@@ -56,14 +56,15 @@ export function FinalCallToAction({ app }: FinalCallToActionProps) {
             <span
               className="pill-badge"
               style={{
-                color: localizedApp.primaryColor,
-                borderColor: `${localizedApp.primaryColor}66`,
-                background: `${localizedApp.primaryColor}18`,
+                color: "#F59E0B",
+                borderColor: "rgba(245, 158, 11, 0.4)",
+                background: "rgba(245, 158, 11, 0.15)",
                 marginBottom: "20px",
+                boxShadow: "0 0 16px rgba(245, 158, 11, 0.2)",
               }}
             >
               <Sparkles size={14} />
-              <span>{isTr ? "Hemen Katılın & Deneyimleyin" : "Join Now & Experience"}</span>
+              <span>{t("coming_soon_stores")}</span>
             </span>
 
             <h2
@@ -98,11 +99,11 @@ export function FinalCallToAction({ app }: FinalCallToActionProps) {
             >
               {localizedApp.id === "astrovibe"
                 ? isTr
-                  ? "Burcunuzun elementine özel protez tırnak akışını keşfedin, 3D tarot açılımlarıyla auranızı dengeleyin. Hemen indirin ve kozmik enerjinizi yükseltin."
-                  : "Discover horoscope-matched press-on nail styles on TikTok feeds and align your aura with 3D tarot spreads. Download now and elevate your cosmic vibe."
+                  ? "Burcunuzun elementine özel protez tırnak akışını keşfedin, 3D tarot açılımlarıyla auranızı dengeleyin. Çok yakında cebinizde olacak, takipte kalın!"
+                  : "Discover horoscope-matched press-on nail styles on TikTok feeds and align your aura with 3D tarot spreads. Coming soon to your phone, stay tuned!"
                 : isTr
-                  ? "Beklenmedik davetlerden, uzayan iş toplantılarından ve kriz anlarından tek dokunuşla sıyrılın. %100 çevrimdışı çalışan akıllı asistanınızı hemen cebinize alın."
-                  : "Escape awkward social invitations, endless office meetings, and emergencies in a single tap. Download your 100% offline smart excuse assistant today."}
+                  ? "Beklenmedik davetlerden, uzayan iş toplantılarından ve kriz anlarından tek dokunuşla sıyrılın. %100 çevrimdışı çalışan akıllı asistanınız çok yakında mağazalarda!"
+                  : "Escape awkward social invitations, endless office meetings, and emergencies in a single tap. Your 100% offline smart excuse assistant is coming soon!"}
             </p>
 
             {/* Download Buttons Row matching user reference */}
@@ -116,7 +117,9 @@ export function FinalCallToAction({ app }: FinalCallToActionProps) {
               <StoreDownloadButtons
                 layout="horizontal"
                 showBadge={true}
-                badgeLabel="DOWNLOAD & CONTACT"
+                badgeLabel={t("coming_soon")}
+                isComingSoon={true}
+                comingSoonText={t("coming_soon_stores")}
               />
             </div>
 

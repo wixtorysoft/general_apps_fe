@@ -145,7 +145,7 @@ export function AppSwitcher({ apps, selectedApp, onSelectApp }: AppSwitcherProps
                     >
                       {isDomainTrack ? (
                         <Image
-                          src="/domain-track-logo.png"
+                          src="/domain-track/logo.png"
                           alt="Domain Track"
                           width={44}
                           height={44}

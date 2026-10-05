@@ -240,7 +240,7 @@ export const APPS_DATA: AppModel[] = [
       "Wixtory: Domain Track, girişimciler, geliştiriciler ve marka sahipleri için tasarlanmış yüksek performanslı alan adı sorgulama ve portföy takip asistanıdır. .com, .net, .org, .io, .ai gibi popüler uzantılarda gerçek zamanlı kontrol sağlar. Tamamen cihaz içi önbellek mimarisiyle sıfır veri toplama güvencesi sunar.",
     category: "Geliştirici Araçları & Alan Adı Yönetimi",
     badge: "Müsaitlik & Portföy",
-    logoUrl: "/domain-track-logo.png",
+    logoUrl: "/domain-track/logo.png",
     version: "v1.0.0",
     rating: 4.9,
     reviewsCount: "2.8K",

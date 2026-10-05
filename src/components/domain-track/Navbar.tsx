@@ -105,7 +105,7 @@ export function Navbar() {
             title="Wixtory Domain Track"
           >
             <Image
-              src="https://raw.githubusercontent.com/celalaygar/main/refs/heads/main/project/wixtory-domain-track/domain-track-logo.png"
+              src="/domain-track/logo.png"
               alt="Wixtory Domain Track Logo"
               width={38}
               height={38}

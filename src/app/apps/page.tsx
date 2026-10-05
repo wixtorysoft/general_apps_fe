@@ -10,7 +10,7 @@ import { StoreBadgesRow } from "@/components/games/StoreBadges";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function AppsPage() {
-  const { language } = useLanguage();
+  const { t, language } = useLanguage();
   const isTr = language === "tr";
 
   return (
@@ -90,8 +90,8 @@ export default function AppsPage() {
               }}
             >
               {isTr
-                ? "Şişirilmiş ve gizliliği ihlal eden monolitik süper uygulamalar yerine; her biri kendi alanında mükemmelleştirilmiş mikro-odaklı mobil araçlar. Cihaz içi yerel önbellekleme ve 60 FPS akıcılık."
-                : "Instead of bloated super-apps, we craft micro-focused digital utilities perfected for their specific domains. 100% on-device privacy and buttery 60 FPS performance."}
+                ? "Şişirilmiş ve gizliliği ihlal eden monolitik süper uygulamalar yerine; her biri kendi alanında mükemmelleştirilmiş mikro-odaklı mobil araçlar. Cihaz içi yerel önbellekleme ve akıcı performans."
+                : "Instead of bloated super-apps, we craft micro-focused digital utilities perfected for their specific domains. 100% on-device privacy and fluid performance."}
             </p>
           </div>
         </section>
@@ -173,7 +173,7 @@ export default function AppsPage() {
                         borderRadius: "9999px",
                       }}
                     >
-                      {isTr ? "#1 SIRADA" : "#1 RANKED"}
+                      {t("live_badge")}
                     </span>
                   </div>
 
@@ -270,7 +270,7 @@ export default function AppsPage() {
                         borderRadius: "9999px",
                       }}
                     >
-                      {isTr ? "ÖNE ÇIKAN" : "FEATURED"}
+                      {t("live_badge")}
                     </span>
                   </div>
 
@@ -424,7 +424,7 @@ export default function AppsPage() {
 
                 {/* Right: Content */}
                 <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
                     <span
                       style={{
                         fontSize: "11px",
@@ -435,6 +435,24 @@ export default function AppsPage() {
                       }}
                     >
                       {isTr ? "KOZMİK ASTROLOJİ & YAŞAM" : "ASTROLOGY & LIFESTYLE"}
+                    </span>
+                    <span
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "6px",
+                        padding: "3px 10px",
+                        borderRadius: "9999px",
+                        background: "rgba(245, 158, 11, 0.15)",
+                        border: "1px solid rgba(245, 158, 11, 0.35)",
+                        color: "#F59E0B",
+                        fontSize: "11.5px",
+                        fontWeight: 800,
+                        letterSpacing: "0.04em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {t("coming_soon_badge")}
                     </span>
                   </div>
 
@@ -490,7 +508,8 @@ export default function AppsPage() {
                   {/* App Store & Google Play Badges + Details Link */}
                   <StoreBadgesRow
                     detailUrl="/astrovibe"
-                    detailText={isTr ? "Uygulamayı İncele" : "Explore App"}
+                    isComingSoon={true}
+                    comingSoonText={t("coming_soon_stores")}
                   />
                 </div>
               </div>
@@ -507,7 +526,7 @@ export default function AppsPage() {
               >
                 {/* Left: Content */}
                 <div style={{ display: "flex", flexDirection: "column", gap: "14px", order: 1 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
                     <span
                       style={{
                         fontSize: "11px",
@@ -518,6 +537,24 @@ export default function AppsPage() {
                       }}
                     >
                       {isTr ? "YAPAY ZEKA ASİSTANI" : "AI LIFESAVER ASSISTANT"}
+                    </span>
+                    <span
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "6px",
+                        padding: "3px 10px",
+                        borderRadius: "9999px",
+                        background: "rgba(245, 158, 11, 0.15)",
+                        border: "1px solid rgba(245, 158, 11, 0.35)",
+                        color: "#F59E0B",
+                        fontSize: "11.5px",
+                        fontWeight: 800,
+                        letterSpacing: "0.04em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {t("coming_soon_badge")}
                     </span>
                   </div>
 
@@ -573,7 +610,8 @@ export default function AppsPage() {
                   {/* App Store & Google Play Badges + Details Link */}
                   <StoreBadgesRow
                     detailUrl="/excuse"
-                    detailText={isTr ? "Uygulamayı İncele" : "Explore App"}
+                    isComingSoon={true}
+                    comingSoonText={t("coming_soon_stores")}
                   />
                 </div>
 

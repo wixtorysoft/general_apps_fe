@@ -19,7 +19,7 @@ export interface ScreenshotData {
 export const screenshots: ScreenshotData[] = [
   {
     "id": "screen-1-main1-png",
-    "src": "/screens/new-screens/1-main1.png",
+    "src": "/language-box/screens/new-screens/1-main1.png",
     "alt": "Ana Dil ve İlerleme Menüsü",
     "title": "Ana Dil ve İlerleme Menüsü",
     "description": "Aktif öğrenilen dil, CEFR A1-C2 genel yeterlilik oranı ve seviye geçiş kartları.",
@@ -34,7 +34,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-10-sentencebuildergame-png",
-    "src": "/screens/new-screens/10-sentenceBuilderGame.png",
+    "src": "/language-box/screens/new-screens/10-sentenceBuilderGame.png",
     "alt": "Sentence Builder (Cümle Kurucu)",
     "title": "Sentence Builder (Cümle Kurucu)",
     "description": "Karışık dizilmiş dilbilgisi bloklarını sürükleyip doğru sıraya dizerek gramer refleksini geliştirme.",
@@ -49,7 +49,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-11-sentencecompletiongame-png",
-    "src": "/screens/new-screens/11-sentenceCompletionGame.png",
+    "src": "/language-box/screens/new-screens/11-sentenceCompletionGame.png",
     "alt": "Sentence Completion (Cümle Tamamlama)",
     "title": "Sentence Completion (Cümle Tamamlama)",
     "description": "Cümle içindeki boşluğa gelebilecek en uygun kelimeyi veya gramer kalıbını bağlamdan çıkarma alıştırması.",
@@ -64,7 +64,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-12-listenwordgame-png",
-    "src": "/screens/new-screens/12-ListenWordGame.png",
+    "src": "/language-box/screens/new-screens/12-ListenWordGame.png",
     "alt": "Listen Word (Dinle ve Yaz)",
     "title": "Listen Word (Dinle ve Yaz)",
     "description": "Yerel Text-to-Speech motorunun okuduğu telaffuzu dinleyerek kelimeyi harf harf yazma ve işitsel anlama.",
@@ -79,7 +79,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-13-matchsentencegame-png",
-    "src": "/screens/new-screens/13-MatchSentenceGame.png",
+    "src": "/language-box/screens/new-screens/13-MatchSentenceGame.png",
     "alt": "Match Sentence (Cümle Eşleştirme)",
     "title": "Match Sentence (Cümle Eşleştirme)",
     "description": "İki sütun halinde verilen yabancı dil cümlelerini ve kendi dilinizdeki karşılıklarını anında eşleştirme.",
@@ -94,7 +94,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-15-wordmatrix1-png",
-    "src": "/screens/new-screens/15-WordMatrix1.png",
+    "src": "/language-box/screens/new-screens/15-WordMatrix1.png",
     "alt": "Word Matrix (Harf Izgarası Kelime Arama)",
     "title": "Word Matrix (Harf Izgarası Kelime Arama)",
     "description": "Karışık harf matrisinde yatay, dikey ve çapraz sürükleme yaparak hedef kelimeleri bulma bulmacası.",
@@ -109,7 +109,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-15-wordmatrix2-png",
-    "src": "/screens/new-screens/15-WordMatrix2.png",
+    "src": "/language-box/screens/new-screens/15-WordMatrix2.png",
     "alt": "Word Matrix - Çapraz Harf Seçimi",
     "title": "Word Matrix - Çapraz Harf Seçimi",
     "description": "Çapraz hücreler arasında akıcı sürükleme ile gizlenmiş kelimeleri açığa çıkarma anı.",
@@ -124,7 +124,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-16-wordcompass1-png",
-    "src": "/screens/new-screens/16-WordCompass1.png",
+    "src": "/language-box/screens/new-screens/16-WordCompass1.png",
     "alt": "Word Compass (360° Dairesel Harf Çarkı)",
     "title": "Word Compass (360° Dairesel Harf Çarkı)",
     "description": "Dairesel harf çarkında sürekli parmak sürükleme hareketiyle radyal harfleri birleştirip kelime üretme.",
@@ -139,7 +139,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-16-wordcompass2-png",
-    "src": "/screens/new-screens/16-WordCompass2.png",
+    "src": "/language-box/screens/new-screens/16-WordCompass2.png",
     "alt": "Word Compass - Neon Bağlantı İzi",
     "title": "Word Compass - Neon Bağlantı İzi",
     "description": "Tuval üzerinde parmağınızı takip eden canlı neon parlama efektleriyle harf bağlama görseli.",
@@ -154,7 +154,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-2-main2-png",
-    "src": "/screens/new-screens/2-main2.png",
+    "src": "/language-box/screens/new-screens/2-main2.png",
     "alt": "CEFR Seviye & Modül Menüsü",
     "title": "CEFR Seviye & Modül Menüsü",
     "description": "A1 Başlangıçtan C2 Ustalığa kadar seviye ve 7 oyun modülü seçim menüsü.",
@@ -169,7 +169,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-3-stats1-png",
-    "src": "/screens/new-screens/3-stats1.png",
+    "src": "/language-box/screens/new-screens/3-stats1.png",
     "alt": "Günlük Seri & Kelime Sayacı",
     "title": "Günlük Seri & Kelime Sayacı",
     "description": "Öğrenilen kelimelerin sayısı, günlük pratik serisi (streak) ve kazanılan başarı puanları.",
@@ -184,7 +184,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-4-stats2-png",
-    "src": "/screens/new-screens/4-stats2.png",
+    "src": "/language-box/screens/new-screens/4-stats2.png",
     "alt": "CEFR Seviye İlerleme Radarı",
     "title": "CEFR Seviye İlerleme Radarı",
     "description": "A1, A2, B1, B2, C1, C2 düzeylerinde kelime dağarcığı ve dilbilgisi yetkinlik grafiği.",
@@ -199,7 +199,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-5-stats3-png",
-    "src": "/screens/new-screens/5-stats3.png",
+    "src": "/language-box/screens/new-screens/5-stats3.png",
     "alt": "Oyun Bazlı Başarı & Doğruluk Oranı",
     "title": "Oyun Bazlı Başarı & Doğruluk Oranı",
     "description": "7 farklı oyun modülündeki doğru/yanlış cevap oranları ve rekor puanlar tablosu.",
@@ -214,7 +214,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-6-setting-png",
-    "src": "/screens/new-screens/6-setting.png",
+    "src": "/language-box/screens/new-screens/6-setting.png",
     "alt": "10 Özelleştirilebilir Renk Teması",
     "title": "10 Özelleştirilebilir Renk Teması",
     "description": "Sunset Dark, Mint Fresh, Neon Dark, Midnight Ocean ve 10 farklı göz yormayan tema seçimi.",
@@ -229,7 +229,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-7-1-game-png",
-    "src": "/screens/new-screens/7-1-game.png",
+    "src": "/language-box/screens/new-screens/7-1-game.png",
     "alt": "Oyun Seçim Menü Ekranı (Sunset Dark)",
     "title": "Oyun Seçim Menüsü (Sunset Dark)",
     "description": "7 bilişsel oyun modülünün listelendiği yüksek kontrastlı Sunset Dark menü arayüzü.",
@@ -244,7 +244,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-7-2-game-png",
-    "src": "/screens/new-screens/7-2-game.png",
+    "src": "/language-box/screens/new-screens/7-2-game.png",
     "alt": "Oyun Seçim Menü Ekranı (Mint Fresh)",
     "title": "Oyun Seçim Menüsü (Mint Fresh)",
     "description": "7 bilişsel oyun kartlarının ferah Mint Fresh temasıyla sunulduğu seçim ekranı.",
@@ -259,7 +259,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-8-about1-png",
-    "src": "/screens/new-screens/8-about1.png",
+    "src": "/language-box/screens/new-screens/8-about1.png",
     "alt": "Uygulama Hakkında & Sürüm 1.3.2",
     "title": "Uygulama Hakkında & Sürüm Bilgisi",
     "description": "Wixtory Language Box v1.3.2 sürüm notları, yenilikler ve geliştirici bilgisi.",
@@ -274,7 +274,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-8-about2-png",
-    "src": "/screens/new-screens/8-about2.png",
+    "src": "/language-box/screens/new-screens/8-about2.png",
     "alt": "Uygulama Hakkında & Sürüm 1.3.2",
     "title": "Geliştirici & Lisans Bilgileri",
     "description": "Wixtory Soft geliştirici künyesi, gizlilik politikası ve yasal bilgiler.",
@@ -289,7 +289,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-9-scrambledwordgame1-png",
-    "src": "/screens/new-screens/9-scrambledWordGame1.png",
+    "src": "/language-box/screens/new-screens/9-scrambledWordGame1.png",
     "alt": "Scrambled Word (Karışık Kelime)",
     "title": "Scrambled Word (Karışık Kelime)",
     "description": "60 saniyelik geri sayıma karşı dağınık harfleri kutulara doğru sırayla yerleştirerek imlayı pekiştirme.",
@@ -304,7 +304,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-9-scrambledwordgame2-png",
-    "src": "/screens/new-screens/9-scrambledWordGame2.png",
+    "src": "/language-box/screens/new-screens/9-scrambledWordGame2.png",
     "alt": "Scrambled Word (Karışık Kelime)",
     "title": "Scrambled Word (Karışık Kelime)",
     "description": "60 saniyelik geri sayıma karşı dağınık harfleri kutulara doğru sırayla yerleştirerek imlayı pekiştirme.",
@@ -319,7 +319,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-about1-png",
-    "src": "/screens/new-screens/about1.png",
+    "src": "/language-box/screens/new-screens/about1.png",
     "alt": "Uygulama Hakkında & Sürüm 1.3.2",
     "title": "Uygulama Hakkında Sayfası",
     "description": "Sürüm v1.3.2 teknik altyapı detayları, mimari bilgiler ve iletişim bağlantıları.",
@@ -334,7 +334,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-about2-png",
-    "src": "/screens/new-screens/about2.png",
+    "src": "/language-box/screens/new-screens/about2.png",
     "alt": "Uygulama Hakkında & Sürüm 1.3.2",
     "title": "İletişim & Sosyal Medya Bağlantıları",
     "description": "Destek kanalları, YouTube kanalı ve geliştirici topluluk bağlantıları.",
@@ -349,7 +349,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-game-screen1-png",
-    "src": "/screens/new-screens/game-screen1.png",
+    "src": "/language-box/screens/new-screens/game-screen1.png",
     "alt": "Oyun Seçim Menü Ekranı (Sunset Dark)",
     "title": "Oyun Seçim Menü Ekranı (Koyu Mod)",
     "description": "Word Compass, Word Matrix, Sentence Builder ve diğer tüm oyun modüllerinin seçim kartları.",
@@ -364,7 +364,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-game-screen2-png",
-    "src": "/screens/new-screens/game-screen2.png",
+    "src": "/language-box/screens/new-screens/game-screen2.png",
     "alt": "Oyun Seçim Menü Ekranı (Mint Fresh)",
     "title": "Oyun Seçim Menü Ekranı (Açık Mod)",
     "description": "Açık ve ferah renk şemasında 7 oyun modülünün seviye bazlı seçim gridi.",
@@ -379,7 +379,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-help-png",
-    "src": "/screens/new-screens/help.png",
+    "src": "/language-box/screens/new-screens/help.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Oyun Kuralları & Yardım Rehberi",
     "description": "Tüm oyun mekaniklerinin adım adım nasıl oynandığını anlatan interaktif kılavuz.",
@@ -394,7 +394,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-listen-word-1-ja-png",
-    "src": "/screens/new-screens/listen-word-1-ja.png",
+    "src": "/language-box/screens/new-screens/listen-word-1-ja.png",
     "alt": "Listen Word (Japonca İşitsel Tanıma)",
     "title": "Listen Word (Japonca İşitsel Tanıma)",
     "description": "Yerel Japonca sesli telaffuzu dinleyip doğru hece ve Kanji/Kana karşılığını bulma çalışması.",
@@ -409,7 +409,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-listen-word-2-ja-png",
-    "src": "/screens/new-screens/listen-word-2-ja.png",
+    "src": "/language-box/screens/new-screens/listen-word-2-ja.png",
     "alt": "Listen Word (Japonca İşitsel Tanıma)",
     "title": "Listen Word (Japonca İşitsel Tanıma)",
     "description": "Yerel Japonca sesli telaffuzu dinleyip doğru hece ve Kanji/Kana karşılığını bulma çalışması.",
@@ -424,7 +424,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-listen-word-3-ja-png",
-    "src": "/screens/new-screens/listen-word-3-ja.png",
+    "src": "/language-box/screens/new-screens/listen-word-3-ja.png",
     "alt": "Listen Word (Japonca İşitsel Tanıma)",
     "title": "Listen Word (Japonca İşitsel Tanıma)",
     "description": "Yerel Japonca sesli telaffuzu dinleyip doğru hece ve Kanji/Kana karşılığını bulma çalışması.",
@@ -439,7 +439,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-listen-word-helper1-png",
-    "src": "/screens/new-screens/listen-word-helper1.png",
+    "src": "/language-box/screens/new-screens/listen-word-helper1.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Listen Word Yardım Kılavuzu (1)",
     "description": "Dinle ve Yaz oyununda ses butonunu kullanma ve doğru yazım adımları.",
@@ -454,7 +454,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-listen-word-helper2-png",
-    "src": "/screens/new-screens/listen-word-helper2.png",
+    "src": "/language-box/screens/new-screens/listen-word-helper2.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Listen Word Yardım Kılavuzu (2)",
     "description": "Telaffuz ipuçları, harf silme ve onaylama kontrollerinin açıklaması.",
@@ -469,7 +469,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-listen-word-hint-ja-png",
-    "src": "/screens/new-screens/listen-word-hint-ja.png",
+    "src": "/language-box/screens/new-screens/listen-word-hint-ja.png",
     "alt": "Listen Word - İşitsel İpuçları",
     "title": "Listen Word - İşitsel İpuçları",
     "description": "Sesi yavaşlatılmış hızda tekrar dinleme ve kelime uzunluğu ipuçları alma paneli.",
@@ -484,7 +484,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-listen-word-hint-png",
-    "src": "/screens/new-screens/listen-word-hint.png",
+    "src": "/language-box/screens/new-screens/listen-word-hint.png",
     "alt": "Listen Word - İşitsel İpuçları",
     "title": "Listen Word - İşitsel İpuçları",
     "description": "Sesi yavaşlatılmış hızda tekrar dinleme ve kelime uzunluğu ipuçları alma paneli.",
@@ -499,7 +499,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-listen-word-success-ja-png",
-    "src": "/screens/new-screens/listen-word-success-ja.png",
+    "src": "/language-box/screens/new-screens/listen-word-success-ja.png",
     "alt": "Listen Word - Telaffuz Doğrulandı",
     "title": "Listen Word - Telaffuz Doğrulandı",
     "description": "İşitilen kelimenin harf harf doğru yazılmasıyla kazanılan puan ve seviye geçiş ekranı.",
@@ -514,7 +514,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-listen-word-success-png",
-    "src": "/screens/new-screens/listen-word-success.png",
+    "src": "/language-box/screens/new-screens/listen-word-success.png",
     "alt": "Listen Word - Telaffuz Doğrulandı",
     "title": "Listen Word - Telaffuz Doğrulandı",
     "description": "İşitilen kelimenin harf harf doğru yazılmasıyla kazanılan puan ve seviye geçiş ekranı.",
@@ -529,7 +529,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-listen-word1-png",
-    "src": "/screens/new-screens/listen-word1.png",
+    "src": "/language-box/screens/new-screens/listen-word1.png",
     "alt": "Listen Word (Dinle ve Yaz)",
     "title": "Listen Word (Dinle ve Yaz)",
     "description": "Yerel Text-to-Speech motorunun okuduğu telaffuzu dinleyerek kelimeyi harf harf yazma ve işitsel anlama.",
@@ -544,7 +544,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-listen-word2-png",
-    "src": "/screens/new-screens/listen-word2.png",
+    "src": "/language-box/screens/new-screens/listen-word2.png",
     "alt": "Listen Word (Dinle ve Yaz)",
     "title": "Listen Word (Dinle ve Yaz)",
     "description": "Yerel Text-to-Speech motorunun okuduğu telaffuzu dinleyerek kelimeyi harf harf yazma ve işitsel anlama.",
@@ -559,7 +559,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-match-sentence-1-ja-png",
-    "src": "/screens/new-screens/match-sentence-1-ja.png",
+    "src": "/language-box/screens/new-screens/match-sentence-1-ja.png",
     "alt": "Match Sentence (Japonca Eşleştirme)",
     "title": "Match Sentence (Japonca Eşleştirme)",
     "description": "Japonca kalıp ve diyalog cümlelerini Türkçe/İngilizce karşılıklarıyla çift sütunda eşleştirme.",
@@ -574,7 +574,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-match-sentence-correct1-png",
-    "src": "/screens/new-screens/match-sentence-correct1.png",
+    "src": "/language-box/screens/new-screens/match-sentence-correct1.png",
     "alt": "Match Sentence - Doğru Eşleşme Onayı",
     "title": "Match Sentence - Doğru Eşleşme Onayı",
     "description": "Doğru eşleşen cümle çiftlerinin yeşil parlamayla onaylanıp listeden temizlenmesi anı.",
@@ -589,7 +589,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-match-sentence-helper-png",
-    "src": "/screens/new-screens/match-sentence-helper.png",
+    "src": "/language-box/screens/new-screens/match-sentence-helper.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Match Sentence Yardım Kılavuzu",
     "description": "Cümle ve anlam eşleştirme kuralları, puanlama ve süre yönetimi.",
@@ -604,7 +604,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-match-sentence-success-ja-png",
-    "src": "/screens/new-screens/match-sentence-success-ja.png",
+    "src": "/language-box/screens/new-screens/match-sentence-success-ja.png",
     "alt": "Match Sentence - Doğru Eşleşme Onayı",
     "title": "Match Sentence - Doğru Eşleşme Onayı",
     "description": "Doğru eşleşen cümle çiftlerinin yeşil parlamayla onaylanıp listeden temizlenmesi anı.",
@@ -619,7 +619,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-match-sentence1-png",
-    "src": "/screens/new-screens/match-sentence1.png",
+    "src": "/language-box/screens/new-screens/match-sentence1.png",
     "alt": "Match Sentence (Cümle Eşleştirme)",
     "title": "Match Sentence (Cümle Eşleştirme)",
     "description": "İki sütun halinde verilen yabancı dil cümlelerini ve kendi dilinizdeki karşılıklarını anında eşleştirme.",
@@ -634,7 +634,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-match-sentence2-png",
-    "src": "/screens/new-screens/match-sentence2.png",
+    "src": "/language-box/screens/new-screens/match-sentence2.png",
     "alt": "Match Sentence (Cümle Eşleştirme)",
     "title": "Match Sentence (Cümle Eşleştirme)",
     "description": "İki sütun halinde verilen yabancı dil cümlelerini ve kendi dilinizdeki karşılıklarını anında eşleştirme.",
@@ -649,7 +649,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-reset-progress1-png",
-    "src": "/screens/new-screens/reset-progress1.png",
+    "src": "/language-box/screens/new-screens/reset-progress1.png",
     "alt": "Modül Bazlı İlerleme Sıfırlama",
     "title": "İlerleme Sıfırlama Menüsü",
     "description": "İster tüm ilerlemeyi, ister tek bir oyun modülünü sıfırlama seçeneği.",
@@ -664,7 +664,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-reset-progress2-png",
-    "src": "/screens/new-screens/reset-progress2.png",
+    "src": "/language-box/screens/new-screens/reset-progress2.png",
     "alt": "Modül Bazlı İlerleme Sıfırlama",
     "title": "Modül Bazlı Sıfırlama Onayı",
     "description": "Belirli bir CEFR seviyesi veya oyun için ilerleme temizleme onay diyalogu.",
@@ -679,7 +679,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-scrambled-word-1-ja-png",
-    "src": "/screens/new-screens/scrambled-word-1-ja.png",
+    "src": "/language-box/screens/new-screens/scrambled-word-1-ja.png",
     "alt": "Scrambled Word (Japonca Kana Dizimi)",
     "title": "Scrambled Word (Japonca Kana Dizimi)",
     "description": "Karışık Hiragana ve Katakana karakterlerini doğru hece sırasına dizerek kelime oluşturma.",
@@ -694,7 +694,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-scrambled-word-1-png",
-    "src": "/screens/new-screens/scrambled-word-1.png",
+    "src": "/language-box/screens/new-screens/scrambled-word-1.png",
     "alt": "Scrambled Word (Karışık Kelime)",
     "title": "Scrambled Word (Karışık Kelime)",
     "description": "60 saniyelik geri sayıma karşı dağınık harfleri kutulara doğru sırayla yerleştirerek imlayı pekiştirme.",
@@ -709,7 +709,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-scrambled-word-2-png",
-    "src": "/screens/new-screens/scrambled-word-2.png",
+    "src": "/language-box/screens/new-screens/scrambled-word-2.png",
     "alt": "Scrambled Word (Karışık Kelime)",
     "title": "Scrambled Word (Karışık Kelime)",
     "description": "60 saniyelik geri sayıma karşı dağınık harfleri kutulara doğru sırayla yerleştirerek imlayı pekiştirme.",
@@ -724,7 +724,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-scrambled-word-3-png",
-    "src": "/screens/new-screens/scrambled-word-3.png",
+    "src": "/language-box/screens/new-screens/scrambled-word-3.png",
     "alt": "Scrambled Word (Karışık Kelime)",
     "title": "Scrambled Word (Karışık Kelime)",
     "description": "60 saniyelik geri sayıma karşı dağınık harfleri kutulara doğru sırayla yerleştirerek imlayı pekiştirme.",
@@ -739,7 +739,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-scrambled-word-helper1-png",
-    "src": "/screens/new-screens/scrambled-word-helper1.png",
+    "src": "/language-box/screens/new-screens/scrambled-word-helper1.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Scrambled Word Yardım Kılavuzu (1)",
     "description": "Karışık harfleri kutulara doğru sırayla yerleştirme mekaniği.",
@@ -754,7 +754,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-scrambled-word-helper2-png",
-    "src": "/screens/new-screens/scrambled-word-helper2.png",
+    "src": "/language-box/screens/new-screens/scrambled-word-helper2.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Scrambled Word Yardım Kılavuzu (2)",
     "description": "İpucu diyalogu kullanımı ve harf karıştırma butonları rehberi.",
@@ -769,7 +769,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-scrambled-word-helper3-png",
-    "src": "/screens/new-screens/scrambled-word-helper3.png",
+    "src": "/language-box/screens/new-screens/scrambled-word-helper3.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Scrambled Word Yardım Kılavuzu (3)",
     "description": "Tamamlanan kelime sonrasında anlam kartı ve sesli telaffuz dinleme.",
@@ -784,7 +784,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-scrambled-word-hint-ja-png",
-    "src": "/screens/new-screens/scrambled-word-hint-ja.png",
+    "src": "/language-box/screens/new-screens/scrambled-word-hint-ja.png",
     "alt": "Scrambled Word - Modern Hint Dialog",
     "title": "Scrambled Word - Modern Hint Dialog",
     "description": "Kelimelerin anlam tanımlarını ve fonetik ilk harf çapasını açan modern animasyonlu ipucu penceresi.",
@@ -799,7 +799,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-scrambled-word-hint-png",
-    "src": "/screens/new-screens/scrambled-word-hint.png",
+    "src": "/language-box/screens/new-screens/scrambled-word-hint.png",
     "alt": "Scrambled Word - Modern Hint Dialog",
     "title": "Scrambled Word - Modern Hint Dialog",
     "description": "Kelimelerin anlam tanımlarını ve fonetik ilk harf çapasını açan modern animasyonlu ipucu penceresi.",
@@ -814,7 +814,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-scrambled-word-hint2-png",
-    "src": "/screens/new-screens/scrambled-word-hint2.png",
+    "src": "/language-box/screens/new-screens/scrambled-word-hint2.png",
     "alt": "Scrambled Word - Modern Hint Dialog",
     "title": "Scrambled Word - Modern Hint Dialog",
     "description": "Kelimelerin anlam tanımlarını ve fonetik ilk harf çapasını açan modern animasyonlu ipucu penceresi.",
@@ -829,7 +829,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-scrambled-word-success-png",
-    "src": "/screens/new-screens/scrambled-word-success.png",
+    "src": "/language-box/screens/new-screens/scrambled-word-success.png",
     "alt": "Scrambled Word - Kelime Çözüldü",
     "title": "Scrambled Word - Kelime Çözüldü",
     "description": "Kelimenin doğru yazılışını tamamlama, deneyim puanı kazanma ve günlük seriyi büyütme.",
@@ -844,7 +844,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-sentence-builder-1-ja-png",
-    "src": "/screens/new-screens/sentence-builder-1-ja.png",
+    "src": "/language-box/screens/new-screens/sentence-builder-1-ja.png",
     "alt": "Sentence Builder (Japonca Sözdizimi)",
     "title": "Sentence Builder (Japonca Sözdizimi)",
     "description": "Japonca Özne-Nesne-Yüklem (SOV) yapısını ve edat parçacıklarını bloklarla kurma pratiği.",
@@ -859,7 +859,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-sentence-builder-2-ja-png",
-    "src": "/screens/new-screens/sentence-builder-2-ja.png",
+    "src": "/language-box/screens/new-screens/sentence-builder-2-ja.png",
     "alt": "Sentence Builder (Japonca Sözdizimi)",
     "title": "Sentence Builder (Japonca Sözdizimi)",
     "description": "Japonca Özne-Nesne-Yüklem (SOV) yapısını ve edat parçacıklarını bloklarla kurma pratiği.",
@@ -874,7 +874,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-sentence-builder-3-ja-png",
-    "src": "/screens/new-screens/sentence-builder-3-ja.png",
+    "src": "/language-box/screens/new-screens/sentence-builder-3-ja.png",
     "alt": "Sentence Builder (Japonca Sözdizimi)",
     "title": "Sentence Builder (Japonca Sözdizimi)",
     "description": "Japonca Özne-Nesne-Yüklem (SOV) yapısını ve edat parçacıklarını bloklarla kurma pratiği.",
@@ -889,7 +889,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-sentence-builder-helper-ja-png",
-    "src": "/screens/new-screens/sentence-builder-helper-ja.png",
+    "src": "/language-box/screens/new-screens/sentence-builder-helper-ja.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Kapsamlı Oyun Kuralları & Rehber",
     "description": "7 oyunun puanlama mekanikleri, ipucu sistemi ve pedagojik hedeflerini açıklayan kılavuz.",
@@ -904,7 +904,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-sentence-builder-helper1-png",
-    "src": "/screens/new-screens/sentence-builder-helper1.png",
+    "src": "/language-box/screens/new-screens/sentence-builder-helper1.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Sentence Builder Yardım Kılavuzu (1)",
     "description": "Cümle bloklarını sürükleyip doğru dilbilgisi sırasına dizme rehberi.",
@@ -919,7 +919,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-sentence-builder-helper2-png",
-    "src": "/screens/new-screens/sentence-builder-helper2.png",
+    "src": "/language-box/screens/new-screens/sentence-builder-helper2.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Sentence Builder Yardım Kılavuzu (2)",
     "description": "Hata durumunda titreşimli geri bildirim ve blok sırasını düzeltme.",
@@ -934,7 +934,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-sentence-builder-helper3-png",
-    "src": "/screens/new-screens/sentence-builder-helper3.png",
+    "src": "/language-box/screens/new-screens/sentence-builder-helper3.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Sentence Builder Yardım Kılavuzu (3)",
     "description": "Cümle tamamlandığında hedef dilde otomatik sesli okuma mekaniği.",
@@ -949,7 +949,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-sentence-builder-success-png",
-    "src": "/screens/new-screens/sentence-builder-success.png",
+    "src": "/language-box/screens/new-screens/sentence-builder-success.png",
     "alt": "Sentence Builder - Sesli Telaffuz Zaferi",
     "title": "Sentence Builder - Sesli Telaffuz Zaferi",
     "description": "Cümle kusursuz kurulduğunda cümlenin tamamının yerel aksanla otomatik olarak okunması.",
@@ -964,7 +964,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-sentence-builder1-png",
-    "src": "/screens/new-screens/sentence-builder1.png",
+    "src": "/language-box/screens/new-screens/sentence-builder1.png",
     "alt": "Sentence Builder (Cümle Kurucu)",
     "title": "Sentence Builder (Cümle Kurucu)",
     "description": "Karışık dizilmiş dilbilgisi bloklarını sürükleyip doğru sıraya dizerek gramer refleksini geliştirme.",
@@ -979,7 +979,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-sentence-builder2-png",
-    "src": "/screens/new-screens/sentence-builder2.png",
+    "src": "/language-box/screens/new-screens/sentence-builder2.png",
     "alt": "Sentence Builder (Cümle Kurucu)",
     "title": "Sentence Builder (Cümle Kurucu)",
     "description": "Karışık dizilmiş dilbilgisi bloklarını sürükleyip doğru sıraya dizerek gramer refleksini geliştirme.",
@@ -994,7 +994,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-sentence-completion-helper1-png",
-    "src": "/screens/new-screens/sentence-completion-helper1.png",
+    "src": "/language-box/screens/new-screens/sentence-completion-helper1.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Sentence Completion Yardım Kılavuzu (1)",
     "description": "Cümledeki boşluğa gelecek en uygun kelimeyi seçme rehberi.",
@@ -1009,7 +1009,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-sentence-completion-helper2-png",
-    "src": "/screens/new-screens/sentence-completion-helper2.png",
+    "src": "/language-box/screens/new-screens/sentence-completion-helper2.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Sentence Completion Yardım Kılavuzu (2)",
     "description": "Gramer ve bağlam ipuçlarını okuyarak doğru şıkkı işaretleme adımları.",
@@ -1024,7 +1024,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-sentence-completion-helper3-ja-png",
-    "src": "/screens/new-screens/sentence-completion-helper3-ja.png",
+    "src": "/language-box/screens/new-screens/sentence-completion-helper3-ja.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Kapsamlı Oyun Kuralları & Rehber",
     "description": "7 oyunun puanlama mekanikleri, ipucu sistemi ve pedagojik hedeflerini açıklayan kılavuz.",
@@ -1039,7 +1039,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-sentence-completion-success-ja-png",
-    "src": "/screens/new-screens/sentence-completion-success-ja.png",
+    "src": "/language-box/screens/new-screens/sentence-completion-success-ja.png",
     "alt": "Sentence Completion - Doğru Tamamlama",
     "title": "Sentence Completion - Doğru Tamamlama",
     "description": "Doğru seçeneği yerleştirerek seviyeyi tamamlama ve puan kazanma ekranı.",
@@ -1054,7 +1054,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-sentence-completion1-png",
-    "src": "/screens/new-screens/sentence-completion1.png",
+    "src": "/language-box/screens/new-screens/sentence-completion1.png",
     "alt": "Sentence Completion (Cümle Tamamlama)",
     "title": "Sentence Completion (Cümle Tamamlama)",
     "description": "Cümle içindeki boşluğa gelebilecek en uygun kelimeyi veya gramer kalıbını bağlamdan çıkarma alıştırması.",
@@ -1069,7 +1069,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-sentence-completion2-png",
-    "src": "/screens/new-screens/sentence-completion2.png",
+    "src": "/language-box/screens/new-screens/sentence-completion2.png",
     "alt": "Sentence Completion (Cümle Tamamlama)",
     "title": "Sentence Completion (Cümle Tamamlama)",
     "description": "Cümle içindeki boşluğa gelebilecek en uygun kelimeyi veya gramer kalıbını bağlamdan çıkarma alıştırması.",
@@ -1084,7 +1084,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-setting1-png",
-    "src": "/screens/new-screens/setting1.png",
+    "src": "/language-box/screens/new-screens/setting1.png",
     "alt": "10 Özelleştirilebilir Renk Teması",
     "title": "Tema & Görsel Tercihler Paneli",
     "description": "Kullanıcı arayüzü renk paletleri ve yüksek kontrastlı tema seçenekleri.",
@@ -1099,7 +1099,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-setting2-change-language-png",
-    "src": "/screens/new-screens/setting2-change-language.png",
+    "src": "/language-box/screens/new-screens/setting2-change-language.png",
     "alt": "10 Dünya Dili Seçim Paneli",
     "title": "10 Dünya Dili Seçim Paneli",
     "description": "İngilizce, Almanca, İspanyolca, Fransızca, İtalyanca, Rusça, Japonca ve daha fazlası.",
@@ -1114,7 +1114,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-setting3-change-language-png",
-    "src": "/screens/new-screens/setting3-change-language.png",
+    "src": "/language-box/screens/new-screens/setting3-change-language.png",
     "alt": "10 Dünya Dili Seçim Paneli",
     "title": "Öğrenilen Dil ve Arayüz Dili Seçimi",
     "description": "Hedef öğrenme dili ile ana dili ayrı ayrı yapılandırma menüsü.",
@@ -1129,7 +1129,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-stats2-png",
-    "src": "/screens/new-screens/stats2.png",
+    "src": "/language-box/screens/new-screens/stats2.png",
     "alt": "CEFR Seviye İlerleme Radarı",
     "title": "CEFR Seviye İlerleme Radarı (Detay)",
     "description": "Avrupa Ortak Dil Çerçevesi standartlarında beceri dağılımı ve seviye tamamlama yüzdesi.",
@@ -1144,7 +1144,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-stats3-png",
-    "src": "/screens/new-screens/stats3.png",
+    "src": "/language-box/screens/new-screens/stats3.png",
     "alt": "Oyun Bazlı Başarı & Doğruluk Oranı",
     "title": "Oyun Bazlı Başarı & Doğruluk Oranı",
     "description": "Bilişsel oyun mekaniklerindeki refleks süreleri ve hata analizi dökümü.",
@@ -1159,7 +1159,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-stats4-png",
-    "src": "/screens/new-screens/stats4.png",
+    "src": "/language-box/screens/new-screens/stats4.png",
     "alt": "Hafıza Kalıcılığı & Aralıklı Tekrar",
     "title": "Hafıza Kalıcılığı & Aralıklı Tekrar",
     "description": "Aralıklı tekrar algoritması ile hafızaya alınan kelimelerin unutulma eğrisi takibi.",
@@ -1174,7 +1174,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-stats5-png",
-    "src": "/screens/new-screens/stats5.png",
+    "src": "/language-box/screens/new-screens/stats5.png",
     "alt": "Hafıza Kalıcılığı & Aralıklı Tekrar",
     "title": "Hafıza Kalıcılığı & Uzun Vadeli Bellek",
     "description": "Kalıcı hafızaya aktarılan kelimelerin zamana bağlı pekiştirme skorları.",
@@ -1189,7 +1189,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-word-compass-1-png",
-    "src": "/screens/new-screens/word-compass-1.png",
+    "src": "/language-box/screens/new-screens/word-compass-1.png",
     "alt": "Word Compass (360° Dairesel Harf Çarkı)",
     "title": "Word Compass (360° Dairesel Harf Çarkı)",
     "description": "Dairesel harf çarkında sürekli parmak sürükleme hareketiyle radyal harfleri birleştirip kelime üretme.",
@@ -1204,7 +1204,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-word-compass-2-png",
-    "src": "/screens/new-screens/word-compass-2.png",
+    "src": "/language-box/screens/new-screens/word-compass-2.png",
     "alt": "Word Compass - Neon Bağlantı İzi",
     "title": "Word Compass - Neon Bağlantı İzi",
     "description": "Tuval üzerinde parmağınızı takip eden canlı neon parlama efektleriyle harf bağlama görseli.",
@@ -1219,7 +1219,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-word-compass-helper-png",
-    "src": "/screens/new-screens/word-compass-helper.png",
+    "src": "/language-box/screens/new-screens/word-compass-helper.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Word Compass Yardım Kılavuzu (1)",
     "description": "360 derece pusula çemberinde harfleri parmakla birleştirme rehberi.",
@@ -1234,7 +1234,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-word-compass-helper2-png",
-    "src": "/screens/new-screens/word-compass-helper2.png",
+    "src": "/language-box/screens/new-screens/word-compass-helper2.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Word Compass Yardım Kılavuzu (2)",
     "description": "Geçerli kelimeleri hedef çemberlere yerleştirme ve bonus puanlar.",
@@ -1249,7 +1249,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-word-compass-helper3-png",
-    "src": "/screens/new-screens/word-compass-helper3.png",
+    "src": "/language-box/screens/new-screens/word-compass-helper3.png",
     "alt": "Kapsamlı Oyun Kuralları & Rehber",
     "title": "Word Compass Yardım Kılavuzu (3)",
     "description": "Pusulayı döndürme, harfleri karıştırma ve ipucu haklarını kullanma rehberi.",
@@ -1264,7 +1264,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-word-compass-hint-png",
-    "src": "/screens/new-screens/word-compass-hint.png",
+    "src": "/language-box/screens/new-screens/word-compass-hint.png",
     "alt": "Word Compass - Kademeli İpucu Sistemi",
     "title": "Word Compass - Kademeli İpucu Sistemi",
     "description": "Takıldığınız anlarda akışı bozmadan ilk harfi ve fonetik ipucunu gösteren akıllı yardım penceresi.",
@@ -1279,7 +1279,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-word-compass-hint2-png",
-    "src": "/screens/new-screens/word-compass-hint2.png",
+    "src": "/language-box/screens/new-screens/word-compass-hint2.png",
     "alt": "Word Compass - Kademeli İpucu Sistemi",
     "title": "Word Compass - Kademeli İpucu Sistemi",
     "description": "Takıldığınız anlarda akışı bozmadan ilk harfi ve fonetik ipucunu gösteren akıllı yardım penceresi.",
@@ -1294,7 +1294,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-word-compass-success-png",
-    "src": "/screens/new-screens/word-compass-success.png",
+    "src": "/language-box/screens/new-screens/word-compass-success.png",
     "alt": "Word Compass - Bölüm Zaferi",
     "title": "Word Compass - Bölüm Zaferi",
     "description": "Tüm kelimeleri bulup seviyeyi tamamlama, puan kazanma ve anlık yerel sesli telaffuz dinleme.",
@@ -1309,7 +1309,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-word-matrix-1-png",
-    "src": "/screens/new-screens/word-matrix-1.png",
+    "src": "/language-box/screens/new-screens/word-matrix-1.png",
     "alt": "Word Matrix (Harf Izgarası Kelime Arama)",
     "title": "Word Matrix (Harf Izgarası Kelime Arama)",
     "description": "Karışık harf matrisinde yatay, dikey ve çapraz sürükleme yaparak hedef kelimeleri bulma bulmacası.",
@@ -1324,7 +1324,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-word-matrix-2-png",
-    "src": "/screens/new-screens/word-matrix-2.png",
+    "src": "/language-box/screens/new-screens/word-matrix-2.png",
     "alt": "Word Matrix - Çapraz Harf Seçimi",
     "title": "Word Matrix - Çapraz Harf Seçimi",
     "description": "Çapraz hücreler arasında akıcı sürükleme ile gizlenmiş kelimeleri açığa çıkarma anı.",
@@ -1339,7 +1339,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-word-matrix-3-png",
-    "src": "/screens/new-screens/word-matrix-3.png",
+    "src": "/language-box/screens/new-screens/word-matrix-3.png",
     "alt": "Word Matrix - Yoğun Harf Izgarası",
     "title": "Word Matrix - Yoğun Harf Izgarası",
     "description": "Genişletilmiş harf matrisinde kelimeleri hızla ayırt ederek görsel algıyı güçlendirme.",
@@ -1354,7 +1354,7 @@ export const screenshots: ScreenshotData[] = [
   },
   {
     "id": "screen-word-matrix-success-png",
-    "src": "/screens/new-screens/word-matrix-success.png",
+    "src": "/language-box/screens/new-screens/word-matrix-success.png",
     "alt": "Word Matrix - Tüm Kelimeler Bulundu",
     "title": "Word Matrix - Tüm Kelimeler Bulundu",
     "description": "Matristeki tüm kelimeler temizlendiğinde çıkan zafer ekranı ve görsel başarı animasyonu.",

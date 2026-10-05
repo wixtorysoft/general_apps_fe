@@ -3,8 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { LegalDocument, getAppSpecificLegalDoc } from "@/data/legal-data";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import { LanguageToggle } from "@/components/LanguageToggle";
+import { MainNavbar } from "@/components/MainNavbar";
 import { useLanguage } from "@/context/LanguageContext";
 import {
   Shield,
@@ -306,74 +305,8 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--bg-primary)" }}>
-      {/* Top Navbar */}
-      <nav
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 900,
-          background: "var(--bg-glass)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          borderBottom: "1px solid var(--border-subtle)",
-          padding: "12px 0",
-        }}
-      >
-        <div
-          className="container"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: "12px",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <Link
-              href="/"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                fontSize: "14px",
-                fontWeight: 600,
-                color: "var(--text-main)",
-                textDecoration: "none",
-                transition: "opacity 0.2s ease",
-              }}
-            >
-              <ArrowLeft size={16} />
-              <span>{t("back_to_home")}</span>
-            </Link>
-
-            <Link
-              href="/developer"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "6px",
-                fontSize: "12.5px",
-                fontWeight: 650,
-                color: "var(--text-muted)",
-                textDecoration: "none",
-                padding: "3px 10px",
-                borderRadius: "9999px",
-                backgroundColor: "var(--bg-card)",
-                border: "1px solid var(--border-subtle)",
-              }}
-            >
-              <Code size={13} />
-              <span>Developer (Hacı Celal Aygar)</span>
-            </Link>
-          </div>
-
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <LanguageToggle />
-            <ThemeToggle />
-          </div>
-        </div>
-      </nav>
+      {/* Ecosystem Hub Top Navbar */}
+      <MainNavbar />
 
       {/* Main Content */}
       <main style={{ flex: 1, padding: "36px 0 64px 0" }}>

@@ -196,7 +196,7 @@ export function HeroSection() {
             {/* Floating Image */}
             <div className="dt-floating-logo" style={{ position: "relative", zIndex: 1 }}>
               <Image
-                src="https://raw.githubusercontent.com/celalaygar/main/refs/heads/main/project/wixtory-domain-track/domain-track-logo.png"
+                src="/domain-track/logo.png"
                 alt="Wixtory Domain Track 3D Logo"
                 width={400}
                 height={400}

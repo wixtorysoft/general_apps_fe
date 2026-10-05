@@ -79,7 +79,14 @@ export type TranslationKey =
   | "filter_future"
   | "data_deletion_title"
   | "data_deletion_desc"
-  | "apply_email";
+  | "apply_email"
+  | "coming_soon"
+  | "coming_soon_badge"
+  | "coming_soon_stores"
+  | "live_badge"
+  | "app_store_coming_soon"
+  | "google_play_coming_soon"
+  | "explore_app";
 
 export const TRANSLATIONS: Record<LanguageCode, Record<TranslationKey, string>> = {
   // 1. Türkçe
@@ -152,6 +159,13 @@ export const TRANSLATIONS: Record<LanguageCode, Record<TranslationKey, string>> 
     data_deletion_title: "Veri Sahibi Başvuru ve Silme Talebi",
     data_deletion_desc: "KVKK Madde 11 veya GDPR kapsamında kişisel verilerinizin silinmesini talep etmek için e-posta gönderebilirsiniz.",
     apply_email: "Adresine Başvur",
+    coming_soon: "Çok Yakında",
+    coming_soon_badge: "🚀 Çok Yakında Yayında",
+    coming_soon_stores: "🚀 Çok Yakında App Store & Google Play'de",
+    live_badge: "YAYINDA",
+    app_store_coming_soon: "Coming Soon on the",
+    google_play_coming_soon: "Coming Soon on",
+    explore_app: "Uygulamayı İncele",
   },
 
   // 2. İngilizce
@@ -224,6 +238,13 @@ export const TRANSLATIONS: Record<LanguageCode, Record<TranslationKey, string>> 
     data_deletion_title: "Data Deletion & Rights Request",
     data_deletion_desc: "To exercise your GDPR/KVKK rights or request total data deletion, contact us.",
     apply_email: "Contact via Email",
+    coming_soon: "Coming Soon",
+    coming_soon_badge: "🚀 Coming Soon",
+    coming_soon_stores: "🚀 Coming Soon to App Store & Google Play",
+    live_badge: "LIVE",
+    app_store_coming_soon: "Coming Soon on the",
+    google_play_coming_soon: "Coming Soon on",
+    explore_app: "Explore App",
   },
 
   // 3. İtalyanca
@@ -296,6 +317,13 @@ export const TRANSLATIONS: Record<LanguageCode, Record<TranslationKey, string>> 
     data_deletion_title: "Richiesta Cancellazione Dati",
     data_deletion_desc: "Per esercitare i tuoi diritti GDPR o richiedere la cancellazione dei dati, contattaci.",
     apply_email: "Contatta via Email",
+    coming_soon: "Prossimamente",
+    coming_soon_badge: "🚀 Prossimamente Disponibile",
+    coming_soon_stores: "🚀 Prossimamente su App Store & Google Play",
+    live_badge: "DISPONIBILE",
+    app_store_coming_soon: "Prossimamente su",
+    google_play_coming_soon: "Prossimamente su",
+    explore_app: "Esplora l'App",
   },
 
   // 4. Portekizce
@@ -368,6 +396,13 @@ export const TRANSLATIONS: Record<LanguageCode, Record<TranslationKey, string>> 
     data_deletion_title: "Exclusão de Dados e Direitos",
     data_deletion_desc: "Para exercer seus direitos de exclusão total ou consulta de dados, envie um e-mail.",
     apply_email: "Contatar por E-mail",
+    coming_soon: "Em Breve",
+    coming_soon_badge: "🚀 Em Breve Disponível",
+    coming_soon_stores: "🚀 Em Breve na App Store & Google Play",
+    live_badge: "DISPONÍVEL",
+    app_store_coming_soon: "Em breve na",
+    google_play_coming_soon: "Em breve no",
+    explore_app: "Explorar Aplicativo",
   },
 
   // 5. İspanyolca
@@ -440,6 +475,13 @@ export const TRANSLATIONS: Record<LanguageCode, Record<TranslationKey, string>> 
     data_deletion_title: "Solicitud de Borrado de Datos",
     data_deletion_desc: "Para ejercer tus derechos RGPD o pedir el borrado completo de tus datos, contáctanos.",
     apply_email: "Contactar por Email",
+    coming_soon: "Próximamente",
+    coming_soon_badge: "🚀 Próximamente Disponible",
+    coming_soon_stores: "🚀 Próximamente en App Store & Google Play",
+    live_badge: "DISPONIBLE",
+    app_store_coming_soon: "Próximamente en",
+    google_play_coming_soon: "Próximamente en",
+    explore_app: "Explorar Aplicación",
   },
 
   // 6. Fransızca
@@ -512,6 +554,13 @@ export const TRANSLATIONS: Record<LanguageCode, Record<TranslationKey, string>> 
     data_deletion_title: "Suppression des Données & Droits",
     data_deletion_desc: "Pour exercer vos droits RGPD ou demander la suppression de vos données, écrivez-nous.",
     apply_email: "Contacter par E-mail",
+    coming_soon: "Bientôt Disponible",
+    coming_soon_badge: "🚀 Bientôt Disponible",
+    coming_soon_stores: "🚀 Bientôt sur l'App Store & Google Play",
+    live_badge: "EN LIGNE",
+    app_store_coming_soon: "Bientôt sur",
+    google_play_coming_soon: "Bientôt sur",
+    explore_app: "Découvrir l'App",
   },
 
   // 7. Almanca
@@ -584,6 +633,13 @@ export const TRANSLATIONS: Record<LanguageCode, Record<TranslationKey, string>> 
     data_deletion_title: "Datenlöschung & Betroffenenrechte",
     data_deletion_desc: "Um Ihre DSGVO-Rechte wahrzunehmen oder die vollständige Löschung zu beantragen, schreiben Sie uns.",
     apply_email: "Per E-Mail kontaktieren",
+    coming_soon: "Demnächst",
+    coming_soon_badge: "🚀 Demnächst Verfügbar",
+    coming_soon_stores: "🚀 Demnächst im App Store & bei Google Play",
+    live_badge: "VERFÜGBAR",
+    app_store_coming_soon: "Demnächst im",
+    google_play_coming_soon: "Demnächst bei",
+    explore_app: "App Erkunden",
   },
 
   // 8. Rusça
@@ -656,6 +712,13 @@ export const TRANSLATIONS: Record<LanguageCode, Record<TranslationKey, string>> 
     data_deletion_title: "Запрос на удаление данных",
     data_deletion_desc: "Чтобы воспользоваться правами GDPR или запросить удаление данных, напишите нам.",
     apply_email: "Написать на почту",
+    coming_soon: "Скоро",
+    coming_soon_badge: "🚀 Скоро в Доступе",
+    coming_soon_stores: "🚀 Скоро в App Store и Google Play",
+    live_badge: "ДОСТУПНО",
+    app_store_coming_soon: "Скоро в",
+    google_play_coming_soon: "Скоро в",
+    explore_app: "Подробнее о приложении",
   },
 
   // 9. Japonca
@@ -728,6 +791,13 @@ export const TRANSLATIONS: Record<LanguageCode, Record<TranslationKey, string>> 
     data_deletion_title: "データ削除＆権利請求",
     data_deletion_desc: "GDPR等に基づく個人データの確認や完全削除をご希望の場合はご連絡ください。",
     apply_email: "メールで問い合わせ",
+    coming_soon: "近日公開",
+    coming_soon_badge: "🚀 まもなく公開",
+    coming_soon_stores: "🚀 App Store & Google Play にて近日公開",
+    live_badge: "配信中",
+    app_store_coming_soon: "近日公開",
+    google_play_coming_soon: "近日公開",
+    explore_app: "アプリを見る",
   },
 
   // 10. Çince
@@ -800,6 +870,13 @@ export const TRANSLATIONS: Record<LanguageCode, Record<TranslationKey, string>> 
     data_deletion_title: "数据删除与权利申请",
     data_deletion_desc: "如需行使 GDPR 权利或申请彻底删除个人数据，请发送邮件与我们联系。",
     apply_email: "发送邮件申请",
+    coming_soon: "即将推出",
+    coming_soon_badge: "🚀 即将正式上线",
+    coming_soon_stores: "🚀 即将在 App Store 和 Google Play 推出",
+    live_badge: "已上线",
+    app_store_coming_soon: "即将上线",
+    google_play_coming_soon: "即将上线",
+    explore_app: "探索应用",
   },
 
   // 11. Arapça (RTL)
@@ -872,5 +949,12 @@ export const TRANSLATIONS: Record<LanguageCode, Record<TranslationKey, string>> 
     data_deletion_title: "طلب حذف البيانات والحقوق",
     data_deletion_desc: "لممارسة حقوقك في الخصوصية أو طلب الحذف الكامل للبيانات، راسلنا.",
     apply_email: "طلب عبر البريد",
+    coming_soon: "قريباً",
+    coming_soon_badge: "🚀 قريباً جداً",
+    coming_soon_stores: "🚀 قريباً على App Store و Google Play",
+    live_badge: "متاح الآن",
+    app_store_coming_soon: "قريباً على",
+    google_play_coming_soon: "قريباً على",
+    explore_app: "استكشف التطبيق",
   },
 };

@@ -123,7 +123,7 @@ export function MainFooter() {
             © {new Date().getFullYear()} Wixtory Ecosystem. {isTr ? "Tüm hakları saklıdır." : "All rights reserved."}
           </div>
           <div>
-            {isTr ? "60 FPS Flutter & Sıfır-Telemetri Gizlilik Standartları" : "60 FPS Flutter & Zero-Telemetry Privacy Standards"}
+            {isTr ? "Flutter & Sıfır-Telemetri Gizlilik Standartları" : "Flutter & Zero-Telemetry Privacy Standards"}
           </div>
         </div>
       </div>

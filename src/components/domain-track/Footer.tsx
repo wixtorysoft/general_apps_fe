@@ -61,7 +61,7 @@ export function Footer() {
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
               <Image
-                src="https://raw.githubusercontent.com/celalaygar/main/refs/heads/main/project/wixtory-domain-track/0-logo.png"
+                src="/domain-track/logo.png"
                 alt="Wixtory Domain Track"
                 width={40}
                 height={40}
