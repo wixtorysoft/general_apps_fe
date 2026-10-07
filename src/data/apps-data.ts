@@ -101,7 +101,7 @@ export const APPS_DATA: AppModel[] = [
       },
       {
         title: "%100 Cihaz İçi Gizlilik & Sıfır Üyelik",
-        problem: "Çoğu eğitim uygulaması e-posta, telefon ve kişisel profil oluşturmayı zorunlu kılar.",
+        problem: "Çoğu eğitim uygulaması hesap açmayı ve kişisel profil oluşturmayı zorunlu kılar.",
         solution: "Language Box'ta üyelik yoktur. Oyun skorlarınız ve seviyeniz yalnızca cihazınızın yerel önbelleğinde saklanır.",
         iconName: "Shield",
       },
@@ -225,7 +225,7 @@ export const APPS_DATA: AppModel[] = [
       },
     ],
     privacyHighlights: [
-      "Kullanıcı hesabı oluşturmanız, ad veya e-posta girmeniz kesinlikle gerekmez.",
+      "Kullanıcı hesabı veya profil oluşturmanız kesinlikle gerekmez.",
       "Oyun ilerlemeniz ve istatistikleriniz tamamen cihazınızın yerel önbelleğinde (Cache Service) saklanır.",
       "İstediğiniz zaman ayarlar menüsündeki 'Önbelleği Temizle' butonuyla tüm ilerlemenizi kalıcı olarak silebilirsiniz.",
     ],
@@ -408,7 +408,7 @@ export const APPS_DATA: AppModel[] = [
     ],
     privacyHighlights: [
       "Aradığınız veya favorilediğiniz hiçbir alan adı harici sunucularda toplanmaz.",
-      "Kişisel kullanıcı hesabı açmanız veya e-posta girmeniz kesinlikle gerekmez.",
+      "Kişisel kullanıcı hesabı açmanız kesinlikle gerekmez.",
       "İstediğiniz an uygulama ayarlarından 'Önbelleği Temizle' butonuyla tüm verileri silebilirsiniz.",
     ],
   },
