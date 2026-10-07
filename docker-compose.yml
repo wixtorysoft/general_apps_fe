@@ -24,10 +24,10 @@ services:
     container_name: general_apps_fe
     restart: always
     ports:
-      - "5113:5113"
+      - "5107:5107"
     environment:
       - NODE_ENV=production
-      - PORT=5113
+      - PORT=5107
       - HOSTNAME=0.0.0.0
     networks:
       - wixtory_network

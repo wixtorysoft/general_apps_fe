@@ -33,7 +33,7 @@ WORKDIR /app
 
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
-ENV PORT 5113
+ENV PORT 5107
 ENV HOSTNAME "0.0.0.0"
 
 # Güvenlik için kök olmayan (non-root) kullanıcı oluşturuyoruz
@@ -50,7 +50,7 @@ RUN mkdir -p .next/cache && chown -R nextjs:nodejs .next
 
 USER nextjs
 
-EXPOSE 5113
+EXPOSE 5107
 
 # Doğrudan bağımsız sunucuyu başlatıyoruz
 CMD ["node", "server.js"]
