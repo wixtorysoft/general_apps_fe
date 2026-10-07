@@ -4,7 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { AppModel } from "@/data/apps-data";
 import { useLanguage } from "@/context/LanguageContext";
-import { Sparkles, ShieldCheck, Heart, Mail, Code, Cookie, Scale } from "lucide-react";
+import { resolveI18n } from "@/i18n";
+import { Sparkles, ShieldCheck, Heart, Mail, Code, Cookie, Scale, Settings2 } from "lucide-react";
 
 interface FooterProps {
   apps: AppModel[];
@@ -12,7 +13,7 @@ interface FooterProps {
 }
 
 export function Footer({ apps, onSelectApp }: FooterProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <footer
@@ -160,8 +161,36 @@ export function Footer({ apps, onSelectApp }: FooterProps) {
                   }}
                 >
                   <Cookie size={16} />
-                  <span>Çerez Politikası (Cookie Policy)</span>
+                  <span>{resolveI18n("navigation", "cookie_policy", language)}</span>
                 </Link>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (typeof window !== "undefined") {
+                      window.dispatchEvent(new Event("wixtory_open_cookie_consent"));
+                    }
+                  }}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    fontSize: "14px",
+                    color: "var(--text-secondary)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    cursor: "pointer",
+                    textAlign: "left",
+                    transition: "color 0.2s",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--primary)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-secondary)")}
+                >
+                  <Settings2 size={16} />
+                  <span>{resolveI18n("cookie", "cookie_manage_btn", language)}</span>
+                </button>
               </li>
               <li>
                 <Link
@@ -175,7 +204,7 @@ export function Footer({ apps, onSelectApp }: FooterProps) {
                   }}
                 >
                   <Scale size={16} />
-                  <span>KVKK Aydınlatma Metni</span>
+                  <span>{resolveI18n("navigation", "kvkk", language)}</span>
                 </Link>
               </li>
               <li>

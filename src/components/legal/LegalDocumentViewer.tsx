@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { LegalDocument, getAppSpecificLegalDoc } from "@/data/legal-data";
 import { MainNavbar } from "@/components/MainNavbar";
@@ -46,6 +46,45 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
 
   const [selectedApp, setSelectedApp] = useState<EcosystemAppId>("all");
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [cookieConsentStatus, setCookieConsentStatus] = useState<string>("essential");
+  const [cookiePrefs, setCookiePrefs] = useState<{ essential: boolean; functional: boolean; analytics: boolean }>({
+    essential: true,
+    functional: true,
+    analytics: false,
+  });
+  const [savedSuccess, setSavedSuccess] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const consent = localStorage.getItem("wixtory_cookie_consent") || "essential";
+        setCookieConsentStatus(consent);
+        const prefs = localStorage.getItem("wixtory_cookie_preferences");
+        if (prefs) {
+          setCookiePrefs(JSON.parse(prefs));
+        } else if (consent === "accepted") {
+          setCookiePrefs({ essential: true, functional: true, analytics: true });
+        }
+      } catch {}
+    }
+  }, []);
+
+  const handleSaveCookiePreferences = (choice: "accepted" | "custom", prefs: typeof cookiePrefs) => {
+    try {
+      localStorage.setItem("wixtory_cookie_consent", choice);
+      localStorage.setItem("wixtory_cookie_preferences", JSON.stringify(prefs));
+      localStorage.setItem("wixtory_cookie_consent_date", new Date().toISOString());
+      setCookieConsentStatus(choice);
+      setCookiePrefs(prefs);
+      setSavedSuccess(true);
+      window.dispatchEvent(
+        new CustomEvent("wixtory_cookie_consent_updated", {
+          detail: { choice, preferences: prefs },
+        })
+      );
+      setTimeout(() => setSavedSuccess(false), 3000);
+    } catch {}
+  };
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(doc.contactEmail || "wixtoryy@gmail.com");
@@ -535,11 +574,489 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
                 <ExternalLink size={15} color="#10b981" />
                 <span>{lStr("view_github")}</span>
               </a>
+
+              {/* Button: Çerez Tercihlerini Yönet (Only on Cookie Policy) */}
+              {currentType === "cookie" && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (typeof window !== "undefined") {
+                      window.dispatchEvent(new Event("wixtory_open_cookie_consent"));
+                    }
+                  }}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    padding: "9px 20px",
+                    borderRadius: "12px",
+                    backgroundColor: "rgba(245, 158, 11, 0.12)",
+                    color: "#f59e0b",
+                    border: "1px solid rgba(245, 158, 11, 0.3)",
+                    fontSize: "13.5px",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+                    transition: "all 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = "rgba(245, 158, 11, 0.2)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "rgba(245, 158, 11, 0.12)";
+                  }}
+                >
+                  <Cookie size={15} color="#f59e0b" />
+                  <span>{resolveI18n("cookie", "cookie_manage_btn", language)}</span>
+                </button>
+              )}
             </div>
           </div>
 
           {/* Policy Sections Cards (Clean, Sleek & Dynamic for Selected App) */}
           <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            {/* Interactive Cookie Settings Management Card (Only on Cookie Policy) */}
+            {currentType === "cookie" && (
+              <section
+                id="cookie-interactive-settings"
+                style={{
+                  padding: "28px 32px",
+                  borderRadius: "22px",
+                  border: "1px solid var(--border-subtle)",
+                  backgroundColor: "var(--bg-card)",
+                  boxShadow: "var(--shadow-card)",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "20px",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    justifyContent: "space-between",
+                    gap: "16px",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                    <div
+                      style={{
+                        width: "42px",
+                        height: "42px",
+                        borderRadius: "12px",
+                        backgroundColor: "rgba(245, 158, 11, 0.15)",
+                        border: "1px solid rgba(245, 158, 11, 0.3)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "#f59e0b",
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Sliders size={20} />
+                    </div>
+                    <div>
+                      <h2
+                        style={{
+                          fontSize: "19px",
+                          fontWeight: 700,
+                          color: "var(--text-main)",
+                          margin: "0 0 4px 0",
+                        }}
+                      >
+                        {resolveI18n("cookie", "cookie_manage_section_title", language)}
+                      </h2>
+                      <p
+                        style={{
+                          margin: 0,
+                          fontSize: "13.5px",
+                          color: "var(--text-secondary)",
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        {resolveI18n("cookie", "cookie_settings_desc", language)}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Active Status Badge */}
+                  <div
+                    style={{
+                      padding: "6px 14px",
+                      borderRadius: "999px",
+                      backgroundColor: "var(--badge-bg)",
+                      border: "1px solid var(--border-subtle)",
+                      fontSize: "12.5px",
+                      fontWeight: 600,
+                      color: "var(--primary)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "6px",
+                    }}
+                  >
+                    <span
+                      style={{
+                        width: "8px",
+                        height: "8px",
+                        borderRadius: "50%",
+                        backgroundColor: "#10b981",
+                      }}
+                    />
+                    <span>
+                      {cookieConsentStatus === "accepted"
+                        ? resolveI18n("cookie", "cookie_status_accepted", language)
+                        : cookieConsentStatus === "custom"
+                        ? resolveI18n("cookie", "cookie_status_custom", language)
+                        : resolveI18n("cookie", "cookie_status_essential", language)}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Categories */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                  {/* Category 1: Essential */}
+                  <div
+                    style={{
+                      padding: "16px 20px",
+                      borderRadius: "14px",
+                      backgroundColor: "var(--cookie-inner-bg, rgba(2, 132, 199, 0.05))",
+                      border: "1px solid var(--border-subtle)",
+                      display: "flex",
+                      alignItems: "flex-start",
+                      justifyContent: "space-between",
+                      gap: "14px",
+                    }}
+                  >
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: "12px", flex: 1 }}>
+                      <div
+                        style={{
+                          width: "36px",
+                          height: "36px",
+                          borderRadius: "10px",
+                          backgroundColor: "rgba(16, 185, 129, 0.15)",
+                          color: "#10b981",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexShrink: 0,
+                        }}
+                      >
+                        <ShieldCheck size={18} />
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "8px",
+                            flexWrap: "wrap",
+                            marginBottom: "4px",
+                          }}
+                        >
+                          <span style={{ fontSize: "14.5px", fontWeight: 700, color: "var(--text-main)" }}>
+                            {resolveI18n("cookie", "cookie_cat_essential_title", language)}
+                          </span>
+                          <span
+                            style={{
+                              fontSize: "10.5px",
+                              fontWeight: 700,
+                              padding: "2px 8px",
+                              borderRadius: "999px",
+                              backgroundColor: "rgba(16, 185, 129, 0.15)",
+                              color: "#10b981",
+                              border: "1px solid rgba(16, 185, 129, 0.3)",
+                            }}
+                          >
+                            {resolveI18n("cookie", "cookie_cat_essential_badge", language)}
+                          </span>
+                        </div>
+                        <p
+                          style={{
+                            margin: 0,
+                            fontSize: "13px",
+                            color: "var(--text-secondary)",
+                            lineHeight: 1.5,
+                          }}
+                        >
+                          {resolveI18n("cookie", "cookie_cat_essential_desc", language)}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div
+                      style={{
+                        width: "46px",
+                        height: "26px",
+                        borderRadius: "13px",
+                        backgroundColor: "#10b981",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "flex-end",
+                        padding: "3px",
+                        opacity: 0.9,
+                        cursor: "not-allowed",
+                        flexShrink: 0,
+                      }}
+                      title={resolveI18n("cookie", "cookie_cat_essential_badge", language)}
+                    >
+                      <div
+                        style={{
+                          width: "20px",
+                          height: "20px",
+                          borderRadius: "50%",
+                          backgroundColor: "#ffffff",
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Category 2: Functional */}
+                  <div
+                    style={{
+                      padding: "16px 20px",
+                      borderRadius: "14px",
+                      backgroundColor: "var(--cookie-inner-bg, rgba(2, 132, 199, 0.05))",
+                      border: "1px solid var(--border-subtle)",
+                      display: "flex",
+                      alignItems: "flex-start",
+                      justifyContent: "space-between",
+                      gap: "14px",
+                    }}
+                  >
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: "12px", flex: 1 }}>
+                      <div
+                        style={{
+                          width: "36px",
+                          height: "36px",
+                          borderRadius: "10px",
+                          backgroundColor: "rgba(2, 132, 199, 0.12)",
+                          color: "var(--primary)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexShrink: 0,
+                        }}
+                      >
+                        <Database size={18} />
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ marginBottom: "4px" }}>
+                          <span style={{ fontSize: "14.5px", fontWeight: 700, color: "var(--text-main)" }}>
+                            {resolveI18n("cookie", "cookie_cat_functional_title", language)}
+                          </span>
+                        </div>
+                        <p
+                          style={{
+                            margin: 0,
+                            fontSize: "13px",
+                            color: "var(--text-secondary)",
+                            lineHeight: 1.5,
+                          }}
+                        >
+                          {resolveI18n("cookie", "cookie_cat_functional_desc", language)}
+                        </p>
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      role="switch"
+                      aria-checked={cookiePrefs.functional}
+                      onClick={() =>
+                        setCookiePrefs((p) => ({ ...p, functional: !p.functional }))
+                      }
+                      style={{
+                        width: "46px",
+                        height: "26px",
+                        borderRadius: "13px",
+                        background: cookiePrefs.functional
+                          ? "linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)"
+                          : "rgba(100, 116, 139, 0.3)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: cookiePrefs.functional ? "flex-end" : "flex-start",
+                        padding: "3px",
+                        cursor: "pointer",
+                        border: "none",
+                        flexShrink: 0,
+                        transition: "background 0.2s ease",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "20px",
+                          height: "20px",
+                          borderRadius: "50%",
+                          backgroundColor: "#ffffff",
+                          boxShadow: "0 1px 3px rgba(0,0,0,0.25)",
+                        }}
+                      />
+                    </button>
+                  </div>
+
+                  {/* Category 3: Analytics */}
+                  <div
+                    style={{
+                      padding: "16px 20px",
+                      borderRadius: "14px",
+                      backgroundColor: "var(--cookie-inner-bg, rgba(2, 132, 199, 0.05))",
+                      border: "1px solid var(--border-subtle)",
+                      display: "flex",
+                      alignItems: "flex-start",
+                      justifyContent: "space-between",
+                      gap: "14px",
+                    }}
+                  >
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: "12px", flex: 1 }}>
+                      <div
+                        style={{
+                          width: "36px",
+                          height: "36px",
+                          borderRadius: "10px",
+                          backgroundColor: "rgba(99, 102, 241, 0.12)",
+                          color: "var(--secondary)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexShrink: 0,
+                        }}
+                      >
+                        <BarChart3 size={18} />
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ marginBottom: "4px" }}>
+                          <span style={{ fontSize: "14.5px", fontWeight: 700, color: "var(--text-main)" }}>
+                            {resolveI18n("cookie", "cookie_cat_analytics_title", language)}
+                          </span>
+                        </div>
+                        <p
+                          style={{
+                            margin: 0,
+                            fontSize: "13px",
+                            color: "var(--text-secondary)",
+                            lineHeight: 1.5,
+                          }}
+                        >
+                          {resolveI18n("cookie", "cookie_cat_analytics_desc", language)}
+                        </p>
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      role="switch"
+                      aria-checked={cookiePrefs.analytics}
+                      onClick={() =>
+                        setCookiePrefs((p) => ({ ...p, analytics: !p.analytics }))
+                      }
+                      style={{
+                        width: "46px",
+                        height: "26px",
+                        borderRadius: "13px",
+                        background: cookiePrefs.analytics
+                          ? "linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)"
+                          : "rgba(100, 116, 139, 0.3)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: cookiePrefs.analytics ? "flex-end" : "flex-start",
+                        padding: "3px",
+                        cursor: "pointer",
+                        border: "none",
+                        flexShrink: 0,
+                        transition: "background 0.2s ease",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "20px",
+                          height: "20px",
+                          borderRadius: "50%",
+                          backgroundColor: "#ffffff",
+                          boxShadow: "0 1px 3px rgba(0,0,0,0.25)",
+                        }}
+                      />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Footer Buttons & Feedback */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    flexWrap: "wrap",
+                    gap: "12px",
+                    paddingTop: "6px",
+                  }}
+                >
+                  <div style={{ minHeight: "24px" }}>
+                    {savedSuccess && (
+                      <span
+                        style={{
+                          fontSize: "13px",
+                          fontWeight: 600,
+                          color: "#10b981",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "6px",
+                        }}
+                      >
+                        <Check size={16} />
+                        {resolveI18n("cookie", "cookie_saved_toast", language)}
+                      </span>
+                    )}
+                  </div>
+
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const allOn = { essential: true, functional: true, analytics: true };
+                        handleSaveCookiePreferences("accepted", allOn);
+                      }}
+                      style={{
+                        fontSize: "13px",
+                        fontWeight: 600,
+                        padding: "9px 18px",
+                        borderRadius: "11px",
+                        backgroundColor: "var(--cookie-btn-secondary-bg, rgba(2, 132, 199, 0.08))",
+                        color: "var(--text-main)",
+                        border: "1px solid var(--border-subtle)",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {resolveI18n("cookie", "cookie_consent_accept", language)}
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => handleSaveCookiePreferences("custom", cookiePrefs)}
+                      style={{
+                        fontSize: "13px",
+                        fontWeight: 700,
+                        padding: "9px 22px",
+                        borderRadius: "11px",
+                        background:
+                          "linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)",
+                        color: "#ffffff",
+                        border: "none",
+                        cursor: "pointer",
+                        boxShadow: "0 4px 14px var(--primary-glow, rgba(14, 165, 233, 0.35))",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "6px",
+                      }}
+                    >
+                      <Check size={15} />
+                      <span>{resolveI18n("cookie", "cookie_save_btn", language)}</span>
+                    </button>
+                  </div>
+                </div>
+              </section>
+            )}
+
             {activeDoc.sections.map((section, sIdx) => {
               const SectionIcon = getSectionIcon(sIdx);
               return (

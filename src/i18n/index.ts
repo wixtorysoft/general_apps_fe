@@ -5,6 +5,7 @@ import { ecosystemI18n } from "./modules/ecosystem";
 import { navigationI18n } from "./modules/navigation";
 import { commonI18n } from "./modules/common";
 import { developerI18n } from "./modules/developer";
+import { cookieI18n } from "./modules/cookie";
 
 export * from "./types";
 export * from "./modules/legal";
@@ -13,6 +14,7 @@ export * from "./modules/ecosystem";
 export * from "./modules/navigation";
 export * from "./modules/common";
 export * from "./modules/developer";
+export * from "./modules/cookie";
 
 export const I18N_MODULES = {
   navigation: navigationI18n,
@@ -21,6 +23,7 @@ export const I18N_MODULES = {
   legal: legalI18n,
   appDetail: appDetailI18n,
   ecosystem: ecosystemI18n,
+  cookie: cookieI18n,
 } as const;
 
 export type I18nModuleName = keyof typeof I18N_MODULES;

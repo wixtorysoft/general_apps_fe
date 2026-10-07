@@ -104,6 +104,26 @@ export function MainFooter() {
             <Link href="/developer" style={{ fontSize: "13.5px", color: "var(--text-secondary)", textDecoration: "none" }}>
               {fStr("developer")}
             </Link>
+            <button
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.dispatchEvent(new Event("wixtory_open_cookie_consent"));
+                }
+              }}
+              style={{
+                background: "transparent",
+                border: "none",
+                padding: 0,
+                fontSize: "13.5px",
+                color: "var(--text-muted)",
+                cursor: "pointer",
+                transition: "color 0.2s",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-main)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}
+            >
+              {resolveI18n("cookie", "cookie_manage_btn", language)}
+            </button>
           </div>
         </div>
 

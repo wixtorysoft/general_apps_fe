@@ -451,6 +451,12 @@ export const COOKIE_POLICY_TR: LegalDocument = {
             "Kalıcı (Kullanıcı değiştirene kadar)",
           ],
           [
+            "wixtory_cookie_consent (localStorage)",
+            "Zorunlu / Tercih",
+            "Ziyaretçinin çerez ve yerel depolama tercih onayını (Tümü / Yalnızca Zorunlu) saklar.",
+            "1 Yıl (veya kullanıcı temizleyene kadar)",
+          ],
+          [
             "cf_clearance (Cloudflare Çerezi)",
             "Güvenlik",
             "Bot saldırılarını engellemek ve web portalı güvenliğini sağlamak için Cloudflare tarafından atanır.",
@@ -592,6 +598,12 @@ export const COOKIE_POLICY_EN: LegalDocument = {
             "Essential / Preference",
             "Remembers your chosen interface language (English, Turkish, etc.).",
             "Persistent (Until cleared by user)",
+          ],
+          [
+            "wixtory_cookie_consent (localStorage)",
+            "Essential / Preference",
+            "Stores visitor's cookie and local storage preferences (All / Essential only).",
+            "1 Year (or until cleared by user)",
           ],
           [
             "cf_clearance (Cloudflare Cookie)",

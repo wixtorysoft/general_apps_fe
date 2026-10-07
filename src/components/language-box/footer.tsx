@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/language-context";
+import { resolveI18n } from "@/i18n";
 import { socialLinks, LOGO_URL, GOOGLE_PLAY_URL, APP_STORE_URL } from "@/data";
-import { Shield, Gamepad2, Mail, ChevronRight, Globe, ExternalLink } from "lucide-react";
+import { Shield, Gamepad2, Mail, ChevronRight, Globe, ExternalLink, Cookie } from "lucide-react";
 
 const productLinks = [
   { i18nKey: "nav_home", href: "/language-box", sectionId: "hero" },
@@ -17,10 +18,11 @@ const supportLinks = [
   { i18nKey: "nav_faq", href: "/language-box/faq", sectionId: "faq" },
   { i18nKey: "nav_developer", href: "/developer", sectionId: "" },
   { i18nKey: "nav_privacy", href: "/language-box/privacy-policy", sectionId: "" },
+  { i18nKey: "nav_cookie", href: "/cookie-policy", sectionId: "" },
 ] as const;
 
 export function Footer() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const scrollToSection = (id: string) => {
     if (typeof window !== "undefined" && (window.location.pathname === "/language-box" || window.location.pathname === "/language-box/") && id) {
@@ -129,7 +131,9 @@ export function Footer() {
                   >
                     <ChevronRight className="h-3 w-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
                     <span className="group-hover:translate-x-1 transition-transform duration-300">
-                      {t(link.i18nKey)}
+                      {link.i18nKey === "nav_cookie"
+                        ? resolveI18n("navigation", "cookie_policy", language)
+                        : t(link.i18nKey)}
                     </span>
                   </Link>
                 </li>
@@ -219,7 +223,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/5 py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-white/30 text-xs">{t("footer_rights")}</p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <Link
               href="/language-box/privacy-policy"
               className="inline-flex items-center gap-1.5 text-white/25 hover:text-emerald-400 text-xs transition-colors duration-300"
@@ -227,6 +231,25 @@ export function Footer() {
               <Shield className="h-3 w-3" />
               {t("privacy_policy")}
             </Link>
+            <span className="text-white/10">|</span>
+            <Link
+              href="/cookie-policy"
+              className="inline-flex items-center gap-1.5 text-white/25 hover:text-emerald-400 text-xs transition-colors duration-300"
+            >
+              <Cookie className="h-3 w-3" />
+              {resolveI18n("navigation", "cookie_policy", language)}
+            </Link>
+            <span className="text-white/10">|</span>
+            <button
+              onClick={() => {
+                if (typeof window !== "undefined") {
+                  window.dispatchEvent(new Event("wixtory_open_cookie_consent"));
+                }
+              }}
+              className="text-white/25 hover:text-emerald-400 text-xs transition-colors duration-300"
+            >
+              {resolveI18n("cookie", "cookie_manage_btn", language)}
+            </button>
             <span className="text-white/10">|</span>
             <span className="text-white/20 text-xs">Made with 💚 by Wixtory</span>
           </div>
