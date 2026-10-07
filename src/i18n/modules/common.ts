@@ -16,6 +16,16 @@ export const commonI18n: I18nRecord = {
     es: "Disponible en Google Play", fr: "Disponible sur Google Play", de: "Jetzt bei Google Play", ru: "Доступно в Google Play",
     ja: "Google Playで手に入れよう", zh: "Google Play 下载", ar: "احصل عليه من Google Play"
   },
+  download_on_app_store: {
+    tr: "İndirin", en: "Download on", it: "Scarica su", pt: "Baixar na",
+    es: "Descargar en", fr: "Télécharger sur", de: "Laden im", ru: "Загрузить в",
+    ja: "ダウンロード", zh: "下载于", ar: "تنزيل من"
+  },
+  get_it_on_google_play: {
+    tr: "İndirin", en: "GET IT ON", it: "DISPONIBILE SU", pt: "DISPONÍVEL NO",
+    es: "DISPONIBLE EN", fr: "DISPONIBLE SUR", de: "JETZT BEI", ru: "ДОСТУПНО В",
+    ja: "今すぐ手に入れよう", zh: "下载于", ar: "احصل عليه من"
+  },
   explore_features: {
     tr: "Özellikleri Keşfet", en: "Explore Features", it: "Esplora Funzionalità", pt: "Explorar Recursos",
     es: "Explorar Funciones", fr: "Explorer les Fonctions", de: "Funktionen Erkunden", ru: "Изучить Функции",

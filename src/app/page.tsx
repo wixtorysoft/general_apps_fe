@@ -24,7 +24,7 @@ import {
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { useLanguage } from "@/context/LanguageContext";
-import { resolveI18n, ecosystemI18n } from "@/i18n";
+import { resolveI18n, ecosystemI18n, LanguageCode } from "@/i18n";
 import { MainNavbar } from "@/components/MainNavbar";
 import { MainFooter } from "@/components/MainFooter";
 
