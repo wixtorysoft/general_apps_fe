@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Layers } from "lucide-react";
+import { ThemeLogo } from "@/components/ThemeLogo";
 import { useLanguage } from "@/context/LanguageContext";
 import { resolveI18n } from "@/i18n";
 
@@ -43,35 +44,13 @@ export function MainFooter() {
           <Link
             href="/"
             style={{
-              display: "flex",
+              display: "inline-flex",
               alignItems: "center",
-              gap: "10px",
               textDecoration: "none",
               color: "inherit",
             }}
           >
-            <div
-              style={{
-                width: "32px",
-                height: "32px",
-                borderRadius: "10px",
-                background: "linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#fff",
-              }}
-            >
-              <Layers size={16} />
-            </div>
-            <div>
-              <span style={{ fontSize: "15px", fontWeight: 800, color: "var(--text-main)" }}>
-                Wixtory <span style={{ color: "var(--primary)" }}>Apps</span>
-              </span>
-              <div style={{ fontSize: "11px", color: "var(--text-muted)" }}>
-                {fStr("ecosystem")}
-              </div>
-            </div>
+            <ThemeLogo height={30} />
           </Link>
 
           {/* Links Row */}

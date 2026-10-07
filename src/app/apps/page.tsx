@@ -241,7 +241,7 @@ export default function AppsPage() {
               }}
             >
               <Layers size={15} />
-              <span>Wixtory Mobile Apps</span>
+              <span>Wixtory Apps</span>
             </div>
 
             <h1

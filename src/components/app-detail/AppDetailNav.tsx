@@ -6,6 +6,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { useLanguage } from "@/context/LanguageContext";
 import { resolveI18n, appDetailI18n } from "@/i18n";
+import { ThemeLogo } from "@/components/ThemeLogo";
 import { DedicatedAppDetails, getLocalizedAppDetails } from "@/data/apps-detail-data";
 import {
   Sparkles,
@@ -80,6 +81,7 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
             }}
           >
             <ChevronLeft size={16} />
+            <ThemeLogo size={20} />
             <span>Portal</span>
           </Link>
 

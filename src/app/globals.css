@@ -72,6 +72,25 @@
 }
 
 /* ==============================================================================
+   THEME LOGO SWITCHING (Light: logo2, Dark: logo1)
+   ============================================================================== */
+:root .theme-logo-light,
+[data-theme="sky-breeze"] .theme-logo-light {
+  display: block !important;
+}
+:root .theme-logo-dark,
+[data-theme="sky-breeze"] .theme-logo-dark {
+  display: none !important;
+}
+
+[data-theme="midnight-dark"] .theme-logo-light {
+  display: none !important;
+}
+[data-theme="midnight-dark"] .theme-logo-dark {
+  display: block !important;
+}
+
+/* ==============================================================================
    BASE STYLES & RESET (Scoped to Wixtory portal, isolated from child apps)
    ============================================================================== */
 

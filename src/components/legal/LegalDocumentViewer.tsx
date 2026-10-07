@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { LegalDocument, getAppSpecificLegalDoc } from "@/data/legal-data";
 import { MainNavbar } from "@/components/MainNavbar";
+import { ThemeLogo } from "@/components/ThemeLogo";
 import { useLanguage } from "@/context/LanguageContext";
 import { legalI18n, resolveI18n } from "@/i18n";
 import {
@@ -657,16 +658,19 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
                       <Sliders size={20} />
                     </div>
                     <div>
-                      <h2
-                        style={{
-                          fontSize: "19px",
-                          fontWeight: 700,
-                          color: "var(--text-main)",
-                          margin: "0 0 4px 0",
-                        }}
-                      >
-                        {resolveI18n("cookie", "cookie_manage_section_title", language)}
-                      </h2>
+                      <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "4px" }}>
+                        <ThemeLogo size={22} />
+                        <h2
+                          style={{
+                            fontSize: "19px",
+                            fontWeight: 700,
+                            color: "var(--text-main)",
+                            margin: 0,
+                          }}
+                        >
+                          {resolveI18n("cookie", "cookie_manage_section_title", language)}
+                        </h2>
+                      </div>
                       <p
                         style={{
                           margin: 0,

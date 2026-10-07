@@ -6,6 +6,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
 import { useLanguage } from "@/context/LanguageContext";
 import { AppModel } from "@/data/apps-data";
+import { ThemeLogo } from "./ThemeLogo";
 import { Sparkles, Menu, X, ShieldCheck, ArrowUpRight, Code } from "lucide-react";
 
 interface HeaderProps {
@@ -44,57 +45,12 @@ export function Header({ apps, selectedApp, onSelectApp }: HeaderProps) {
         <Link
           href="/"
           style={{
-            display: "flex",
+            display: "inline-flex",
             alignItems: "center",
-            gap: "12px",
             textDecoration: "none",
           }}
         >
-          <div
-            style={{
-              width: "40px",
-              height: "40px",
-              borderRadius: "12px",
-              background: "linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#ffffff",
-              boxShadow: "0 4px 16px var(--primary-glow)",
-            }}
-          >
-            <Sparkles size={20} />
-          </div>
-          <div>
-            <div
-              style={{
-                fontSize: "19px",
-                fontWeight: 800,
-                letterSpacing: "-0.03em",
-                color: "var(--text-main)",
-                display: "flex",
-                alignItems: "center",
-                gap: "6px",
-              }}
-            >
-              <span>WIXTORY</span>
-              <span
-                style={{
-                  fontSize: "11px",
-                  padding: "2px 7px",
-                  borderRadius: "6px",
-                  background: "var(--badge-bg)",
-                  color: "var(--primary)",
-                  border: "1px solid var(--border-active)",
-                }}
-              >
-                APPS
-              </span>
-            </div>
-            <div style={{ fontSize: "11px", color: "var(--text-muted)" }}>
-              {t("brand_subtitle")}
-            </div>
-          </div>
+          <ThemeLogo height={36} />
         </Link>
 
         {/* Desktop App Switcher Pills in Navbar */}

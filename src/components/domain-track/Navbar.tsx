@@ -335,7 +335,7 @@ export function Navbar() {
             }}
           >
             <Layers size={16} />
-            <span>← Wixtory Apps Ecosystem Hub</span>
+            <span>← Wixtory Apps</span>
           </Link>
         </div>
       )}

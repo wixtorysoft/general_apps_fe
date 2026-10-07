@@ -523,7 +523,7 @@ export default function DeveloperPage() {
                   </span>
                   <span style={{ fontSize: "13px", color: "var(--text-muted)" }}>•</span>
                   <span style={{ fontSize: "13px", color: "var(--text-secondary)", fontWeight: 550 }}>
-                    Wixtory Apps Ecosystem Hub
+                    Wixtory Apps
                   </span>
                 </div>
               </div>

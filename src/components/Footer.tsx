@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AppModel } from "@/data/apps-data";
 import { useLanguage } from "@/context/LanguageContext";
 import { resolveI18n } from "@/i18n";
+import { ThemeLogo } from "@/components/ThemeLogo";
 import { Sparkles, ShieldCheck, Heart, Mail, Code, Cookie, Scale, Settings2 } from "lucide-react";
 
 interface FooterProps {
@@ -35,23 +36,7 @@ export function Footer({ apps, onSelectApp }: FooterProps) {
           {/* Col 1: Brand Info */}
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
-              <div
-                style={{
-                  width: "36px",
-                  height: "36px",
-                  borderRadius: "10px",
-                  background: "linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "#ffffff",
-                }}
-              >
-                <Sparkles size={18} />
-              </div>
-              <span style={{ fontSize: "20px", fontWeight: 800, color: "var(--text-main)" }}>
-                WIXTORY APPS
-              </span>
+              <ThemeLogo height={32} />
             </div>
             <p
               style={{

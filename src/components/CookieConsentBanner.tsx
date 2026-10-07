@@ -14,6 +14,7 @@ import {
   ChevronLeft,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { ThemeLogo } from "@/components/ThemeLogo";
 import { resolveI18n } from "@/i18n";
 
 const STORAGE_KEY = "wixtory_cookie_consent";
@@ -186,6 +187,7 @@ export function CookieConsentBanner() {
               </div>
 
               <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+                <ThemeLogo size={24} />
                 <h3
                   style={{
                     fontSize: "15.5px",
@@ -425,6 +427,7 @@ export function CookieConsentBanner() {
                 <span>{cStr("cookie_back_btn")}</span>
               </button>
 
+              <ThemeLogo size={24} />
               <h3
                 style={{
                   fontSize: "16px",

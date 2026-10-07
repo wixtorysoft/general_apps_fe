@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageToggle } from "@/components/LanguageToggle";
+import { ThemeLogo } from "@/components/ThemeLogo";
 import { useLanguage } from "@/context/LanguageContext";
 import { resolveI18n } from "@/i18n";
 
@@ -89,53 +90,14 @@ export function MainNavbar() {
         <Link
           href="/"
           style={{
-            display: "flex",
+            display: "inline-flex",
             alignItems: "center",
-            gap: "12px",
             textDecoration: "none",
             color: "inherit",
             flexShrink: 0,
           }}
         >
-          <div
-            style={{
-              width: "40px",
-              height: "40px",
-              borderRadius: "12px",
-              background: "linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#fff",
-              boxShadow: "0 8px 20px -4px var(--primary-glow)",
-            }}
-          >
-            <Layers size={22} />
-          </div>
-          <div>
-            <div
-              style={{
-                fontSize: "18px",
-                fontWeight: 850,
-                letterSpacing: "-0.03em",
-                color: "var(--text-main)",
-                lineHeight: 1.15,
-              }}
-            >
-              Wixtory <span style={{ color: "var(--primary)" }}>Apps</span>
-            </div>
-            <div
-              style={{
-                fontSize: "10.5px",
-                color: "var(--text-muted)",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                fontWeight: 700,
-              }}
-            >
-              Ecosystem Hub
-            </div>
-          </div>
+          <ThemeLogo height={34} />
         </Link>
 
         {/* Desktop Nav: Clean Essential Links */}

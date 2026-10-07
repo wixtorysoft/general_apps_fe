@@ -723,7 +723,7 @@ export default function HubPortalPage() {
               }}
             >
               <Sparkles size={15} />
-              <span>Wixtory Mobile Apps Ecosystem</span>
+              <span>Wixtory Apps</span>
             </div>
 
             {/* Display Headline */}
