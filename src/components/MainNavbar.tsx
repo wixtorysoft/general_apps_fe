@@ -18,42 +18,44 @@ import {
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { useLanguage } from "@/context/LanguageContext";
+import { resolveI18n } from "@/i18n";
 
 export function MainNavbar() {
   const pathname = usePathname();
   const { language } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const isTr = language === "tr";
+
+  const navStr = (key: string) => resolveI18n("navigation", key, language);
 
   const navItems = [
     {
       href: "/apps",
-      label: isTr ? "Uygulamalar" : "Apps",
+      label: navStr("apps"),
       icon: Layers,
       isActive: pathname.startsWith("/apps") || pathname.startsWith("/games") || pathname === "/#apps",
       badge: "NEW",
     },
     {
       href: "/about",
-      label: isTr ? "Hakkımızda" : "About Us",
+      label: navStr("about"),
       icon: Compass,
       isActive: pathname.startsWith("/about"),
     },
     {
       href: "/vision-mission",
-      label: isTr ? "Vizyon & Misyon" : "Vision & Mission",
+      label: navStr("vision"),
       icon: Target,
       isActive: pathname.startsWith("/vision-mission"),
     },
     {
       href: "/privacy-policy",
-      label: isTr ? "Gizlilik" : "Privacy",
+      label: navStr("privacy"),
       icon: Shield,
       isActive: pathname.startsWith("/privacy-policy"),
     },
     {
       href: "/developer",
-      label: "Developer",
+      label: navStr("developer"),
       icon: Code,
       isActive: pathname.startsWith("/developer"),
     },
@@ -137,7 +139,7 @@ export function MainNavbar() {
         </Link>
 
         {/* Desktop Nav: Clean Essential Links */}
-        <nav className="hub-desktop-nav" aria-label="Ana Gezinti">
+        <nav className="hub-desktop-nav" aria-label={navStr("menu_pages")}>
           {navItems.map((item, idx) => {
             const Icon = item.icon;
             const active = item.isActive;
@@ -242,7 +244,7 @@ export function MainNavbar() {
                 paddingLeft: "4px",
               }}
             >
-              {isTr ? "Menü & Sayfalar" : "Menu & Navigation"}
+              {navStr("menu_pages")}
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -312,7 +314,7 @@ export function MainNavbar() {
                 }}
               >
                 <Shield size={18} color="var(--primary)" />
-                <span>{isTr ? "Çerez Politikası" : "Cookie Policy"}</span>
+                <span>{navStr("cookie_policy")}</span>
               </Link>
             </div>
           </div>
@@ -330,7 +332,7 @@ export function MainNavbar() {
                 paddingLeft: "4px",
               }}
             >
-              {isTr ? "Mobil Uygulamalar" : "Mobile Applications"}
+              {navStr("mobile_apps")}
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>

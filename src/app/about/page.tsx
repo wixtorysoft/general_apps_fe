@@ -20,9 +20,139 @@ import { MainNavbar } from "@/components/MainNavbar";
 import { MainFooter } from "@/components/MainFooter";
 import { useLanguage } from "@/context/LanguageContext";
 
+import { LanguageCode } from "@/data/translations";
+
 export default function AboutPage() {
-  const { language } = useLanguage();
-  const isTr = language === "tr";
+  const { t, language } = useLanguage();
+
+  const aboutI18n: Record<string, Record<LanguageCode, string>> = {
+    hero_badge: {
+      tr: "HAKKIMIZDA & KÜLTÜR", en: "ABOUT US & CULTURE", it: "CHI SIAMO & CULTURA", pt: "SOBRE NÓS & CULTURA",
+      es: "SOBRE NOSOTROS & CULTURA", fr: "À PROPOS & CULTURE", de: "ÜBER UNS & KULTUR", ru: "О НАС И КУЛЬТУРА",
+      ja: "会社案内＆カルチャー", zh: "关于我们与工程文化", ar: "من نحن وثقافتنا"
+    },
+    hero_title_pre: {
+      tr: "Geleceğin Dijital Deneyimlerini ", en: "Building Meaningful ", it: "Costruiamo Esperienze Digitali ", pt: "Construindo Experiências Digitais ",
+      es: "Construyendo Experiencias Digitales ", fr: "Bâtir des Expériences Numériques ", de: "Bedeutende Digitale Erlebnisse ", ru: "Создаем Значимый Цифровой Опыт ",
+      ja: "価値あるデジタル体験を", zh: "以匠心雕琢有意义的", ar: "نبني تجارب رقمية ذات معنى "
+    },
+    hero_title_grad: {
+      tr: "Tutkuyla Üretiyoruz", en: "Digital Experiences", it: "con Autentica Passione", pt: "com Paixão e Propósito",
+      es: "con Auténtica Pasión", fr: "avec Passion et Rigueur", de: "mit Wahrer Leidenschaft", ru: "с Истинной Страстью",
+      ja: "情熱を込めて創造する", zh: "极致数字化体验", ar: "بشغف وإتقان متناهي"
+    },
+    hero_desc: {
+      tr: "Wixtory; mobil uygulamalar ve eğlenceli mobil oyunlar geliştiren bağımsız bir dijital stüdyodur. Kullanıcı gizliliğinden asla ödün vermeden, saf performans ve üst düzey estetik mühendisliği bir araya getiriyoruz.",
+      en: "Wixtory is an independent digital studio creating focused mobile applications and engaging games. We unite high-end aesthetic engineering with zero-compromise data privacy.",
+      it: "Wixtory è uno studio digitale indipendente che sviluppa applicazioni mobili e giochi interattivi. Uniamo ingegneria estetica di alto livello e privacy senza compromessi.",
+      pt: "A Wixtory é um estúdio digital independente focado em aplicativos móveis e jogos envolventes. Unimos engenharia estética refinada e privacidade intransigente.",
+      es: "Wixtory es un estudio digital independiente que crea aplicaciones móviles y juegos atractivos. Unimos ingeniería estética de alto nivel y privacidad total sin concesiones.",
+      fr: "Wixtory est un studio numérique indépendant concevant des applications mobiles et des jeux captivants. Nous allions ingénierie esthétique de pointe et respect absolu de la vie privée.",
+      de: "Wixtory ist ein unabhängiges digitales Studio für fokussierte mobile Apps und fesselnde Spiele. Wir vereinen High-End-Ästhetik mit kompromisslosem Datenschutz.",
+      ru: "Wixtory — независимая цифровая студия, создающая мобильные приложения и игры. Мы объединяем передовую эстетическую инженерию и бескомпромиссную защиту данных.",
+      ja: "Wixtoryは、特化型モバイルアプリと魅力的なゲームを創り出す独立系デジタルスタジオです。ハイエンドな美学エンジニアリングと妥協なきプライバシー保護を融合しています。",
+      zh: "Wixtory 是一家专注于打造垂直领域移动应用与趣味游戏的独立数字工作室。我们将高质感的美学工程与零妥协的数据隐私完美融为一体。",
+      ar: "Wixtory استوديو رقمي مستقل يبتكر تطبيقات جوال متميزة وألعاباً تفاعلية شيقة، جامعاً بين الهندسة الجمالية الفائقة والخصوصية الصارمة."
+    },
+    spirit_badge: {
+      tr: "EKİP RUHU & YAŞAM", en: "OUR PEOPLE & SPIRIT", it: "IL NOSTRO SPIRITO & VITA", pt: "NOSSO ESPÍRITO & VIDA",
+      es: "NUESTRO ESPÍRITU & VIDA", fr: "NOTRE ESPRIT & VIE D'ÉQUIPE", de: "TEAMGEIST & LEBEN", ru: "НАШ ДУХ И ЖИЗНЬ",
+      ja: "チームスピリット＆文化", zh: "团队精神与研发生态", ar: "روح الفريق وحياتنا"
+    },
+    spirit_title: {
+      tr: "İlham Veren Bir Kültür, Fark Yaratan Ürünler", en: "Inspiring Culture, Impactful Products", it: "Cultura Ispiratrice, Prodotti d'Impatto", pt: "Cultura Inspiradora, Produtos de Impacto",
+      es: "Cultura Inspiradora, Productos de Impacto", fr: "Une Culture Inspirante, des Produits Remarquables", de: "Inspirierende Kultur, Eindrucksvolle Produkte", ru: "Вдохновляющая Культура и Сильные Продукты",
+      ja: "インスピレーションに満ちた文化、確かなインパクトを生む製品", zh: "充满灵感的研发文化，打造卓越影响力的数字产品", ar: "ثقافة ملهمة ومنتجات تصنع فارقاً حقيقياً"
+    },
+    spirit_p1: {
+      tr: "Bizler kod yazmanın, arayüz tasarlamanın ve oyun kurgulamanın sadece bir iş değil; kullanıcıların günlük hayatına değer katan bir zanaat olduğuna inanıyoruz.",
+      en: "We believe that building software, crafting interfaces, and designing game worlds is not merely a job—it is a craft that enriches people's everyday lives.",
+      it: "Crediamo che sviluppare software, disegnare interfacce e creare giochi sia più di un lavoro: è un'arte che arricchisce la vita quotidiana.",
+      pt: "Acreditamos que criar software, interfaces e jogos é mais que um trabalho: é um ofício que enriquece o dia a dia das pessoas.",
+      es: "Creemos que desarrollar software, diseñar interfaces y crear juegos no es un simple trabajo: es un oficio que enriquece la vida diaria.",
+      fr: "Nous croyons que concevoir des logiciels, des interfaces et des jeux n'est pas un simple métier : c'est un artisanat qui enrichit le quotidien.",
+      de: "Wir glauben, dass Softwareentwicklung, Interface-Design und Spielekreation mehr als ein Beruf sind: Es ist ein Handwerk, das den Alltag bereichert.",
+      ru: "Мы верим, что создание кода, интерфейсов и игровых миров — это не просто работа, а искусство, приносящее пользу в повседневную жизнь.",
+      ja: "コードを書き、インターフェースを磨き、ゲームを創り上げることは単なる仕事ではなく、人々の日常を豊かにするクラフトマンシップであると信じています。",
+      zh: "我们坚信编写代码、设计界面与构筑游戏世界不仅是一份工作，更是一门为全球用户日常生活赋予真正价值的精湛工匠艺术。",
+      ar: "نؤمن بأن كتابة البرمجيات وتصميم الواجهات والألعاب ليست مجرد وظيفة، بل هي حرفة أصيلة تثري الحياة اليومية للمستخدمين."
+    },
+    spirit_p2: {
+      tr: "Karmaşık ve şişirilmiş süper uygulamalar yerine; her biri alanında en iyi olan, hızlı açılan, pili tüketmeyen ve kullanıcı verilerini satmayan özel uygulamalar inşa ediyoruz.",
+      en: "Instead of bloated super-apps, we build focused experiences: fast to open, battery-friendly, zero telemetry, and delightfully fluid.",
+      it: "Al posto di super-app sovraccariche, creiamo esperienze focalizzate: veloci all'avvio, efficienti nei consumi, senza telemetria ed estremamente fluide.",
+      pt: "Em vez de superaplicativos inchados, construímos experiências focadas: abertura rápida, consumo eficiente de bateria, zero telemetria e fluidez pura.",
+      es: "En lugar de superaplicaciones sobrecargadas, creamos experiencias enfocadas: apertura instantánea, bajo consumo de batería, cero telemetría y máxima fluidez.",
+      fr: "Au lieu de super-applications encombrées, nous créons des expériences ciblées : rapides à charger, économes en batterie, sans télémétrie et d'une grande fluidité.",
+      de: "Statt überladener Super-Apps bauen wir fokussierte Erlebnisse: blitzschnell geöffnet, akkuschonend, ohne Telemetrie und bemerkenswert flüssig.",
+      ru: "Вместо перегруженных суперприложений мы создаем точечные продукты: мгновенный запуск, экономия батареи, ноль телеметрии и плавная работа.",
+      ja: "肥大化したスーパーアプリではなく、高速起動・省電力・ゼロテレメトリ・滑らかな操作性を誇る特化型アプリを丹念に構築しています。",
+      zh: "相比臃肿繁杂的超级应用，我们坚持打造专注克制的数字体验：秒级极速冷启动、低耗电、零遥测隐私追踪以及行云流水般的流畅交互。",
+      ar: "بدلاً من التطبيقات الشاملة المتضخمة، نبني تجارب مركزة ومستقلة: سريعة الفتح وموفرة للبطارية وبدون أي تتبع، وبسلاسة مبهجة."
+    },
+    btn_explore_games: {
+      tr: "Oyunlarımızı Gör", en: "Explore Games", it: "Esplora i Giochi", pt: "Explorar Jogos",
+      es: "Explorar Juegos", fr: "Découvrir nos Jeux", de: "Spiele Entdecken", ru: "Смотреть Игры",
+      ja: "ゲーム一覧を見る", zh: "浏览所有游戏", ar: "استعراض الألعاب"
+    },
+    btn_vision_mission: {
+      tr: "Vizyon & Misyon", en: "Vision & Mission", it: "Visione & Missione", pt: "Visão & Missão",
+      es: "Visión & Misión", fr: "Vision & Mission", de: "Vision & Mission", ru: "Видение и Миссия",
+      ja: "ビジョン＆ミッション", zh: "愿景与战略使命", ar: "الرؤية والرسالة"
+    },
+    values_badge: {
+      tr: "DEĞERLERİMİZ", en: "CORE VALUES", it: "I NOSTRI VALORI", pt: "NOSSOS VALORES",
+      es: "NUESTROS VALORES", fr: "NOS VALEURS", de: "UNSERE WERTE", ru: "НАШИ ЦЕННОСТИ",
+      ja: "コアバリュー", zh: "核心价值观", ar: "قيمنا الجوهرية"
+    },
+    values_title: {
+      tr: "Bizi Biz Yapan 4 Temel İlke", en: "4 Pillars That Guide Us", it: "4 Pilastri che ci Guidano", pt: "4 Pilares que nos Guiam",
+      es: "4 Pilares que nos Guían", fr: "4 Piliers qui nous Guident", de: "4 Säulen, die uns Leiten", ru: "4 Принципа, которые Направляют Нас",
+      ja: "私たちを導く4つの基本原則", zh: "引领我们前行的 4 大核心基石", ar: "4 ركائز توجه مسيرتنا"
+    },
+    metric_apps_label: {
+      tr: "Uygulama & Oyun", en: "Apps & Games", it: "App & Giochi", pt: "Apps & Jogos",
+      es: "Apps & Juegos", fr: "Apps & Jeux", de: "Apps & Spiele", ru: "Приложения и Игры",
+      ja: "アプリ＆ゲーム", zh: "旗舰应用与精品游戏", ar: "تطبيقات وألعاب"
+    },
+    metric_apps_sub: {
+      tr: "Sürekli büyüyen katalog", en: "Ever-growing catalog", it: "Catalogo in continua crescita", pt: "Catálogo em constante expansão",
+      es: "Catálogo en constante crecimiento", fr: "Catalogue en constante expansion", de: "Stetig wachsender Katalog", ru: "Постоянно растущий каталог",
+      ja: "進化し続けるプロダクトカタログ", zh: "持续迭代扩展的矩阵", ar: "كتالوج متجدد باستمرار"
+    },
+    metric_lang_label: {
+      tr: "Desteklenen Dil", en: "Supported Languages", it: "Lingue Supportate", pt: "Idiomas Suportados",
+      es: "Idiomas Compatibles", fr: "Langues Prises en Charge", de: "Unterstützte Sprachen", ru: "Поддерживаемые Языки",
+      ja: "対応言語数", zh: "全球深度支持语言", ar: "اللغات المدعومة"
+    },
+    metric_lang_sub: {
+      tr: "Küresel kullanıcı kitlesi", en: "Global player community", it: "Community globale di utenti", pt: "Comunidade global de usuários",
+      es: "Comunidad global de usuarios", fr: "Communauté mondiale d'utilisateurs", de: "Globale Nutzer-Community", ru: "Глобальное сообщество пользователей",
+      ja: "世界中のプレイヤーコミュニティ", zh: "覆盖全球的活跃用户群体", ar: "مجتمع عالمي من المستخدمين"
+    },
+    metric_privacy_label: {
+      tr: "Kullanıcı Gizliliği", en: "User Privacy Focus", it: "Focus sulla Privacy", pt: "Foco em Privacidade",
+      es: "Enfoque en Privacidad", fr: "Priorité à la Confidentialité", de: "Fokus auf Datenschutz", ru: "Приоритет Приватности",
+      ja: "完全なプライバシー保護", zh: "用户数据最高级别隐私", ar: "التركيز على خصوصية المستخدم"
+    },
+    metric_privacy_sub: {
+      tr: "Sıfır telemetri politikası", en: "Zero telemetry standard", it: "Standard zero telemetria", pt: "Padrão de zero telemetria",
+      es: "Estándar de cero telemetría", fr: "Norme zéro télémétrie", de: "Zero-Telemetry-Standard", ru: "Стандарт нулевой телеметрии",
+      ja: "ゼロテレメトリ運用ポリシー", zh: "严苛恪守零遥测保护规范", ar: "معيار تصفير التتبع البرمجي"
+    },
+    metric_native_label: {
+      tr: "Yerel & Akıcı Deneyim", en: "Native & Smooth Experience", it: "Esperienza Nativa & Fluida", pt: "Experiência Nativa & Fluida",
+      es: "Experiencia Nativa & Fluida", fr: "Expérience Native & Fluide", de: "Native & Flüssige Performance", ru: "Нативный и Плавный Опыт",
+      ja: "ネイティブ＆快適な操作性", zh: "原生架构极速流畅体验", ar: "تجربة أصلية فائقة السلاسة"
+    },
+    metric_native_sub: {
+      tr: "Flutter & Edge CDN", en: "Flutter & Edge CDN", it: "Flutter & CDN Edge", pt: "Flutter & CDN Edge",
+      es: "Flutter & Edge CDN", fr: "Flutter & CDN Edge", de: "Flutter & Edge-CDN", ru: "Flutter и Edge CDN",
+      ja: "Flutter＆エッジCDN基盤", zh: "Flutter 与 Edge CDN 极速加速", ar: "فلاتر وشبكة Edge CDN"
+    }
+  };
+
+  const aStr = (key: string) => aboutI18n[key]?.[language] || aboutI18n[key]?.en || "";
 
   return (
     <div
@@ -60,7 +190,7 @@ export default function AboutPage() {
               }}
             >
               <Compass size={15} />
-              <span>{isTr ? "HAKKIMIZDA & KÜLTÜR" : "ABOUT US & CULTURE"}</span>
+              <span>{aStr("hero_badge")}</span>
             </div>
 
             <h1
@@ -73,7 +203,7 @@ export default function AboutPage() {
                 color: "var(--text-main)",
               }}
             >
-              {isTr ? "Geleceğin Dijital Deneyimlerini " : "Building Meaningful "}
+              {aStr("hero_title_pre")}
               <span
                 style={{
                   background: "linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #3B82F6 100%)",
@@ -81,7 +211,7 @@ export default function AboutPage() {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                {isTr ? "Tutkuyla Üretiyoruz" : "Digital Experiences"}
+                {aStr("hero_title_grad")}
               </span>
             </h1>
 
@@ -94,9 +224,7 @@ export default function AboutPage() {
                 margin: "0 auto",
               }}
             >
-              {isTr
-                ? "Wixtory; mobil uygulamalar ve eğlenceli mobil oyunlar geliştiren bağımsız bir dijital stüdyodur. Kullanıcı gizliliğinden asla ödün vermeden, saf performans ve üst düzey estetik mühendisliği bir araya getiriyoruz."
-                : "Wixtory is an independent digital studio creating focused mobile applications and engaging games. We unite high-end aesthetic engineering with zero-compromise data privacy."}
+              {aStr("hero_desc")}
             </p>
           </div>
         </section>
@@ -146,7 +274,7 @@ export default function AboutPage() {
                     textTransform: "uppercase",
                   }}
                 >
-                  {isTr ? "EKİP RUHU & YAŞAM" : "OUR PEOPLE & SPIRIT"}
+                  {aStr("spirit_badge")}
                 </span>
 
                 <h2
@@ -158,7 +286,7 @@ export default function AboutPage() {
                     color: "var(--text-main)",
                   }}
                 >
-                  {isTr ? "İlham Veren Bir Kültür, Fark Yaratan Ürünler" : "Inspiring Culture, Impactful Products"}
+                  {aStr("spirit_title")}
                 </h2>
 
                 <p
@@ -169,9 +297,7 @@ export default function AboutPage() {
                     margin: 0,
                   }}
                 >
-                  {isTr
-                    ? "Bizler kod yazmanın, arayüz tasarlamanın ve oyun kurgulamanın sadece bir iş değil; kullanıcıların günlük hayatına değer katan bir zanaat olduğuna inanıyoruz."
-                    : "We believe that building software, crafting interfaces, and designing game worlds is not merely a job—it is a craft that enriches people's everyday lives."}
+                  {aStr("spirit_p1")}
                 </p>
 
                 <p
@@ -182,9 +308,7 @@ export default function AboutPage() {
                     margin: 0,
                   }}
                 >
-                  {isTr
-                    ? "Karmaşık ve şişirilmiş süper uygulamalar yerine; her biri alanında en iyi olan, hızlı açılan, pili tüketmeyen ve kullanıcı verilerini satmayan özel uygulamalar inşa ediyoruz."
-                    : "Instead of bloated super-apps, we build focused experiences: fast to open, battery-friendly, zero telemetry, and delightfully fluid."}
+                  {aStr("spirit_p2")}
                 </p>
 
                 <div style={{ display: "flex", gap: "14px", flexWrap: "wrap", marginTop: "6px" }}>
@@ -205,7 +329,7 @@ export default function AboutPage() {
                     }}
                   >
                     <Gamepad2 size={16} />
-                    <span>{isTr ? "Oyunlarımızı Gör" : "Explore Games"}</span>
+                    <span>{aStr("btn_explore_games")}</span>
                   </Link>
 
                   <Link
@@ -224,7 +348,7 @@ export default function AboutPage() {
                       textDecoration: "none",
                     }}
                   >
-                    <span>{isTr ? "Vizyon & Misyon" : "Vision & Mission"}</span>
+                    <span>{aStr("btn_vision_mission")}</span>
                     <ArrowRight size={15} />
                   </Link>
                 </div>
@@ -246,7 +370,7 @@ export default function AboutPage() {
                   textTransform: "uppercase",
                 }}
               >
-                {isTr ? "DEĞERLERİMİZ" : "CORE VALUES"}
+                {aStr("values_badge")}
               </span>
               <h2
                 style={{
@@ -257,7 +381,7 @@ export default function AboutPage() {
                   color: "var(--text-main)",
                 }}
               >
-                {isTr ? "Bizi Biz Yapan 4 Temel İlke" : "4 Pillars That Guide Us"}
+                {aStr("values_title")}
               </h2>
             </div>
 
@@ -271,31 +395,23 @@ export default function AboutPage() {
               {[
                 {
                   icon: <Sparkles size={24} color="#8B5CF6" />,
-                  title: isTr ? "Estetik Mühendislik" : "Aesthetic Engineering",
-                  desc: isTr
-                    ? "Sıradan, düz ve ruhsuz tasarımlara asla tolerans göstermeyiz. Her arayüz 'WOW' dedirtecek görsel derinliğe ve dokunmatik zarafete sahiptir."
-                    : "Zero tolerance for flat, lifeless interfaces. Every UI delivers high-end chromatic depth, tactile feedback, and intuitive elegance.",
+                  title: t("value_aesthetic_title"),
+                  desc: t("value_aesthetic_desc"),
                 },
                 {
                   icon: <Shield size={24} color="#10B981" />,
-                  title: isTr ? "Sıfır Tavizli Gizlilik" : "Zero-Compromise Privacy",
-                  desc: isTr
-                    ? "Kullanıcı verileri hiçbir şartta satılmaz veya reklam havuzlarıyla paylaşılmaz. Arama geçmişi ve favoriler yerel cihazda saklanır."
-                    : "User data is never monetized or fed into ad trackers. Searches, history, and preferences stay on your device.",
+                  title: t("value_privacy_title"),
+                  desc: t("value_privacy_desc"),
                 },
                 {
                   icon: <Zap size={24} color="#06B6D4" />,
-                  title: isTr ? "60 FPS Akıcılık" : "60 FPS Fluid Performance",
-                  desc: isTr
-                    ? "Donanım hızlandırmalı Flutter çalışma zamanı ve MinIO CDN altyapısıyla sıfır gecikmeli, anlık tepki veren mobil uygulamalar."
-                    : "Hardware-accelerated Flutter runtime and edge MinIO CDN infrastructure ensure zero lag and instant screen transitions.",
+                  title: t("value_performance_title"),
+                  desc: t("value_performance_desc"),
                 },
                 {
                   icon: <Globe size={24} color="#F59E0B" />,
-                  title: isTr ? "Global Kapsayıcılık" : "Global Multilingual Reach",
-                  desc: isTr
-                    ? "Uygulamalarımız ilk günden itibaren 11 küresel dilde (TR, EN, DE, FR, ES, IT, PT, RU, JA, ZH, AR) eksiksiz yerelleştirilir."
-                    : "All applications are natively localized across 11 global languages with elastic multi-lingual layout safety.",
+                  title: t("value_multilingual_title"),
+                  desc: t("value_multilingual_desc"),
                 },
               ].map((item, idx) => (
                 <div
@@ -348,53 +464,53 @@ export default function AboutPage() {
                 textAlign: "center",
               }}
             >
-              <div>
-                <div style={{ fontSize: "36px", fontWeight: 900, color: "var(--primary)", marginBottom: "4px" }}>
-                  6+
+                <div>
+                  <div style={{ fontSize: "36px", fontWeight: 900, color: "var(--primary)", marginBottom: "4px" }}>
+                    6+
+                  </div>
+                  <div style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-main)" }}>
+                    {aStr("metric_apps_label")}
+                  </div>
+                  <div style={{ fontSize: "12px", color: "var(--text-secondary)", marginTop: "2px" }}>
+                    {aStr("metric_apps_sub")}
+                  </div>
                 </div>
-                <div style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-main)" }}>
-                  {isTr ? "Uygulama & Oyun" : "Apps & Games"}
-                </div>
-                <div style={{ fontSize: "12px", color: "var(--text-secondary)", marginTop: "2px" }}>
-                  {isTr ? "Sürekli büyüyen katalog" : "Ever-growing catalog"}
-                </div>
-              </div>
 
-              <div>
-                <div style={{ fontSize: "36px", fontWeight: 900, color: "var(--secondary)", marginBottom: "4px" }}>
-                  11
+                <div>
+                  <div style={{ fontSize: "36px", fontWeight: 900, color: "var(--secondary)", marginBottom: "4px" }}>
+                    11
+                  </div>
+                  <div style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-main)" }}>
+                    {aStr("metric_lang_label")}
+                  </div>
+                  <div style={{ fontSize: "12px", color: "var(--text-secondary)", marginTop: "2px" }}>
+                    {aStr("metric_lang_sub")}
+                  </div>
                 </div>
-                <div style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-main)" }}>
-                  {isTr ? "Desteklenen Dil" : "Supported Languages"}
-                </div>
-                <div style={{ fontSize: "12px", color: "var(--text-secondary)", marginTop: "2px" }}>
-                  {isTr ? "Küresel kullanıcı kitlesi" : "Global player community"}
-                </div>
-              </div>
 
-              <div>
-                <div style={{ fontSize: "36px", fontWeight: 900, color: "#10B981", marginBottom: "4px" }}>
-                  %100
+                <div>
+                  <div style={{ fontSize: "36px", fontWeight: 900, color: "#10B981", marginBottom: "4px" }}>
+                    %100
+                  </div>
+                  <div style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-main)" }}>
+                    {aStr("metric_privacy_label")}
+                  </div>
+                  <div style={{ fontSize: "12px", color: "var(--text-secondary)", marginTop: "2px" }}>
+                    {aStr("metric_privacy_sub")}
+                  </div>
                 </div>
-                <div style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-main)" }}>
-                  {isTr ? "Kullanıcı Gizliliği" : "User Privacy Focus"}
-                </div>
-                <div style={{ fontSize: "12px", color: "var(--text-secondary)", marginTop: "2px" }}>
-                  {isTr ? "Sıfır telemetri politikası" : "Zero telemetry standard"}
-                </div>
-              </div>
 
-              <div>
-                <div style={{ fontSize: "36px", fontWeight: 900, color: "#8B5CF6", marginBottom: "4px" }}>
-                  60 FPS
+                <div>
+                  <div style={{ fontSize: "36px", fontWeight: 900, color: "#8B5CF6", marginBottom: "4px" }}>
+                    100% Native
+                  </div>
+                  <div style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-main)" }}>
+                    {aStr("metric_native_label")}
+                  </div>
+                  <div style={{ fontSize: "12px", color: "var(--text-secondary)", marginTop: "2px" }}>
+                    {aStr("metric_native_sub")}
+                  </div>
                 </div>
-                <div style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-main)" }}>
-                  {isTr ? "Akıcı Deneyim" : "Smooth Framerate"}
-                </div>
-                <div style={{ fontSize: "12px", color: "var(--text-secondary)", marginTop: "2px" }}>
-                  {isTr ? "Flutter & Edge CDN" : "Flutter & Edge CDN"}
-                </div>
-              </div>
             </div>
           </div>
         </section>

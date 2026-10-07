@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { DedicatedAppDetails, getLocalizedAppDetails } from "@/data/apps-detail-data";
 import { useLanguage } from "@/context/LanguageContext";
+import { resolveI18n, appDetailI18n } from "@/i18n";
 import { HelpCircle, ChevronDown, MessageCircle, Mail } from "lucide-react";
 
 interface FAQSectionProps {
@@ -13,7 +14,6 @@ export function FAQSection({ app }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const { language } = useLanguage();
   const localizedApp = getLocalizedAppDetails(app.id, language);
-  const isTr = language === "tr";
 
   const toggleItem = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -39,7 +39,7 @@ export function FAQSection({ app }: FAQSectionProps) {
             }}
           >
             <HelpCircle size={14} />
-            <span>FAQ</span>
+            <span>{resolveI18n(appDetailI18n, "faq_badge", language)}</span>
           </span>
           <h2
             style={{
@@ -49,7 +49,7 @@ export function FAQSection({ app }: FAQSectionProps) {
               marginBottom: "16px",
             }}
           >
-            {isTr ? "Sıkça Sorulan Sorular" : "Frequently Asked Questions"}
+            {resolveI18n(appDetailI18n, "faq_title", language)}
           </h2>
           <p
             style={{
@@ -60,9 +60,7 @@ export function FAQSection({ app }: FAQSectionProps) {
               lineHeight: "1.6",
             }}
           >
-            {isTr
-              ? `${localizedApp.name} hakkında aklınıza takılabilecek teknik, gizlilik ve kullanım sorularının yanıtları.`
-              : `Everything you need to know about ${localizedApp.name}, privacy, features, and technical details.`}
+            {`${localizedApp.name} — ${resolveI18n(appDetailI18n, "faq_desc", language)}`}
           </p>
         </div>
 
@@ -193,10 +191,10 @@ export function FAQSection({ app }: FAQSectionProps) {
             </div>
             <div>
               <h4 style={{ fontSize: "16px", fontWeight: 700, margin: 0, color: "var(--text-main)" }}>
-                {isTr ? "Başka bir sorunuz veya öneriniz mi var?" : "Have another question or suggestion?"}
+                {resolveI18n(appDetailI18n, "faq_contact_prompt", language)}
               </h4>
               <p style={{ fontSize: "14px", color: "var(--text-secondary)", margin: "4px 0 0 0" }}>
-                {isTr ? "Geliştirici ekibimiz 24 saat içinde yanıt vermektedir." : "Our developer support team replies within 24 hours."}
+                {resolveI18n(appDetailI18n, "faq_contact_sub", language)}
               </p>
             </div>
           </div>

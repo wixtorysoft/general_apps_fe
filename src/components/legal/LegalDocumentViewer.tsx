@@ -5,6 +5,7 @@ import Link from "next/link";
 import { LegalDocument, getAppSpecificLegalDoc } from "@/data/legal-data";
 import { MainNavbar } from "@/components/MainNavbar";
 import { useLanguage } from "@/context/LanguageContext";
+import { legalI18n, resolveI18n } from "@/i18n";
 import {
   Shield,
   ShieldCheck,
@@ -41,7 +42,7 @@ interface LegalDocumentViewerProps {
 
 export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumentViewerProps) {
   const { t, language } = useLanguage();
-  const isTr = language === "tr";
+  const lStr = (key: string) => resolveI18n(legalI18n, key, language);
 
   const [selectedApp, setSelectedApp] = useState<EcosystemAppId>("all");
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -61,57 +62,57 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
   const ECOSYSTEM_APPS = [
     {
       id: "all" as const,
-      name: isTr ? "Tüm Ekosistem" : "All Ecosystem",
-      shortName: isTr ? "Tüm Ekosistem" : "All Ecosystem",
-      pillBadge: isTr ? "4 Uygulama" : "4 Apps",
+      name: lStr("eco_all_name"),
+      shortName: lStr("eco_all_name"),
+      pillBadge: lStr("eco_all_badge"),
       icon: Layers,
       href: "/",
       githubUrl: "https://github.com/celalaygar/main/blob/main/project/wixtory-privacy-policy.md",
-      heroSubtitle: isTr ? "Wixtory Ekosistemi için" : "for Wixtory Ecosystem",
+      heroSubtitle: lStr("eco_all_sub"),
       downloadName: "wixtory-ecosystem-privacy-policy.md",
     },
     {
       id: "language-box" as const,
       name: "Wixtory Language Box",
       shortName: "Language Box",
-      pillBadge: isTr ? "Kelime & Dil" : "Language & Vocab",
+      pillBadge: lStr("eco_lang_badge"),
       icon: BookOpen,
       href: "/language-box",
       githubUrl: "https://github.com/celalaygar/main/blob/main/project/language-box/privacy-policy.md",
-      heroSubtitle: isTr ? "Wixtory Language Box için" : "for Wixtory Language Box",
+      heroSubtitle: lStr("eco_lang_sub"),
       downloadName: "language-box-privacy-policy.md",
     },
     {
       id: "domain-track" as const,
       name: "Wixtory: Domain Track",
       shortName: "Domain Track",
-      pillBadge: isTr ? "Alan Adı & DNS" : "Domain & DNS",
+      pillBadge: lStr("eco_domain_badge"),
       icon: Globe,
       href: "/domain-track",
       githubUrl: "https://github.com/celalaygar/main/blob/main/project/wixtory-domain-track/privacy-policy.md",
-      heroSubtitle: isTr ? "Wixtory: Domain Track için" : "for Wixtory: Domain Track",
+      heroSubtitle: lStr("eco_domain_sub"),
       downloadName: "domain-track-privacy-policy.md",
     },
     {
       id: "astrovibe" as const,
       name: "AstroVibe",
       shortName: "AstroVibe",
-      pillBadge: isTr ? "Astroloji & Stil" : "Astrology & Style",
+      pillBadge: lStr("eco_astro_badge"),
       icon: Sparkles,
       href: "/astrovibe",
       githubUrl: "https://github.com/celalaygar/main/blob/main/project/astrovibe/privacy-policy.md",
-      heroSubtitle: isTr ? "AstroVibe için" : "for AstroVibe",
+      heroSubtitle: lStr("eco_astro_sub"),
       downloadName: "astrovibe-privacy-policy.md",
     },
     {
       id: "excuse" as const,
       name: "Excuse AI",
       shortName: "Excuse AI",
-      pillBadge: isTr ? "Bahanematik" : "Excuse Generator",
+      pillBadge: lStr("eco_excuse_badge"),
       icon: MessageSquare,
       href: "/excuse",
       githubUrl: "https://github.com/celalaygar/main/blob/main/project/excuse/privacy-policy.md",
-      heroSubtitle: isTr ? "Excuse AI için" : "for Excuse AI",
+      heroSubtitle: lStr("eco_excuse_sub"),
       downloadName: "excuse-ai-privacy-policy.md",
     },
   ];
@@ -182,7 +183,7 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
 
       md = `# ${targetDoc.title}\n\n`;
       md += `**${targetDoc.subtitle}**\n`;
-      md += `*${isTr ? `Yürürlük Tarihi: ${targetDoc.effectiveDate}` : `Effective Date: ${targetDoc.effectiveDate}`}*\n\n`;
+      md += `*${lStr("effective_date_label")}: ${targetDoc.effectiveDate}*\n\n`;
       md += `---\n\n`;
 
       if (selectedApp === "domain-track" || selectedApp === "language-box") {
@@ -204,7 +205,7 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
           }
 
           if (sIdx === targetDoc.sections.length - 1 && targetDoc.contactEmail) {
-            md += `[${isTr ? "E-Posta" : "Email"}: ${targetDoc.contactEmail}](mailto:${targetDoc.contactEmail})\n\n`;
+            md += `[${lStr("email_label")}: ${targetDoc.contactEmail}](mailto:${targetDoc.contactEmail})\n\n`;
           }
         });
       } else {
@@ -227,11 +228,11 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
         });
 
         if (targetDoc.contactEmail) {
-          md += `\n---\n\n## ${isTr ? "İletişim & Geliştirici" : "Contact & Developer"}\n`;
-          md += `- **${isTr ? "E-Posta" : "Email"}:** ${targetDoc.contactEmail}\n`;
-          md += `- **${isTr ? "Geliştirici" : "Developer"}:** ${targetDoc.developerName}\n`;
-          md += `- **${isTr ? "Konum" : "Location"}:** ${targetDoc.developerLocation}\n`;
-          md += `- **${isTr ? "Resmi Web Sitesi" : "Website"}:** [${targetDoc.website}](${targetDoc.website})\n`;
+          md += `\n---\n\n## ${lStr("contact_heading")}\n`;
+          md += `- **${lStr("email_label")}:** ${targetDoc.contactEmail}\n`;
+          md += `- **${lStr("developer_label")}:** ${targetDoc.developerName}\n`;
+          md += `- **${lStr("location_label")}:** ${targetDoc.developerLocation}\n`;
+          md += `- **${lStr("website_label")}:** [${targetDoc.website}](${targetDoc.website})\n`;
         }
       }
     } else {
@@ -289,17 +290,17 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
     {
       id: "privacy",
       href: "/privacy-policy",
-      label: isTr ? "Gizlilik Sözleşmesi" : "Privacy Policy",
+      label: lStr("tab_privacy"),
     },
     {
       id: "cookie",
       href: "/cookie-policy",
-      label: isTr ? "Çerez Politikası" : "Cookie Policy",
+      label: lStr("tab_cookie"),
     },
     {
       id: "kvkk",
       href: "/kvkk",
-      label: isTr ? "KVKK Aydınlatma Metni" : "KVKK Disclosure",
+      label: lStr("tab_kvkk"),
     },
   ];
 
@@ -366,7 +367,7 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
               }}
             >
               <Shield size={14} color="#10b981" />
-              <span>{isTr ? "YASAL" : "LEGAL"}</span>
+              <span>{lStr("legal_badge")}</span>
             </div>
 
             {/* Clean Solid Title */}
@@ -381,7 +382,7 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
               }}
             >
               {currentType === "privacy"
-                ? (isTr ? "Gizlilik Politikası" : "Privacy Policy")
+                ? lStr("tab_privacy")
                 : activeDoc.title}
             </h1>
 
@@ -417,7 +418,7 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
                   display: "inline-block",
                 }}
               />
-              <span>{isTr ? `Yürürlük Tarihi: ${activeDoc.effectiveDate}` : `Effective Date: ${activeDoc.effectiveDate}`}</span>
+              <span>{`${lStr("effective_date_label")}: ${activeDoc.effectiveDate}`}</span>
             </div>
 
             {/* Modern Application Selector Icon Buttons Bar */}
@@ -507,7 +508,7 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
                 }}
               >
                 <Download size={15} color="#10b981" />
-                <span>{isTr ? "Politikayı İndir" : "Download Policy"}</span>
+                <span>{lStr("download_policy")}</span>
               </button>
 
               {/* Button: GitHub'da Görüntüle */}
@@ -532,7 +533,7 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
                 }}
               >
                 <ExternalLink size={15} color="#10b981" />
-                <span>{isTr ? "GitHub'da Görüntüle" : "View on GitHub"}</span>
+                <span>{lStr("view_github")}</span>
               </a>
             </div>
           </div>
@@ -735,7 +736,7 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
                               fontSize: "13.5px",
                             }}
                           >
-                            {isTr ? "E-Posta: " : "Email: "}{activeDoc.contactEmail}
+                            {`${lStr("email_label")}: `}{activeDoc.contactEmail}
                           </a>
                           <button
                             onClick={handleCopyEmail}
@@ -757,7 +758,7 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
                             }}
                           >
                             {copiedEmail ? <Check size={11} color="#10b981" /> : <Copy size={11} />}
-                            <span>{copiedEmail ? (isTr ? "Kopyalandı" : "Copied") : (isTr ? "Kopyala" : "Copy")}</span>
+                            <span>{copiedEmail ? lStr("copied") : lStr("copy")}</span>
                           </button>
                         </div>
                       )}
@@ -788,9 +789,7 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
             >
               <Lock size={16} color="#10b981" style={{ flexShrink: 0 }} />
               <span>
-                {isTr
-                  ? `Wixtory ekosisteminde gizliliğiniz bir ayar veya sonradan eklenen bir özellik değil; değişmez temel mimaridir.`
-                  : `Across the Wixtory ecosystem, privacy is not a setting or an afterthought—it is the immutable core architecture.`}
+                {lStr("privacy_immutable_note")}
               </span>
             </div>
           </div>

@@ -22,7 +22,136 @@ export function AppDetailHero({ app }: AppDetailHeroProps) {
   const { t, language } = useLanguage();
   const localizedApp = getLocalizedAppDetails(app.id, language);
   const isAstro = localizedApp.id === "astrovibe";
-  const isTr = language === "tr";
+
+  const heroI18n: Record<string, Record<string, string>> = {
+    aura_indicator: {
+      tr: "AURA GÖSTERGESİ", en: "AURA INDICATOR", it: "INDICATORE AURA", pt: "INDICADOR DE AURA",
+      es: "INDICADOR DE AURA", fr: "INDICATEUR D'AURA", de: "AURA-ANZEIGE", ru: "ИНДИКАТОР АУРЫ",
+      ja: "オーラ指標", zh: "灵气指标", ar: "مؤشر الهالة"
+    },
+    rescue_mode: {
+      tr: "KURTARICI MOD", en: "RESCUE MODE", it: "MODALITÀ SALVATAGGIO", pt: "MODO RESGATE",
+      es: "MODO RESCATE", fr: "MODE SAUVETAGE", de: "RETTUNGSMODUS", ru: "РЕЖИМ СПАСЕНИЯ",
+      ja: "レスキューモード", zh: "救急模式", ar: "وضع الإنقاذ"
+    },
+    aries_fire: {
+      tr: "Koç Burcu · Ateş", en: "Aries · Fire Element", it: "Ariete · Fuoco", pt: "Áries · Fogo",
+      es: "Aries · Fuego", fr: "Bélier · Feu", de: "Widder · Feuer", ru: "Овен · Огонь",
+      ja: "牡羊座 · 火のエレメント", zh: "白羊座 · 火象星座", ar: "الحمل · عنصر النار"
+    },
+    corporate_work: {
+      tr: "İş & Kurumsal", en: "Corporate & Work", it: "Lavoro & Ufficio", pt: "Trabalho & Corporativo",
+      es: "Trabajo & Corporativo", fr: "Travail & Entreprise", de: "Beruf & Business", ru: "Работа и Бизнес",
+      ja: "仕事＆ビジネス", zh: "职场与商务", ar: "العمل والشركات"
+    },
+    excuses_stat: {
+      tr: "1.2K+ Bahane", en: "1.2K+ Excuses", it: "1.2K+ Scuse", pt: "1.2K+ Desculpas",
+      es: "1.2K+ Excusas", fr: "1.2K+ Excuses", de: "1.2K+ Ausreden", ru: "1.2K+ Оправданий",
+      ja: "1.2K+の言い訳", zh: "1200+ 借口方案", ar: "+1.2 ألف عذر"
+    },
+    nail_pick: {
+      tr: "★ Günün Protez Tırnak Seçimi", en: "★ Today's Nail Art Pick", it: "★ Nail Art del Giorno", pt: "★ Nail Art do Dia",
+      es: "★ Nail Art del Día", fr: "★ Nail Art du Jour", de: "★ Nail-Art des Tages", ru: "★ Маникюр Дня",
+      ja: "★ 本日のネイルアート", zh: "★ 今日美甲精选", ar: "★ اختيار أظافر اليوم"
+    },
+    excuse_pick: {
+      tr: "⚡ Önerilen Kurtarıcı Bahane", en: "⚡ Recommended Smart Excuse", it: "⚡ Scusa Consigliata", pt: "⚡ Desculpa Recomendada",
+      es: "⚡ Excusa Recomendada", fr: "⚡ Excuse Recommandée", de: "⚡ Empfohlene Ausrede", ru: "⚡ Рекомендуемое Оправдание",
+      ja: "⚡ おすすめのスマート言い訳", zh: "⚡ 推荐救急借口", ar: "⚡ العذر الذكي الموصى به"
+    },
+    nail_title: {
+      tr: "Kozmik Altın French & Badem Form", en: "Cosmic Gold French & Almond Shape", it: "French Dorato Cosmico & Mandorla", pt: "French Dourado Cósmico & Amêndoa",
+      es: "French Dorado Cósmico & Almendra", fr: "French Doré Cosmique & Amande", de: "Kosmisches Gold-French & Mandelform", ru: "Космический Золотой Френч и Миндаль",
+      ja: "コズミックゴールドフレンチ＆アーモンド", zh: "璀璨金星法式美甲 · 杏仁甲型", ar: "فرنش ذهبي كوني وشكل لوزي"
+    },
+    excuse_title: {
+      tr: "“Acil müşteri veri tabanı senkronizasyon toplantısına girmem gerekti.”",
+      en: "“Urgent client database sync call just came up; need to jump on immediately.”",
+      it: "“È appena saltata fuori una riunione urgente di sincronizzazione dati; devo collegarmi subito.”",
+      pt: "“Surgiu uma reunião urgente de sincronização com cliente; preciso entrar agora.”",
+      es: "“Surgió una reunión urgente de sincronización con el cliente; debo conectarme ya.”",
+      fr: "“Une réunion urgente de synchronisation client vient de tomber ; je dois m'y connecter tout de suite.”",
+      de: "“Es gab einen dringenden Synchronisationstermin mit dem Kunden; ich muss sofort rein.”",
+      ru: "«Срочный созвон по синхронизации базы данных клиента; нужно немедленно подключиться».",
+      ja: "「クライアントとの緊急データベース同期ミーティングが入り、すぐに対応が必要です。」",
+      zh: "“临时收到客户数据库紧急同步会议通知，需要立即接入处理。”",
+      ar: "“ظهر فجأة اجتماع طارئ لمزامنة قاعدة بيانات العميل؛ يجب أن أنضم فوراً.”"
+    },
+    nail_desc: {
+      tr: "Ateş elementinin tutkulu aurasını yansıtan yıldız tozu varak tasarımı.",
+      en: "Star-dust foil design radiating the passionate aura of the Fire element.",
+      it: "Design dorato stellare che irradia l'energia passionale dell'elemento Fuoco.",
+      pt: "Design com folha de ouro estelar refletindo a aura apaixonada do elemento Fogo.",
+      es: "Diseño con detalles de polvo estelar que irradia la energía del elemento Fuego.",
+      fr: "Design feuille d'or scintillant reflétant l'aura passionnée de l'élément Feu.",
+      de: "Sternenstaub-Goldfolien-Design, das die feurige Aura des Elements widerspiegelt.",
+      ru: "Дизайн с золотой звездной поталью, отражающий пламенную ауру стихии Огня.",
+      ja: "火のエレメントの情熱的なオーラを放つスターダスト箔デザイン。",
+      zh: "融入星尘金箔璀璨质感，完美映衬火象星座的热烈气场。",
+      ar: "تصميم رقائق غبار النجوم يعكس الهالة الشغوفة لعنصر النار."
+    },
+    excuse_desc: {
+      tr: "Yöneticiye ve ekip liderlerine karşı diplomatik ve sorgulanmaz mazeret.",
+      en: "A polished, unquestionable excuse tailored for managers and team leads.",
+      it: "Una giustificazione diplomatica e impeccabile per manager e leader di team.",
+      pt: "Uma desculpa diplomática e inquestionável pensada para gerentes e líderes.",
+      es: "Una excusa diplomática e incuestionable pensada para gerentes y líderes.",
+      fr: "Une excuse diplomatique et irréprochable adaptée pour les managers et chefs d'équipe.",
+      de: "Eine diplomatische und unanfechtbare Ausrede für Manager und Teamleiter.",
+      ru: "Дипломатичное и неоспоримое оправдание для руководителей и коллег.",
+      ja: "上司やチームリーダーに対してスマートかつ疑われないビジネス表現。",
+      zh: "适用于团队管理者或客户的专业得体、难以辩驳的得体说辞。",
+      ar: "عذر دبلوماسي لا يقبل الشك ومصمم للمدراء وقادة الفرق."
+    },
+    tiktok_feed: {
+      tr: "TikTok Dikey Akış", en: "TikTok Vertical Feed", it: "Feed Verticale TikTok", pt: "Feed Vertical TikTok",
+      es: "Feed Vertical TikTok", fr: "Flux Vertical TikTok", de: "TikTok Vertikaler Feed", ru: "Вертикальная Лента TikTok",
+      ja: "TikTok風縦型フィード", zh: "竖屏信息流", ar: "موجز تيك توك الرأسي"
+    },
+    credibility: {
+      tr: "İnandırıcılık: %98", en: "Credibility: 98%", it: "Credibilità: 98%", pt: "Credibilidade: 98%",
+      es: "Credibilidad: 98%", fr: "Crédibilité: 98%", de: "Glaubwürdigkeit: 98%", ru: "Правдоподобность: 98%",
+      ja: "信憑性: 98%", zh: "可信度：98%", ar: "المصداقية: 98%"
+    },
+    explore_btn: {
+      tr: "İncele", en: "Explore", it: "Esplora", pt: "Explorar", es: "Explorar",
+      fr: "Explorer", de: "Erkunden", ru: "Обзор", ja: "詳しく", zh: "浏览", ar: "استعراض"
+    },
+    mystic_tarot: {
+      tr: "Mistik Tarot", en: "Mystic Tarot", it: "Tarocchi Mistici", pt: "Tarô Místico", es: "Tarot Místico",
+      fr: "Tarot Mystique", de: "Mystisches Tarot", ru: "Мистическое Таро", ja: "神秘のタロット", zh: "神秘塔罗", ar: "التاروت الصوفي"
+    },
+    collection_label: {
+      tr: "Koleksiyon", en: "Collection", it: "Collezione", pt: "Coleção", es: "Colección",
+      fr: "Collection", de: "Sammlung", ru: "Коллекция", ja: "コレクション", zh: "收藏分类", ar: "المجموعة"
+    },
+    magician_card: {
+      tr: "Büyücü Kartı", en: "The Magician", it: "Il Mago", pt: "O Mago", es: "El Mago",
+      fr: "Le Bateleur", de: "Der Magier", ru: "Карта Мага", ja: "魔術師のカード", zh: "魔术师牌", ar: "بطاقة الساحر"
+    },
+    emergency_label: {
+      tr: "Acil Durum", en: "Emergency", it: "Emergenza", pt: "Emergência", es: "Emergencia",
+      fr: "Urgence", de: "Notfall", ru: "Экстренный Случай", ja: "緊急時", zh: "紧急突发", ar: "حالة طارئة"
+    },
+    jewelry_label: {
+      tr: "Stil Takı", en: "Style Jewelry", it: "Gioielli di Stile", pt: "Joias de Estilo", es: "Joyería de Estilo",
+      fr: "Bijoux de Style", de: "Stilvoller Schmuck", ru: "Украшения", ja: "スタイルジュエリー", zh: "风格珠宝", ar: "مجوهرات أنيقة"
+    },
+    lucky_spin: {
+      tr: "Şans Ruleti", en: "Lucky Spin", it: "Ruota della Fortuna", pt: "Roleta da Sorte", es: "Ruleta de la Suerte",
+      fr: "Roue de la Chance", de: "Glücksrad", ru: "Колесо Удачи", ja: "ラッキースピン", zh: "幸运转盘", ar: "عجلة الحظ"
+    },
+    agate_pendant: {
+      tr: "Akik Kolye", en: "Agate Pendant", it: "Pendente in Agata", pt: "Pingente de Ágata", es: "Colgante de Ágata",
+      fr: "Pendentif en Agate", de: "Achat-Anhänger", ru: "Кулон из Агата", ja: "瑪瑙ペンダント", zh: "玛瑙吊坠", ar: "قلادة العقيق"
+    },
+    spin_wheel: {
+      tr: "Çarkı Çevir", en: "Spin Wheel", it: "Gira la Ruota", pt: "Girar Roleta", es: "Girar Ruleta",
+      fr: "Tourner la Roue", de: "Rad Drehen", ru: "Крутить Колесо", ja: "ルーレットを回す", zh: "旋转轮盘", ar: "أدر العجلة"
+    }
+  };
+
+  const hStr = (key: string) => heroI18n[key]?.[language] || heroI18n[key]?.en || "";
 
   return (
     <section
@@ -321,14 +450,10 @@ export function AppDetailHero({ app }: AppDetailHeroProps) {
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                       <div style={{ fontSize: "11px", color: localizedApp.primaryColor, fontWeight: 700 }}>
-                        {isAstro
-                          ? isTr ? "AURA GÖSTERGESİ" : "AURA INDICATOR"
-                          : isTr ? "KURTARICI MOD" : "RESCUE MODE"}
+                        {isAstro ? hStr("aura_indicator") : hStr("rescue_mode")}
                       </div>
                       <div style={{ fontSize: "19px", fontWeight: 800, color: "#ffffff" }}>
-                        {isAstro
-                          ? isTr ? "Koç Burcu · Ateş" : "Aries · Fire Element"
-                          : isTr ? "İş & Kurumsal" : "Corporate & Work"}
+                        {isAstro ? hStr("aries_fire") : hStr("corporate_work")}
                       </div>
                     </div>
                     <div
@@ -341,9 +466,7 @@ export function AppDetailHero({ app }: AppDetailHeroProps) {
                         fontWeight: 700,
                       }}
                     >
-                      {isAstro
-                        ? "Aura 98%"
-                        : isTr ? "1.2K+ Bahane" : "1.2K+ Excuses"}
+                      {isAstro ? "Aura 98%" : hStr("excuses_stat")}
                     </div>
                   </div>
 
@@ -368,9 +491,7 @@ export function AppDetailHero({ app }: AppDetailHeroProps) {
                         marginBottom: "6px",
                       }}
                     >
-                      {isAstro
-                        ? isTr ? "★ Günün Protez Tırnak Seçimi" : "★ Today's Nail Art Pick"
-                        : isTr ? "⚡ Önerilen Kurtarıcı Bahane" : "⚡ Recommended Smart Excuse"}
+                      {isAstro ? hStr("nail_pick") : hStr("excuse_pick")}
                     </div>
                     <div
                       style={{
@@ -381,20 +502,10 @@ export function AppDetailHero({ app }: AppDetailHeroProps) {
                         lineHeight: "1.3",
                       }}
                     >
-                      {isAstro
-                        ? isTr ? "Kozmik Altın French & Badem Form" : "Cosmic Gold French & Almond Shape"
-                        : isTr
-                          ? "“Acil müşteri veri tabanı senkronizasyon toplantısına girmem gerekti.”"
-                          : "“Urgent client database sync call just came up; need to jump on immediately.”"}
+                      {isAstro ? hStr("nail_title") : hStr("excuse_title")}
                     </div>
                     <div style={{ fontSize: "12px", color: "#CBD5E1", lineHeight: "1.45" }}>
-                      {isAstro
-                        ? isTr
-                          ? "Ateş elementinin tutkulu aurasını yansıtan yıldız tozu varak tasarımı."
-                          : "Star-dust foil design radiating the passionate aura of the Fire element."
-                        : isTr
-                          ? "Yöneticiye ve ekip liderlerine karşı diplomatik ve sorgulanmaz mazeret."
-                          : "A polished, unquestionable excuse tailored for managers and team leads."}
+                      {isAstro ? hStr("nail_desc") : hStr("excuse_desc")}
                     </div>
 
                     <div
@@ -414,9 +525,7 @@ export function AppDetailHero({ app }: AppDetailHeroProps) {
                           color: "#ffffff",
                         }}
                       >
-                        {isAstro
-                          ? isTr ? "TikTok Dikey Akış" : "TikTok Vertical Feed"
-                          : isTr ? "İnandırıcılık: %98" : "Credibility: 98%"}
+                        {isAstro ? hStr("tiktok_feed") : hStr("credibility")}
                       </span>
                       <span
                         style={{
@@ -428,7 +537,7 @@ export function AppDetailHero({ app }: AppDetailHeroProps) {
                           gap: "4px",
                         }}
                       >
-                        {isAstro ? (isTr ? "İncele" : "Explore") : "WhatsApp"} →
+                        {isAstro ? hStr("explore_btn") : "WhatsApp"} →
                       </span>
                     </div>
                   </div>
@@ -444,10 +553,10 @@ export function AppDetailHero({ app }: AppDetailHeroProps) {
                       }}
                     >
                       <div style={{ fontSize: "10px", color: "var(--text-muted)" }}>
-                        {isAstro ? (isTr ? "Mistik Tarot" : "Mystic Tarot") : (isTr ? "Koleksiyon" : "Collection")}
+                        {isAstro ? hStr("mystic_tarot") : hStr("collection_label")}
                       </div>
                       <div style={{ fontSize: "14px", fontWeight: 700, color: "#ffffff", marginTop: "2px" }}>
-                        {isAstro ? (isTr ? "Büyücü Kartı" : "The Magician") : (isTr ? "Acil Durum" : "Emergency")}
+                        {isAstro ? hStr("magician_card") : hStr("emergency_label")}
                       </div>
                     </div>
 
@@ -460,10 +569,10 @@ export function AppDetailHero({ app }: AppDetailHeroProps) {
                       }}
                     >
                       <div style={{ fontSize: "10px", color: "var(--text-muted)" }}>
-                        {isAstro ? (isTr ? "Stil Takı" : "Style Jewelry") : (isTr ? "Şans Ruleti" : "Lucky Spin")}
+                        {isAstro ? hStr("jewelry_label") : hStr("lucky_spin")}
                       </div>
                       <div style={{ fontSize: "14px", fontWeight: 700, color: "#ffffff", marginTop: "2px" }}>
-                        {isAstro ? (isTr ? "Akik Kolye" : "Agate Pendant") : (isTr ? "Çarkı Çevir" : "Spin Wheel")}
+                        {isAstro ? hStr("agate_pendant") : hStr("spin_wheel")}
                       </div>
                     </div>
                   </div>

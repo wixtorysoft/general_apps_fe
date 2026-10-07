@@ -25,8 +25,32 @@ interface AboutSectionProps {
 export function AboutSection({ app }: AboutSectionProps) {
   const { language } = useLanguage();
   const localizedApp = getLocalizedAppDetails(app.id, language);
-  const isTr = language === "tr";
   const about = localizedApp.about;
+
+  const aboutI18n: Record<string, Record<string, string>> = {
+    origin_story: {
+      tr: "Doğuş Hikayesi & Vizyon", en: "Origin Story & Vision", it: "Storia delle Origini & Visione", pt: "História de Origem & Visão",
+      es: "Historia de Origen & Visión", fr: "Histoire d'Origine & Vision", de: "Entstehungsgeschichte & Vision", ru: "История Создания и Видение",
+      ja: "誕生の背景＆ビジョン", zh: "初心故事与愿景", ar: "قصة البداية والرؤية"
+    },
+    our_mission: {
+      tr: "Misyonumuz", en: "Our Mission", it: "La Nostra Missione", pt: "Nossa Missão",
+      es: "Nuestra Misión", fr: "Notre Mission", de: "Unsere Mission", ru: "Наша Миссия",
+      ja: "私たちの使命", zh: "我们的使命", ar: "مهمتنا"
+    },
+    target_audience: {
+      tr: "Kimin İçin Geliştirildi?", en: "Who Is It For?", it: "Per Chi è Pensato?", pt: "Para Quem é Feito?",
+      es: "¿Para Quién es?", fr: "Pour Qui est-ce Conçu ?", de: "Für Wen Entwickelt?", ru: "Для Кого Создано?",
+      ja: "対象ユーザー", zh: "目标受众与适用人群", ar: "لمن صُمم هذا التطبيق؟"
+    },
+    tech_foundation: {
+      tr: "Teknolojik Altyapı & Mühendislik", en: "Technical Foundation & Stack", it: "Infrastruttura Tecnica & Ingegneria", pt: "Infraestrutura Técnica & Engenharia",
+      es: "Infraestructura Técnica & Ingeniería", fr: "Fondations Techniques & Ingénierie", de: "Technisches Fundament & Stack", ru: "Технический Стек и Архитектура",
+      ja: "技術基盤＆エンジニアリング", zh: "技术底座与工程架构", ar: "البنية التحتية والتقنية"
+    }
+  };
+
+  const aStr = (key: string) => aboutI18n[key]?.[language] || aboutI18n[key]?.en || "";
 
   const renderIcon = (iconName: string) => {
     switch (iconName) {
@@ -133,7 +157,7 @@ export function AboutSection({ app }: AboutSectionProps) {
                 }}
               >
                 <Sparkles size={16} />
-                <span>{isTr ? "Doğuş Hikayesi & Vizyon" : "Origin Story & Vision"}</span>
+                <span>{aStr("origin_story")}</span>
               </div>
               <p
                 style={{
@@ -168,7 +192,7 @@ export function AboutSection({ app }: AboutSectionProps) {
                 <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
                   <Target size={18} color={localizedApp.primaryColor} />
                   <h4 style={{ fontSize: "15px", fontWeight: 700, margin: 0, color: "var(--text-main)" }}>
-                    {isTr ? "Misyonumuz" : "Our Mission"}
+                    {aStr("our_mission")}
                   </h4>
                 </div>
                 <p style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.6", margin: 0 }}>
@@ -189,7 +213,7 @@ export function AboutSection({ app }: AboutSectionProps) {
                 <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
                   <Users size={18} color={localizedApp.primaryColor} />
                   <h4 style={{ fontSize: "15px", fontWeight: 700, margin: 0, color: "var(--text-main)" }}>
-                    {isTr ? "Kimin İçin Geliştirildi?" : "Who Is It For?"}
+                    {aStr("target_audience")}
                   </h4>
                 </div>
                 <p style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.6", margin: 0 }}>
@@ -226,7 +250,7 @@ export function AboutSection({ app }: AboutSectionProps) {
                 }}
               >
                 <Zap size={16} />
-                <span>{isTr ? "Teknolojik Altyapı & Mühendislik" : "Technical Foundation & Stack"}</span>
+                <span>{aStr("tech_foundation")}</span>
               </div>
 
               <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>

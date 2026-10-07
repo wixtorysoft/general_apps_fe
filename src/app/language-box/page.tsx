@@ -9,7 +9,6 @@ import { ComingSoonSection } from "@/components/language-box/coming-soon-section
 import { FeaturesSection } from "@/components/language-box/features-section";
 import { AdvantagesSection } from "@/components/language-box/advantages-section";
 import { FAQSection } from "@/components/language-box/faq-section";
-import { DeveloperSection } from "@/components/language-box/developer-section";
 import { Footer } from "@/components/language-box/footer";
 
 export default function LanguageBoxHomePage() {
@@ -25,7 +24,6 @@ export default function LanguageBoxHomePage() {
         <FeaturesSection />
         <AdvantagesSection />
         <FAQSection />
-        <DeveloperSection />
       </main>
       <Footer />
     </div>

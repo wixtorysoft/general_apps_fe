@@ -4,10 +4,12 @@ import React from "react";
 import Link from "next/link";
 import { Layers } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { resolveI18n } from "@/i18n";
 
 export function MainFooter() {
   const { language } = useLanguage();
-  const isTr = language === "tr";
+
+  const fStr = (key: string) => resolveI18n("navigation", key, language);
 
   return (
     <footer
@@ -67,7 +69,7 @@ export function MainFooter() {
                 Wixtory <span style={{ color: "var(--primary)" }}>Apps</span>
               </span>
               <div style={{ fontSize: "11px", color: "var(--text-muted)" }}>
-                {isTr ? "Mobil Uygulama Ekosistemi" : "Mobile App Ecosystem"}
+                {fStr("ecosystem")}
               </div>
             </div>
           </Link>
@@ -82,25 +84,25 @@ export function MainFooter() {
             }}
           >
             <Link href="/apps" style={{ fontSize: "13.5px", color: "var(--text-secondary)", textDecoration: "none" }}>
-              {isTr ? "Uygulamalar" : "Apps"}
+              {fStr("apps")}
             </Link>
             <Link href="/about" style={{ fontSize: "13.5px", color: "var(--text-secondary)", textDecoration: "none" }}>
-              {isTr ? "Hakkımızda" : "About"}
+              {fStr("about")}
             </Link>
             <Link href="/vision-mission" style={{ fontSize: "13.5px", color: "var(--text-secondary)", textDecoration: "none" }}>
-              {isTr ? "Vizyon & Misyon" : "Vision & Mission"}
+              {fStr("vision")}
             </Link>
             <Link href="/privacy-policy" style={{ fontSize: "13.5px", color: "var(--text-secondary)", textDecoration: "none" }}>
-              {isTr ? "Gizlilik Sözleşmesi" : "Privacy Policy"}
+              {fStr("privacy")}
             </Link>
             <Link href="/cookie-policy" style={{ fontSize: "13.5px", color: "var(--text-secondary)", textDecoration: "none" }}>
-              {isTr ? "Çerez Politikası" : "Cookie Policy"}
+              {fStr("cookie_policy")}
             </Link>
             <Link href="/kvkk" style={{ fontSize: "13.5px", color: "var(--text-secondary)", textDecoration: "none" }}>
-              {isTr ? "KVKK" : "KVKK Disclosure"}
+              {fStr("kvkk")}
             </Link>
             <Link href="/developer" style={{ fontSize: "13.5px", color: "var(--text-secondary)", textDecoration: "none" }}>
-              Developer
+              {fStr("developer")}
             </Link>
           </div>
         </div>
@@ -120,10 +122,10 @@ export function MainFooter() {
           }}
         >
           <div>
-            © {new Date().getFullYear()} Wixtory Ecosystem. {isTr ? "Tüm hakları saklıdır." : "All rights reserved."}
+            © {new Date().getFullYear()} Wixtory Ecosystem. {fStr("rights")}
           </div>
           <div>
-            {isTr ? "Flutter & Sıfır-Telemetri Gizlilik Standartları" : "Flutter & Zero-Telemetry Privacy Standards"}
+            {fStr("standards")}
           </div>
         </div>
       </div>

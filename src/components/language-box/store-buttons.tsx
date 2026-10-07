@@ -1,6 +1,8 @@
 "use client";
 
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/data";
+import { useLanguage } from "@/lib/i18n/language-context";
+import { resolveI18n } from "@/i18n";
 
 function AppleLogo({ className }: { className?: string }) {
   return (
@@ -62,6 +64,10 @@ function GooglePlayLogo({ className }: { className?: string }) {
 }
 
 export function StoreButtons() {
+  const { language } = useLanguage();
+  const applePrefix = resolveI18n("common", "download_on_app_store", language);
+  const googlePrefix = resolveI18n("common", "get_it_on_google_play", language);
+
   return (
     <div className="flex flex-wrap gap-3">
       {/* App Store Button */}
@@ -74,7 +80,7 @@ export function StoreButtons() {
         <AppleLogo className="h-7 w-7 text-white shrink-0" />
         <div className="flex flex-col leading-none">
           <span className="text-[10px] font-normal text-white/70 uppercase tracking-wide">
-            Download on the
+            {applePrefix}
           </span>
           <span className="text-base font-semibold text-white -mt-0.5">
             App Store
@@ -92,7 +98,7 @@ export function StoreButtons() {
         <GooglePlayLogo className="h-7 w-7 shrink-0" />
         <div className="flex flex-col leading-none">
           <span className="text-[10px] font-normal text-white/70 uppercase tracking-wide">
-            GET IT ON
+            {googlePrefix}
           </span>
           <span className="text-base font-semibold text-white -mt-0.5">
             Google Play

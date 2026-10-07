@@ -42,7 +42,34 @@ const ICON_MAP: Record<string, React.ElementType> = {
 export function FeaturesSection({ app }: FeaturesSectionProps) {
   const { language, t } = useLanguage();
   const currentApp = getLocalizedAppDetails(app.id, language) || app;
-  const isTr = language === "tr";
+
+  const featI18n: Record<string, Record<string, string>> = {
+    badge: {
+      tr: "Özellikler", en: "Features", it: "Funzionalità", pt: "Recursos",
+      es: "Características", fr: "Fonctionnalités", de: "Funktionen", ru: "Возможности",
+      ja: "機能一覧", zh: "功能特性", ar: "الميزات"
+    },
+    title_suffix: {
+      tr: "Kapsamlı Özellik Seti", en: "Comprehensive Features", it: "Insieme Completo di Funzionalità", pt: "Conjunto Completo de Recursos",
+      es: "Conjunto Integral de Funciones", fr: "Ensemble Complet de Fonctionnalités", de: "Umfassender Funktionsumfang", ru: "Полный Набор Возможностей",
+      ja: "充実の機能セット", zh: "全景功能体系", ar: "مجموعة الميزات الشاملة"
+    },
+    desc: {
+      tr: "Günlük ritüellerinizi ve zor anlarınızı konfora dönüştüren, en son teknolojiyle donatılmış tüm modüller.",
+      en: "Advanced modules equipped with modern technology designed to elevate your daily lifestyle.",
+      it: "Moduli avanzati dotati di tecnologia moderna per migliorare la tua vita quotidiana.",
+      pt: "Módulos avançados equipados com tecnologia moderna projetados para elevar seu estilo de vida.",
+      es: "Módulos avanzados con tecnología moderna diseñados para optimizar tu día a día.",
+      fr: "Des modules de pointe conçus avec une technologie moderne pour sublimer votre quotidien.",
+      de: "Fortschrittliche Module mit modernster Technologie zur Bereicherung Ihres Alltags.",
+      ru: "Продвинутые модули на современной архитектуре, созданные для максимального удобства.",
+      ja: "日常のあらゆる瞬間を快適にする、最新テクノロジーを凝縮したモジュール群。",
+      zh: "搭载前沿技术架构的丰富模块，全方位提升您的日常数字体验。",
+      ar: "وحدات متطورة مدعومة بأحدث التقنيات للارتقاء بأسلوب حياتك اليومي."
+    }
+  };
+
+  const fStr = (key: string) => featI18n[key]?.[language] || featI18n[key]?.en || "";
 
   return (
     <section
@@ -80,7 +107,7 @@ export function FeaturesSection({ app }: FeaturesSectionProps) {
             }}
           >
             <Grid size={14} />
-            <span>{isTr ? "Özellikler" : "Features"}</span>
+            <span>{fStr("badge")}</span>
           </span>
           <h2
             style={{
@@ -90,7 +117,7 @@ export function FeaturesSection({ app }: FeaturesSectionProps) {
               marginBottom: "16px",
             }}
           >
-            {currentApp.name} {isTr ? "Kapsamlı Özellik Seti" : "Comprehensive Features"}
+            {currentApp.name} {fStr("title_suffix")}
           </h2>
           <p
             style={{
@@ -101,9 +128,7 @@ export function FeaturesSection({ app }: FeaturesSectionProps) {
               lineHeight: "1.6",
             }}
           >
-            {isTr
-              ? "Günlük ritüellerinizi ve zor anlarınızı konfora dönüştüren, en son teknolojiyle donatılmış tüm modüller."
-              : "Advanced modules equipped with modern technology designed to elevate your daily lifestyle."}
+            {fStr("desc")}
           </p>
         </div>
 

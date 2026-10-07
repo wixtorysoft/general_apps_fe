@@ -1560,3 +1560,14 @@
   color: #b45309 !important;
 }
 
+/* RTL Support for Arabic (ar) */
+[dir="rtl"] .language-box-scope {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .language-box-scope nav {
+  direction: rtl;
+}
+
+

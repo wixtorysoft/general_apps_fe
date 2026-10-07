@@ -31,7 +31,45 @@ const ICON_MAP: Record<string, React.ElementType> = {
 export function WhyChooseSection({ app }: WhyChooseSectionProps) {
   const { language } = useLanguage();
   const currentApp = getLocalizedAppDetails(app.id, language) || app;
-  const isTr = language === "tr";
+
+  const whyI18n: Record<string, Record<string, string>> = {
+    badge: {
+      tr: "Neden Tercih Edilmeli?", en: "Why Choose?", it: "Perché Sceglierlo?", pt: "Por Que Escolher?",
+      es: "¿Por Qué Elegirnos?", fr: "Pourquoi Choisir ?", de: "Warum Uns Wählen?", ru: "Почему Именно Мы?",
+      ja: "選ばれる理由", zh: "为什么选择我们？", ar: "لماذا تختار هذا التطبيق؟"
+    },
+    desc: {
+      tr: "Sıradan alternatiflerin ötesinde: Kullanıcı mahremiyeti, benzersiz tasarım ve üstün performans.",
+      en: "Beyond ordinary alternatives: User privacy, unique aesthetic design, and superior performance.",
+      it: "Oltre le alternative ordinarie: Privacy dell'utente, design estetico unico e prestazioni superiori.",
+      pt: "Além de alternativas comuns: Privacidade do usuário, design estético único e desempenho superior.",
+      es: "Más allá de alternativas comunes: Privacidad del usuario, diseño estético único y rendimiento superior.",
+      fr: "Bien au-delà des alternatives ordinaires : Respect de la vie privée, design esthétique et performances de pointe.",
+      de: "Jenseits gewöhnlicher Alternativen: Privatsphäre, einzigartiges Design und überlegene Leistung.",
+      ru: "За пределами обычных решений: Полная конфиденциальность, уникальный дизайн и высокая скорость.",
+      ja: "一般的なアプリを超える体験：ユーザープライバシーの尊重、洗練された美学、圧倒的なパフォーマンス。",
+      zh: "超越平庸之选：坚守隐私无妥协，独具美学设计与卓越运行性能。",
+      ar: "تفوق على البدائل التقليدية: خصوصية مطلقة، تصميم جمالي فريد وأداء فائق."
+    }
+  };
+
+  const getWhyTitle = (name: string) => {
+    switch (language) {
+      case "tr": return `Neden ${name} Tercih Edilmeli?`;
+      case "it": return `Perché Scegliere ${name}?`;
+      case "pt": return `Por Que Escolher o ${name}?`;
+      case "es": return `¿Por Qué Elegir ${name}?`;
+      case "fr": return `Pourquoi Choisir ${name} ?`;
+      case "de": return `Warum ${name} Wählen?`;
+      case "ru": return `Почему Стоит Выбрать ${name}?`;
+      case "ja": return `${name}が選ばれる理由`;
+      case "zh": return `为什么选择 ${name}？`;
+      case "ar": return `لماذا تختار ${name}؟`;
+      default: return `Why Choose ${name}?`;
+    }
+  };
+
+  const wStr = (key: string) => whyI18n[key]?.[language] || whyI18n[key]?.en || "";
 
   return (
     <section
@@ -53,7 +91,7 @@ export function WhyChooseSection({ app }: WhyChooseSectionProps) {
             }}
           >
             <Award size={14} />
-            <span>{isTr ? "Neden Tercih Edilmeli?" : "Why Choose?"}</span>
+            <span>{wStr("badge")}</span>
           </span>
           <h2
             style={{
@@ -63,7 +101,7 @@ export function WhyChooseSection({ app }: WhyChooseSectionProps) {
               marginBottom: "16px",
             }}
           >
-            {isTr ? `Neden ${currentApp.name} Tercih Edilmeli?` : `Why Choose ${currentApp.name}?`}
+            {getWhyTitle(currentApp.name)}
           </h2>
           <p
             style={{
@@ -74,9 +112,7 @@ export function WhyChooseSection({ app }: WhyChooseSectionProps) {
               lineHeight: "1.6",
             }}
           >
-            {isTr
-              ? "Sıradan alternatiflerin ötesinde: Kullanıcı mahremiyeti, benzersiz tasarım ve üstün performans."
-              : "Beyond ordinary alternatives: User privacy, unique aesthetic design, and superior performance."}
+            {wStr("desc")}
           </p>
         </div>
 

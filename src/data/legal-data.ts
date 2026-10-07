@@ -1172,18 +1172,37 @@ export const DOMAIN_TRACK_PRIVACY_EN: LegalDocument = {
 /* ==========================================================================
    HELPER GETTER FUNCTIONS
    ========================================================================== */
+const LEGAL_DOC_MAP: Partial<Record<LanguageCode, Record<"privacy" | "cookie" | "kvkk", LegalDocument>>> = {
+  tr: {
+    privacy: PRIVACY_POLICY_TR,
+    cookie: COOKIE_POLICY_TR,
+    kvkk: KVKK_TEXT_TR,
+  },
+  en: {
+    privacy: PRIVACY_POLICY_EN,
+    cookie: COOKIE_POLICY_EN,
+    kvkk: KVKK_TEXT_EN,
+  },
+};
+
+const APP_SPECIFIC_MAP: Partial<Record<LanguageCode, Record<string, LegalDocument>>> = {
+  tr: {
+    "language-box": LANGUAGE_BOX_PRIVACY_TR,
+    "domain-track": DOMAIN_TRACK_PRIVACY_TR,
+  },
+  en: {
+    "language-box": LANGUAGE_BOX_PRIVACY_EN,
+    "domain-track": DOMAIN_TRACK_PRIVACY_EN,
+  },
+};
+
 export function getLocalizedLegalDoc(
   docType: "privacy" | "cookie" | "kvkk",
   language: LanguageCode
 ): LegalDocument {
-  const isTr = language === "tr";
-  if (docType === "cookie") {
-    return isTr ? COOKIE_POLICY_TR : COOKIE_POLICY_EN;
-  }
-  if (docType === "kvkk") {
-    return isTr ? KVKK_TEXT_TR : KVKK_TEXT_EN;
-  }
-  return isTr ? PRIVACY_POLICY_TR : PRIVACY_POLICY_EN;
+  const localized = LEGAL_DOC_MAP[language]?.[docType];
+  if (localized) return localized;
+  return LEGAL_DOC_MAP.en?.[docType] || LEGAL_DOC_MAP.tr![docType];
 }
 
 export function getAppSpecificLegalDoc(
@@ -1191,22 +1210,11 @@ export function getAppSpecificLegalDoc(
   appId: string,
   language: LanguageCode
 ): LegalDocument {
-  const isTr = language === "tr";
   if (docType === "privacy") {
-    if (appId === "language-box") {
-      return isTr ? LANGUAGE_BOX_PRIVACY_TR : LANGUAGE_BOX_PRIVACY_EN;
-    }
-    if (appId === "domain-track") {
-      return isTr ? DOMAIN_TRACK_PRIVACY_TR : DOMAIN_TRACK_PRIVACY_EN;
-    }
-    return isTr ? PRIVACY_POLICY_TR : PRIVACY_POLICY_EN;
+    const appDoc = APP_SPECIFIC_MAP[language]?.[appId] || APP_SPECIFIC_MAP.en?.[appId];
+    if (appDoc) return appDoc;
   }
-  if (docType === "cookie") {
-    return isTr ? COOKIE_POLICY_TR : COOKIE_POLICY_EN;
-  }
-  if (docType === "kvkk") {
-    return isTr ? KVKK_TEXT_TR : KVKK_TEXT_EN;
-  }
-  return isTr ? PRIVACY_POLICY_TR : PRIVACY_POLICY_EN;
+  return getLocalizedLegalDoc(docType, language);
 }
+
 

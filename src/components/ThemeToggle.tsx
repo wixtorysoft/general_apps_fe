@@ -11,39 +11,41 @@ export function ThemeToggle() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const isTr = language === "tr";
+  const themeI18n: Record<string, Record<string, string>> = {
+    select: {
+      tr: "Tema Seçimi", en: "Theme Selection", it: "Selezione Tema", pt: "Seleção de Tema", es: "Selección de Tema",
+      fr: "Sélection du Thème", de: "Themenauswahl", ru: "Выбор Темы", ja: "テーマ選択", zh: "选择主题", ar: "اختيار السمة"
+    },
+    available: {
+      tr: "Mevcut Temalar", en: "Available Themes", it: "Temi Disponibili", pt: "Temas Disponíveis", es: "Temas Disponibles",
+      fr: "Thèmes Disponibles", de: "Verfügbare Themen", ru: "Доступные Темы", ja: "利用可能なテーマ", zh: "可用主题", ar: "السمات المتاحة"
+    },
+    dark: {
+      tr: "Koyu Mod", en: "Dark Mode", it: "Modalità Scura", pt: "Modo Escuro", es: "Modo Oscuro",
+      fr: "Mode Sombre", de: "Dunkelmodus", ru: "Темная Тема", ja: "ダークモード", zh: "深色模式", ar: "الوضع الداكن"
+    },
+    light: {
+      tr: "Açık Mod", en: "Light Mode", it: "Modalità Chiara", pt: "Modo Claro", es: "Modo Claro",
+      fr: "Mode Clair", de: "Hellmodus", ru: "Светлая Тема", ja: "ライトモード", zh: "浅色模式", ar: "الوضع الفاتح"
+    },
+    midnight: {
+      tr: "Gece Obsidiyen", en: "Midnight Obsidian", it: "Ossidiana di Mezzanotte", pt: "Obsidiana da Meia-Noite", es: "Obsidiana de Medianoche",
+      fr: "Obsidienne de Minuit", de: "Mitternachts-Obsidian", ru: "Полуночный Обсидиан", ja: "ミッドナイト・オブシディアン", zh: "午夜曜石", ar: "سبج منتصف الليل"
+    },
+    sky: {
+      tr: "Ferah Gök Mavisi", en: "Sky Breeze", it: "Brezza Celeste", pt: "Brisa Celeste", es: "Brisa Celestial",
+      fr: "Brise Céleste", de: "Himmelsbrise", ru: "Небесный Бриз", ja: "スカイ・ブリーズ", zh: "天际微风", ar: "نسيم السماء"
+    }
+  };
 
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    }
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setIsOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+  const str = (key: string) => themeI18n[key]?.[language] || themeI18n[key]?.en || "";
 
   const getThemeLabel = (isDark: boolean) => {
-    if (isTr) {
-      return isDark ? "Koyu Mod" : "Açık Mod";
-    }
-    return isDark ? "Dark Mode" : "Light Mode";
+    return isDark ? str("dark") : str("light");
   };
 
   const getThemeDescription = (tId: ThemeType) => {
-    if (tId === "midnight-dark") {
-      return isTr ? "Gece Obsidiyen" : "Midnight Obsidian";
-    }
-    return isTr ? "Ferah Gök Mavisi" : "Sky Breeze";
+    return tId === "midnight-dark" ? str("midnight") : str("sky");
   };
 
   return (
@@ -54,7 +56,7 @@ export function ThemeToggle() {
         role="combobox"
         aria-haspopup="listbox"
         aria-expanded={isOpen}
-        aria-label={isTr ? "Tema Seçimi" : "Theme Selection"}
+        aria-label={str("select")}
         onClick={() => setIsOpen(!isOpen)}
         style={{
           display: "inline-flex",
@@ -124,7 +126,7 @@ export function ThemeToggle() {
       {isOpen && (
         <div
           role="listbox"
-          aria-label={isTr ? "Mevcut Temalar" : "Available Themes"}
+          aria-label={str("available")}
           style={{
             position: "absolute",
             top: "calc(100% + 8px)",
@@ -156,7 +158,7 @@ export function ThemeToggle() {
               marginBottom: "2px",
             }}
           >
-            {isTr ? "Tema Seçimi" : "Select Theme"}
+            {str("select")}
           </div>
 
           {THEMES.map((t) => {

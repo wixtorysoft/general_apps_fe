@@ -433,3 +433,18 @@
   }
 }
 
+/* RTL Support for Arabic (ar) */
+[dir="rtl"] .dt-root {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .dt-desktop-nav {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .dt-store-btn {
+  text-align: right;
+}
+
+

@@ -54,9 +54,12 @@ export const PRIVACY_POLICY_DATA_EN: PrivacyPolicyData = {
 
 export const PRIVACY_POLICY_DATA = PRIVACY_POLICY_DATA_TR;
 
+const PRIVACY_DATA_MAP: Partial<Record<LanguageCode, PrivacyPolicyData>> = {
+  tr: PRIVACY_POLICY_DATA_TR,
+  en: PRIVACY_POLICY_DATA_EN,
+};
+
 export function getLocalizedPrivacyPolicy(language: LanguageCode): PrivacyPolicyData {
-  if (language === "tr") {
-    return PRIVACY_POLICY_DATA_TR;
-  }
-  return PRIVACY_POLICY_DATA_EN;
+  return PRIVACY_DATA_MAP[language] || PRIVACY_DATA_MAP.en || PRIVACY_DATA_MAP.tr!;
 }
+

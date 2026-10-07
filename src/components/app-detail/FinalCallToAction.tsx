@@ -3,6 +3,7 @@
 import React from "react";
 import { DedicatedAppDetails, getLocalizedAppDetails } from "@/data/apps-detail-data";
 import { useLanguage } from "@/context/LanguageContext";
+import { resolveI18n, appDetailI18n } from "@/i18n";
 import { Sparkles, ShieldCheck, Star, QrCode } from "lucide-react";
 import { StoreDownloadButtons } from "@/components/StoreDownloadButtons";
 
@@ -13,7 +14,6 @@ interface FinalCallToActionProps {
 export function FinalCallToAction({ app }: FinalCallToActionProps) {
   const { t, language } = useLanguage();
   const localizedApp = getLocalizedAppDetails(app.id, language);
-  const isTr = language === "tr";
 
   return (
     <section
@@ -85,7 +85,7 @@ export function FinalCallToAction({ app }: FinalCallToActionProps) {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                {isTr ? "ile Yaşam Tarzınızı Yeniden Tanımlayın" : "Reinvents Your Daily Lifestyle"}
+                {resolveI18n(appDetailI18n, "cta_title_suffix", language)}
               </span>
             </h2>
 
@@ -98,12 +98,8 @@ export function FinalCallToAction({ app }: FinalCallToActionProps) {
               }}
             >
               {localizedApp.id === "astrovibe"
-                ? isTr
-                  ? "Burcunuzun elementine özel protez tırnak akışını keşfedin, 3D tarot açılımlarıyla auranızı dengeleyin. Çok yakında cebinizde olacak, takipte kalın!"
-                  : "Discover horoscope-matched press-on nail styles on TikTok feeds and align your aura with 3D tarot spreads. Coming soon to your phone, stay tuned!"
-                : isTr
-                  ? "Beklenmedik davetlerden, uzayan iş toplantılarından ve kriz anlarından tek dokunuşla sıyrılın. %100 çevrimdışı çalışan akıllı asistanınız çok yakında mağazalarda!"
-                  : "Escape awkward social invitations, endless office meetings, and emergencies in a single tap. Your 100% offline smart excuse assistant is coming soon!"}
+                ? resolveI18n(appDetailI18n, "cta_astrovibe_desc", language)
+                : resolveI18n(appDetailI18n, "cta_excuse_desc", language)}
             </p>
 
             {/* Download Buttons Row matching user reference */}
@@ -138,18 +134,18 @@ export function FinalCallToAction({ app }: FinalCallToActionProps) {
               <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                 <Star size={15} color="#F59E0B" fill="#F59E0B" />
                 <span>
-                  <strong>{localizedApp.rating} / 5.0</strong> ({localizedApp.reviewsCount} {isTr ? "Değerlendirme" : "Reviews"})
+                  <strong>{localizedApp.rating} / 5.0</strong> ({localizedApp.reviewsCount} {resolveI18n(appDetailI18n, "cta_reviews_label", language)})
                 </span>
               </div>
               <span>•</span>
               <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                 <ShieldCheck size={16} color={localizedApp.primaryColor} />
-                <span>{isTr ? "%100 Gizlilik & Reklamsız Sürüm" : "100% Privacy & Ad-Free Experience"}</span>
+                <span>{resolveI18n(appDetailI18n, "cta_privacy_badge", language)}</span>
               </div>
               <span>•</span>
               <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                 <QrCode size={15} />
-                <span>{isTr ? "Hızlı QR Kurulum Desteği" : "Quick QR Install Support"}</span>
+                <span>{resolveI18n(appDetailI18n, "cta_qr_badge", language)}</span>
               </div>
             </div>
           </div>

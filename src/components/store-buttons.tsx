@@ -1,6 +1,8 @@
 "use client";
 
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/data";
+import { useLanguage } from "@/context/LanguageContext";
+import { resolveI18n } from "@/i18n";
 
 function AppleLogo({ className }: { className?: string }) {
   return (
@@ -62,6 +64,10 @@ function GooglePlayLogo({ className }: { className?: string }) {
 }
 
 export function StoreButtons() {
+  const { language } = useLanguage();
+  const applePrefix = resolveI18n("common", "download_on_app_store", language);
+  const googlePrefix = resolveI18n("common", "get_it_on_google_play", language);
+
   return (
     <div className="flex flex-wrap gap-3">
       {/* App Store Button */}
@@ -69,13 +75,12 @@ export function StoreButtons() {
         href={APP_STORE_URL || undefined}
         target="_blank"
         rel="noopener noreferrer"
-        className={`group inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-[#000000] border border-[#424242] hover:border-[#6e6e6e] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-white/5"
-        }`}
+        className="group inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-[#000000] border border-[#424242] hover:border-[#6e6e6e] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-white/5"
       >
         <AppleLogo className="h-7 w-7 text-white shrink-0" />
         <div className="flex flex-col leading-none">
           <span className="text-[10px] font-normal text-white/70 uppercase tracking-wide">
-            Download on the
+            {applePrefix}
           </span>
           <span className="text-base font-semibold text-white -mt-0.5">
             App Store
@@ -93,7 +98,7 @@ export function StoreButtons() {
         <GooglePlayLogo className="h-7 w-7 shrink-0" />
         <div className="flex flex-col leading-none">
           <span className="text-[10px] font-normal text-white/70 uppercase tracking-wide">
-            GET IT ON
+            {googlePrefix}
           </span>
           <span className="text-base font-semibold text-white -mt-0.5">
             Google Play

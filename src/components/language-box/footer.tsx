@@ -15,7 +15,7 @@ const productLinks = [
 const supportLinks = [
   { i18nKey: "nav_advantages", href: "/language-box/advantages", sectionId: "advantages" },
   { i18nKey: "nav_faq", href: "/language-box/faq", sectionId: "faq" },
-  { i18nKey: "nav_developer", href: "/language-box/developer", sectionId: "developer" },
+  { i18nKey: "nav_developer", href: "/developer", sectionId: "" },
   { i18nKey: "nav_privacy", href: "/language-box/privacy-policy", sectionId: "" },
 ] as const;
 

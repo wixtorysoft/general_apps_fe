@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { DedicatedAppDetails, getLocalizedAppDetails } from "@/data/apps-detail-data";
 import { useLanguage } from "@/context/LanguageContext";
+import { resolveI18n, appDetailI18n, legalI18n } from "@/i18n";
 import { Shield, Sparkles, Layers, ArrowUpRight, Mail, Heart, Cookie, Scale } from "lucide-react";
 
 interface AppDetailFooterProps {
@@ -14,7 +15,8 @@ export function AppDetailFooter({ app }: AppDetailFooterProps) {
   const currentYear = new Date().getFullYear();
   const { language } = useLanguage();
   const localizedApp = getLocalizedAppDetails(app.id, language);
-  const isTr = language === "tr";
+  const fStr = (key: string) => resolveI18n(appDetailI18n, key, language);
+  const lStr = (key: string) => resolveI18n(legalI18n, key, language);
 
   return (
     <footer
@@ -105,37 +107,37 @@ export function AppDetailFooter({ app }: AppDetailFooterProps) {
                 marginBottom: "20px",
               }}
             >
-              {isTr ? "Bölümler" : "Sections"}
+              {fStr("footer_sections")}
             </h4>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
               <li>
                 <a href="#about" style={{ color: "var(--text-secondary)", fontSize: "14px", textDecoration: "none" }}>
-                  {isTr ? "Hakkında" : "About"}
+                  {fStr("nav_about")}
                 </a>
               </li>
               <li>
                 <a href="#features" style={{ color: "var(--text-secondary)", fontSize: "14px", textDecoration: "none" }}>
-                  Features
+                  {fStr("nav_features")}
                 </a>
               </li>
               <li>
                 <a href="#key-features" style={{ color: "var(--text-secondary)", fontSize: "14px", textDecoration: "none" }}>
-                  Key Features
+                  {fStr("nav_key_features")}
                 </a>
               </li>
               <li>
                 <a href="#how-to-use" style={{ color: "var(--text-secondary)", fontSize: "14px", textDecoration: "none" }}>
-                  How to Use
+                  {fStr("nav_how")}
                 </a>
               </li>
               <li>
                 <a href="#why-choose" style={{ color: "var(--text-secondary)", fontSize: "14px", textDecoration: "none" }}>
-                  Why Choose ?
+                  {fStr("nav_why")}
                 </a>
               </li>
               <li>
                 <a href="#faq" style={{ color: "var(--text-secondary)", fontSize: "14px", textDecoration: "none" }}>
-                  FAQ
+                  {fStr("nav_faq")}
                 </a>
               </li>
             </ul>
@@ -153,7 +155,7 @@ export function AppDetailFooter({ app }: AppDetailFooterProps) {
                 marginBottom: "20px",
               }}
             >
-              {isTr ? "Uygulama Portalı" : "Apps Portal"}
+              {fStr("footer_portal")}
             </h4>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
               <li>
@@ -169,7 +171,7 @@ export function AppDetailFooter({ app }: AppDetailFooterProps) {
                   }}
                 >
                   <Layers size={14} color="var(--primary)" />
-                  <span>{isTr ? "Tüm Uygulamalar Portalı" : "All Apps Hub"}</span>
+                  <span>{fStr("footer_all_apps")}</span>
                 </Link>
               </li>
               <li>
@@ -219,7 +221,7 @@ export function AppDetailFooter({ app }: AppDetailFooterProps) {
                   }}
                 >
                   <Shield size={14} color="var(--primary)" />
-                  <span>{isTr ? "Ortak Gizlilik Sözleşmesi" : "Unified Privacy Policy"}</span>
+                  <span>{fStr("nav_unified_privacy")}</span>
                 </Link>
               </li>
               <li>
@@ -235,7 +237,7 @@ export function AppDetailFooter({ app }: AppDetailFooterProps) {
                   }}
                 >
                   <Cookie size={14} color="var(--primary)" />
-                  <span>{isTr ? "Çerez Politikası" : "Cookie Policy"}</span>
+                  <span>{lStr("tab_cookie")}</span>
                 </Link>
               </li>
               <li>
@@ -251,7 +253,7 @@ export function AppDetailFooter({ app }: AppDetailFooterProps) {
                   }}
                 >
                   <Scale size={14} color="var(--primary)" />
-                  <span>{isTr ? "KVKK Aydınlatma Metni" : "KVKK Disclosure"}</span>
+                  <span>{lStr("tab_kvkk")}</span>
                 </Link>
               </li>
             </ul>
@@ -269,7 +271,7 @@ export function AppDetailFooter({ app }: AppDetailFooterProps) {
                 marginBottom: "20px",
               }}
             >
-              {isTr ? "İletişim & Güvenlik" : "Contact & Security"}
+              {fStr("footer_contact_security")}
             </h4>
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
               <a
@@ -288,9 +290,7 @@ export function AppDetailFooter({ app }: AppDetailFooterProps) {
                 <span>{localizedApp.contactEmail}</span>
               </a>
               <div style={{ fontSize: "13px", color: "var(--text-muted)", lineHeight: "1.5" }}>
-                {isTr
-                  ? "Wixtory Mobile Ecosystem tarafından tasarlanmış ve geliştirilmiştir."
-                  : "Designed & engineered by Wixtory Mobile Ecosystem."}
+                {fStr("footer_designed_by")}
               </div>
             </div>
           </div>
@@ -309,7 +309,7 @@ export function AppDetailFooter({ app }: AppDetailFooterProps) {
           }}
         >
           <p style={{ fontSize: "13px", color: "var(--text-muted)", margin: 0 }}>
-            © {currentYear} {localizedApp.name} — {isTr ? "Tüm Hakları Saklıdır. Wixtory General Apps." : "All Rights Reserved. Wixtory General Apps."}
+            © {currentYear} {localizedApp.name} — {fStr("footer_rights")}
           </p>
 
           <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
@@ -317,14 +317,14 @@ export function AppDetailFooter({ app }: AppDetailFooterProps) {
               href="/privacy-policy"
               style={{ fontSize: "13px", color: "var(--text-secondary)", textDecoration: "none" }}
             >
-              {isTr ? "Gizlilik & KVKK" : "Privacy & Compliance"}
+              {fStr("footer_compliance")}
             </Link>
             <span style={{ color: "var(--border-subtle)" }}>•</span>
             <Link
               href="/cookie-policy"
               style={{ fontSize: "13px", color: "var(--text-secondary)", textDecoration: "none" }}
             >
-              {isTr ? "Çerez Politikası" : "Cookie Policy"}
+              {lStr("tab_cookie")}
             </Link>
           </div>
         </div>

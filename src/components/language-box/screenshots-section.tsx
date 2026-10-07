@@ -42,7 +42,31 @@ export function ScreenshotsSection({
   showViewToggle = false,
 }: ScreenshotsSectionProps) {
   const { t, language } = useLanguage();
-  const isTr = language === "tr";
+
+  const screenDetailFallback: Record<string, string> = {
+    tr: "EKRAN DETAYI", en: "SCREEN DETAIL", it: "DETTAGLIO SCHERMATA", pt: "DETALHE DA TELA",
+    es: "DETALLE DE PANTALLA", fr: "DÉTAIL DE L'ÉCRAN", de: "BILDSCHIRMDETAIL", ru: "ДЕТАЛИ ЭКРАНА",
+    ja: "画面の詳細", zh: "屏幕详情", ar: "تفاصيل الشاشة"
+  };
+
+  const getShot = (item: { title: string; titleEn?: string; description: string; descriptionEn?: string; tag?: string; tagEn?: string }) => {
+    const langDict: Partial<Record<string, { title: string; description: string; tag: string }>> = {
+      tr: {
+        title: item.title,
+        description: item.description,
+        tag: item.tag || screenDetailFallback.tr,
+      },
+    };
+
+    return (
+      langDict[language] || {
+        title: item.titleEn || item.title,
+        description: item.descriptionEn || item.description,
+        tag: item.tagEn || item.tag || screenDetailFallback[language] || screenDetailFallback.en,
+      }
+    );
+  };
+
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -282,7 +306,7 @@ export function ScreenshotsSection({
                                   "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
                               )}
                             >
-                              {isTr ? shot.tag : (shot.tagEn || shot.tag)}
+                              {getShot(shot).tag}
                             </span>
                           </div>
                         )}
@@ -291,10 +315,10 @@ export function ScreenshotsSection({
                       {/* Card Info Below Phone */}
                       <div className="mt-3 text-center px-2">
                         <h4 className="text-foreground text-sm font-bold truncate group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                          {isTr ? shot.title : (shot.titleEn || shot.title)}
+                          {getShot(shot).title}
                         </h4>
                         <p className="text-muted-foreground text-xs line-clamp-1 mt-0.5 font-medium">
-                          {isTr ? shot.description : (shot.descriptionEn || shot.description)}
+                          {getShot(shot).description}
                         </p>
                       </div>
                     </div>
@@ -367,7 +391,7 @@ export function ScreenshotsSection({
                             "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
                         )}
                       >
-                        {isTr ? shot.tag : (shot.tagEn || shot.tag)}
+                        {getShot(shot).tag}
                       </span>
                     </div>
                   )}
@@ -375,10 +399,10 @@ export function ScreenshotsSection({
 
                 <div>
                   <h4 className="text-white font-bold text-base group-hover:text-emerald-400 transition-colors">
-                    {isTr ? shot.title : (shot.titleEn || shot.title)}
+                    {getShot(shot).title}
                   </h4>
                   <p className="text-white/60 text-xs leading-relaxed mt-1 line-clamp-2">
-                    {isTr ? shot.description : (shot.descriptionEn || shot.description)}
+                    {getShot(shot).description}
                   </p>
                 </div>
               </motion.div>
@@ -448,19 +472,13 @@ export function ScreenshotsSection({
 
                 <div className="mt-4 text-center max-w-sm">
                   <span className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-                    {isTr
-                      ? (filteredScreens[lightboxIndex].tag || "EKRAN DETAYI")
-                      : (filteredScreens[lightboxIndex].tagEn || filteredScreens[lightboxIndex].tag || "SCREEN DETAIL")}
+                    {getShot(filteredScreens[lightboxIndex]).tag}
                   </span>
                   <h3 className="text-white text-lg font-bold mt-1">
-                    {isTr
-                      ? filteredScreens[lightboxIndex].title
-                      : (filteredScreens[lightboxIndex].titleEn || filteredScreens[lightboxIndex].title)}
+                    {getShot(filteredScreens[lightboxIndex]).title}
                   </h3>
                   <p className="text-white/70 text-xs sm:text-sm mt-1">
-                    {isTr
-                      ? filteredScreens[lightboxIndex].description
-                      : (filteredScreens[lightboxIndex].descriptionEn || filteredScreens[lightboxIndex].description)}
+                    {getShot(filteredScreens[lightboxIndex]).description}
                   </p>
                 </div>
               </div>

@@ -4,8 +4,11 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { resolveI18n } from "@/i18n";
 
 export function AppleStoreBadge({ href = "#" }: { href?: string }) {
+  const { language } = useLanguage();
+
   return (
     <a
       href={href}
@@ -51,7 +54,7 @@ export function AppleStoreBadge({ href = "#" }: { href?: string }) {
       </svg>
       <div style={{ display: "flex", flexDirection: "column", textAlign: "left", lineHeight: 1 }}>
         <span style={{ fontSize: "9.5px", letterSpacing: "0.02em", color: "rgba(255, 255, 255, 0.8)", marginBottom: "2px" }}>
-          Download on the
+          {resolveI18n("common", "download_on_app_store", language)}
         </span>
         <span style={{ fontSize: "15px", fontWeight: 700, letterSpacing: "-0.01em", color: "#ffffff", fontFamily: "system-ui, -apple-system, sans-serif" }}>
           App Store
@@ -62,6 +65,8 @@ export function AppleStoreBadge({ href = "#" }: { href?: string }) {
 }
 
 export function GooglePlayBadge({ href = "#" }: { href?: string }) {
+  const { language } = useLanguage();
+
   return (
     <a
       href={href}
@@ -110,7 +115,7 @@ export function GooglePlayBadge({ href = "#" }: { href?: string }) {
       </svg>
       <div style={{ display: "flex", flexDirection: "column", textAlign: "left", lineHeight: 1 }}>
         <span style={{ fontSize: "9px", letterSpacing: "0.05em", color: "rgba(255, 255, 255, 0.8)", textTransform: "uppercase", marginBottom: "2px" }}>
-          GET IT ON
+          {resolveI18n("common", "get_it_on_google_play", language)}
         </span>
         <span style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "-0.01em", color: "#ffffff", fontFamily: "system-ui, -apple-system, sans-serif" }}>
           Google Play

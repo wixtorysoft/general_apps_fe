@@ -181,7 +181,7 @@ export function Footer() {
               {[
                 { label: t.footer_support_why_us, href: "/domain-track/why-us" },
                 { label: t.footer_support_faq, href: "/domain-track/faq" },
-                { label: t.footer_support_developer, href: "/domain-track#developer" },
+                { label: t.footer_support_developer, href: "/developer" },
                 { label: t.footer_support_privacy, href: "/domain-track/privacy-policy" },
               ].map((item) => (
                 <li key={item.label}>

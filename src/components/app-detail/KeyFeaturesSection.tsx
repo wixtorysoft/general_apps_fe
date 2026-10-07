@@ -24,7 +24,34 @@ interface KeyFeaturesSectionProps {
 export function KeyFeaturesSection({ app }: KeyFeaturesSectionProps) {
   const { language } = useLanguage();
   const currentApp = getLocalizedAppDetails(app.id, language) || app;
-  const isTr = language === "tr";
+
+  const kfI18n: Record<string, Record<string, string>> = {
+    badge: {
+      tr: "Öne Çıkan Yetenekler", en: "Key Standout Features", it: "Caratteristiche Principali", pt: "Recursos em Destaque",
+      es: "Características Destacadas", fr: "Fonctionnalités Clés", de: "Herausragende Funktionen", ru: "Ключевые Возможности",
+      ja: "注目のコア機能", zh: "核心亮点功能", ar: "أبرز الميزات والقدرات"
+    },
+    title_suffix: {
+      tr: "Öne Çıkan Derinlemesine Yetenekleri", en: "Core Standout Capabilities", it: "Funzionalità Distintive Avanzate", pt: "Recursos Distintivos Avançados",
+      es: "Capacidades Clave Distintivas", fr: "Capacités Phares Approfondies", de: "Wichtigste Kernfähigkeiten", ru: "Флагманские Возможности",
+      ja: "注目の独自機能", zh: "核心纵深能力", ar: "القدرات الأساسية المتميزة"
+    },
+    desc: {
+      tr: "Sıradan uygulamalardan ayrışan, kullanıcı odaklı 3 ana amiral gemisi modülü canlı olarak deneyimleyin.",
+      en: "Experience the 3 flagship capabilities live and discover how they elevate user experience beyond ordinary apps.",
+      it: "Sperimenta dal vivo le 3 funzionalità di punta e scopri come elevano l'esperienza utente.",
+      pt: "Experimente os 3 recursos principais ao vivo e descubra como eles elevam a experiência do usuário.",
+      es: "Experimenta los 3 módulos insignia en vivo y descubre cómo transforman la experiencia del usuario.",
+      fr: "Découvrez en direct les 3 modules phares et voyez comment ils subliment l'expérience utilisateur.",
+      de: "Erleben Sie die 3 Hauptfunktionen live und entdecken Sie, wie sie das Nutzungserlebnis verbessern.",
+      ru: "Попробуйте 3 флагманские функции и узнайте, как они превосходят обычные приложения.",
+      ja: "日常のアプリとは一線を画す、3つのフラッグシップモジュールをご体験ください。",
+      zh: "现场体验 3 大核心旗舰模块，感受超越常规应用的极致用户体验。",
+      ar: "جرّب القدرات الثلاث الرائدة واكتشف كيف ترتقي بتجربة الاستخدام."
+    }
+  };
+
+  const kStr = (key: string) => kfI18n[key]?.[language] || kfI18n[key]?.en || "";
 
   // Interactive state for AstroVibe
   const [nailLikes, setNailLikes] = useState(1420);
@@ -39,17 +66,65 @@ export function KeyFeaturesSection({ app }: KeyFeaturesSectionProps) {
   const [copied, setCopied] = useState(false);
   const [activeExcuseTheme, setActiveExcuseTheme] = useState<"cyber" | "oled" | "purple">("cyber");
 
-  const sampleExcuses = isTr
-    ? [
-        { text: "Ofiste beklenmedik bir sunucu kesintisi oldu, müdahale ediyorum.", cat: "İş & Ofis", urgency: "Orta" },
-        { text: "Metro hattında sinyalizasyon arızası var, sonraki trene biniyorum.", cat: "Trafik", urgency: "Hafif" },
-        { text: "Evde su borusu patladı, acil tesisatçı gelmek üzere!", cat: "Acil Durum", urgency: "Kritik" },
-      ]
-    : [
-        { text: "Unexpected server outage at the office, investigating right now.", cat: "Work & Office", urgency: "Moderate" },
-        { text: "Signaling malfunction on the subway line, catching the next train.", cat: "Transit", urgency: "Mild" },
-        { text: "Water pipe burst at home, emergency plumber arriving soon!", cat: "Urgent", urgency: "Critical" },
-      ];
+  const sampleExcusesData: Record<string, { text: string; cat: string; urgency: string }[]> = {
+    tr: [
+      { text: "Ofiste beklenmedik bir sunucu kesintisi oldu, müdahale ediyorum.", cat: "İş & Ofis", urgency: "Orta" },
+      { text: "Metro hattında sinyalizasyon arızası var, sonraki trene biniyorum.", cat: "Trafik", urgency: "Hafif" },
+      { text: "Evde su borusu patladı, acil tesisatçı gelmek üzere!", cat: "Acil Durum", urgency: "Kritik" },
+    ],
+    en: [
+      { text: "Unexpected server outage at the office, investigating right now.", cat: "Work & Office", urgency: "Moderate" },
+      { text: "Signaling malfunction on the subway line, catching the next train.", cat: "Transit", urgency: "Mild" },
+      { text: "Water pipe burst at home, emergency plumber arriving soon!", cat: "Urgent", urgency: "Critical" },
+    ],
+    it: [
+      { text: "Interruzione improvvisa del server in ufficio, sto intervenendo adesso.", cat: "Lavoro & Ufficio", urgency: "Moderata" },
+      { text: "Guasto ai segnali sulla linea della metropolitana, prendo il prossimo treno.", cat: "Trasporti", urgency: "Lieve" },
+      { text: "Tubo rotto a casa, l'idraulico d'urgenza sta arrivando!", cat: "Emergenza", urgency: "Critica" },
+    ],
+    pt: [
+      { text: "Queda inesperada do servidor no escritório, estou verificando agora.", cat: "Trabalho & Escritório", urgency: "Moderada" },
+      { text: "Falha de sinal na linha do metrô, pegando o próximo trem.", cat: "Trânsito", urgency: "Leve" },
+      { text: "Cano estourou em casa, o encanador de emergência está chegando!", cat: "Emergência", urgency: "Crítica" },
+    ],
+    es: [
+      { text: "Corte inesperado del servidor en la oficina, investigando ahora mismo.", cat: "Trabajo & Oficina", urgency: "Moderada" },
+      { text: "Fallo de señalización en la línea del metro, tomando el siguiente tren.", cat: "Tráfico", urgency: "Leve" },
+      { text: "Tubería rota en casa, ¡el fontanero de emergencia está por llegar!", cat: "Urgente", urgency: "Crítica" },
+    ],
+    fr: [
+      { text: "Panne de serveur imprévue au bureau, j'interviens immédiatement.", cat: "Travail & Bureau", urgency: "Modérée" },
+      { text: "Problème de signalisation sur la ligne de métro, je prends le suivant.", cat: "Transports", urgency: "Légère" },
+      { text: "Fuite d'eau urgente à la maison, le plombier arrive d'une minute à l'autre !", cat: "Urgence", urgency: "Critique" },
+    ],
+    de: [
+      { text: "Unerwarteter Serverausfall im Büro, ich kümmere mich sofort darum.", cat: "Arbeit & Büro", urgency: "Mittel" },
+      { text: "Signalstörung bei der U-Bahn, ich nehme den nächsten Zug.", cat: "Verkehr", urgency: "Gering" },
+      { text: "Wasserrohrbruch zu Hause, der Notfall-Installateur ist unterwegs!", cat: "Notfall", urgency: "Kritisch" },
+    ],
+    ru: [
+      { text: "Внезапный сбой сервера в офисе, срочно подключаюсь к решению.", cat: "Работа и Офис", urgency: "Средняя" },
+      { text: "Сбой сигнализации на линии метро, сажусь на следующий поезд.", cat: "Транспорт", urgency: "Низкая" },
+      { text: "Дома прорвало трубу, срочно жду аварийного сантехника!", cat: "Срочно", urgency: "Критическая" },
+    ],
+    ja: [
+      { text: "オフィスのサーバーで予期せぬ障害が発生し、緊急対応中です。", cat: "仕事・職場", urgency: "中" },
+      { text: "地下鉄の信号トラブルのため、次の電車に乗車します。", cat: "交通", urgency: "小" },
+      { text: "自宅で水道管のトラブルが発生し、修理業者の到着を待っています！", cat: "緊急", urgency: "重大" },
+    ],
+    zh: [
+      { text: "公司服务器突发故障中断，正在紧急排查处理中。", cat: "工作与办公", urgency: "中度" },
+      { text: "地铁线路信号故障延误，正等待下一趟列车。", cat: "交通出行", urgency: "轻度" },
+      { text: "家里水管突发破裂，紧急维修师傅正在赶来！", cat: "紧急状况", urgency: "严重" },
+    ],
+    ar: [
+      { text: "حدث عطل غير متوقع في خادم المكتب، أقوم بمتابعته حالياً.", cat: "العمل والمكتب", urgency: "متوسط" },
+      { text: "عطل في إشارات المترو، سأستقل القطار التالي.", cat: "المواصلات", urgency: "طفيف" },
+      { text: "انفجار أنبوب مياه في المنزل، سباك الطوارئ في الطريق!", cat: "طوارئ", urgency: "حرج" },
+    ],
+  };
+
+  const sampleExcuses = sampleExcusesData[language] || sampleExcusesData.en;
 
   const handleShakeSimulator = () => {
     setIsShaking(true);
@@ -86,7 +161,7 @@ export function KeyFeaturesSection({ app }: KeyFeaturesSectionProps) {
             }}
           >
             <Sparkles size={14} />
-            <span>{isTr ? "Öne Çıkan Yetenekler" : "Key Standout Features"}</span>
+            <span>{kStr("badge")}</span>
           </span>
           <h2
             style={{
@@ -97,7 +172,7 @@ export function KeyFeaturesSection({ app }: KeyFeaturesSectionProps) {
               color: "var(--text-main)",
             }}
           >
-            {currentApp.name} {isTr ? "Öne Çıkan Derinlemesine Yetenekleri" : "Core Standout Capabilities"}
+            {currentApp.name} {kStr("title_suffix")}
           </h2>
           <p
             style={{
@@ -108,9 +183,7 @@ export function KeyFeaturesSection({ app }: KeyFeaturesSectionProps) {
               lineHeight: "1.6",
             }}
           >
-            {isTr
-              ? "Sıradan uygulamalardan ayrışan, kullanıcı odaklı 3 ana amiral gemisi modülü canlı olarak deneyimleyin."
-              : "Experience the 3 flagship capabilities live and discover how they elevate user experience beyond ordinary apps."}
+            {kStr("desc")}
           </p>
         </div>
 

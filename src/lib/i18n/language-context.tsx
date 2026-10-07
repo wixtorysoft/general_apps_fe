@@ -28,6 +28,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       if (saved && translations[saved]) {
         setLanguageState(saved);
         document.documentElement.lang = saved;
+        document.documentElement.dir = saved === "ar" ? "rtl" : "ltr";
       }
     } catch {
       // localStorage may fail in restricted browser contexts
@@ -41,6 +42,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         localStorage.setItem(STORAGE_KEY, lang);
       } catch {}
       document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
     }
   }, []);
 

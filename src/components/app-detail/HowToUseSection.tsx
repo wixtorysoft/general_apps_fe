@@ -13,7 +13,39 @@ export function HowToUseSection({ app }: HowToUseSectionProps) {
   const [activeStep, setActiveStep] = useState<number>(0);
   const { language } = useLanguage();
   const currentApp = getLocalizedAppDetails(app.id, language) || app;
-  const isTr = language === "tr";
+
+  const howI18n: Record<string, Record<string, string>> = {
+    badge: {
+      tr: "Nasıl Kullanılır", en: "How to Use", it: "Come Funziona", pt: "Como Usar",
+      es: "Cómo Funciona", fr: "Comment Utiliser", de: "So Funktioniert Es", ru: "Как Пользоваться",
+      ja: "使い方", zh: "如何使用", ar: "طريقة الاستخدام"
+    },
+    title_suffix: {
+      tr: "Nasıl Kullanılır?", en: "How to Use?", it: "Come si Usa?", pt: "Como Funciona?",
+      es: "¿Cómo se Usa?", fr: "Comment ça Marche ?", de: "Wie Funktioniert Es?", ru: "Как Это Работает?",
+      ja: "簡単3ステップ", zh: "快速上手指南", ar: "كيف يعمل التطبيق؟"
+    },
+    desc: {
+      tr: "Karmaşık ayarlar yok. Yalnızca 3 adımda kusursuz bir deneyime başlayın.",
+      en: "No complicated setups. Start your seamless experience in just 3 quick steps.",
+      it: "Nessuna configurazione complessa. Inizia la tua esperienza in soli 3 semplici passaggi.",
+      pt: "Sem configurações complexas. Inicie sua experiência em apenas 3 passos simples.",
+      es: "Sin configuraciones complejas. Comienza una experiencia fluida en solo 3 pasos.",
+      fr: "Aucune configuration complexe. Démarrez votre expérience fluide en 3 étapes simples.",
+      de: "Keine komplizierten Einstellungen. Starten Sie in nur 3 schnellen Schritten.",
+      ru: "Никаких сложных настроек. Начните работу всего за 3 простых шага.",
+      ja: "複雑な設定は不要。わずか3ステップで快適な体験をスタート。",
+      zh: "无需复杂配置，只需轻松 3 步即可开启高效顺畅体验。",
+      ar: "لا توجد إعدادات معقدة. ابدأ تجربتك السلسة في 3 خطوات بسيطة فقط."
+    },
+    tip_prefix: {
+      tr: "İpucu: ", en: "Tip: ", it: "Consiglio: ", pt: "Dica: ",
+      es: "Consejo: ", fr: "Astuce : ", de: "Tipp: ", ru: "Совет: ",
+      ja: "ヒント: ", zh: "小贴士：", ar: "نصيحة: "
+    }
+  };
+
+  const hStr = (key: string) => howI18n[key]?.[language] || howI18n[key]?.en || "";
 
   return (
     <section
@@ -36,7 +68,7 @@ export function HowToUseSection({ app }: HowToUseSectionProps) {
             }}
           >
             <HelpCircle size={14} />
-            <span>{isTr ? "Nasıl Kullanılır" : "How to Use"}</span>
+            <span>{hStr("badge")}</span>
           </span>
           <h2
             style={{
@@ -46,7 +78,7 @@ export function HowToUseSection({ app }: HowToUseSectionProps) {
               marginBottom: "16px",
             }}
           >
-            {currentApp.name} {isTr ? "Nasıl Kullanılır?" : "How to Use?"}
+            {currentApp.name} {hStr("title_suffix")}
           </h2>
           <p
             style={{
@@ -57,9 +89,7 @@ export function HowToUseSection({ app }: HowToUseSectionProps) {
               lineHeight: "1.6",
             }}
           >
-            {isTr
-              ? "Karmaşık ayarlar yok. Yalnızca 3 adımda kusursuz bir deneyime başlayın."
-              : "No complicated setups. Start your seamless experience in just 3 quick steps."}
+            {hStr("desc")}
           </p>
         </div>
 
@@ -190,7 +220,7 @@ export function HowToUseSection({ app }: HowToUseSectionProps) {
                     }}
                   >
                     <strong style={{ color: "var(--text-secondary)" }}>
-                      {isTr ? "İpucu: " : "Tip: "}
+                      {hStr("tip_prefix")}
                     </strong>
                     {step.tip}
                   </p>

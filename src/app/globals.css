@@ -403,3 +403,21 @@ h6 {
     display: inline-flex !important;
   }
 }
+
+/* ==============================================================================
+   RTL Typography & Layout Elasticity (Arabic - ar)
+   ============================================================================== */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .hub-desktop-nav {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] input,
+[dir="rtl"] textarea {
+  text-align: right;
+}
+

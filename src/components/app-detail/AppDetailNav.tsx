@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { useLanguage } from "@/context/LanguageContext";
+import { resolveI18n, appDetailI18n } from "@/i18n";
 import { DedicatedAppDetails, getLocalizedAppDetails } from "@/data/apps-detail-data";
 import {
   Sparkles,
@@ -24,9 +25,9 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t, language } = useLanguage();
   const localizedApp = getLocalizedAppDetails(app.id, language);
-  const isTr = language === "tr";
   const otherAppSlug = localizedApp.id === "astrovibe" ? "excuse" : "astrovibe";
   const otherAppName = localizedApp.id === "astrovibe" ? "Excuse" : "AstroVibe";
+  const nStr = (key: string) => resolveI18n(appDetailI18n, key, language);
 
   return (
     <header
@@ -140,7 +141,7 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-main)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-secondary)")}
           >
-            {isTr ? "Hakkında" : "About"}
+            {nStr("nav_about")}
           </a>
           <a
             href="#features"
@@ -148,7 +149,7 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-main)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-secondary)")}
           >
-            Features
+            {nStr("nav_features")}
           </a>
           <a
             href="#key-features"
@@ -156,7 +157,7 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-main)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-secondary)")}
           >
-            Key Features
+            {nStr("nav_key_features")}
           </a>
           <a
             href="#how-to-use"
@@ -164,7 +165,7 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-main)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-secondary)")}
           >
-            How to Use
+            {nStr("nav_how")}
           </a>
           <a
             href="#why-choose"
@@ -172,7 +173,7 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-main)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-secondary)")}
           >
-            Why Choose ?
+            {nStr("nav_why")}
           </a>
           <a
             href="#faq"
@@ -180,7 +181,7 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-main)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-secondary)")}
           >
-            FAQ
+            {nStr("nav_faq")}
           </a>
 
           <Link
@@ -197,7 +198,7 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-secondary)")}
           >
             <ShieldCheck size={14} />
-            <span>{isTr ? "Gizlilik" : "Privacy"}</span>
+            <span>{nStr("nav_privacy")}</span>
           </Link>
         </nav>
 
@@ -230,7 +231,7 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
               e.currentTarget.style.transform = "translateY(0)";
             }}
           >
-            <span>{isTr ? `${otherAppName}'e Geç` : `Switch to ${otherAppName}`}</span>
+            <span>{nStr("nav_switch_to_app").replace("{app}", otherAppName)}</span>
             <ArrowRight size={13} />
           </Link>
 
@@ -273,7 +274,7 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
         >
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <span style={{ fontSize: "12px", color: "var(--text-muted)", fontWeight: 700 }}>
-              {isTr ? "DİĞER UYGULAMA:" : "OTHER APP:"}
+              {nStr("nav_other_heading")}
             </span>
             <Link
               href={`/${otherAppSlug}`}
@@ -287,7 +288,7 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
                 gap: "4px",
               }}
             >
-              <span>{isTr ? `${otherAppName} Sayfası` : `${otherAppName} Page`}</span>
+              <span>{nStr("nav_app_page").replace("{app}", otherAppName)}</span>
               <ArrowRight size={14} />
             </Link>
           </div>
@@ -295,22 +296,22 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
           <div style={{ height: "1px", background: "var(--border-subtle)" }} />
 
           <a href="#about" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: "15px" }}>
-            {isTr ? "Hakkında" : "About"}
+            {nStr("nav_about")}
           </a>
           <a href="#features" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: "15px" }}>
-            Features
+            {nStr("nav_features")}
           </a>
           <a href="#key-features" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: "15px" }}>
-            Key Features
+            {nStr("nav_key_features")}
           </a>
           <a href="#how-to-use" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: "15px" }}>
-            How to Use
+            {nStr("nav_how")}
           </a>
           <a href="#why-choose" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: "15px" }}>
-            Why Choose ?
+            {nStr("nav_why")}
           </a>
           <a href="#faq" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: "15px" }}>
-            FAQ
+            {nStr("nav_faq")}
           </a>
           <Link
             href="/privacy-policy"
@@ -318,7 +319,7 @@ export function AppDetailNav({ app }: AppDetailNavProps) {
             style={{ fontSize: "15px", color: "var(--primary)", fontWeight: 600, display: "flex", alignItems: "center", gap: "8px" }}
           >
             <ShieldCheck size={16} />
-            <span>{isTr ? "Ortak Gizlilik Politikası" : "Unified Privacy Policy"}</span>
+            <span>{nStr("nav_unified_privacy")}</span>
           </Link>
         </div>
       )}

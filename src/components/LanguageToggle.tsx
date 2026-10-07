@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { useLanguage, LANGUAGES, LanguageMeta } from "@/context/LanguageContext";
+import { resolveI18n } from "@/i18n";
 import { Globe, Check, ChevronDown } from "lucide-react";
 
 export function LanguageToggle() {
@@ -27,7 +28,7 @@ export function LanguageToggle() {
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Dil Seçimi"
+        aria-label={resolveI18n("navigation", "select_language", language)}
         style={{
           display: "inline-flex",
           alignItems: "center",
@@ -111,7 +112,7 @@ export function LanguageToggle() {
             }}
           >
             <Globe size={13} />
-            <span>11 DİL DESTEĞİ</span>
+            <span>{resolveI18n("navigation", "languages_support", language)}</span>
           </div>
 
           {LANGUAGES.map((langItem) => {

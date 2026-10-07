@@ -115,7 +115,7 @@ export const APPS_DETAILED_DATA_TR: Record<"astrovibe" | "excuse", DedicatedAppD
       techHighlights: [
         {
           title: "Flutter 3.x & GPU Hızlandırma",
-          description: "60 FPS akıcı dikey TikTok stili kaydırma ve 3D tarot kart çevirme fizik simülasyonu.",
+          description: "Akıcı dikey TikTok stili kaydırma ve 3D tarot kart çevirme fizik simülasyonu.",
           icon: "Smartphone",
         },
         {
@@ -285,7 +285,7 @@ export const APPS_DETAILED_DATA_TR: Record<"astrovibe" | "excuse", DedicatedAppD
     faq: [
       {
         question: "AstroVibe hem iOS hem Android cihazlarda kullanılabilir mi?",
-        answer: "Evet, AstroVibe Flutter 3.x mimarisiyle geliştirilmiş olup hem Apple App Store hem de Google Play Store üzerinden 60 FPS akıcı hızda kullanılabilir.",
+        answer: "Evet, AstroVibe Flutter 3.x mimarisiyle geliştirilmiş olup hem Apple App Store hem de Google Play Store üzerinden akıcı hızda kullanılabilir.",
         category: "Platform",
       },
       {
@@ -434,7 +434,7 @@ export const APPS_DETAILED_DATA_TR: Record<"astrovibe" | "excuse", DedicatedAppD
         description:
           "Tek elle kullanıma uygun kart destesinde sağa kaydırarak beğendiğiniz mazereti anında WhatsApp veya mesajlara yapıştırın, sola kaydırarak diğerine geçin.",
         bulletPoints: [
-          "60 FPS akıcı kart destesi fizik animasyonları",
+          "Akıcı kart destesi fizik animasyonları",
           "Tek dokunuşla WhatsApp, SMS veya E-Posta kopyalama",
           "Anlık kategori ve yoğunluk filtreleme",
           "Sık kullanılan senaryolar için favoriler klasörü",
@@ -572,7 +572,7 @@ export const APPS_DETAILED_DATA_EN: Record<"astrovibe" | "excuse", DedicatedAppD
       techHighlights: [
         {
           title: "Flutter 3.x & GPU Shaders",
-          description: "60 FPS fluid vertical feeds with realistic 3D tarot card flipping physics.",
+          description: "Fluid vertical feeds with realistic 3D tarot card flipping physics.",
           icon: "Smartphone",
         },
         {
@@ -742,7 +742,7 @@ export const APPS_DETAILED_DATA_EN: Record<"astrovibe" | "excuse", DedicatedAppD
     faq: [
       {
         question: "Is AstroVibe available for both iOS and Android?",
-        answer: "Yes, AstroVibe is built natively with Flutter 3.x and delivers smooth 60 FPS performance on both Apple iOS and Android.",
+        answer: "Yes, AstroVibe is built natively with Flutter 3.x and delivers smooth performance on both Apple iOS and Android.",
         category: "Platform",
       },
       {
@@ -891,7 +891,7 @@ export const APPS_DETAILED_DATA_EN: Record<"astrovibe" | "excuse", DedicatedAppD
         description:
           "Find the most convincing excuse in seconds using intuitive gesture navigation. Swipe right to copy, swipe left to pass, or tap to customize wording.",
         bulletPoints: [
-          "Smooth 60 FPS physics card stack navigation",
+          "Smooth physics card stack navigation",
           "Instant 1-tap copy to WhatsApp, Messages, or Email",
           "Category and urgency filtering on the fly",
           "Favorites collection for recurring emergency situations",
@@ -1003,9 +1003,14 @@ export const APPS_DETAILED_DATA_EN: Record<"astrovibe" | "excuse", DedicatedAppD
 
 export const APPS_DETAILED_DATA = APPS_DETAILED_DATA_TR;
 
+const APPS_DETAIL_MAP: Partial<Record<LanguageCode, Record<"astrovibe" | "excuse", DedicatedAppDetails>>> = {
+  tr: APPS_DETAILED_DATA_TR,
+  en: APPS_DETAILED_DATA_EN,
+};
+
 export function getLocalizedAppDetails(appId: "astrovibe" | "excuse", language: LanguageCode): DedicatedAppDetails {
-  if (language === "tr") {
-    return APPS_DETAILED_DATA_TR[appId];
-  }
-  return APPS_DETAILED_DATA_EN[appId] || APPS_DETAILED_DATA_TR[appId];
+  const localized = APPS_DETAIL_MAP[language]?.[appId];
+  if (localized) return localized;
+  return APPS_DETAIL_MAP.en?.[appId] || APPS_DETAIL_MAP.tr![appId];
 }
+

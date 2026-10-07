@@ -3,6 +3,7 @@
 import React from "react";
 import { Apple, Mail } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { resolveI18n } from "@/i18n";
 
 interface StoreDownloadButtonsProps {
   appStoreUrl?: string;
@@ -55,7 +56,7 @@ export function StoreDownloadButtons({
   isComingSoon = false,
   comingSoonText,
 }: StoreDownloadButtonsProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const isHorizontal = layout === "horizontal";
 
   return (
@@ -173,7 +174,7 @@ export function StoreDownloadButtons({
                 marginBottom: "2px",
               }}
             >
-              {isComingSoon ? t("app_store_coming_soon") : "Download on the"}
+              {isComingSoon ? t("app_store_coming_soon") : resolveI18n("common", "download_on_app_store", language)}
             </span>
             <span
               style={{
@@ -231,7 +232,7 @@ export function StoreDownloadButtons({
                 marginBottom: "2px",
               }}
             >
-              {isComingSoon ? t("google_play_coming_soon") : "Get it on"}
+              {isComingSoon ? t("google_play_coming_soon") : resolveI18n("common", "get_it_on_google_play", language)}
             </span>
             <span
               style={{
