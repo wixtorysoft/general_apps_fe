@@ -177,7 +177,7 @@ export function ContactSection({ app }: ContactSectionProps) {
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                   <MessageSquare size={16} style={{ color: app.primaryColor }} />
-                  <span>support@wixtory.com</span>
+                  <span>wixtoryy@gmail.com</span>
                 </div>
               </div>
             </div>

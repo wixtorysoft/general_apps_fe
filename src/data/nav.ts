@@ -21,7 +21,7 @@ export const APP_STORE_URL = "https://apps.apple.com/tr/app/wixtory-language-box
 export const GOOGLE_PLAY_URL =
   "https://play.google.com/store/apps/details?id=com.wixbook.language_box";
 
-export const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@WixtorySoft";
+export const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@Wixtoryy";
 export const YOUTUBE_PROMO_URL = "https://www.youtube.com/watch?v=9eGQyR4rj-s&t=20s";
 export const YOUTUBE_SHORTS_URL = "https://www.youtube.com/shorts/Ak_w8h79YUw";
 export const YOUTUBE_PROMO_ID = "9eGQyR4rj-s";

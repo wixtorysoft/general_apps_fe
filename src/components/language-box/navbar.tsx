@@ -115,7 +115,7 @@ export function Navbar() {
                 href={YOUTUBE_CHANNEL_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                title="Official YouTube Channel @WixtorySoft"
+                title="Official YouTube Channel @Wixtoryy"
                 className="w-9 h-9 rounded-lg border border-border bg-card/80 hover:bg-red-500/10 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110"
               >
                 <YouTubeBrandIcon className="w-5 h-5" />

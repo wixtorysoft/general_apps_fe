@@ -86,7 +86,7 @@ export function VideoShowcaseSection({
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 hover:bg-red-500/20 text-xs sm:text-sm font-medium transition-all mb-4 group shadow-sm shadow-red-500/10"
               >
                 <YouTubeBrandIcon className="w-4 h-4 text-red-600 dark:text-red-500 group-hover:scale-110 transition-transform" />
-                <span>YouTube @WixtorySoft</span>
+                <span>YouTube @Wixtoryy</span>
                 <ExternalLink className="w-3 h-3 text-red-500/70" />
               </a>
 
@@ -356,13 +356,13 @@ export function VideoShowcaseSection({
             </div>
             <div>
               <h4 className="text-lg font-bold text-foreground flex items-center gap-2">
-                <span>Official WixtorySoft Channel</span>
+                <span>Official Wixtory Channel</span>
                 <Badge className="bg-red-600 text-white text-[10px] uppercase font-bold py-0.5 px-1.5">
                   SUBSCRIBE
                 </Badge>
               </h4>
               <p className="text-muted-foreground text-xs sm:text-sm">
-                Follow @WixtorySoft for gameplay strategies, new language drops, and update releases.
+                Follow @Wixtoryy for gameplay strategies, new language drops, and update releases.
               </p>
             </div>
           </div>

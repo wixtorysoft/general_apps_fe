@@ -429,7 +429,7 @@ export const APPS_DATA: AppModel[] = [
     primaryColor: "#8B5CF6",
     secondaryColor: "#F59E0B",
     glowColor: "rgba(139, 92, 246, 0.45)",
-    contactEmail: "astrovibe@wixtory.com",
+    contactEmail: "wixtoryy@gmail.com",
     storeLinks: {
       appStore: "#",
       playStore: "#",
@@ -610,7 +610,7 @@ export const APPS_DATA: AppModel[] = [
     primaryColor: "#06B6D4",
     secondaryColor: "#10B981",
     glowColor: "rgba(6, 182, 212, 0.45)",
-    contactEmail: "excuse@wixtory.com",
+    contactEmail: "wixtoryy@gmail.com",
     storeLinks: {
       appStore: "#",
       playStore: "#",

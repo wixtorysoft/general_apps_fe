@@ -44,7 +44,6 @@ export function ScreenshotsSection({
   showViewToggle = false,
 }: ScreenshotsSectionProps) {
   const { t, language } = useLanguage();
-  const isTr = language === "tr";
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -54,29 +53,32 @@ export function ScreenshotsSection({
     showViewToggle ? initialViewMode : "carousel"
   );
 
+  const resolveText = (trText: string, fallbackEn?: string) =>
+    language === "tr" ? trText : fallbackEn || trText;
+
   // Device options (All, Phone, Tablet)
   const devices = useMemo(
     () => [
       {
         id: "all" as const,
-        label: t("dev_tab_all") || (isTr ? "Tüm Cihazlar" : "All Devices"),
+        label: t("dev_tab_all") || resolveText("Tüm Cihazlar", "All Devices"),
         icon: Layers,
         count: screenshots.length,
       },
       {
         id: "phone" as const,
-        label: t("dev_tab_phone") || (isTr ? "Telefon" : "Phone"),
+        label: t("dev_tab_phone") || resolveText("Telefon", "Phone"),
         icon: Smartphone,
         count: screenshots.filter((s) => s.device === "phone").length,
       },
       {
         id: "tablet" as const,
-        label: t("dev_tab_tablet") || (isTr ? "Tablet" : "Tablet"),
+        label: t("dev_tab_tablet") || resolveText("Tablet", "Tablet"),
         icon: Tablet,
         count: screenshots.filter((s) => s.device === "tablet").length,
       },
     ],
-    [t, isTr]
+    [t, language]
   );
 
   // Category options (Filtered dynamically by device)
@@ -425,7 +427,7 @@ export function ScreenshotsSection({
                                     "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
                                 )}
                               >
-                                {isTr ? shot.tag : (shot.tagEn || shot.tag)}
+                                {resolveText(shot.tag, shot.tagEn)}
                               </span>
                             )}
                           </div>
@@ -434,12 +436,10 @@ export function ScreenshotsSection({
                         {/* Card Info Below Device */}
                         <div className="mt-3 text-center px-2 w-full">
                           <h4 className="text-foreground text-sm font-bold truncate group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                            {isTr ? shot.title : (shot.titleEn || shot.title)}
+                            {resolveText(shot.title, shot.titleEn)}
                           </h4>
                           <p className="text-muted-foreground text-xs line-clamp-1 mt-0.5 font-medium">
-                            {isTr
-                              ? shot.description
-                              : (shot.descriptionEn || shot.description)}
+                            {resolveText(shot.description, shot.descriptionEn)}
                           </p>
                         </div>
                       </div>
@@ -529,7 +529,7 @@ export function ScreenshotsSection({
                               "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
                           )}
                         >
-                          {isTr ? shot.tag : (shot.tagEn || shot.tag)}
+                          {resolveText(shot.tag, shot.tagEn)}
                         </span>
                       </div>
                     )}
@@ -537,12 +537,10 @@ export function ScreenshotsSection({
 
                   <div>
                     <h4 className="text-white font-bold text-base group-hover:text-emerald-400 transition-colors">
-                      {isTr ? shot.title : (shot.titleEn || shot.title)}
+                      {resolveText(shot.title, shot.titleEn)}
                     </h4>
                     <p className="text-white/60 text-xs leading-relaxed mt-1 line-clamp-2">
-                      {isTr
-                        ? shot.description
-                        : (shot.descriptionEn || shot.description)}
+                      {resolveText(shot.description, shot.descriptionEn)}
                     </p>
                   </div>
                 </motion.div>
@@ -633,24 +631,23 @@ export function ScreenshotsSection({
                         : "PHONE"}
                     </span>
                     <span className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-                      {isTr
-                        ? (filteredScreens[lightboxIndex].tag || "EKRAN DETAYI")
-                        : (filteredScreens[lightboxIndex].tagEn ||
-                          filteredScreens[lightboxIndex].tag ||
-                          "SCREEN DETAIL")}
+                      {resolveText(
+                        filteredScreens[lightboxIndex].tag || "EKRAN DETAYI",
+                        filteredScreens[lightboxIndex].tagEn || "SCREEN DETAIL"
+                      )}
                     </span>
                   </div>
                   <h3 className="text-white text-lg font-bold">
-                    {isTr
-                      ? filteredScreens[lightboxIndex].title
-                      : (filteredScreens[lightboxIndex].titleEn ||
-                        filteredScreens[lightboxIndex].title)}
+                    {resolveText(
+                      filteredScreens[lightboxIndex].title,
+                      filteredScreens[lightboxIndex].titleEn
+                    )}
                   </h3>
                   <p className="text-white/70 text-xs sm:text-sm mt-1">
-                    {isTr
-                      ? filteredScreens[lightboxIndex].description
-                      : (filteredScreens[lightboxIndex].descriptionEn ||
-                        filteredScreens[lightboxIndex].description)}
+                    {resolveText(
+                      filteredScreens[lightboxIndex].description,
+                      filteredScreens[lightboxIndex].descriptionEn
+                    )}
                   </p>
                 </div>
               </div>

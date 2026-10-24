@@ -4,22 +4,27 @@ export interface LanguageOption {
   value: Language;
   label: string;
   flag: string;
+  dir: "ltr" | "rtl";
 }
 
 export const languages: LanguageOption[] = [
-  { value: "en", label: "English", flag: "🇬🇧" },
-  { value: "tr", label: "Türkçe", flag: "🇹🇷" },
-  { value: "fr", label: "Français", flag: "🇫🇷" },
-  { value: "de", label: "Deutsch", flag: "🇩🇪" },
-  { value: "it", label: "Italiano", flag: "🇮🇹" },
-  { value: "es", label: "Español", flag: "🇪🇸" },
-  { value: "pt", label: "Português", flag: "🇵🇹" },
-  { value: "ru", label: "Русский", flag: "🇷🇺" },
-  { value: "zh", label: "中文", flag: "🇨🇳" },
-  { value: "ja", label: "日本語", flag: "🇯🇵" },
-  { value: "ar", label: "العربية", flag: "🇸🇦" },
-  { value: "ko", label: "한국어", flag: "🇰🇷" },
+  { value: "en", label: "English", flag: "🇬🇧", dir: "ltr" },
+  { value: "tr", label: "Türkçe", flag: "🇹🇷", dir: "ltr" },
+  { value: "fr", label: "Français", flag: "🇫🇷", dir: "ltr" },
+  { value: "de", label: "Deutsch", flag: "🇩🇪", dir: "ltr" },
+  { value: "it", label: "Italiano", flag: "🇮🇹", dir: "ltr" },
+  { value: "es", label: "Español", flag: "🇪🇸", dir: "ltr" },
+  { value: "pt", label: "Português", flag: "🇵🇹", dir: "ltr" },
+  { value: "ru", label: "Русский", flag: "🇷🇺", dir: "ltr" },
+  { value: "zh", label: "中文", flag: "🇨🇳", dir: "ltr" },
+  { value: "ja", label: "日本語", flag: "🇯🇵", dir: "ltr" },
+  { value: "ar", label: "العربية", flag: "🇸🇦", dir: "rtl" },
+  { value: "ko", label: "한국어", flag: "🇰🇷", dir: "ltr" },
 ];
+
+export function getDomainTrackLanguageMeta(val: Language): LanguageOption {
+  return languages.find((l) => l.value === val) || languages[0];
+}
 
 
 export interface Translations {

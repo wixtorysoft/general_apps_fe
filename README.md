@@ -97,7 +97,7 @@ Projeye ileride 3., 4. veya 5. bir uygulama eklemek istediğinizde hiçbir yeni 
   primaryColor: "#3B82F6",
   secondaryColor: "#10B981",
   glowColor: "rgba(59, 130, 246, 0.45)",
-  contactEmail: "iletisim@wixtory.com",
+  contactEmail: "wixtoryy@gmail.com",
   whyUse: [ /* 3 adet Problem / Çözüm objesi */ ],
   benefits: [ /* 4 adet Metrik & Fayda objesi */ ],
   features: [ /* 6 adet Özellik objesi */ ],

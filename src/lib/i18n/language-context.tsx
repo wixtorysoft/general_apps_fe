@@ -1,14 +1,22 @@
 "use client";
 
-import React, { createContext, useContext, useCallback } from "react";
-import { translations, LanguageCode, LanguageOption, languages } from "./translations";
+import React, { createContext, useContext, useCallback, useEffect, useState } from "react";
+import {
+  translations,
+  LanguageCode,
+  LanguageOption,
+  languages,
+  getLanguageMeta,
+} from "./translations";
 
-// LocalStorage key for persisting language preference
+// LocalStorage keys for persisting language preference
 const STORAGE_KEY = "lang-box-language";
+const GLOBAL_STORAGE_KEY = "wixtory_app_lang";
 
 interface LanguageContextType {
   language: LanguageCode;
   setLanguage: (lang: LanguageCode) => void;
+  currentLanguageMeta: LanguageOption;
   t: (key: string) => string;
   languages: LanguageOption[];
   mounted: boolean;
@@ -18,17 +26,25 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   // Start with 'en' on SSR and initial client hydration to guarantee identical HTML
-  const [language, setLanguageState] = React.useState<LanguageCode>("en");
-  const [mounted, setMounted] = React.useState(false);
+  const [language, setLanguageState] = useState<LanguageCode>("en");
+  const [mounted, setMounted] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setMounted(true);
     try {
-      const saved = localStorage.getItem(STORAGE_KEY) as LanguageCode | null;
-      if (saved && translations[saved]) {
+      // Check LanguageBox preference first, fallback to ecosystem preference
+      const saved = (localStorage.getItem(STORAGE_KEY) ||
+        localStorage.getItem(GLOBAL_STORAGE_KEY)) as LanguageCode | null;
+
+      if (saved && languages.some((l) => l.code === saved)) {
         setLanguageState(saved);
-        document.documentElement.lang = saved;
-        document.documentElement.dir = saved === "ar" ? "rtl" : "ltr";
+        const meta = getLanguageMeta(saved);
+        document.documentElement.setAttribute("lang", saved);
+        document.documentElement.setAttribute("dir", meta.dir);
+      } else {
+        const meta = getLanguageMeta("en");
+        document.documentElement.setAttribute("lang", "en");
+        document.documentElement.setAttribute("dir", meta.dir);
       }
     } catch {
       // localStorage may fail in restricted browser contexts
@@ -36,25 +52,51 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const setLanguage = useCallback((lang: LanguageCode) => {
-    if (translations[lang]) {
-      setLanguageState(lang);
-      try {
-        localStorage.setItem(STORAGE_KEY, lang);
-      } catch {}
-      document.documentElement.lang = lang;
-      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    setLanguageState(lang);
+    const meta = getLanguageMeta(lang);
+    try {
+      localStorage.setItem(STORAGE_KEY, lang);
+      localStorage.setItem(GLOBAL_STORAGE_KEY, lang);
+    } catch {
+      // localStorage may fail in restricted browser contexts
     }
+    document.documentElement.setAttribute("lang", lang);
+    document.documentElement.setAttribute("dir", meta.dir);
   }, []);
 
   const t = useCallback(
     (key: string): string => {
-      return translations[language]?.[key] || translations.en[key] || key;
+      // Cascade: current language -> English -> Turkish -> key identifier
+      const currentDict = translations[language];
+      if (currentDict && currentDict[key]) {
+        return currentDict[key];
+      }
+      const enDict = translations.en;
+      if (enDict && enDict[key]) {
+        return enDict[key];
+      }
+      const trDict = translations.tr;
+      if (trDict && trDict[key]) {
+        return trDict[key];
+      }
+      return key;
     },
     [language]
   );
 
+  const currentLanguageMeta = getLanguageMeta(language);
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, languages, mounted }}>
+    <LanguageContext.Provider
+      value={{
+        language,
+        setLanguage,
+        currentLanguageMeta,
+        t,
+        languages,
+        mounted,
+      }}
+    >
       {children}
     </LanguageContext.Provider>
   );

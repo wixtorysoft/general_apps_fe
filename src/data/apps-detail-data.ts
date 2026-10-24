@@ -104,7 +104,7 @@ export const APPS_DETAILED_DATA_TR: Record<"astrovibe" | "excuse", DedicatedAppD
     primaryColor: "#8B5CF6",
     secondaryColor: "#F59E0B",
     glowColor: "rgba(139, 92, 246, 0.45)",
-    contactEmail: "astrovibe@wixtory.com",
+    contactEmail: "wixtoryy@gmail.com",
     about: {
       badge: "Proje Vizyonu & Mimari",
       title: "Astrolojiyi Görsel Bir Yaşam Tarzı ve Editoryal Sanata Dönüştürüyoruz",
@@ -331,7 +331,7 @@ export const APPS_DETAILED_DATA_TR: Record<"astrovibe" | "excuse", DedicatedAppD
     primaryColor: "#10B981",
     secondaryColor: "#06B6D4",
     glowColor: "rgba(16, 185, 129, 0.45)",
-    contactEmail: "excuse@wixtory.com",
+    contactEmail: "wixtoryy@gmail.com",
     about: {
       badge: "Proje Vizyonu & Mimari",
       title: "Sosyal ve Profesyonel Yaşamda Sınırlarınızı Koruyan Akıllı Asistan",
@@ -561,7 +561,7 @@ export const APPS_DETAILED_DATA_EN: Record<"astrovibe" | "excuse", DedicatedAppD
     primaryColor: "#8B5CF6",
     secondaryColor: "#F59E0B",
     glowColor: "rgba(139, 92, 246, 0.45)",
-    contactEmail: "astrovibe@wixtory.com",
+    contactEmail: "wixtoryy@gmail.com",
     about: {
       badge: "Project Vision & Architecture",
       title: "Transforming Astrology into a Visual Lifestyle & Editorial Nail Art",
@@ -788,7 +788,7 @@ export const APPS_DETAILED_DATA_EN: Record<"astrovibe" | "excuse", DedicatedAppD
     primaryColor: "#10B981",
     secondaryColor: "#06B6D4",
     glowColor: "rgba(16, 185, 129, 0.45)",
-    contactEmail: "excuse@wixtory.com",
+    contactEmail: "wixtoryy@gmail.com",
     about: {
       badge: "Project Vision & Architecture",
       title: "Your Diplomatic Intelligent Assistant to Protect Time and Boundaries",

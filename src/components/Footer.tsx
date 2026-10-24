@@ -226,21 +226,14 @@ export function Footer({ apps, onSelectApp }: FooterProps) {
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px", fontSize: "14px" }}>
               <a
-                href="mailto:support@wixtory.com"
+                href="mailto:wixtoryy@gmail.com"
                 style={{ color: "var(--text-secondary)", display: "flex", alignItems: "center", gap: "8px" }}
               >
                 <Mail size={16} />
-                <span>support@wixtory.com</span>
-              </a>
-              <a
-                href="mailto:privacy@wixtory.com"
-                style={{ color: "var(--text-secondary)", display: "flex", alignItems: "center", gap: "8px" }}
-              >
-                <ShieldCheck size={16} />
-                <span>privacy@wixtory.com</span>
+                <span>wixtoryy@gmail.com</span>
               </a>
               <div style={{ color: "var(--text-muted)", fontSize: "12px", marginTop: "6px" }}>
-                İstanbul / Türkiye
+                Ankara / Türkiye
               </div>
             </div>
           </div>
