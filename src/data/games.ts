@@ -6,6 +6,7 @@ import {
   Volume2,
   Grid,
   Compass,
+  CircleDot,
   type LucideIcon,
 } from "lucide-react";
 
@@ -25,6 +26,18 @@ export interface GameData {
 export const comingSoonGames: GameData[] = [];
 
 export const games: GameData[] = [
+  {
+    titleKey: "game_ring_title",
+    descKey: "game_ring_desc",
+    icon: CircleDot,
+    image: "/language-box/games/word-ring.png",
+    tags: ["tag_ring", "tag_letters", "tag_vocab", "tag_all_levels"],
+    gradient: "from-teal-400 via-cyan-500 to-indigo-500",
+    borderColor: "hover:border-cyan-400/50",
+    bgHover: "hover:bg-cyan-500/5",
+    tagColor: "bg-cyan-500/10 text-cyan-300 border-cyan-500/20",
+    hoverAccent: "rgba(6, 182, 212, 0.2)",
+  },
   {
     titleKey: "game_compass_title",
     descKey: "game_compass_desc",

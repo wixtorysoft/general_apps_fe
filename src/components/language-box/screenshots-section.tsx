@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/lib/i18n/language-context";
-import { useEffect, useState, useCallback, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -18,17 +18,19 @@ import {
   Gamepad2,
   BarChart3,
   Layers,
-  Palette,
-  Eye,
   SlidersHorizontal,
   LayoutGrid,
   Tv,
-  Play,
+  Smartphone,
+  Tablet,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { screenshots, type ScreenshotCategory, type ScreenshotData } from "@/data/screenshots";
-import { YOUTUBE_PROMO_URL } from "@/data/nav";
+import {
+  screenshots,
+  type ScreenshotCategory,
+  type ScreenshotDevice,
+} from "@/data/screenshots";
 
 interface ScreenshotsSectionProps {
   initialViewMode?: "carousel" | "grid";
@@ -42,54 +44,103 @@ export function ScreenshotsSection({
   showViewToggle = false,
 }: ScreenshotsSectionProps) {
   const { t, language } = useLanguage();
-
-  const screenDetailFallback: Record<string, string> = {
-    tr: "EKRAN DETAYI", en: "SCREEN DETAIL", it: "DETTAGLIO SCHERMATA", pt: "DETALHE DA TELA",
-    es: "DETALLE DE PANTALLA", fr: "DÉTAIL DE L'ÉCRAN", de: "BILDSCHIRMDETAIL", ru: "ДЕТАЛИ ЭКРАНА",
-    ja: "画面の詳細", zh: "屏幕详情", ar: "تفاصيل الشاشة"
-  };
-
-  const getShot = (item: { title: string; titleEn?: string; description: string; descriptionEn?: string; tag?: string; tagEn?: string }) => {
-    const langDict: Partial<Record<string, { title: string; description: string; tag: string }>> = {
-      tr: {
-        title: item.title,
-        description: item.description,
-        tag: item.tag || screenDetailFallback.tr,
-      },
-    };
-
-    return (
-      langDict[language] || {
-        title: item.titleEn || item.title,
-        description: item.descriptionEn || item.description,
-        tag: item.tagEn || item.tag || screenDetailFallback[language] || screenDetailFallback.en,
-      }
-    );
-  };
-
+  const isTr = language === "tr";
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState<ScreenshotCategory>("all");
+  const [activeDevice, setActiveDevice] = useState<ScreenshotDevice>("all");
   const [viewMode, setViewMode] = useState<"carousel" | "grid">(
     showViewToggle ? initialViewMode : "carousel"
   );
 
-  const categories = useMemo(() => [
-    { id: "all" as const, label: t("cat_tab_all"), icon: Layers, count: screenshots.length },
-    { id: "menu" as const, label: t("cat_tab_menu"), icon: LayoutGrid, count: screenshots.filter((s) => s.category === "menu").length },
-    { id: "games" as const, label: t("cat_tab_games"), icon: Gamepad2, count: screenshots.filter((s) => s.category === "games").length },
-    { id: "settings" as const, label: t("cat_tab_settings"), icon: SlidersHorizontal, count: screenshots.filter((s) => s.category === "settings").length },
-    { id: "stats" as const, label: t("cat_tab_stats"), icon: BarChart3, count: screenshots.filter((s) => s.category === "stats").length },
-  ], [t]);
+  // Device options (All, Phone, Tablet)
+  const devices = useMemo(
+    () => [
+      {
+        id: "all" as const,
+        label: t("dev_tab_all") || (isTr ? "Tüm Cihazlar" : "All Devices"),
+        icon: Layers,
+        count: screenshots.length,
+      },
+      {
+        id: "phone" as const,
+        label: t("dev_tab_phone") || (isTr ? "Telefon" : "Phone"),
+        icon: Smartphone,
+        count: screenshots.filter((s) => s.device === "phone").length,
+      },
+      {
+        id: "tablet" as const,
+        label: t("dev_tab_tablet") || (isTr ? "Tablet" : "Tablet"),
+        icon: Tablet,
+        count: screenshots.filter((s) => s.device === "tablet").length,
+      },
+    ],
+    [t, isTr]
+  );
 
+  // Category options (Filtered dynamically by device)
+  const categories = useMemo(() => {
+    const baseList =
+      activeDevice === "all"
+        ? screenshots
+        : screenshots.filter((s) => s.device === activeDevice);
+
+    return [
+      {
+        id: "all" as const,
+        label: t("cat_tab_all"),
+        icon: Layers,
+        count: baseList.length,
+      },
+      {
+        id: "games" as const,
+        label: t("cat_tab_games"),
+        icon: Gamepad2,
+        count: baseList.filter((s) => s.category === "games").length,
+      },
+      {
+        id: "menu" as const,
+        label: t("cat_tab_menu"),
+        icon: LayoutGrid,
+        count: baseList.filter((s) => s.category === "menu").length,
+      },
+      {
+        id: "stats" as const,
+        label: t("cat_tab_stats"),
+        icon: BarChart3,
+        count: baseList.filter((s) => s.category === "stats").length,
+      },
+      {
+        id: "settings" as const,
+        label: t("cat_tab_settings"),
+        icon: SlidersHorizontal,
+        count: baseList.filter((s) => s.category === "settings").length,
+      },
+    ];
+  }, [t, activeDevice]);
+
+  // Filtered Screenshots
   const filteredScreens = useMemo(() => {
-    if (activeCategory === "all") return screenshots;
-    return screenshots.filter((s) => s.category === activeCategory);
-  }, [activeCategory]);
+    return screenshots.filter((s) => {
+      const matchCat =
+        activeCategory === "all" || s.category === activeCategory;
+      const matchDev =
+        activeDevice === "all" || s.device === activeDevice;
+      return matchCat && matchDev;
+    });
+  }, [activeCategory, activeDevice]);
 
   const handleCategoryChange = (catId: ScreenshotCategory) => {
     setActiveCategory(catId);
+    setCurrent(0);
+    if (api) {
+      api.scrollTo(0);
+    }
+  };
+
+  const handleDeviceChange = (devId: ScreenshotDevice) => {
+    setActiveDevice(devId);
     setCurrent(0);
     if (api) {
       api.scrollTo(0);
@@ -140,8 +191,10 @@ export function ScreenshotsSection({
   return (
     <section
       id="screenshots"
-      className="py-16 sm:py-24 relative overflow-hidden section-hover transition-colors duration-300 scroll-mt-24"
-      style={{ background: "var(--section-screenshots, rgba(13, 17, 28, 0.7))" }}
+      className="py-16 sm:py-24 relative overflow-hidden section-hover transition-colors duration-300"
+      style={{
+        background: "var(--section-screenshots, rgba(13, 17, 28, 0.7))",
+      }}
     >
       {/* Background Ambient Glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] sm:w-[1000px] h-[450px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
@@ -170,7 +223,42 @@ export function ScreenshotsSection({
           </p>
         </motion.div>
 
-        {/* Category Filter Tabs */}
+        {/* 1. Device Filter Tabs (All / Phone / Tablet) */}
+        <div className="flex justify-center mb-6">
+          <div className="inline-flex items-center gap-1.5 p-1 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-md shadow-sm">
+            {devices.map((dev) => {
+              const DevIcon = dev.icon;
+              const isDevActive = activeDevice === dev.id;
+              return (
+                <button
+                  key={dev.id}
+                  onClick={() => handleDeviceChange(dev.id)}
+                  className={cn(
+                    "flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200",
+                    isDevActive
+                      ? "bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 shadow-md shadow-emerald-500/20"
+                      : "text-white/70 hover:text-white hover:bg-white/[0.06]"
+                  )}
+                >
+                  <DevIcon className="w-4 h-4" />
+                  <span>{dev.label}</span>
+                  <span
+                    className={cn(
+                      "text-[10px] font-extrabold px-1.5 py-0.5 rounded-md transition-colors",
+                      isDevActive
+                        ? "bg-slate-950/20 text-slate-950"
+                        : "bg-white/10 text-white/60"
+                    )}
+                  >
+                    {dev.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* 2. Category Filter Tabs */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-8 max-w-4xl mx-auto px-2">
           {categories.map((cat) => {
             const Icon = cat.icon;
@@ -186,7 +274,12 @@ export function ScreenshotsSection({
                     : "bg-white/[0.04] text-white/70 hover:text-white hover:bg-white/[0.08] border-white/10"
                 )}
               >
-                <Icon className={cn("w-4 h-4 transition-colors", isActive ? "text-emerald-400" : "text-white/60")} />
+                <Icon
+                  className={cn(
+                    "w-4 h-4 transition-colors",
+                    isActive ? "text-emerald-400" : "text-white/60"
+                  )}
+                />
                 <span>{cat.label}</span>
                 <span
                   className={cn(
@@ -203,7 +296,7 @@ export function ScreenshotsSection({
           })}
         </div>
 
-        {/* View Mode Toggle - only shown when showViewToggle is explicitly true */}
+        {/* View Mode Toggle (Carousel vs Grid) */}
         {showViewToggle && (
           <div className="flex justify-center mb-8">
             <div className="inline-flex items-center gap-1.5 p-1 rounded-xl bg-card border border-border shadow-sm">
@@ -244,11 +337,9 @@ export function ScreenshotsSection({
                 align: "center",
                 loop: true,
               }}
-              className="w-full relative"
+              className="w-full"
             >
-              {/* Left Side Arrow Button */}
               <button
-                type="button"
                 onClick={() => api?.scrollPrev()}
                 aria-label="Önceki Ekran"
                 className="slider-arrow-btn absolute -left-2 sm:-left-6 md:-left-10 lg:-left-12 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full border flex items-center justify-center shadow-xl backdrop-blur-md hover:scale-110 active:scale-95 transition-all"
@@ -256,9 +347,7 @@ export function ScreenshotsSection({
                 <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
 
-              {/* Right Side Arrow Button */}
               <button
-                type="button"
                 onClick={() => api?.scrollNext()}
                 aria-label="Sonraki Ekran"
                 className="slider-arrow-btn absolute -right-2 sm:-right-6 md:-right-10 lg:-right-12 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full border flex items-center justify-center shadow-xl backdrop-blur-md hover:scale-110 active:scale-95 transition-all"
@@ -267,63 +356,96 @@ export function ScreenshotsSection({
               </button>
 
               <CarouselContent className="-ml-4 py-6">
-                {filteredScreens.map((shot, idx) => (
-                  <CarouselItem
-                    key={shot.id}
-                    className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 flex justify-center"
-                  >
-                    <div
-                      onClick={() => setLightboxIndex(idx)}
-                      className="group relative cursor-pointer flex flex-col items-center w-full max-w-[280px]"
+                {filteredScreens.map((shot, idx) => {
+                  const isTablet = shot.device === "tablet";
+                  return (
+                    <CarouselItem
+                      key={shot.id}
+                      className={cn(
+                        "pl-4 flex justify-center",
+                        isTablet
+                          ? "basis-full sm:basis-1/2 md:basis-[45%]"
+                          : "basis-full sm:basis-1/2 md:basis-1/3"
+                      )}
                     >
-                      {/* Phone Frame */}
-                      <div className="relative w-full aspect-[9/19] rounded-[32px] p-2.5 bg-neutral-900 border-2 border-white/15 shadow-xl group-hover:border-emerald-400/50 group-hover:shadow-2xl group-hover:shadow-emerald-500/20 transition-all duration-300 group-hover:-translate-y-1 overflow-hidden">
-                        {/* Camera pill */}
-                        <div className="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-3.5 bg-black rounded-full z-20" />
+                      <div
+                        onClick={() => setLightboxIndex(idx)}
+                        className={cn(
+                          "group relative cursor-pointer flex flex-col items-center w-full",
+                          isTablet ? "max-w-[340px]" : "max-w-[280px]"
+                        )}
+                      >
+                        {/* Device Frame */}
+                        <div
+                          className={cn(
+                            "relative w-full bg-neutral-900 border-2 border-white/15 shadow-xl group-hover:border-emerald-400/50 group-hover:shadow-2xl group-hover:shadow-emerald-500/20 transition-all duration-300 group-hover:-translate-y-1 overflow-hidden",
+                            isTablet
+                              ? "aspect-[1488/2266] rounded-[26px] p-2"
+                              : "aspect-[1242/2688] rounded-[32px] p-2.5"
+                          )}
+                        >
+                          {/* Camera Cutout */}
+                          {isTablet ? (
+                            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-2 h-2 bg-black/90 border border-white/15 rounded-full z-20" />
+                          ) : (
+                            <div className="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-3.5 bg-black rounded-full z-20" />
+                          )}
 
-                        <div className="w-full h-full rounded-[24px] overflow-hidden bg-black relative">
-                          <img
-                            src={shot.src}
-                            alt={shot.alt}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            loading="lazy"
-                          />
+                          <div
+                            className={cn(
+                              "w-full h-full overflow-hidden bg-black relative",
+                              isTablet ? "rounded-[20px]" : "rounded-[24px]"
+                            )}
+                          >
+                            <img
+                              src={shot.src}
+                              alt={shot.alt}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                              loading="lazy"
+                            />
 
-                          {/* Hover Overlay with Zoom Icon */}
-                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <div className="w-12 h-12 rounded-full bg-emerald-500/90 text-white flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform">
-                              <Maximize2 className="w-5 h-5" />
+                            {/* Hover Overlay with Zoom Icon */}
+                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                              <div className="w-12 h-12 rounded-full bg-emerald-500/90 text-white flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform">
+                                <Maximize2 className="w-5 h-5" />
+                              </div>
                             </div>
+                          </div>
+
+                          {/* Device & Category Badge */}
+                          <div className="absolute top-4 right-4 z-20 flex gap-1.5">
+                            <span className="px-2 py-0.5 rounded-full text-[9px] font-bold border backdrop-blur-md shadow-sm bg-black/60 text-white/80 border-white/20">
+                              {isTablet ? "TABLET" : "PHONE"}
+                            </span>
+                            {shot.tag && (
+                              <span
+                                className={cn(
+                                  "px-2 py-0.5 rounded-full text-[9px] font-bold border backdrop-blur-md shadow-sm",
+                                  shot.badgeColor ||
+                                    "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
+                                )}
+                              >
+                                {isTr ? shot.tag : (shot.tagEn || shot.tag)}
+                              </span>
+                            )}
                           </div>
                         </div>
 
-                        {shot.tag && (
-                          <div className="absolute top-6 right-5 z-20">
-                            <span
-                              className={cn(
-                                "px-2 py-0.5 rounded-full text-[9px] font-bold border backdrop-blur-md shadow-sm",
-                                shot.badgeColor ||
-                                  "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
-                              )}
-                            >
-                              {getShot(shot).tag}
-                            </span>
-                          </div>
-                        )}
+                        {/* Card Info Below Device */}
+                        <div className="mt-3 text-center px-2 w-full">
+                          <h4 className="text-foreground text-sm font-bold truncate group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                            {isTr ? shot.title : (shot.titleEn || shot.title)}
+                          </h4>
+                          <p className="text-muted-foreground text-xs line-clamp-1 mt-0.5 font-medium">
+                            {isTr
+                              ? shot.description
+                              : (shot.descriptionEn || shot.description)}
+                          </p>
+                        </div>
                       </div>
-
-                      {/* Card Info Below Phone */}
-                      <div className="mt-3 text-center px-2">
-                        <h4 className="text-foreground text-sm font-bold truncate group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                          {getShot(shot).title}
-                        </h4>
-                        <p className="text-muted-foreground text-xs line-clamp-1 mt-0.5 font-medium">
-                          {getShot(shot).description}
-                        </p>
-                      </div>
-                    </div>
-                  </CarouselItem>
-                ))}
+                    </CarouselItem>
+                  );
+                })}
               </CarouselContent>
             </Carousel>
 
@@ -357,62 +479,81 @@ export function ScreenshotsSection({
         {/* 2. GRID GALLERY VIEW */}
         {viewMode === "grid" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
-            {filteredScreens.map((shot, idx) => (
-              <motion.div
-                key={shot.id}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: idx * 0.03 }}
-                onClick={() => setLightboxIndex(idx)}
-                className="group relative cursor-pointer p-4 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/40 hover:bg-white/[0.06] transition-all duration-300 flex flex-col justify-between shadow-lg"
-              >
-                {/* Phone Preview */}
-                <div className="relative w-full aspect-[9/18] rounded-2xl overflow-hidden bg-black border border-white/10 mb-4 shadow-inner">
-                  <img
-                    src={shot.src}
-                    alt={shot.alt}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
+            {filteredScreens.map((shot, idx) => {
+              const isTablet = shot.device === "tablet";
+              return (
+                <motion.div
+                  key={shot.id}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: idx * 0.03 }}
+                  onClick={() => setLightboxIndex(idx)}
+                  className="group relative cursor-pointer p-4 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/40 hover:bg-white/[0.06] transition-all duration-300 flex flex-col justify-between shadow-lg"
+                >
+                  {/* Device Preview */}
+                  <div
+                    className={cn(
+                      "relative w-full rounded-2xl overflow-hidden bg-black border border-white/10 mb-4 shadow-inner",
+                      isTablet
+                        ? "aspect-[1488/2266]"
+                        : "aspect-[1242/2688]"
+                    )}
+                  >
+                    <img
+                      src={shot.src}
+                      alt={shot.alt}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
 
-                  {/* Zoom Overlay */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <div className="w-10 h-10 rounded-full bg-emerald-500/90 text-white flex items-center justify-center shadow-lg">
-                      <Maximize2 className="w-4 h-4" />
+                    {/* Zoom Overlay */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full bg-emerald-500/90 text-white flex items-center justify-center shadow-lg">
+                        <Maximize2 className="w-4 h-4" />
+                      </div>
                     </div>
-                  </div>
 
-                  {shot.tag && (
-                    <div className="absolute top-3 right-3 z-10">
-                      <span
-                        className={cn(
-                          "px-2 py-0.5 rounded-full text-[9px] font-bold border backdrop-blur-md",
-                          shot.badgeColor ||
-                            "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
-                        )}
-                      >
-                        {getShot(shot).tag}
+                    {/* Device Badge */}
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="px-2 py-0.5 rounded-full text-[9px] font-bold border backdrop-blur-md shadow-sm bg-black/60 text-white/80 border-white/20">
+                        {isTablet ? "TABLET" : "PHONE"}
                       </span>
                     </div>
-                  )}
-                </div>
 
-                <div>
-                  <h4 className="text-white font-bold text-base group-hover:text-emerald-400 transition-colors">
-                    {getShot(shot).title}
-                  </h4>
-                  <p className="text-white/60 text-xs leading-relaxed mt-1 line-clamp-2">
-                    {getShot(shot).description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                    {shot.tag && (
+                      <div className="absolute top-3 right-3 z-10">
+                        <span
+                          className={cn(
+                            "px-2 py-0.5 rounded-full text-[9px] font-bold border backdrop-blur-md",
+                            shot.badgeColor ||
+                              "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
+                          )}
+                        >
+                          {isTr ? shot.tag : (shot.tagEn || shot.tag)}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  <div>
+                    <h4 className="text-white font-bold text-base group-hover:text-emerald-400 transition-colors">
+                      {isTr ? shot.title : (shot.titleEn || shot.title)}
+                    </h4>
+                    <p className="text-white/60 text-xs leading-relaxed mt-1 line-clamp-2">
+                      {isTr
+                        ? shot.description
+                        : (shot.descriptionEn || shot.description)}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         )}
 
         {/* LIGHTBOX MODAL */}
         <AnimatePresence>
-          {lightboxIndex !== null && (
+          {lightboxIndex !== null && filteredScreens[lightboxIndex] && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -457,11 +598,25 @@ export function ScreenshotsSection({
               {/* Modal Content */}
               <div
                 onClick={(e) => e.stopPropagation()}
-                className="relative max-w-md w-full flex flex-col items-center"
+                className="relative max-w-2xl w-full flex flex-col items-center max-h-[92vh] overflow-y-auto"
               >
-                {/* Full-res Phone Mockup */}
-                <div className="relative w-full max-w-[340px] aspect-[9/19] rounded-[36px] p-3 bg-neutral-900 border-4 border-white/20 shadow-2xl overflow-hidden">
-                  <div className="w-full h-full rounded-[26px] overflow-hidden bg-black">
+                {/* Responsive Mockup */}
+                <div
+                  className={cn(
+                    "relative w-full bg-neutral-900 border-4 border-white/20 shadow-2xl overflow-hidden",
+                    filteredScreens[lightboxIndex].device === "tablet"
+                      ? "max-w-[540px] aspect-[1488/2266] rounded-[28px] p-2.5"
+                      : "max-w-[340px] aspect-[1242/2688] rounded-[36px] p-3"
+                  )}
+                >
+                  <div
+                    className={cn(
+                      "w-full h-full overflow-hidden bg-black",
+                      filteredScreens[lightboxIndex].device === "tablet"
+                        ? "rounded-[22px]"
+                        : "rounded-[26px]"
+                    )}
+                  >
                     <img
                       src={filteredScreens[lightboxIndex].src}
                       alt={filteredScreens[lightboxIndex].alt}
@@ -470,15 +625,32 @@ export function ScreenshotsSection({
                   </div>
                 </div>
 
-                <div className="mt-4 text-center max-w-sm">
-                  <span className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-                    {getShot(filteredScreens[lightboxIndex]).tag}
-                  </span>
-                  <h3 className="text-white text-lg font-bold mt-1">
-                    {getShot(filteredScreens[lightboxIndex]).title}
+                <div className="mt-4 text-center max-w-md">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/10 text-white/80 border border-white/20">
+                      {filteredScreens[lightboxIndex].device === "tablet"
+                        ? "TABLET"
+                        : "PHONE"}
+                    </span>
+                    <span className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+                      {isTr
+                        ? (filteredScreens[lightboxIndex].tag || "EKRAN DETAYI")
+                        : (filteredScreens[lightboxIndex].tagEn ||
+                          filteredScreens[lightboxIndex].tag ||
+                          "SCREEN DETAIL")}
+                    </span>
+                  </div>
+                  <h3 className="text-white text-lg font-bold">
+                    {isTr
+                      ? filteredScreens[lightboxIndex].title
+                      : (filteredScreens[lightboxIndex].titleEn ||
+                        filteredScreens[lightboxIndex].title)}
                   </h3>
                   <p className="text-white/70 text-xs sm:text-sm mt-1">
-                    {getShot(filteredScreens[lightboxIndex]).description}
+                    {isTr
+                      ? filteredScreens[lightboxIndex].description
+                      : (filteredScreens[lightboxIndex].descriptionEn ||
+                        filteredScreens[lightboxIndex].description)}
                   </p>
                 </div>
               </div>
