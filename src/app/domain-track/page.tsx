@@ -9,6 +9,7 @@ import { FeaturesSection } from "@/components/domain-track/FeaturesSection";
 import { HelpSection } from "@/components/domain-track/HelpSection";
 import { BenefitsSection } from "@/components/domain-track/BenefitsSection";
 import { FAQSection } from "@/components/domain-track/FAQSection";
+import { ContactSection } from "@/components/domain-track/ContactSection";
 import { Footer } from "@/components/domain-track/Footer";
 
 export default function DomainTrackHomePage() {
@@ -22,6 +23,7 @@ export default function DomainTrackHomePage() {
         <HelpSection />
         <BenefitsSection />
         <FAQSection />
+        <ContactSection />
       </main>
       <Footer />
     </div>

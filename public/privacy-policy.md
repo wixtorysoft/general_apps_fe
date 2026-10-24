@@ -114,7 +114,7 @@ Wixtory applications are designed with safety and privacy by default:
 
 - Under GDPR Articles 15-22 and KVKK Article 11, users have the right to access, rectify, erase, restrict processing, and request information regarding personal data.
 - Because we operate on a strict zero-account and zero-PII architecture, our servers hold no personal records associated with you to retrieve or delete.
-- For any legal inquiries or formal requests, you may contact Data Controller Hacı Celal Aygar directly at `wixtoryy@gmail.com`. All legitimate inquiries are resolved free of charge within 30 days.
+- For any legal inquiries or formal requests, you may contact Data Controller Wixtory directly at `wixtoryy@gmail.com`. All legitimate inquiries are resolved free of charge within 30 days.
 
 ---
 
@@ -144,7 +144,7 @@ This Privacy Policy constitutes the unified, universal legal privacy framework f
 - Any future updates will be posted immediately on this official portal (https://apps.wixtory.com/privacy-policy) and take effect upon publication.
 
 ### Developer & Data Controller Contact:
-- **Developer / Publisher:** Hacı Celal Aygar (Wixtory Software & Digital Technologies)
+- **Developer / Publisher:** Wixtory (Wixtory Software & Digital Technologies)
 - **Official Support Email:** wixtoryy@gmail.com
 - **Developer Location:** Ankara, Yenimahalle, Turkey
 - **Official Website:** https://www.wixtory.com

@@ -16,7 +16,7 @@ const productLinks = [
 const supportLinks = [
   { i18nKey: "nav_advantages", href: "/language-box/advantages", sectionId: "advantages" },
   { i18nKey: "nav_faq", href: "/language-box/faq", sectionId: "faq" },
-  { i18nKey: "nav_developer", href: "/developer", sectionId: "" },
+  { i18nKey: "nav_contact", href: "/language-box#contact", sectionId: "contact" },
   { i18nKey: "nav_privacy", href: "/language-box/privacy-policy", sectionId: "" },
   { i18nKey: "nav_cookie", href: "/cookie-policy", sectionId: "" },
 ] as const;
@@ -200,13 +200,23 @@ export function Footer() {
             {/* Contact Links */}
             <div className="space-y-1.5 text-white/50 text-sm">
               <a
-                href="https://www.wixtory.com"
+                href="https://wixtory.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-emerald-400 transition-colors duration-200 group/site"
               >
                 <Globe className="size-3.5 text-emerald-400/60" />
-                <span>www.wixtory.com</span>
+                <span>wixtory.com</span>
+                <ExternalLink className="size-3 opacity-0 group-hover/site:opacity-70 transition-opacity" />
+              </a>
+              <a
+                href="https://apps.wixtory.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-emerald-400 transition-colors duration-200 group/site"
+              >
+                <Globe className="size-3.5 text-emerald-400/60" />
+                <span>apps.wixtory.com</span>
                 <ExternalLink className="size-3 opacity-0 group-hover/site:opacity-70 transition-opacity" />
               </a>
               <a

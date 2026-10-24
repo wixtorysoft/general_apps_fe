@@ -204,7 +204,7 @@ export function Footer({ apps, onSelectApp }: FooterProps) {
                   }}
                 >
                   <Code size={16} />
-                  <span>Developer (Hacı Celal Aygar)</span>
+                  <span>Wixtory Studio</span>
                 </Link>
               </li>
             </ul>

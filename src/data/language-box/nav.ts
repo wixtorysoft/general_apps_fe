@@ -11,6 +11,7 @@ export const navLinks: NavLinkData[] = [
   { i18nKey: "nav_features", sectionId: "features", href: "/language-box/features" },
   { i18nKey: "nav_advantages", sectionId: "advantages", href: "/language-box/advantages" },
   { i18nKey: "nav_faq", sectionId: "faq", href: "/language-box/faq" },
+  { i18nKey: "nav_contact", sectionId: "contact", href: "/language-box#contact" },
   { i18nKey: "nav_privacy", sectionId: "", href: "/language-box/privacy-policy" },
 ];
 
@@ -24,5 +25,7 @@ export const GOOGLE_PLAY_URL =
 export const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@Wixtoryy";
 export const YOUTUBE_PROMO_URL = "https://www.youtube.com/watch?v=9eGQyR4rj-s&t=20s";
 export const YOUTUBE_SHORTS_URL = "https://www.youtube.com/shorts/Ak_w8h79YUw";
+export const YOUTUBE_SHORTS_2_URL = "https://www.youtube.com/shorts/ojfj3kY2G68";
 export const YOUTUBE_PROMO_ID = "9eGQyR4rj-s";
 export const YOUTUBE_SHORTS_ID = "Ak_w8h79YUw";
+export const YOUTUBE_SHORTS_2_ID = "ojfj3kY2G68";

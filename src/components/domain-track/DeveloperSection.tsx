@@ -1,3 +1,1 @@
-export function DeveloperSection() {
-  return null;
-}
+export { ContactSection, DeveloperSection } from "./ContactSection";

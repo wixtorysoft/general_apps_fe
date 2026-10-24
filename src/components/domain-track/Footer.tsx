@@ -152,7 +152,7 @@ export function Footer() {
               {[
                 { label: t.footer_support_why_us, href: "/domain-track/why-us" },
                 { label: t.footer_support_faq, href: "/domain-track/faq" },
-                { label: t.footer_support_developer, href: "/developer" },
+                { label: t.nav_contact || "Contact", href: "/domain-track#contact" },
                 { label: t.footer_support_privacy, href: "/domain-track/privacy-policy" },
               ].map((item) => (
                 <li key={item.label}>
@@ -189,7 +189,7 @@ export function Footer() {
 
             <div style={{ display: "flex", flexDirection: "column", gap: "8px", fontSize: "13.5px", color: "rgba(255, 255, 255, 0.6)" }}>
               <a
-                href="https://www.wixtory.com"
+                href="https://wixtory.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -204,7 +204,27 @@ export function Footer() {
                 onMouseLeave={(e) => (e.currentTarget.style.color = "inherit")}
               >
                 <Globe size={14} color="#34d399" />
-                <span>www.wixtory.com</span>
+                <span>wixtory.com</span>
+                <ExternalLink size={12} style={{ opacity: 0.6 }} />
+              </a>
+
+              <a
+                href="https://apps.wixtory.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  color: "inherit",
+                  textDecoration: "none",
+                  transition: "color 0.2s ease",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#34d399")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "inherit")}
+              >
+                <Globe size={14} color="#34d399" />
+                <span>apps.wixtory.com</span>
                 <ExternalLink size={12} style={{ opacity: 0.6 }} />
               </a>
 

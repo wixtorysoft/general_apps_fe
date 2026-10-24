@@ -5,23 +5,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Play,
   ExternalLink,
-  Sparkles,
   Smartphone,
   Tv,
   LayoutGrid,
   CheckCircle2,
-  Volume2,
   Share2,
 } from "lucide-react";
 
-function YouTubeBrandIcon({ className = "w-4 h-4" }: { className?: string }) {
+function YoutubeIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
-      <path
-        fill="#FF0000"
-        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"
-      />
-      <path fill="#FFFFFF" d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
     </svg>
   );
 }
@@ -32,9 +26,11 @@ import {
   YOUTUBE_CHANNEL_URL,
   YOUTUBE_PROMO_URL,
   YOUTUBE_SHORTS_URL,
+  YOUTUBE_SHORTS_2_URL,
   YOUTUBE_PROMO_ID,
   YOUTUBE_SHORTS_ID,
-} from "@/data/nav";
+  YOUTUBE_SHORTS_2_ID,
+} from "@/data/language-box/nav";
 import { useLanguage } from "@/lib/i18n/language-context";
 
 type VideoTab = "walkthrough" | "shorts" | "dual";
@@ -50,6 +46,7 @@ export function VideoShowcaseSection({
 }: VideoShowcaseSectionProps) {
   const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<VideoTab>("walkthrough");
+  const [selectedShort, setSelectedShort] = useState<1 | 2>(1);
   const [copied, setCopied] = useState(false);
 
   const handleShare = (url: string) => {
@@ -60,10 +57,16 @@ export function VideoShowcaseSection({
     }
   };
 
+  const currentShortId = selectedShort === 1 ? YOUTUBE_SHORTS_ID : YOUTUBE_SHORTS_2_ID;
+  const currentShortUrl = selectedShort === 1 ? YOUTUBE_SHORTS_URL : YOUTUBE_SHORTS_2_URL;
+
   return (
     <section
       id="videos"
-      className={cn("py-16 sm:py-24 relative overflow-hidden transition-colors duration-300 scroll-mt-24", className)}
+      className={cn(
+        "py-16 sm:py-24 relative overflow-hidden transition-colors duration-300",
+        className
+      )}
       style={{ background: "var(--section-videos)" }}
     >
       {/* Ambient background glow */}
@@ -85,7 +88,7 @@ export function VideoShowcaseSection({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 hover:bg-red-500/20 text-xs sm:text-sm font-medium transition-all mb-4 group shadow-sm shadow-red-500/10"
               >
-                <YouTubeBrandIcon className="w-4 h-4 text-red-600 dark:text-red-500 group-hover:scale-110 transition-transform" />
+                <YoutubeIcon className="w-4 h-4 text-red-600 dark:text-red-500 group-hover:scale-110 transition-transform" />
                 <span>YouTube @Wixtoryy</span>
                 <ExternalLink className="w-3 h-3 text-red-500/70" />
               </a>
@@ -129,7 +132,7 @@ export function VideoShowcaseSection({
             )}
           >
             <Smartphone className="w-4 h-4" />
-            <span>{t("video_tab_shorts")}</span>
+            <span>{t("video_tab_shorts")} (2 Videos)</span>
           </button>
 
           <button
@@ -218,78 +221,116 @@ export function VideoShowcaseSection({
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.3 }}
-              className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
+              className="max-w-4xl mx-auto space-y-6"
             >
-              {/* Vertical Phone Mockup for Shorts */}
-              <div className="md:col-span-6 flex justify-center">
-                <div className="relative w-full max-w-[340px] aspect-[9/16] rounded-[36px] p-3 bg-gradient-to-b from-neutral-800 via-neutral-900 to-black border-4 border-slate-700/60 shadow-2xl shadow-red-500/15">
-                  {/* Phone notch */}
-                  <div className="absolute top-5 left-1/2 -translate-x-1/2 w-28 h-4 bg-neutral-950 rounded-full z-20 flex items-center justify-end px-2">
-                    <div className="w-2 h-2 rounded-full bg-blue-950 border border-blue-800" />
-                  </div>
+              {/* Short Video Selector Pills */}
+              <div className="flex justify-center">
+                <div className="inline-flex items-center gap-2 p-1.5 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-md">
+                  <button
+                    onClick={() => setSelectedShort(1)}
+                    className={cn(
+                      "flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all",
+                      selectedShort === 1
+                        ? "bg-red-600 text-white shadow-md shadow-red-600/30"
+                        : "text-white/70 hover:text-white hover:bg-white/[0.06]"
+                    )}
+                  >
+                    <Play className="w-3.5 h-3.5 fill-current" />
+                    <span>{t("video_shorts_1_title") || "Short #1: Quick Tour"}</span>
+                  </button>
 
-                  <div className="w-full h-full rounded-[28px] overflow-hidden bg-black">
-                    <iframe
-                      className="w-full h-full object-cover"
-                      src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_SHORTS_ID}?rel=0&modestbranding=1&loop=1`}
-                      title="Wixtory Language Box - YouTube Shorts"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                    />
-                  </div>
+                  <button
+                    onClick={() => setSelectedShort(2)}
+                    className={cn(
+                      "flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all",
+                      selectedShort === 2
+                        ? "bg-red-600 text-white shadow-md shadow-red-600/30"
+                        : "text-white/70 hover:text-white hover:bg-white/[0.06]"
+                    )}
+                  >
+                    <Play className="w-3.5 h-3.5 fill-current" />
+                    <span>{t("video_shorts_2_title") || "Short #2: Gameplay Action"}</span>
+                  </button>
                 </div>
               </div>
 
-              {/* Shorts Side Information Card */}
-              <div className="md:col-span-6 space-y-6">
-                <div>
-                  <Badge className="bg-red-500/15 text-red-600 dark:text-red-300 border-red-500/30 text-xs font-semibold mb-3">
-                    YOUTUBE SHORTS • 58 SECONDS
-                  </Badge>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground mb-3">
-                    Quick Mobile Tour: Stop Memorizing, Start Playing!
-                  </h3>
-                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                    Designed for fast social watching on mobile devices. See how 5
-                    minutes of Sentence Builder and Word Compass fit seamlessly into
-                    your daily commute.
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  {[
-                    "Watch in 9:16 vertical Full HD reel format",
-                    "Real in-game tile tap & victory sound effects",
-                    "Shows Sunset Dark & Mint Fresh day/night modes",
-                    "Under 1 minute — perfect for busy learners",
-                  ].map((item, idx) => (
-                    <div key={idx} className="flex items-center gap-3 text-sm text-foreground/90 font-medium">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                      <span>{item}</span>
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pt-2">
+                {/* Vertical Phone Mockup for Shorts */}
+                <div className="md:col-span-6 flex justify-center">
+                  <div className="relative w-full max-w-[340px] aspect-[9/16] rounded-[36px] p-3 bg-gradient-to-b from-neutral-800 via-neutral-900 to-black border-4 border-slate-700/60 shadow-2xl shadow-red-500/15">
+                    {/* Phone notch */}
+                    <div className="absolute top-5 left-1/2 -translate-x-1/2 w-28 h-4 bg-neutral-950 rounded-full z-20 flex items-center justify-end px-2">
+                      <div className="w-2 h-2 rounded-full bg-blue-950 border border-blue-800" />
                     </div>
-                  ))}
+
+                    <div className="w-full h-full rounded-[28px] overflow-hidden bg-black">
+                      <iframe
+                        key={currentShortId}
+                        className="w-full h-full object-cover"
+                        src={`https://www.youtube-nocookie.com/embed/${currentShortId}?rel=0&modestbranding=1&loop=1`}
+                        title={`Wixtory Language Box - YouTube Shorts ${selectedShort}`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                <div className="pt-2 flex flex-wrap items-center gap-3">
-                  <a
-                    href={YOUTUBE_SHORTS_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-sm transition-all shadow-lg shadow-red-600/30"
-                  >
-                    <Play className="w-4 h-4 fill-white" />
-                    <span>Open in YouTube Shorts</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
+                {/* Shorts Side Information Card */}
+                <div className="md:col-span-6 space-y-6">
+                  <div>
+                    <Badge className="bg-red-500/15 text-red-600 dark:text-red-300 border-red-500/30 text-xs font-semibold mb-3">
+                      {selectedShort === 1 ? "YOUTUBE SHORTS • 58 SECONDS" : "YOUTUBE SHORTS • GAMEPLAY HIGHLIGHTS"}
+                    </Badge>
 
-                  <Button
-                    variant="outline"
-                    onClick={() => handleShare(YOUTUBE_SHORTS_URL)}
-                    className="border-border bg-card hover:bg-muted text-foreground"
-                  >
-                    <Share2 className="w-4 h-4 mr-2" />
-                    <span>{copied ? "Link Copied!" : "Share Short"}</span>
-                  </Button>
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground mb-3">
+                      {selectedShort === 1
+                        ? "Quick Mobile Tour: Stop Memorizing, Start Playing!"
+                        : "Cognitive Word Puzzles & Interactive Gameplay"}
+                    </h3>
+
+                    <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                      {selectedShort === 1
+                        ? "Designed for fast social watching on mobile devices. See how 5 minutes of Sentence Builder and Word Compass fit seamlessly into your daily commute."
+                        : "Watch instant tactile feedback, fluid swipe mechanics, and dynamic cognitive puzzle action across Language Box game modes."}
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    {[
+                      "Watch in 9:16 vertical Full HD reel format",
+                      "Real in-game tile tap & victory sound effects",
+                      "Shows Sunset Dark & Mint Fresh day/night modes",
+                      selectedShort === 1 ? "Under 1 minute — perfect for busy learners" : "Fast-paced word building and sentence puzzle solving",
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex items-center gap-3 text-sm text-foreground/90 font-medium">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="pt-2 flex flex-wrap items-center gap-3">
+                    <a
+                      href={currentShortUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-sm transition-all shadow-lg shadow-red-600/30"
+                    >
+                      <Play className="w-4 h-4 fill-white" />
+                      <span>Open in YouTube Shorts</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+
+                    <Button
+                      variant="outline"
+                      onClick={() => handleShare(currentShortUrl)}
+                      className="border-border bg-card hover:bg-muted text-foreground"
+                    >
+                      <Share2 className="w-4 h-4 mr-2" />
+                      <span>{copied ? "Link Copied!" : "Share Short"}</span>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -304,12 +345,12 @@ export function VideoShowcaseSection({
               transition={{ duration: 0.3 }}
               className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
             >
-              {/* Left: 16:9 Player (7 cols) */}
+              {/* Left: 16:9 Walkthrough Player (8 cols) */}
               <div
-                className="video-player-frame card-modern lg:col-span-8 rounded-2xl sm:rounded-3xl overflow-hidden border border-border p-3 shadow-2xl backdrop-blur-md transition-all"
+                className="lg:col-span-8 rounded-2xl sm:rounded-3xl overflow-hidden border border-border shadow-xl p-2.5"
                 style={{ background: "var(--card-videos)" }}
               >
-                <div className="w-full aspect-video rounded-xl overflow-hidden bg-black shadow-inner">
+                <div className="w-full aspect-video rounded-xl sm:rounded-2xl overflow-hidden bg-black shadow-inner">
                   <iframe
                     className="w-full h-full object-cover"
                     src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_PROMO_ID}?start=20&rel=0`}
@@ -331,12 +372,34 @@ export function VideoShowcaseSection({
               </div>
 
               {/* Right: 9:16 Shorts Player (4 cols) */}
-              <div className="lg:col-span-4 flex justify-center">
+              <div className="lg:col-span-4 flex flex-col items-center">
+                <div className="flex gap-2 mb-3">
+                  <button
+                    onClick={() => setSelectedShort(1)}
+                    className={cn(
+                      "px-3 py-1 rounded-lg text-xs font-bold transition-colors",
+                      selectedShort === 1 ? "bg-red-600 text-white" : "bg-card text-foreground/70 border border-border"
+                    )}
+                  >
+                    Short #1
+                  </button>
+                  <button
+                    onClick={() => setSelectedShort(2)}
+                    className={cn(
+                      "px-3 py-1 rounded-lg text-xs font-bold transition-colors",
+                      selectedShort === 2 ? "bg-red-600 text-white" : "bg-card text-foreground/70 border border-border"
+                    )}
+                  >
+                    Short #2
+                  </button>
+                </div>
+
                 <div className="w-full max-w-[280px] aspect-[9/16] rounded-3xl p-2.5 bg-neutral-900 border-2 border-slate-700/60 shadow-xl overflow-hidden">
                   <iframe
+                    key={`dual-${currentShortId}`}
                     className="w-full h-full rounded-2xl object-cover bg-black"
-                    src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_SHORTS_ID}?rel=0`}
-                    title="Wixtory Language Box - 9:16"
+                    src={`https://www.youtube-nocookie.com/embed/${currentShortId}?rel=0`}
+                    title={`Wixtory Language Box - 9:16 (Short ${selectedShort})`}
                     allowFullScreen
                   />
                 </div>
@@ -352,11 +415,11 @@ export function VideoShowcaseSection({
         >
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-2xl bg-red-600/15 border border-red-500/30 flex items-center justify-center shrink-0 shadow-inner">
-              <YouTubeBrandIcon className="w-8 h-8 text-red-600 dark:text-red-500" />
+              <YoutubeIcon className="w-8 h-8 text-red-600 dark:text-red-500" />
             </div>
             <div>
               <h4 className="text-lg font-bold text-foreground flex items-center gap-2">
-                <span>Official Wixtory Channel</span>
+                <span>Official @Wixtoryy Channel</span>
                 <Badge className="bg-red-600 text-white text-[10px] uppercase font-bold py-0.5 px-1.5">
                   SUBSCRIBE
                 </Badge>
@@ -373,7 +436,7 @@ export function VideoShowcaseSection({
             rel="noopener noreferrer"
             className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-sm shadow-lg shadow-red-600/30 hover:scale-105 transition-all"
           >
-            <YouTubeBrandIcon className="w-4 h-4 fill-white" />
+            <YoutubeIcon className="w-4 h-4 fill-white" />
             <span>Subscribe on YouTube</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </a>

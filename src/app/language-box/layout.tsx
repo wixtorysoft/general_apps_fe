@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "grammar",
     "multilingual",
   ],
-  authors: [{ name: "Hacı Celal Aygar" }],
+  authors: [{ name: "Wixtory" }],
   icons: {
     icon: "https://raw.githubusercontent.com/celalaygar/main/refs/heads/main/project/language-box/Language-Box-Logo.png",
   },

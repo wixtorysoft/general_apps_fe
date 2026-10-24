@@ -415,7 +415,7 @@ export default function DeveloperPage() {
                 lineHeight: "1.15",
               }}
             >
-              Hacı Celal Aygar
+              Wixtory
             </h1>
 
             <p
@@ -500,12 +500,12 @@ export default function DeveloperPage() {
                   flexShrink: 0,
                 }}
               >
-                HCA
+                W
               </div>
 
               <div>
                 <h2 style={{ fontSize: "22px", fontWeight: 800, color: "var(--text-main)", marginBottom: "4px" }}>
-                  Hacı Celal Aygar
+                  Wixtory
                 </h2>
                 <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
                   <span

@@ -8,12 +8,21 @@ import { Menu, X, Globe, Layers, ChevronDown, Check, ArrowLeft } from "lucide-re
 import { useDomainTrackLanguageStore } from "@/store/domain-track-language-store";
 import { languages, Language } from "@/data/domain-track-translations";
 
+function YoutubeIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    </svg>
+  );
+}
+
 const navItems = [
   { key: "nav_home", href: "/domain-track" },
   { key: "nav_screenshots", href: "/domain-track/screenshots" },
   { key: "nav_features", href: "/domain-track/features" },
   { key: "nav_why_us", href: "/domain-track/why-us" },
   { key: "nav_faq", href: "/domain-track/faq" },
+  { key: "nav_contact", href: "/domain-track#contact" },
   { key: "nav_privacy", href: "/domain-track/privacy-policy" },
 ] as const;
 
@@ -143,14 +152,46 @@ export function Navbar() {
                     : {}
                 }
               >
-                {t[item.key]}
+                {t[item.key] || (item.key === "nav_contact" ? (language === "tr" ? "İletişim" : "Contact") : item.key)}
               </Link>
             );
           })}
         </div>
 
-        {/* Right side: Language Selector + Mobile Toggle */}
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+        {/* Right side: YouTube + Language Selector + Mobile Toggle */}
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          {/* YouTube Channel Button */}
+          <a
+            href="https://www.youtube.com/@Wixtoryy"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Official YouTube Channel @Wixtoryy"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "38px",
+              height: "38px",
+              borderRadius: "12px",
+              background: "rgba(239, 68, 68, 0.12)",
+              border: "1px solid rgba(239, 68, 68, 0.3)",
+              color: "#ef4444",
+              textDecoration: "none",
+              transition: "all 0.25s ease",
+              boxShadow: "0 2px 8px rgba(239, 68, 68, 0.15)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.08)";
+              e.currentTarget.style.background = "rgba(239, 68, 68, 0.22)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.background = "rgba(239, 68, 68, 0.12)";
+            }}
+          >
+            <YoutubeIcon size={18} />
+          </a>
+
           {/* Custom Language Dropdown */}
           <div ref={dropdownRef} style={{ position: "relative" }}>
             <button
@@ -311,10 +352,33 @@ export function Navbar() {
                     : "1px solid transparent",
                 }}
               >
-                {t[item.key]}
+                {t[item.key] || (item.key === "nav_contact" ? (language === "tr" ? "İletişim" : "Contact") : item.key)}
               </Link>
             );
           })}
+
+          <a
+            href="https://www.youtube.com/@Wixtoryy"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMobileOpen(false)}
+            style={{
+              padding: "12px 16px",
+              borderRadius: "10px",
+              fontSize: "15px",
+              fontWeight: 600,
+              textDecoration: "none",
+              color: "#ff4444",
+              backgroundColor: "rgba(239, 68, 68, 0.08)",
+              border: "1px solid rgba(239, 68, 68, 0.25)",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+            }}
+          >
+            <YoutubeIcon size={18} />
+            <span>YouTube @Wixtoryy</span>
+          </a>
 
           <Link
             href="/"

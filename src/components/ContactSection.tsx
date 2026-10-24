@@ -239,7 +239,7 @@ export function ContactSection({ app }: ContactSectionProps) {
                   <input
                     type="text"
                     required
-                    placeholder="Celal Aygar"
+                    placeholder="Ad Soyad / Name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     style={{

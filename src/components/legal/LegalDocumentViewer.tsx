@@ -1327,7 +1327,7 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
           color: "var(--text-muted)",
         }}
       >
-        © 2026 Wixtory Software & Digital Tech. Hacı Celal Aygar. {t("footer_all_rights")}
+        © 2026 Wixtory Software & Digital Tech. {t("footer_all_rights")}
       </footer>
     </div>
   );
