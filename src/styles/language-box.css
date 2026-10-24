@@ -1571,3 +1571,260 @@
 }
 
 
+
+
+/* ==============================================================================
+   COMPREHENSIVE MULTI-THEME HARMONY & CONTRAST ENGINE (DARK / LIGHT / EMERALD / AMBER)
+   Ensures AAA Readability, Vibrant Typography, and Perfect Card Visuals Across All Themes
+   ============================================================================== */
+
+/* --- 1. GLOBAL SCOPE ISOLATION & GRADIENT CLIPPING --- */
+.language-box-scope h1,
+.language-box-scope h2,
+.language-box-scope h3,
+.language-box-scope h4,
+.language-box-scope h5,
+.language-box-scope h6 {
+  color: inherit;
+  font-family: inherit;
+}
+
+.language-box-scope [class*="bg-clip-text"],
+.language-box-scope .bg-clip-text {
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+/* --- 2. DARK MODE (DEFAULT & .dark) --- */
+.language-box-scope:not(.light):not(.emerald):not(.amber),
+.language-box-scope.dark,
+html.dark .language-box-scope {
+  --background: lab(8.11897% .811279 -12.254);
+  --foreground: oklch(0.985 0 0);
+  color: oklch(0.985 0 0);
+}
+
+.language-box-scope:not(.light):not(.emerald):not(.amber) h1:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+.language-box-scope:not(.light):not(.emerald):not(.amber) h2:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+.language-box-scope:not(.light):not(.emerald):not(.amber) h3:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+.language-box-scope:not(.light):not(.emerald):not(.amber) h4:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+.language-box-scope.dark h1:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+.language-box-scope.dark h2:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+.language-box-scope.dark h3:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+.language-box-scope.dark h4:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+html.dark .language-box-scope h1:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+html.dark .language-box-scope h2:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+html.dark .language-box-scope h3:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+html.dark .language-box-scope h4:not([class*="bg-clip-text"]):not([class*="text-transparent"]) {
+  color: #ffffff !important;
+}
+
+/* Dark mode card typography */
+.language-box-scope:not(.light):not(.emerald):not(.amber) .card-modern h3,
+.language-box-scope.dark .card-modern h3,
+html.dark .language-box-scope .card-modern h3,
+.language-box-scope:not(.light):not(.emerald):not(.amber) .text-white,
+.language-box-scope.dark .text-white,
+html.dark .language-box-scope .text-white {
+  color: #ffffff !important;
+}
+
+.language-box-scope:not(.light):not(.emerald):not(.amber) .card-modern p,
+.language-box-scope.dark .card-modern p,
+html.dark .language-box-scope .card-modern p,
+.language-box-scope:not(.light):not(.emerald):not(.amber) p.text-white\/50,
+.language-box-scope:not(.light):not(.emerald):not(.amber) p.text-white\/60,
+.language-box-scope.dark p.text-white\/50,
+.language-box-scope.dark p.text-white\/60 {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+/* Dark mode sections heading/desc */
+.language-box-scope:not(.light):not(.emerald):not(.amber) #videos h2,
+.language-box-scope.dark #videos h2,
+html.dark .language-box-scope #videos h2 {
+  color: #ffffff !important;
+}
+
+.language-box-scope:not(.light):not(.emerald):not(.amber) #videos p,
+.language-box-scope.dark #videos p,
+.language-box-scope:not(.light):not(.emerald):not(.amber) #screenshots p,
+.language-box-scope.dark #screenshots p,
+.language-box-scope:not(.light):not(.emerald):not(.amber) #games p.text-white\/50,
+.language-box-scope.dark #games p.text-white\/50 {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+/* --- 3. LIGHT MODE (.light) --- */
+.language-box-scope.light,
+.language-box-scope .light,
+html.light .language-box-scope {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  color: #0f172a !important;
+}
+
+.language-box-scope.light h1:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+.language-box-scope.light h2:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+.language-box-scope.light h3:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+.language-box-scope.light h4:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+html.light .language-box-scope h1:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+html.light .language-box-scope h2:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+html.light .language-box-scope h3:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+html.light .language-box-scope h4:not([class*="bg-clip-text"]):not([class*="text-transparent"]) {
+  color: #0f172a !important;
+}
+
+.language-box-scope.light .text-white,
+html.light .language-box-scope .text-white,
+.language-box-scope.light .card-modern h3,
+html.light .language-box-scope .card-modern h3 {
+  color: #0f172a !important;
+}
+
+.language-box-scope.light p,
+.language-box-scope.light .text-white\/50,
+.language-box-scope.light .text-white\/60,
+.language-box-scope.light .text-white\/70,
+.language-box-scope.light .text-muted-foreground,
+html.light .language-box-scope p,
+html.light .language-box-scope .text-muted-foreground {
+  color: #475569 !important;
+}
+
+.language-box-scope.light .card-modern,
+html.light .language-box-scope .card-modern {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05) !important;
+}
+
+.language-box-scope.light .card-modern p {
+  color: #475569 !important;
+}
+
+/* Light mode gradient enhancements for crystal readability */
+.language-box-scope.light h2[class*="bg-clip-text"],
+html.light .language-box-scope h2[class*="bg-clip-text"] {
+  background: linear-gradient(to right, #065f46, #047857, #0f766e) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+/* --- 4. EMERALD MINT THEME (.emerald) --- */
+.language-box-scope.emerald,
+.language-box-scope .emerald,
+html.emerald .language-box-scope {
+  --background: #f0fdf4;
+  --foreground: #064e3b;
+  color: #064e3b !important;
+}
+
+.language-box-scope.emerald h1:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+.language-box-scope.emerald h2:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+.language-box-scope.emerald h3:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+.language-box-scope.emerald h4:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+html.emerald .language-box-scope h1:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+html.emerald .language-box-scope h2:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+html.emerald .language-box-scope h3:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+html.emerald .language-box-scope h4:not([class*="bg-clip-text"]):not([class*="text-transparent"]) {
+  color: #064e3b !important;
+}
+
+.language-box-scope.emerald .text-white,
+html.emerald .language-box-scope .text-white,
+.language-box-scope.emerald .card-modern h3,
+html.emerald .language-box-scope .card-modern h3 {
+  color: #064e3b !important;
+}
+
+.language-box-scope.emerald p,
+.language-box-scope.emerald .text-white\/50,
+.language-box-scope.emerald .text-white\/60,
+.language-box-scope.emerald .text-white\/70,
+.language-box-scope.emerald .text-muted-foreground,
+html.emerald .language-box-scope p,
+html.emerald .language-box-scope .text-muted-foreground {
+  color: #065f46 !important;
+}
+
+.language-box-scope.emerald .card-modern,
+html.emerald .language-box-scope .card-modern {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(167, 243, 208, 0.9) !important;
+  box-shadow: 0 4px 16px -2px rgba(5, 150, 105, 0.08) !important;
+}
+
+.language-box-scope.emerald .card-modern p {
+  color: #065f46 !important;
+}
+
+.language-box-scope.emerald h2[class*="bg-clip-text"],
+html.emerald .language-box-scope h2[class*="bg-clip-text"] {
+  background: linear-gradient(to right, #064e3b, #059669, #0d9488) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+/* --- 5. AMBER GOLD THEME (.amber) --- */
+.language-box-scope.amber,
+.language-box-scope .amber,
+html.amber .language-box-scope {
+  --background: #fefce8;
+  --foreground: #78350f;
+  color: #78350f !important;
+}
+
+.language-box-scope.amber h1:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+.language-box-scope.amber h2:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+.language-box-scope.amber h3:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+.language-box-scope.amber h4:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+html.amber .language-box-scope h1:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+html.amber .language-box-scope h2:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+html.amber .language-box-scope h3:not([class*="bg-clip-text"]):not([class*="text-transparent"]),
+html.amber .language-box-scope h4:not([class*="bg-clip-text"]):not([class*="text-transparent"]) {
+  color: #78350f !important;
+}
+
+.language-box-scope.amber .text-white,
+html.amber .language-box-scope .text-white,
+.language-box-scope.amber .card-modern h3,
+html.amber .language-box-scope .card-modern h3 {
+  color: #78350f !important;
+}
+
+.language-box-scope.amber p,
+.language-box-scope.amber .text-white\/50,
+.language-box-scope.amber .text-white\/60,
+.language-box-scope.amber .text-white\/70,
+.language-box-scope.amber .text-muted-foreground,
+html.amber .language-box-scope p,
+html.amber .language-box-scope .text-muted-foreground {
+  color: #854d0e !important;
+}
+
+.language-box-scope.amber .card-modern,
+html.amber .language-box-scope .card-modern {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(254, 240, 138, 0.9) !important;
+  box-shadow: 0 4px 16px -2px rgba(217, 119, 6, 0.08) !important;
+}
+
+.language-box-scope.amber .card-modern p {
+  color: #854d0e !important;
+}
+
+.language-box-scope.amber h2[class*="bg-clip-text"],
+html.amber .language-box-scope h2[class*="bg-clip-text"] {
+  background: linear-gradient(to right, #78350f, #b45309, #d97706) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}

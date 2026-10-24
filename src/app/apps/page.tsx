@@ -144,17 +144,17 @@ export default function AppsPage() {
       ar: "محاكي مكالمات واردة وهمي لحالات الطوارئ مع مؤقت قابل للتخصيص ومشاركة سريعة للرسائل."
     },
     lang_box_p1: {
-      tr: "Sentence Builder, Word Matrix, Word Compass, Dinleme ve Konuşma gibi 6 etkileşimli oyun ile yabancı dil öğrenmeyi eğlenceli ve kalıcı bir deneyime dönüştürün.",
-      en: "Master new languages through 6 engaging interactive games including Sentence Builder, Word Matrix, and Word Compass with speech and pronunciation practice.",
-      it: "Impara nuove lingue con 6 coinvolgenti giochi interattivi tra cui Sentence Builder, Word Matrix e Word Compass con pratica di ascolto e pronuncia.",
-      pt: "Domine novos idiomas com 6 jogos interativos envolventes, incluindo Sentence Builder, Word Matrix e Word Compass com prática de pronúncia.",
-      es: "Domina nuevos idiomas a través de 6 atractivos juegos interactivos que incluyen Sentence Builder, Word Matrix y Word Compass con práctica de pronunciación.",
-      fr: "Maîtrisez de nouvelles langues grâce à 6 jeux interactifs captivants, dont Sentence Builder, Word Matrix et Word Compass avec pratique de la prononciation.",
-      de: "Meistern Sie neue Sprachen mit 6 fesselnden interaktiven Spielen wie Sentence Builder, Word Matrix und Word Compass mit Ausspracheübungen.",
-      ru: "Осваивайте новые языки с помощью 6 увлекательных интерактивных игр, включая Sentence Builder, Word Matrix и Word Compass с практикой произношения.",
-      ja: "Sentence Builder、Word Matrix、Word Compassなど6つの魅力的なゲームで、リスニングと発音を楽しく学べます。",
-      zh: "通过包含句子构建器、单词矩阵和单词罗盘在内的 6 款趣味互动游戏，结合听力与发音练习，轻松掌握新语言。",
-      ar: "أتقن لغات جديدة عبر 6 ألعاب تفاعلية شيقة تشمل Sentence Builder و Word Matrix و Word Compass مع ممارسة النطق والاستماع."
+      tr: "Word Ring, Sentence Builder, Word Matrix, Word Compass, Dinleme ve Konuşma gibi 8 etkileşimli oyun ile yabancı dil öğrenmeyi eğlenceli ve kalıcı bir deneyime dönüştürün.",
+      en: "Master new languages through 8 engaging interactive games including Word Ring, Sentence Builder, Word Matrix, and Word Compass with speech and pronunciation practice.",
+      it: "Impara nuove lingue con 8 coinvolgenti giochi interattivi tra cui Word Ring, Sentence Builder, Word Matrix e Word Compass con pratica di ascolto e pronuncia.",
+      pt: "Domine novos idiomas com 8 jogos interativos envolventes, incluindo Word Ring, Sentence Builder, Word Matrix e Word Compass com prática de pronúncia.",
+      es: "Domina nuevos idiomas a través de 8 atractivos juegos interactivos que incluyen Word Ring, Sentence Builder, Word Matrix y Word Compass con práctica de pronunciación.",
+      fr: "Maîtrisez de nouvelles langues grâce à 8 jeux interactifs captivants, dont Word Ring, Sentence Builder, Word Matrix et Word Compass avec pratique de la prononciation.",
+      de: "Meistern Sie neue Sprachen mit 8 fesselnden interaktiven Spielen wie Word Ring, Sentence Builder, Word Matrix und Word Compass mit Ausspracheübungen.",
+      ru: "Осваивайте новые языки с помощью 8 увлекательных интерактивных игр, включая Word Ring, Sentence Builder, Word Matrix и Word Compass с практикой произношения.",
+      ja: "Word Ring、Sentence Builder、Word Matrix、Word Compassなど8つの魅力的なゲームで、リスニングと発音を楽しく学べます。",
+      zh: "通过包含单词环、句子构建器、单词矩阵和单词罗盘在内的 8 款趣味互动游戏，结合听力与发音练习，轻松掌握新语言。",
+      ar: "أتقن لغات جديدة عبر 8 ألعاب تفاعلية شيقة تشمل Word Ring و Sentence Builder و Word Matrix و Word Compass مع ممارسة النطق والاستماع."
     },
     lang_box_p2: {
       tr: "Üyelik veya hesap oluşturma zorunluluğu yok! İlerleme ve istatistikleriniz %100 yerel cihaz önbelleğinde güvenle tutulur. İstediğiniz an 'Önbelleği Temizle' ile tam denetim.",

@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Wixtory Language Box - Learn Languages Through Games",
   description:
-    "Master new languages with our engaging collection of interactive games designed to make learning fun and effective. 6 games, multiple languages, progress tracking.",
+    "Master new languages with our engaging collection of interactive games designed to make learning fun and effective. 8 games, multiple languages, progress tracking.",
   keywords: [
     "language learning",
     "Language Box",
@@ -51,7 +51,7 @@ export default function LanguageBoxLayout({
     <ThemeProvider
       attribute="class"
       defaultTheme="dark"
-      themes={["light", "dark", "emerald", "amber", "system"]}
+      themes={["light", "dark", "emerald", "system"]}
       enableSystem
     >
       <LanguageProvider>

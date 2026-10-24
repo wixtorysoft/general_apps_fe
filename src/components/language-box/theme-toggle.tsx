@@ -30,7 +30,6 @@ export function ThemeToggle() {
   const renderIcon = () => {
     if (theme === "light") return <Sun className="h-4 w-4 text-amber-500" />;
     if (theme === "emerald") return <Leaf className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />;
-    if (theme === "amber") return <Sparkles className="h-4 w-4 text-amber-600 dark:text-amber-400" />;
     if (theme === "system") return <Monitor className="h-4 w-4 text-teal-500" />;
     return <Moon className="h-4 w-4 text-cyan-400" />;
   };
@@ -69,13 +68,6 @@ export function ThemeToggle() {
         >
           <Leaf className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
           <span>Ferah Zümrüt (Mint)</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => setTheme("amber")}
-          className={`cursor-pointer flex items-center gap-2 ${theme === "amber" ? "bg-amber-500/20 font-semibold text-amber-800 dark:text-amber-400" : ""}`}
-        >
-          <Sparkles className="h-4 w-4 text-amber-600 dark:text-amber-400" />
-          <span>Sıcak Kehribar (Gold)</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("system")}

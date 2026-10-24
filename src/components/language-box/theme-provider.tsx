@@ -15,7 +15,7 @@ const ThemeContext = createContext<UseThemeProps>({
   theme: "dark",
   setTheme: () => {},
   resolvedTheme: "dark",
-  themes: ["light", "dark", "emerald", "amber", "system"],
+  themes: ["light", "dark", "emerald", "system"],
   systemTheme: "dark",
 });
 
@@ -23,7 +23,7 @@ export function ThemeProvider({
   children,
   defaultTheme = "dark",
   storageKey = "language_box_theme",
-  themes = ["light", "dark", "emerald", "amber", "system"],
+  themes = ["light", "dark", "emerald", "system"],
 }: {
   children: React.ReactNode;
   defaultTheme?: string;

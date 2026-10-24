@@ -23,6 +23,16 @@ export function LanguageBoxThemeScope({
       : theme || "dark"
     : "dark";
 
+  useEffect(() => {
+    if (!mounted) return;
+    const root = document.documentElement;
+    root.classList.remove("light", "dark", "emerald", "amber");
+    root.classList.add(activeTheme);
+    return () => {
+      root.classList.remove("light", "dark", "emerald", "amber");
+    };
+  }, [mounted, activeTheme]);
+
   return (
     <div className={`${className} ${activeTheme}`}>
       {children}

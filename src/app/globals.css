@@ -211,6 +211,24 @@ h6 {
   color: var(--text-main);
 }
 
+/* Isolate Language Box from global heading color pollution */
+.language-box-scope h1,
+.language-box-scope h2,
+.language-box-scope h3,
+.language-box-scope h4,
+.language-box-scope h5,
+.language-box-scope h6 {
+  color: inherit;
+}
+
+/* Guarantee gradient clipping works without text color collision */
+.language-box-scope .text-transparent,
+.language-box-scope [class*="text-transparent"],
+.language-box-scope [class*="bg-clip-text"] {
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
 /* Gradient Texts */
 .gradient-text-primary {
   background: linear-gradient(135deg, var(--text-main) 20%, var(--primary) 70%, var(--secondary) 100%);

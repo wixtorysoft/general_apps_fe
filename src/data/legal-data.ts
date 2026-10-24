@@ -71,7 +71,7 @@ export const PRIVACY_POLICY_TR: LegalDocument = {
           subcontent: [
             "Uygulamalarımızda tercihlerinizi ve nerede kaldığınızı hatırlamak için tamamen cihazınızın işletim sistemi üzerinde çalışan yerel bir Önbellek Servisi (SharedPreferences / NSUserDefaults / SQLite / LocalStorage) kullanılır.",
             "Wixtory: Domain Track: Gerçekleştirdiğiniz alan adı arama geçmişiniz, favorilere eklediğiniz alan adları, uzantı filtreleme tercihleri ve yerel arama sayaçlarınız yalnızca telefonunuzun yerel hafızasında saklanır.",
-            "Wixtory: Language Box: Cümle Kurucu (Sentence Builder), Kelime Matrisi (Word Matrix), Kelime Pusulası (Word Compass) ve Karışık Kelimeler (Scrambled Words) oyunlarındaki ilerlemeniz, mevcut soru numaralarınız, seviye puanlarınız ve başarı istatistikleriniz yalnızca cihazınızın yerel önbelleğinde tutulur.",
+            "Wixtory: Language Box: Kelime Halkası (Word Ring), Cümle Kurucu (Sentence Builder), Kelime Matrisi (Word Matrix), Kelime Pusulası (Word Compass) ve Karışık Kelimeler (Scrambled Words) oyunlarındaki ilerlemeniz, mevcut soru numaralarınız, seviye puanlarınız ve başarı istatistikleriniz yalnızca cihazınızın yerel önbelleğinde tutulur.",
             "AstroVibe: Beğendiğiniz protez tırnak modelleri, takı ilhamları, bebek isimleri, burç seçimleriniz ve tarot açılım geçmişiniz doğrudan telefonunuzun yerel önbelleğinde korunur.",
             "Excuse AI: Oluşturduğunuz mazeretler, acil durum kriz kategorileriniz ve favori kayıtlarınız telefonunuzun çevrimdışı yerel veritabanında saklanır.",
             "Yeni Eklenecek ve Gelecek Tüm Projeler: Wixtory portföyüne katılacak olan tüm yeni projeler istisnasız bu aynı sıfır üyelik ve cihaz içi yerel önbellek mimarisini kullanır; kullanıcı profillemesi ve sunucu tarafı veri kaydı barındırmaz.",
@@ -254,7 +254,7 @@ export const PRIVACY_POLICY_EN: LegalDocument = {
           subcontent: [
             "We use a localized Cache Service (SharedPreferences / NSUserDefaults / SQLite / LocalStorage) operating exclusively on your device to remember where you left off.",
             "Wixtory: Domain Track: Your domain search history, bookmarked favorite domains, extension filters, and local search counters are saved locally on your device so you can access them instantly without re-typing.",
-            "Wixtory: Language Box: Your progress in game modes (Sentence Builder, Word Matrix, Word Compass, Scrambled Words), current question numbers, skill levels, and game statistics are tracked strictly locally on your physical device.",
+            "Wixtory: Language Box: Your progress in game modes (Word Ring, Sentence Builder, Word Matrix, Word Compass, Scrambled Words), current question numbers, skill levels, and game statistics are tracked strictly locally on your physical device.",
             "AstroVibe: Your bookmarked nail art models, jewelry picks, baby names, zodiac birth chart selections, and tarot card draws are preserved exclusively in your phone's local cache.",
             "Excuse AI: Your generated excuses, emergency crisis categories, and favorite picks reside in your phone's local offline database.",
             "Upcoming & Future Projects: All new applications joining the Wixtory portfolio automatically adhere to this exact same on-device caching design without server-side user profiling.",
@@ -659,7 +659,7 @@ export const COOKIE_POLICY_EN: LegalDocument = {
           appName: "Wixtory: Language Box",
           appSlug: "language-box",
           details: [
-            "🎮 Game Progress: Sentence Builder, Word Matrix, Word Compass, and Scrambled Words progress is stored in local preferences.",
+            "🎮 Game Progress: Word Ring, Sentence Builder, Word Matrix, Word Compass, and Scrambled Words progress is stored in local preferences.",
             "🧠 Learning Stats: Daily streaks and skill level scores remain on your physical device.",
             "⚡ Instant Reset: Purge all local data instantly with the 'Clear Cache' button.",
           ],

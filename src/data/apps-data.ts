@@ -73,9 +73,9 @@ export const APPS_DATA: AppModel[] = [
     slug: "language-box",
     name: "Wixtory Language Box",
     tagline: "Oyun Temelli İnteraktif Çok Dilli Öğrenme & Kelime Dağarcığı Kutusu",
-    shortDesc: "6 farklı eğlenceli ve etkileşimli oyun ile yeni dilleri kolayca keşfedin, kelime ve gramer becerilerinizi yerel önbellek güvencesiyle geliştirin.",
+    shortDesc: "8 farklı eğlenceli ve etkileşimli bilişsel oyun ile yeni dilleri kolayca keşfedin, kelime ve gramer becerilerinizi yerel önbellek güvencesiyle geliştirin.",
     fullDesc:
-      "Wixtory Language Box, dil öğrenimini sıkıcı dersler yerine heyecan verici mini oyunlara dönüştüren yeni nesil bir mobil eğitim uygulamasıdır. Sentence Builder, Scrambled Word, Word Compass, Word Matrix, Dinleme ve Konuşma pratikleri gibi 6 oyun modu ile kelime dağarcığınızı pekiştirir. Tüm oyun ilerlemeniz ve istatistikleriniz yalnızca cihazınızın önbelleğinde güvenle tutulur; üyelik ve kişisel bilgi paylaşımı gerekmez.",
+      "Wixtory Language Box, dil öğrenimini sıkıcı dersler yerine heyecan verici mini oyunlara dönüştüren yeni nesil bir mobil eğitim uygulamasıdır. Word Ring, Sentence Builder, Scrambled Word, Word Compass, Word Matrix, Dinleme ve Konuşma pratikleri gibi 8 oyun modu ile kelime dağarcığınızı pekiştirir. Tüm oyun ilerlemeniz ve istatistikleriniz yalnızca cihazınızın önbelleğinde güvenle tutulur; üyelik ve kişisel bilgi paylaşımı gerekmez.",
     category: "Eğitim & Dil Öğrenme",
     badge: "#1 Dil & Kelime Oyunları",
     logoUrl: "/apps/language-box-icon.png",
@@ -94,9 +94,9 @@ export const APPS_DATA: AppModel[] = [
     },
     whyUse: [
       {
-        title: "6 Etkileşimli Oyun ile Doğal Öğrenme",
+        title: "8 Etkileşimli Oyun ile Doğal Öğrenme",
         problem: "Geleneksel kelime ezberi çabuk unutulur ve motivasyon kaybına yol açar.",
-        solution: "Sentence Builder, Word Matrix ve Word Compass gibi 6 dinamik oyun moduyla kalıcı öğrenme sağlar.",
+        solution: "Word Ring, Sentence Builder, Word Matrix ve Word Compass gibi 8 dinamik oyun moduyla kalıcı öğrenme sağlar.",
         iconName: "Gamepad2",
       },
       {
@@ -114,9 +114,9 @@ export const APPS_DATA: AppModel[] = [
     ],
     benefits: [
       {
-        title: "6 Özgün Mini Oyun",
-        desc: "Farklı zeka ve hafıza becerilerine hitap eden 6 ayrı oyun mekaniği.",
-        statNumber: "6",
+        title: "8 Özgün Mini Oyun",
+        desc: "Farklı bilişsel ve hafıza becerilerine hitap eden 8 ayrı oyun mekaniği.",
+        statNumber: "8",
         statLabel: "Oyun Modu",
       },
       {
@@ -187,10 +187,10 @@ export const APPS_DATA: AppModel[] = [
         id: "games_tab",
         label: "İnteraktif Oyunlar",
         title: "Öğrenmeyi Oyuna Dönüştürün",
-        subtitle: "Kelime ezberlemeyi sıkıcı bir görevden eğlenceli bir maceraya dönüştüren 6 mod",
+        subtitle: "Kelime ezberlemeyi sıkıcı bir görevden eğlenceli bir maceraya dönüştüren 8 mod",
         badge: "Oyun Modları",
         accentColor: "#10B981",
-        tags: ["Sentence Builder", "Word Matrix", "Word Compass", "Scrambled"],
+        tags: ["Word Ring", "Sentence Builder", "Word Matrix", "Word Compass", "Scrambled"],
         mockupContent: {
           heading: "Word Matrix — Seviye 12",
           subheading: "Puan: 1,450 · Süre: 00:45 · Seri: 8 Doğru",
