@@ -34,7 +34,7 @@ import {
   Building,
 } from "lucide-react";
 
-export type EcosystemAppId = "all" | "domain-track" | "language-box" | "astrovibe" | "excuse";
+export type EcosystemAppId = "all" | "domain-track" | "language-box" | "astrovibe" | "excuse" | "wixtory-player";
 
 interface LegalDocumentViewerProps {
   document: LegalDocument;
@@ -155,13 +155,24 @@ export function LegalDocumentViewer({ document: doc, currentType }: LegalDocumen
       heroSubtitle: lStr("eco_excuse_sub"),
       downloadName: "excuse-ai-privacy-policy.md",
     },
+    {
+      id: "wixtory-player" as const,
+      name: "Wixtory Player",
+      shortName: "Wixtory Player",
+      pillBadge: lStr("eco_player_badge"),
+      icon: Smartphone,
+      href: "/wixtory-player",
+      githubUrl: "https://github.com/celalaygar/main/blob/main/project/wixtory-player/privacy-policy.md",
+      heroSubtitle: lStr("eco_player_sub"),
+      downloadName: "wixtory-player-privacy-policy.md",
+    },
   ];
 
   const activeAppMeta = ECOSYSTEM_APPS.find((a) => a.id === selectedApp) || ECOSYSTEM_APPS[0];
 
   // Helper icon selector for numbered policy sections (handles both 6-section apps and 14-section ecosystem)
   const getSectionIcon = (index: number) => {
-    if (selectedApp === "language-box" || selectedApp === "domain-track") {
+    if (selectedApp === "language-box" || selectedApp === "domain-track" || selectedApp === "wixtory-player") {
       switch (index) {
         case 0:
           return Shield; // 1. Kişisel Veri Toplama Yok

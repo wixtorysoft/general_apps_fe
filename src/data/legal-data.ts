@@ -74,6 +74,7 @@ export const PRIVACY_POLICY_TR: LegalDocument = {
             "Wixtory: Language Box: Kelime Halkası (Word Ring), Cümle Kurucu (Sentence Builder), Kelime Matrisi (Word Matrix), Kelime Pusulası (Word Compass) ve Karışık Kelimeler (Scrambled Words) oyunlarındaki ilerlemeniz, mevcut soru numaralarınız, seviye puanlarınız ve başarı istatistikleriniz yalnızca cihazınızın yerel önbelleğinde tutulur.",
             "AstroVibe: Beğendiğiniz protez tırnak modelleri, takı ilhamları, bebek isimleri, burç seçimleriniz ve tarot açılım geçmişiniz doğrudan telefonunuzun yerel önbelleğinde korunur.",
             "Excuse AI: Oluşturduğunuz mazeretler, acil durum kriz kategorileriniz ve favori kayıtlarınız telefonunuzun çevrimdışı yerel veritabanında saklanır.",
+            "Wixtory Player: Cihazınızda seçtiğiniz yerel MP3 ve MP4 medya dosyaları, oluşturduğunuz özel çalma listeleri ve oynatma tercihleriniz (hız, ses düzeyi, en-boy oranı modu) yalnızca telefonunuzun yerel depolama alanında tutulur; hiçbir medya içeriği veya kişisel tercih sunuculara yüklenmez.",
             "Yeni Eklenecek ve Gelecek Tüm Projeler: Wixtory portföyüne katılacak olan tüm yeni projeler istisnasız bu aynı sıfır üyelik ve cihaz içi yerel önbellek mimarisini kullanır; kullanıcı profillemesi ve sunucu tarafı veri kaydı barındırmaz.",
           ],
         },
@@ -257,6 +258,7 @@ export const PRIVACY_POLICY_EN: LegalDocument = {
             "Wixtory: Language Box: Your progress in game modes (Word Ring, Sentence Builder, Word Matrix, Word Compass, Scrambled Words), current question numbers, skill levels, and game statistics are tracked strictly locally on your physical device.",
             "AstroVibe: Your bookmarked nail art models, jewelry picks, baby names, zodiac birth chart selections, and tarot card draws are preserved exclusively in your phone's local cache.",
             "Excuse AI: Your generated excuses, emergency crisis categories, and favorite picks reside in your phone's local offline database.",
+            "Wixtory Player: Your locally selected MP3 audio and MP4 video files, custom playlists, and playback preferences (speed, volume level, aspect ratio mode) remain strictly stored on your local device memory. Your media files and habits are never uploaded to remote servers.",
             "Upcoming & Future Projects: All new applications joining the Wixtory portfolio automatically adhere to this exact same on-device caching design without server-side user profiling.",
           ],
         },
@@ -1182,6 +1184,183 @@ export const DOMAIN_TRACK_PRIVACY_EN: LegalDocument = {
 };
 
 /* ==========================================================================
+   WIXTORY PLAYER PRIVACY POLICIES (APP-SPECIFIC)
+   ========================================================================== */
+export const WIXTORY_PLAYER_PRIVACY_TR: LegalDocument = {
+  id: "privacy",
+  title: "Gizlilik Politikası",
+  subtitle: "Wixtory Player için",
+  lastUpdated: "04 Kasım 2026",
+  effectiveDate: "04 Kasım 2026",
+  companyName: "Wixtory Software & Digital Technologies",
+  developerName: "Wixtory",
+  contactEmail: "wixtoryy@gmail.com",
+  developerLocation: "Ankara, Yenimahalle, Turkey",
+  website: "https://www.wixtory.com",
+  sections: [
+    {
+      id: "no-personal-data",
+      title: "1. Kişisel Veri Toplama Yok & %100 Cihaz İçi Yerel Mimari",
+      content: [
+        "Gizliliğinize en üst düzeyde önem veriyoruz. Wixtory Player hiçbir kişisel tanımlayıcı bilgiyi toplamaz, saklamaz veya harici sunuculara iletmez. Adınızı, e-posta adresinizi, telefon numaranızı veya hesap bilgilerinizi asla talep etmeyiz.",
+        "Uygulama içerisinde üyelik, oturum açma veya kayıt olma zorunluluğu kesinlikle bulunmamaktadır.",
+      ],
+    },
+    {
+      id: "device-permissions",
+      title: "2. Cihaz Depolama İzinleri (READ_MEDIA_VIDEO & READ_MEDIA_AUDIO)",
+      content: [
+        "Wixtory Player, yalnızca kullanıcının bizzat seçtiği yerel video ve ses dosyalarını cihazda oynatabilmek amacıyla standart medya okuma izinlerini talep eder:",
+      ],
+      subsections: [
+        {
+          subtitle: "İzin Kapsamı",
+          subcontent: [
+            "İzin yalnızca seçtiğiniz MP3 müzik ve MP4 video dosyalarının yerel oynatıcı motoruna aktarılması için kullanılır.",
+            "Dosyalarınız hiçbir zaman internete yüklenmez, sunuculara gönderilmez veya üçüncü taraflarla paylaşılmaz.",
+          ],
+        },
+        {
+          subtitle: "Erişilmeyen Hassas İzinler",
+          subcontent: [
+            "Uygulamamız telefon rehberinize, GPS coğrafi konumunuza, kameranıza, mikrofonunuza veya arama/SMS geçmişinize KESİNLİKLE erişmez ve bu izinleri talep etmez.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "local-cache",
+      title: "3. Yerel Çalma Listeleri & Tercihler (SharedPreferences)",
+      content: [
+        "Kesintisiz bir medya oynatma deneyimi sunmak için uygulama; özel çalma listelerinizi, favorilerinizi, son oynatma hızınızı (0.5x - 2.0x), ses düzeyinizi ve en-boy oranı (Contain/Cover) tercihlerinizi yalnızca telefonunuzun kendi yerel belleğinde saklar.",
+      ],
+      subsections: [
+        {
+          subtitle: "Veri Konumu",
+          subcontent: [
+            "Tüm çalma listesi ve tercih verileri yalnızca fiziksel cihazınızda kalır. Herhangi bir sunucu senkronizasyonu veya kullanıcı profillemesi yapılmaz.",
+          ],
+        },
+        {
+          subtitle: "Kullanıcı Kontrolü & Önbellek Temizleme",
+          subcontent: [
+            "Cihazınızın uygulama ayarlarından 'Depolamayı / Önbelleği Temizle' seçeneğiyle tüm yerel tercihleri ve çalma listelerini dilediğiniz an kalıcı olarak silebilirsiniz.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "zero-ads-tracking",
+      title: "4. Sıfır Reklam & Sıfır Davranışsal Takipçi",
+      content: [
+        "Wixtory Player, kişisel medya tüketim alışkanlıklarınızı izleyen hiçbir üçüncü taraf analiz veya reklam SDK'sı barındırmaz. Videolarınızın veya müziklerinizin arasına asla araya giren reklamlar yerleştirilmez.",
+      ],
+    },
+    {
+      id: "data-security",
+      title: "5. Veri Güvenliği, KVKK ve GDPR Uyumu",
+      content: [
+        "Kişisel verileriniz merkezi bir veritabanında toplanmadığı için, kimlik bilgilerinizin veya medya dosyalarınızın sızma riski bulunmamaktadır. 6698 sayılı KVKK ve GDPR hükümleri çerçevesinde gizlilik haklarınız tam koruma altındadır.",
+      ],
+    },
+    {
+      id: "contact",
+      title: "6. İletişim",
+      content: [
+        "Bu gizlilik politikası ile ilgili tüm soru ve resmi talepleriniz için lütfen Veri Sorumlusu Wixtory ile iletişime geçiniz: wixtoryy@gmail.com",
+      ],
+    },
+  ],
+};
+
+export const WIXTORY_PLAYER_PRIVACY_EN: LegalDocument = {
+  id: "privacy",
+  title: "Privacy Policy",
+  subtitle: "for Wixtory Player",
+  lastUpdated: "November 04, 2026",
+  effectiveDate: "November 04, 2026",
+  companyName: "Wixtory Software & Digital Technologies",
+  developerName: "Wixtory",
+  contactEmail: "wixtoryy@gmail.com",
+  developerLocation: "Ankara, Yenimahalle, Turkey",
+  website: "https://www.wixtory.com",
+  sections: [
+    {
+      id: "no-personal-data",
+      title: "1. No Personal Data Collection & 100% On-Device Architecture",
+      content: [
+        "We fundamentally respect your privacy. Wixtory Player does not collect, store, or transmit any personally identifiable information. We never request your name, email, phone number, or account credentials.",
+        "There is no user registration, login, or account creation mechanism within the application.",
+      ],
+    },
+    {
+      id: "device-permissions",
+      title: "2. Device Storage Permissions (READ_MEDIA_VIDEO & READ_MEDIA_AUDIO)",
+      content: [
+        "Wixtory Player requests on-device media storage access permissions strictly to play the MP3 audio and MP4 video files you personally choose to load:",
+      ],
+      subsections: [
+        {
+          subtitle: "Permission Scope",
+          subcontent: [
+            "Access is used solely to render media inside the on-device local player engine.",
+            "Your files are never transmitted to the internet, uploaded to remote servers, or shared with third parties.",
+          ],
+        },
+        {
+          subtitle: "Sensitive Permissions Never Requested",
+          subcontent: [
+            "Our application NEVER requests or accesses your Contacts, GPS Location, Camera, Microphone, or Call/SMS records.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "local-cache",
+      title: "3. Local Playlists & Preferences (SharedPreferences)",
+      content: [
+        "To deliver a fluid, seamless media playback experience, custom playlists, favorites, playback speed (0.5x - 2.0x), volume levels, and aspect ratio modes are saved strictly within your phone's native local cache.",
+      ],
+      subsections: [
+        {
+          subtitle: "Data Location",
+          subcontent: [
+            "All playlist configurations remain strictly on your physical device. No server synchronization or behavioral profiling occurs.",
+          ],
+        },
+        {
+          subtitle: "User Control & Cache Deletion",
+          subcontent: [
+            "You can clear all stored playlists and playback preferences at any time via your device's native 'Clear Cache' settings.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "zero-ads-tracking",
+      title: "4. Zero Advertisements & Zero Tracking SDKs",
+      content: [
+        "Wixtory Player does not embed third-party analytics or advertising tracking networks. No intrusive popups or interstitial ads will ever interrupt your local media playback.",
+      ],
+    },
+    {
+      id: "data-security",
+      title: "5. Data Security, GDPR & Regulatory Compliance",
+      content: [
+        "Because no personal data is collected or stored on remote servers, your private identity and media files are immune to database breaches. Full compliance with GDPR and data protection laws is maintained.",
+      ],
+    },
+    {
+      id: "contact",
+      title: "6. Contact",
+      content: [
+        "For any inquiries regarding this policy, please reach out to Data Controller Wixtory at: wixtoryy@gmail.com",
+      ],
+    },
+  ],
+};
+
+/* ==========================================================================
    HELPER GETTER FUNCTIONS
    ========================================================================== */
 const LEGAL_DOC_MAP: Partial<Record<LanguageCode, Record<"privacy" | "cookie" | "kvkk", LegalDocument>>> = {
@@ -1201,10 +1380,12 @@ const APP_SPECIFIC_MAP: Partial<Record<LanguageCode, Record<string, LegalDocumen
   tr: {
     "language-box": LANGUAGE_BOX_PRIVACY_TR,
     "domain-track": DOMAIN_TRACK_PRIVACY_TR,
+    "wixtory-player": WIXTORY_PLAYER_PRIVACY_TR,
   },
   en: {
     "language-box": LANGUAGE_BOX_PRIVACY_EN,
     "domain-track": DOMAIN_TRACK_PRIVACY_EN,
+    "wixtory-player": WIXTORY_PLAYER_PRIVACY_EN,
   },
 };
 

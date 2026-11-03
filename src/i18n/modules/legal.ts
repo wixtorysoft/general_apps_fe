@@ -57,6 +57,16 @@ export const legalI18n: I18nRecord = {
     es: "para Excuse AI", fr: "pour Excuse AI", de: "für Excuse AI", ru: "для Excuse AI",
     ja: "Excuse AI 向け", zh: "适用于 Excuse AI", ar: "لتطبيق Excuse AI"
   },
+  eco_player_badge: {
+    tr: "Yerel Medya Oynatıcı", en: "Local Reel Player", it: "Player Reel Locale", pt: "Player de Reel Local",
+    es: "Reproductor Reel Local", fr: "Lecteur Reel Local", de: "Lokaler Reel-Player", ru: "Локальный Reels-Плеер",
+    ja: "ローカルリールプレーヤー", zh: "本地竖屏播放器", ar: "مشغل الوسائط المحلي"
+  },
+  eco_player_sub: {
+    tr: "Wixtory Player için", en: "for Wixtory Player", it: "per Wixtory Player", pt: "para o Wixtory Player",
+    es: "para Wixtory Player", fr: "pour Wixtory Player", de: "für Wixtory Player", ru: "для Wixtory Player",
+    ja: "Wixtory Player 向け", zh: "适用于 Wixtory Player", ar: "لتطبيق Wixtory Player"
+  },
 
   // Document Type Tabs
   tab_privacy: {

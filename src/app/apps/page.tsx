@@ -56,6 +56,11 @@ export default function AppsPage() {
       es: "ASISTENTE SALVAVIDAS IA", fr: "ASSISTANT SAUVEGARDE IA", de: "KI-LEBENSRETTER-ASSISTENT", ru: "ИИ-СПАСАТЕЛЬНЫЙ АССИСТЕНТ",
       ja: "AIライフセーバーアシスタント", zh: "AI 智能救急助手", ar: "مساعد الذكاء الاصطناعي المنقذ"
     },
+    cat_player: {
+      tr: "MEDYA & YEREL REEL OYNATICI", en: "MEDIA & LOCAL REEL PLAYER", it: "MEDIA & PLAYER REEL LOCALE", pt: "MÍDIA & PLAYER DE REEL LOCAL",
+      es: "MEDIOS & REPRODUCTOR REEL LOCAL", fr: "MÉDIAS & LECTEUR REEL LOCAL", de: "MEDIEN & LOKALER REEL-PLAYER", ru: "МЕДИА И ЛОКАЛЬНЫЙ REELS-ПЛЕЕР",
+      ja: "メディア＆ローカルリールプレーヤー", zh: "媒体与本地竖屏播放器", ar: "الوسائط ومشغل المقاطع المحلي"
+    },
     life_at: {
       tr: "Wixtory'de Yaşam", en: "Life at Wixtory Apps", it: "La Vita in Wixtory Apps", pt: "A Vida na Wixtory Apps",
       es: "La Vida en Wixtory Apps", fr: "La Vie chez Wixtory Apps", de: "Leben bei Wixtory Apps", ru: "Жизнь в Wixtory Apps",
@@ -194,6 +199,32 @@ export default function AppsPage() {
       ja: "ワンタップでの個人ポートフォリオ管理、「キャッシュをクリア」による完全な自己管理、そして11のグローバル言語に対応。",
       zh: "一键管理个人域名组合，支持“清除缓存”由您完全掌控，并在 11 种全球语言下拥有出色的暗色沉浸体验。",
       ar: "إدارة المحفظة الشخصية بنقرة واحدة، تحكم كامل بزر 'مسح الذاكرة المؤقتة' وترجمة متكاملة بـ 11 لغة عالمية."
+    },
+    player_p1: {
+      tr: "Telefonunuzdaki yerel MP3 müzik ve MP4 videoları TikTok stili sonsuz dikey akışta 60/120 FPS hızında izleyin. %100 çevrimdışı, sıfır bulut transferi ve listenin sonuna gelindiğinde otomatik başa dönen akıllı döngü.",
+      en: "Watch your local MP3 music tracks and MP4 videos in a TikTok-style infinite vertical flow at 60/120 FPS. 100% offline, zero cloud uploads, and seamless auto-loop back to the start.",
+      it: "Guarda i tuoi brani MP3 e video MP4 locali in un feed verticale infinito stile TikTok a 60/120 FPS. 100% offline, zero cloud e loop automatico continuo.",
+      pt: "Assista às suas músicas MP3 e vídeos MP4 locais em um feed vertical infinito estilo TikTok a 60/120 FPS. 100% offline, sem nuvem e loop automático contínuo.",
+      es: "Disfruta de tus canciones MP3 y vídeos MP4 locales en un flujo vertical infinito estilo TikTok a 60/120 FPS. 100% offline, sin nube y con bucle continuo.",
+      fr: "Regardez vos musiques MP3 et vidéos MP4 locales dans un flux vertical infini façon TikTok en 60/120 FPS. 100% hors ligne, zéro cloud et boucle continue.",
+      de: "Erleben Sie Ihre lokalen MP3s und MP4-Videos im vertikalen TikTok-Endlos-Feed mit 60/120 FPS. 100% offline, kein Cloud-Upload und nahtlose Schleife.",
+      ru: "Смотрите локальные MP3 и MP4 в бесконечной вертикальной ленте в стиле TikTok на скорости 60/120 FPS. 100% автономно, без облака и с автозацикливанием.",
+      ja: "端末内のMP3音楽とMP4動画をTikTok感覚の無限縦型リールで60/120 FPS再生。完全オフライン、クラウド送信ゼロ、末尾到達時の自動ループ対応。",
+      zh: "以 60/120 FPS 畅爽刷动手机中的本地 MP3 音频与 MP4 视频。100% 离线运行，零云端上传，滑至末端自动平滑循环回起点。",
+      ar: "شاهد مقاطع MP4 وموسيقى MP3 المحلية في تدفق عمودي لا نهائي بأسلوب التيك توك بمعدل 60/120 إطاراً في الثانية. 100% دون إنترنت مع حلقة تشغيل متصلة."
+    },
+    player_p2: {
+      tr: "0.5x'ten 2.0x'e kadar hız çarpanları, dikey dokunmatik ses HUD göstergesi, MP3'ler için analog dönen plak görseli ve en-boy oranını bozmayan akıllı ölçekleme.",
+      en: "Speed multipliers from 0.5x to 2.0x, dynamic on-screen volume HUD, analog spinning vinyl for MP3s, and intelligent aspect ratio scaling without distortion.",
+      it: "Velocità regolabile da 0.5x a 2.0x, indicatore HUD del volume a schermo, vinile animato per MP3 e adattamento proporzioni senza distorsioni.",
+      pt: "Velocidade de 0.5x a 2.0x, HUD de volume na tela, disco de vinil animado para MP3s e escala de proporção inteligente sem distorção.",
+      es: "Velocidad de 0.5x a 2.0x, HUD de volumen táctil, vinilo giratorio para MP3s y escala de aspecto inteligente sin deformación.",
+      fr: "Vitesse de 0.5x à 2.0x, affichage HUD du volume, vinyle tournant pour les MP3 et ajustement intelligent sans distorsion.",
+      de: "Geschwindigkeit 0.5x bis 2.0x, Touch-Lautstärke-HUD, rotierende Vinyl-Schallplatte für MP3s und proportionsgetreue Skalierung.",
+      ru: "Скорость от 0.5x до 2.0x, тактильный HUD громкости, анимация винила для MP3 и умное масштабирование без искажения пропорций.",
+      ja: "0.5x〜2.0xの再生倍速、画面タッチ音量HUDバー、MP3用の回転レコード盤演出、歪みのないアスペクト比最適化。",
+      zh: "0.5x 至 2.0x 灵活倍速控制、触屏音量 HUD 浮层、MP3 专属复古旋转黑胶唱片视觉以及绝不变形的画面自适应技术。",
+      ar: "مضاعفات سرعة من 0.5x إلى 2.0x، مؤشر صوت مرئي ذكي على الشاشة، أسطوانة فينيل لمقاطع MP3 ونظام أبعاد يحافظ على الدقة."
     }
   };
 
@@ -820,6 +851,137 @@ export default function AppsPage() {
                       style={{ objectFit: "contain", borderRadius: "32px" }}
                     />
                   </div>
+                </div>
+              </div>
+
+              {/* APP CARD 5: Wixtory Player */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+                  gap: "clamp(32px, 5vw, 60px)",
+                  alignItems: "center",
+                }}
+              >
+                {/* Left: App Icon */}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    order: 1,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "100%",
+                      maxWidth: "340px",
+                      aspectRatio: "1 / 1",
+                      borderRadius: "48px",
+                      overflow: "hidden",
+                      boxShadow: "0 24px 56px -12px rgba(0, 242, 254, 0.3)",
+                      border: "2px solid rgba(0, 242, 254, 0.35)",
+                      position: "relative",
+                      transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "linear-gradient(135deg, #091224 0%, #064057 100%)",
+                      padding: "20px",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                  >
+                    <Image
+                      src="/apps/wixtory-player-icon.png"
+                      alt="Wixtory Player App Icon"
+                      width={300}
+                      height={300}
+                      style={{ objectFit: "contain", borderRadius: "32px" }}
+                    />
+                  </div>
+                </div>
+
+                {/* Right: Content */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "14px", order: 2 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
+                    <span
+                      style={{
+                        fontSize: "11px",
+                        fontWeight: 800,
+                        color: "#00F2FE",
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {aStr("cat_player")}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "10.5px",
+                        fontWeight: 700,
+                        padding: "3px 9px",
+                        borderRadius: "9999px",
+                        background: "rgba(0, 242, 254, 0.12)",
+                        color: "#00F2FE",
+                        border: "1px solid rgba(0, 242, 254, 0.28)",
+                      }}
+                    >
+                      v1.0.0 (Coming Soon)
+                    </span>
+                  </div>
+
+                  <h2
+                    style={{
+                      fontSize: "clamp(28px, 3.8vw, 38px)",
+                      fontWeight: 850,
+                      letterSpacing: "-0.03em",
+                      margin: 0,
+                      color: "var(--text-main)",
+                    }}
+                  >
+                    Wixtory Player
+                  </h2>
+
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      color: "var(--text-secondary)",
+                      lineHeight: "1.6",
+                      margin: 0,
+                    }}
+                  >
+                    {aStr("player_p1")}
+                  </p>
+
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      color: "var(--text-secondary)",
+                      lineHeight: "1.6",
+                      margin: 0,
+                    }}
+                  >
+                    {aStr("player_p2")}
+                  </p>
+
+                  <div
+                    style={{
+                      fontSize: "11.5px",
+                      color: "var(--text-muted)",
+                      lineHeight: "1.5",
+                      marginTop: "2px",
+                    }}
+                  >
+                    Wixtory Player © 2026 Wixtory Software. All rights reserved.
+                  </div>
+
+                  {/* App Store & Google Play Badges + Details Link */}
+                  <StoreBadgesRow
+                    detailUrl="/wixtory-player"
+                    isComingSoon={true}
+                    comingSoonText={t("coming_soon_stores")}
+                  />
                 </div>
               </div>
 
