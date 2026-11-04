@@ -83,6 +83,42 @@ export default function HubPortalPage() {
       es: "ASISTENTE SALVAVIDAS IA", fr: "ASSISTANT SAUVEGARDE IA", de: "KI-LEBENSRETTER-ASSISTENT", ru: "ИИ-СПАСАТЕЛЬНЫЙ АССИСТЕНТ",
       ja: "AIライフセーバーアシスタント", zh: "AI 智能救急助手", ar: "مساعد الذكاء الاصطناعي المنقذ"
     },
+    cat_player: {
+      tr: "MEDYA & YEREL REEL OYNATICI", en: "MEDIA & LOCAL REEL PLAYER", it: "MEDIA & PLAYER REEL LOCALE", pt: "MÍDIA & PLAYER DE REEL LOCAL",
+      es: "MEDIOS & REPRODUCTOR REEL LOCAL", fr: "MÉDIAS & LECTEUR REEL LOCAL", de: "MEDIEN & LOKALER REEL-PLAYER", ru: "МЕДИА И ЛОКАЛЬНЫЙ REELS-ПЛЕЕР",
+      ja: "メディア＆ローカルリールプレーヤー", zh: "媒体与本地竖屏播放器", ar: "الوسائط ومشغل المقاطع المحلي"
+    },
+    go_player: {
+      tr: "Wixtory Player Sayfasına Git", en: "Explore Wixtory Player", it: "Esplora Wixtory Player", pt: "Explorar Wixtory Player",
+      es: "Explorar Wixtory Player", fr: "Explorer Wixtory Player", de: "Wixtory Player Erkunden", ru: "Перейти к Wixtory Player",
+      ja: "Wixtory Playerの詳細を見る", zh: "前往 Wixtory Player 页面", ar: "استعراض Wixtory Player"
+    },
+    player_p1: {
+      tr: "Telefonunuzdaki yerel MP3 müzik ve MP4 videoları TikTok stili sonsuz dikey akışta 60/120 FPS hızında izleyin. %100 çevrimdışı, sıfır bulut transferi ve son medyada otomatik başa dönen akıllı döngü.",
+      en: "Watch your local MP3 music tracks and MP4 videos in a TikTok-style infinite vertical flow at 60/120 FPS. 100% offline, zero cloud uploads, and seamless auto-loop back to the start.",
+      it: "Guarda i tuoi brani MP3 e video MP4 locali in un feed verticale infinito stile TikTok a 60/120 FPS. 100% offline, zero cloud e loop automatico continuo.",
+      pt: "Assista às suas músicas MP3 e vídeos MP4 locais em um feed vertical infinito estilo TikTok a 60/120 FPS. 100% offline, sem nuvem e loop automático contínuo.",
+      es: "Disfruta de tus canciones MP3 y vídeos MP4 locales en un flujo vertical infinito estilo TikTok a 60/120 FPS. 100% offline, sin nube y con bucle continuo.",
+      fr: "Regardez vos musiques MP3 et vidéos MP4 locales dans un flux vertical infini façon TikTok en 60/120 FPS. 100% hors ligne, zéro cloud et boucle continue.",
+      de: "Erleben Sie Ihre lokalen MP3s und MP4-Videos im vertikalen TikTok-Endlos-Feed mit 60/120 FPS. 100% offline, kein Cloud-Upload und nahtlose Schleife.",
+      ru: "Смотрите локальные MP3 и MP4 в бесконечной вертикальной ленте в стиле TikTok на скорости 60/120 FPS. 100% автономно, без облака и с автозацикливанием.",
+      ja: "端末内のMP3音楽とMP4動画をTikTok感覚の無限縦型リールで60/120 FPS再生。完全オフライン、クラウド送信ゼロ、末尾到達時の自動ループ対応。",
+      zh: "以 60/120 FPS 畅爽刷动手机中的本地 MP3 音频与 MP4 视频。100% 离线运行，零云端上传，滑至末端自动平滑循环回起点。",
+      ar: "شاهد مقاطع MP4 وموسيقى MP3 المحلية في تدفق عمودي لا نهائي بأسلوب التيك توك بمعدل 60/120 إطاراً في الثانية. 100% دون إنترنت مع حلقة تشغيل متصلة."
+    },
+    player_p2: {
+      tr: "0.5x'ten 2.0x'e kadar hız çarpanları, dikey dokunmatik ses HUD göstergesi, MP3'ler için analog dönen plak görseli ve en-boy oranını bozmayan akıllı ölçekleme.",
+      en: "Speed multipliers from 0.5x to 2.0x, dynamic on-screen volume HUD, analog spinning vinyl for MP3s, and intelligent aspect ratio scaling without distortion.",
+      it: "Velocità regolabile da 0.5x a 2.0x, indicatore HUD del volume a schermo, vinile animato per MP3 e adattamento proporzioni senza distorsioni.",
+      pt: "Velocidade de 0.5x a 2.0x, HUD de volume na tela, disco de vinil animado para MP3s e escala de proporção inteligente sem distorção.",
+      es: "Velocidad de 0.5x a 2.0x, HUD de volumen táctil, vinilo giratorio para MP3s y escala de aspecto inteligente sin deformación.",
+      fr: "Vitesse de 0.5x à 2.0x, affichage HUD du volume, vinyle tournant pour les MP3 et ajustement intelligent sans distorsion.",
+      de: "Geschwindigkeit 0.5x bis 2.0x, Touch-Lautstärke-HUD, rotierende Vinyl-Schallplatte für MP3s und proportionsgetreue Skalierung.",
+      ru: "Скорость от 0.5x до 2.0x, тактильный HUD громкости, анимация винила для MP3 и умное масштабирование без искажения пропорций.",
+      ja: "0.5x〜2.0xの再生倍速、画面タッチ音量HUDバー、MP3用の回転レコード盤演出、歪みのないアスペクト比最適化。",
+      zh: "0.5x 至 2.0x 灵活倍速控制、触屏音量 HUD 浮层、MP3 专属复古旋转黑胶唱片视觉以及绝不变形的画面自适应技术。",
+      ar: "مضاعفات سرعة من 0.5x إلى 2.0x، مؤشر صوت مرئي ذكي على الشاشة، أسطوانة فينيل لمقاطع MP3 ونظام أبعاد يحافظ على الدقة."
+    },
     go_lang_box: {
       tr: "Language Box Sayfasına Git", en: "Explore Language Box", it: "Esplora Language Box", pt: "Explorar Language Box",
       es: "Explorar Language Box", fr: "Explorer Language Box", de: "Language Box Erkunden", ru: "Перейти к Language Box",
@@ -644,6 +680,74 @@ export default function HubPortalPage() {
         "محاكاة واقعية لمكالمات واردة طارئة مع مؤقت زمني قابل للتخصيص",
         "4 فئات حياتية متنوعة (العمل، الأسرة/المنزل، المناسبات الاجتماعية، العلاقات)",
         "نسخ بنقرة واحدة إلى الحافظة والمشاركة الفورية عبر واتساب والرسائل",
+      ],
+    },
+    wixtory_player: {
+      tr: [
+        "Sonsuz TikTok-stili dikey kaydırma ile akıcı 120 FPS medya oynatımı",
+        "MP3 müzik parçaları ve MP4 video klipleri aynı listede birleştirme",
+        "Akıllı En-Boy Oranı: Yatay videoları kırpmadan genişliğe tam sığdırma",
+        "%100 Cihaz İçi & Sıfır Bulut: Sıfır veri transferi, sıfır reklam ve sıfır takip",
+      ],
+      en: [
+        "Infinite TikTok-style vertical reel stream with fluid 120 FPS playback",
+        "Hybrid library unifying MP3 music tracks and MP4 videos in one feed",
+        "Smart Aspect Ratio: Zero crop width containment for horizontal videos",
+        "100% On-Device & Zero Cloud: Zero telemetry, zero ads, absolute privacy",
+      ],
+      it: [
+        "Feed verticale infinito stile TikTok con riproduzione fluida a 120 FPS",
+        "Libreria ibrida che unisce brani MP3 e video MP4 nello stesso feed",
+        "Proporzioni intelligenti: nessun taglio per i video orizzontali",
+        "100% sul dispositivo & zero cloud: zero telemetria e massima privacy",
+      ],
+      pt: [
+        "Feed vertical infinito estilo TikTok com reprodução fluida a 120 FPS",
+        "Biblioteca híbrida unindo faixas MP3 e vídeos MP4 no mesmo feed",
+        "Proporção inteligente: sem cortes para vídeos em formato horizontal",
+        "100% no dispositivo & zero nuvem: zero telemetria e privacidade total",
+      ],
+      es: [
+        "Flujo vertical infinito estilo TikTok con reproducción fluida a 120 FPS",
+        "Biblioteca híbrida que une música MP3 y videos MP4 en una sola lista",
+        "Relación de aspecto inteligente: sin recortes en videos horizontales",
+        "100% en el dispositivo & cero nube: sin telemetría y máxima privacidad",
+      ],
+      fr: [
+        "Flux vertical infini façon TikTok avec lecture fluide en 120 FPS",
+        "Bibliothèque hybride réunissant morceaux MP3 et vidéos MP4 en un seul flux",
+        "Ratio d'aspect intelligent : aucun recadrage pour les vidéos horizontales",
+        "100% sur l'appareil & zéro cloud : zéro télémétrie et confidentialité totale",
+      ],
+      de: [
+        "Endloser vertikaler TikTok-Stream mit flüssiger 120-FPS-Wiedergabe",
+        "Hybride Mediathek für MP3-Musiktitel und MP4-Videos im selben Feed",
+        "Intelligentes Seitenverhältnis: keine Beschneidung horizontaler Videos",
+        "100% auf dem Gerät & keine Cloud: kein Tracking und absolute Privatsphäre",
+      ],
+      ru: [
+        "Бесконечная вертикальная лента в стиле TikTok со скоростью 120 FPS",
+        "Гибридная медиатека, объединяющая MP3-треки и MP4-видео в один поток",
+        "Умное масштабирование: воспроизведение видео без боковой обрезки",
+        "100% на устройстве и без облака: ноль рекламы, ноль трекеров",
+      ],
+      ja: [
+        "TikTok風の無限縦スクロールリールによる120 FPS超滑らか再生",
+        "MP3音楽とMP4動画を単一のプレイリストに統合するハイブリッド設計",
+        "スマートアスペクト比：横向き動画も左右をトリミングせず幅にフィット",
+        "100%端末内＆クラウド転送ゼロ：トラッキングなし、完全なプライバシー",
+      ],
+      zh: [
+        "TikTok 式无限竖屏沉浸流，带来 120 FPS 极速丝滑的影音体验",
+        "独创混编媒体库，在同一播放列表中兼收 MP3 音乐与 MP4 视频",
+        "智能画幅比例适应：横屏视频等比宽度自适应，绝不变形裁切",
+        "100% 设备端存储，零云端交互：绝不收集任何隐私，零广告打扰",
+      ],
+      ar: [
+        "تدفق مقاطع عمودي لا نهائي بأسلوب التيك توك بمعدل 120 إطاراً في الثانية",
+        "مكتبة هجينة تجمع بين مقاطع MP4 والموسيقى MP3 في قائمة واحدة",
+        "ملاءمة ذكية للأبعاد دون أي قص أو تشويه لمقاطع الفيديو الأفقية",
+        "100% على جهازك وبدون سحابة: بدون إعلانات وبخصوصية مطلقة",
       ],
     },
   };
@@ -1553,6 +1657,172 @@ export default function HubPortalPage() {
                       height={300}
                       style={{ objectFit: "contain", borderRadius: "32px" }}
                     />
+                  </div>
+                </div>
+              </div>
+
+              {/* APP CARD 5: Wixtory Player */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+                  gap: "clamp(32px, 5vw, 60px)",
+                  alignItems: "center",
+                }}
+              >
+                {/* Left: App Icon */}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    order: 1,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "100%",
+                      maxWidth: "340px",
+                      aspectRatio: "1 / 1",
+                      borderRadius: "48px",
+                      overflow: "hidden",
+                      boxShadow: "0 24px 56px -12px rgba(0, 242, 254, 0.3)",
+                      border: "2px solid rgba(0, 242, 254, 0.35)",
+                      position: "relative",
+                      transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "linear-gradient(135deg, #091224 0%, #064057 100%)",
+                      padding: "20px",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.03)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                  >
+                    <Image
+                      src="/apps/wixtory-player-icon.png"
+                      alt="Wixtory Player App Icon"
+                      width={300}
+                      height={300}
+                      style={{ objectFit: "contain", borderRadius: "32px" }}
+                    />
+                  </div>
+                </div>
+
+                {/* Right: Content */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "14px", order: 2 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
+                    <span
+                      style={{
+                        fontSize: "11px",
+                        fontWeight: 800,
+                        color: "var(--primary)",
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {hStr("cat_player")}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "10.5px",
+                        fontWeight: 700,
+                        padding: "3px 9px",
+                        borderRadius: "9999px",
+                        background: "var(--badge-bg)",
+                        color: "var(--primary)",
+                        border: "1px solid var(--border-subtle)",
+                      }}
+                    >
+                      v1.0.0 (Coming Soon)
+                    </span>
+                  </div>
+
+                  <h2
+                    style={{
+                      fontSize: "clamp(28px, 3.8vw, 38px)",
+                      fontWeight: 850,
+                      letterSpacing: "-0.03em",
+                      margin: 0,
+                      color: "var(--text-main)",
+                    }}
+                  >
+                    Wixtory Player
+                  </h2>
+
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      color: "var(--text-secondary)",
+                      lineHeight: "1.6",
+                      margin: 0,
+                    }}
+                  >
+                    {hStr("player_p1")}
+                  </p>
+
+                  <p
+                    style={{
+                      fontSize: "15px",
+                      color: "var(--text-secondary)",
+                      lineHeight: "1.6",
+                      margin: 0,
+                    }}
+                  >
+                    {hStr("player_p2")}
+                  </p>
+
+                  <ul
+                    style={{
+                      listStyle: "none",
+                      padding: 0,
+                      margin: "4px 0 0 0",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "8px",
+                      fontSize: "13.5px",
+                      color: "var(--text-secondary)",
+                    }}
+                  >
+                    {getBullets("wixtory_player").map((bullet, idx) => (
+                      <li key={idx} style={{ display: "flex", alignItems: "flex-start", gap: "8px" }}>
+                        <span style={{ color: "#10B981", fontWeight: 800 }}>✓</span>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div
+                    style={{
+                      fontSize: "11.5px",
+                      color: "var(--text-muted)",
+                      lineHeight: "1.5",
+                      marginTop: "2px",
+                    }}
+                  >
+                    Wixtory Player © 2026 Wixtory Software. All rights reserved.
+                  </div>
+
+                  <div style={{ display: "flex", gap: "10px", marginTop: "4px" }}>
+                    <Link
+                      href="/wixtory-player"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        padding: "10px 20px",
+                        borderRadius: "12px",
+                        background: "var(--primary)",
+                        color: "#FFFFFF",
+                        fontWeight: 700,
+                        fontSize: "13px",
+                        textDecoration: "none",
+                        boxShadow: "0 6px 20px -4px rgba(2, 132, 199, 0.4)",
+                      }}
+                    >
+                      <span>{hStr("go_player")}</span>
+                      <ArrowRight size={15} />
+                    </Link>
                   </div>
                 </div>
               </div>

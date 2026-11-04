@@ -6,29 +6,30 @@ import { Shield, ArrowLeft, Lock, FileCheck, HardDrive, Smartphone } from "lucid
 import { MainNavbar } from "@/components/MainNavbar";
 import { MainFooter } from "@/components/MainFooter";
 import { useLanguage } from "@/context/LanguageContext";
-import { resolveI18n } from "@/i18n";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function WixtoryPlayerPrivacyPage() {
   const { language } = useLanguage();
-  const t = (key: string) => resolveI18n("wixtoryPlayer", key, language);
+  const { currentThemeMeta } = useTheme();
+  const isDark = currentThemeMeta.isDark;
 
   return (
     <div
       style={{
         minHeight: "100vh",
-        background: "#08070F",
-        color: "#F3F4F6",
+        background: "var(--bg-primary)",
+        color: "var(--text-main)",
         position: "relative",
-        fontFamily: "'Space Grotesk', 'Outfit', sans-serif",
+        transition: "background-color 0.3s ease, color 0.3s ease",
       }}
     >
       <MainNavbar />
 
       <main
         style={{
-          maxWidth: "860px",
+          maxWidth: "920px",
           margin: "0 auto",
-          padding: "60px 24px 100px",
+          padding: "50px 24px 100px",
         }}
       >
         {/* Back Link */}
@@ -38,15 +39,16 @@ export default function WixtoryPlayerPrivacyPage() {
             display: "inline-flex",
             alignItems: "center",
             gap: "8px",
-            color: "#00F2FE",
+            color: isDark ? "#00F2FE" : "#0284C7",
             fontSize: "13px",
             fontWeight: 700,
             textDecoration: "none",
             marginBottom: "32px",
-            background: "rgba(0, 242, 254, 0.08)",
+            background: isDark ? "rgba(0, 242, 254, 0.08)" : "rgba(2, 132, 199, 0.08)",
             padding: "8px 16px",
-            borderRadius: "10px",
-            border: "1px solid rgba(0, 242, 254, 0.25)",
+            borderRadius: "12px",
+            border: `1px solid ${isDark ? "rgba(0, 242, 254, 0.25)" : "rgba(2, 132, 199, 0.25)"}`,
+            transition: "all 0.2s ease",
           }}
         >
           <ArrowLeft size={16} />
@@ -54,16 +56,16 @@ export default function WixtoryPlayerPrivacyPage() {
         </Link>
 
         {/* Header Document Info */}
-        <div style={{ marginBottom: "40px" }}>
+        <div style={{ marginBottom: "36px" }}>
           <div
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "8px",
               padding: "6px 14px",
-              borderRadius: "999px",
-              background: "rgba(0, 242, 254, 0.12)",
-              color: "#00F2FE",
+              borderRadius: "9999px",
+              background: isDark ? "rgba(0, 242, 254, 0.12)" : "rgba(2, 132, 199, 0.12)",
+              color: isDark ? "#00F2FE" : "#0284C7",
               fontSize: "11px",
               fontWeight: 800,
               letterSpacing: "0.08em",
@@ -77,9 +79,10 @@ export default function WixtoryPlayerPrivacyPage() {
           <h1
             style={{
               fontSize: "clamp(28px, 4.5vw, 44px)",
-              fontWeight: 800,
-              letterSpacing: "-0.02em",
+              fontWeight: 850,
+              letterSpacing: "-0.03em",
               margin: "0 0 16px",
+              color: "var(--text-main)",
             }}
           >
             Wixtory Player Gizlilik Politikası
@@ -87,9 +90,10 @@ export default function WixtoryPlayerPrivacyPage() {
 
           <p
             style={{
-              fontSize: "15px",
-              color: "#94A3B8",
+              fontSize: "14.5px",
+              color: "var(--text-secondary)",
               lineHeight: 1.6,
+              margin: 0,
             }}
           >
             Son Güncelleme: 04 Kasım 2026 · Yürürlük Tarihi: 04 Kasım 2026
@@ -101,29 +105,30 @@ export default function WixtoryPlayerPrivacyPage() {
         {/* Content Box */}
         <div
           style={{
-            background: "rgba(255, 255, 255, 0.02)",
-            border: "1px solid rgba(255, 255, 255, 0.08)",
-            borderRadius: "24px",
-            padding: "36px",
+            background: "var(--bg-card)",
+            border: "1px solid var(--border-subtle)",
+            borderRadius: "26px",
+            padding: "clamp(24px, 4vw, 40px)",
             lineHeight: 1.7,
-            color: "#CBD5E1",
+            color: "var(--text-secondary)",
             fontSize: "15px",
+            boxShadow: "var(--shadow-card)",
           }}
         >
           {/* Section 1 */}
           <div style={{ marginBottom: "32px" }}>
             <h2
               style={{
-                color: "#FFFFFF",
+                color: "var(--text-main)",
                 fontSize: "20px",
-                fontWeight: 700,
+                fontWeight: 800,
                 display: "flex",
                 alignItems: "center",
                 gap: "10px",
                 margin: "0 0 12px",
               }}
             >
-              <HardDrive size={20} color="#00F2FE" />
+              <HardDrive size={20} color={isDark ? "#00F2FE" : "#0284C7"} />
               <span>1. Sıfır Bulut ve %100 Cihaz İçi Yerel Mimari</span>
             </h2>
             <p>
@@ -138,9 +143,9 @@ export default function WixtoryPlayerPrivacyPage() {
           <div style={{ marginBottom: "32px" }}>
             <h2
               style={{
-                color: "#FFFFFF",
+                color: "var(--text-main)",
                 fontSize: "20px",
-                fontWeight: 700,
+                fontWeight: 800,
                 display: "flex",
                 alignItems: "center",
                 gap: "10px",
@@ -173,9 +178,9 @@ export default function WixtoryPlayerPrivacyPage() {
           <div style={{ marginBottom: "32px" }}>
             <h2
               style={{
-                color: "#FFFFFF",
+                color: "var(--text-main)",
                 fontSize: "20px",
-                fontWeight: 700,
+                fontWeight: 800,
                 display: "flex",
                 alignItems: "center",
                 gap: "10px",
@@ -196,9 +201,9 @@ export default function WixtoryPlayerPrivacyPage() {
           <div style={{ marginBottom: "32px" }}>
             <h2
               style={{
-                color: "#FFFFFF",
+                color: "var(--text-main)",
                 fontSize: "20px",
-                fontWeight: 700,
+                fontWeight: 800,
                 display: "flex",
                 alignItems: "center",
                 gap: "10px",
@@ -219,16 +224,16 @@ export default function WixtoryPlayerPrivacyPage() {
           <div style={{ marginBottom: "16px" }}>
             <h2
               style={{
-                color: "#FFFFFF",
+                color: "var(--text-main)",
                 fontSize: "20px",
-                fontWeight: 700,
+                fontWeight: 800,
                 display: "flex",
                 alignItems: "center",
                 gap: "10px",
                 margin: "0 0 12px",
               }}
             >
-              <Shield size={20} color="#00F2FE" />
+              <Shield size={20} color={isDark ? "#00F2FE" : "#0284C7"} />
               <span>5. KVKK ve GDPR Kapsamında İletişim</span>
             </h2>
             <p>
@@ -236,7 +241,7 @@ export default function WixtoryPlayerPrivacyPage() {
               uyarınca; gizlilik haklarınız veya teknik sorularınız için Veri Sorumlusu Wixtory&apos;ye dilediğiniz an{" "}
               <a
                 href="mailto:wixtoryy@gmail.com"
-                style={{ color: "#00F2FE", textDecoration: "underline" }}
+                style={{ color: isDark ? "#00F2FE" : "#0284C7", textDecoration: "underline", fontWeight: 700 }}
               >
                 wixtoryy@gmail.com
               </a>{" "}
@@ -250,4 +255,3 @@ export default function WixtoryPlayerPrivacyPage() {
     </div>
   );
 }
-

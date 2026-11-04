@@ -909,7 +909,7 @@ export default function AppsPage() {
                       style={{
                         fontSize: "11px",
                         fontWeight: 800,
-                        color: "#00F2FE",
+                        color: "var(--primary)",
                         letterSpacing: "0.08em",
                         textTransform: "uppercase",
                       }}
@@ -922,9 +922,9 @@ export default function AppsPage() {
                         fontWeight: 700,
                         padding: "3px 9px",
                         borderRadius: "9999px",
-                        background: "rgba(0, 242, 254, 0.12)",
-                        color: "#00F2FE",
-                        border: "1px solid rgba(0, 242, 254, 0.28)",
+                        background: "var(--badge-bg)",
+                        color: "var(--primary)",
+                        border: "1px solid var(--border-subtle)",
                       }}
                     >
                       v1.0.0 (Coming Soon)
