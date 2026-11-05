@@ -358,7 +358,7 @@ export const APPS_DATA: AppModel[] = [
           subheading: "Kayıt Durumu: Uygun · Önerilen TLD: .com",
           details: [
             "🟢 wixtory.com — Müsait (Hemen Kaydet)",
-            "🔴 wixtory.net — Alınmış (Whois İncele)",
+            "🔴 wixtory.net — Alınmış (Kayıtlı)",
             "🟢 wixtory.io — Müsait (Girişimler İçin İdeal)",
           ],
           gradient: "linear-gradient(145deg, #0d1e2e 0%, #152d42 50%, #1c3b57 100%)",

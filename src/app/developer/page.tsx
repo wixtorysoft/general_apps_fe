@@ -141,22 +141,22 @@ export default function DeveloperPage() {
       ar: "نظام تكرار متباعد شيق (SRS) مع دعم أكثر من 5 لغات واختبارات تفاعلية ومتابعة للتقدم بدون اتصال بنسبة 100%."
     },
     app_domain_badge: {
-      tr: "Alan Adı & DNS İstihbaratı", en: "Domain & DNS Intelligence", it: "Domini & Intelligence DNS", pt: "Domínios & Inteligência DNS",
-      es: "Dominios e Inteligencia DNS", fr: "Domaines & Renseignement DNS", de: "Domain- & DNS-Intelligence", ru: "Домены и Аналитика DNS",
-      ja: "ドメイン＆DNSインテリジェンス", zh: "域名与 DNS 全景情报", ar: "النطاقات واستخبارات DNS"
+      tr: "Alan Adı Sorgulama & Portföy", en: "Domain Search & Portfolio", it: "Ricerca Domini & Portfolio", pt: "Busca de Domínios & Portfólio",
+      es: "Búsqueda de Dominios & Portafolio", fr: "Recherche de Domaines & Portefeuille", de: "Domain-Suche & Portfolio", ru: "Поиск Доменов и Портфолио",
+      ja: "ドメイン検索＆ポートフォリオ", zh: "域名查询与资产管理", ar: "البحث عن النطاقات والمحفظة"
     },
     app_domain_desc: {
-      tr: "Gerçek zamanlı alan adı uygunluk kontrolü, WHOIS analizi, DNS kayıt çözümleme ve yerel favori portföy takip asistanı.",
-      en: "Real-time domain availability check, WHOIS intelligence, DNS record resolver, and local portfolio tracking assistant.",
-      it: "Verifica disponibilità domini in tempo reale, analisi WHOIS, risoluzione record DNS e portfolio preferiti locale.",
-      pt: "Verificação de disponibilidade em tempo real, análise WHOIS, resolução de registros DNS e portfólio de favoritos local.",
-      es: "Consulta en tiempo real de disponibilidad, análisis WHOIS, resolución DNS y gestor de dominios favoritos local.",
-      fr: "Vérification en temps réel des domaines, analyse WHOIS, résolution DNS et suivi de portefeuille favori local.",
-      de: "Echtzeit-Domainverfügbarkeitsprüfung, WHOIS-Analyse, DNS-Auflösung und lokales Favoriten-Portfolio.",
-      ru: "Проверка доступности доменов в реальном времени, WHOIS-анализ, резолвер DNS-записей и локальный трекер портфолио.",
-      ja: "リアルタイムドメイン空き確認、WHOIS詳細解析、DNSレコード名前解決、端末内完結のドメイン資産管理。",
-      zh: "实时顶级域名注册状态毫秒级查询，WHOIS 深度画像分析，DNS 权威解析器与本地安全资产监控。",
-      ar: "فحص فوري لتوفر النطاقات مع تحليل WHOIS وحل سجلات DNS ومساعد محلي لمتابعة المحفظة المفضلة."
+      tr: "Gerçek zamanlı alan adı müsaitlik kontrolü, çoklu uzantı sorgulama ve yerel favori portföy takip asistanı.",
+      en: "Real-time domain availability check, multi-extension search, and local favorite portfolio tracking assistant.",
+      it: "Verifica disponibilità domini in tempo reale, ricerca multi-estensione e assistente portfolio preferiti locale.",
+      pt: "Verificação de disponibilidade de domínios em tempo real, busca multi-extensão e assistente de portfólio local.",
+      es: "Consulta en tiempo real de disponibilidad de dominios, búsqueda multi-extensión y gestor de dominios favoritos local.",
+      fr: "Vérification en temps réel de la disponibilité des domaines, recherche multi-extensions et suivi de portefeuille local.",
+      de: "Echtzeit-Domainverfügbarkeitsprüfung, Multi-Erweiterungssuche und lokaler Favoriten-Portfolio-Assistent.",
+      ru: "Проверка доступности доменов в реальном времени, мульти-расширенный поиск и локальный трекер избранного.",
+      ja: "リアルタイムドメイン空き状況確認、複数拡張子の一括検索、端末内完結のドメイン資産管理。",
+      zh: "实时顶级域名注册状态毫秒级查询，多后缀批量检索与本地安全资产监控。",
+      ar: "فحص فوري لتوفر النطاقات مع بحث متعدد الامتدادات ومساعد محلي لمتابعة المحفظة المفضلة."
     },
     app_astro_badge: {
       tr: "Astroloji & Stil Stüdyosu (Yakında)", en: "Astrology & Style Studio (Coming Soon)", it: "Astrologia & Studio di Stile (In Arrivo)", pt: "Astrologia & Estúdio de Estilo (Em Breve)",
@@ -313,7 +313,7 @@ export default function DeveloperPage() {
       name: "Wixtory: Domain Track",
       badge: dStr("app_domain_badge"),
       description: dStr("app_domain_desc"),
-      tags: ["Flutter", "WHOIS Protocol", "DNS Resolver", "HTTPS API", "Local Cache"],
+      tags: ["Flutter", "Domain Search", "TLD Filter", "HTTPS API", "Local Cache"],
       href: "/domain-track",
       icon: Globe,
       accentColor: "#0ea5e9",

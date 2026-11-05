@@ -69,9 +69,9 @@ export default function HubPortalPage() {
       ja: "教育＆ゲーミフィケーション", zh: "教育与多语言游戏", ar: "التعليم والألعاب"
     },
     cat_domain: {
-      tr: "ALAN ADI & WHOIS", en: "DOMAIN & WHOIS TOOL", it: "DOMINI & WHOIS TOOL", pt: "DOMÍNIOS & WHOIS",
-      es: "DOMINIOS & WHOIS", fr: "DOMAINES & WHOIS", de: "DOMAIN & WHOIS-TOOL", ru: "ДОМЕНЫ И WHOIS",
-      ja: "ドメイン＆WHOISツール", zh: "域名与 WHOIS 查询", ar: "النطاقات وأداة WHOIS"
+      tr: "ALAN ADI SORGULAMA", en: "DOMAIN SEARCH TOOL", it: "TOOL RICERCA DOMINI", pt: "BUSCA DE DOMÍNIOS",
+      es: "BÚSQUEDA DE DOMINIOS", fr: "RECHERCHE DE DOMAINES", de: "DOMAIN-SUCHE TOOL", ru: "ПОИСК ДОМЕНОВ",
+      ja: "ドメイン検索ツール", zh: "域名查询工具", ar: "أداة البحث عن النطاقات"
     },
     cat_astro: {
       tr: "ASTROLOJİ & YAŞAM", en: "ASTROLOGY & LIFESTYLE", it: "ASTROLOGIA & STILE DI VITA", pt: "ASTROLOGIA & ESTILO DE VIDA",
