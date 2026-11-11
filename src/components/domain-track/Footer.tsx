@@ -22,15 +22,7 @@ export function Footer() {
     <footer className="dt-section-footer" style={{ padding: "64px 0 32px 0" }}>
       <div className="dt-container">
         {/* 4-Column Grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.2fr 1fr 1fr 1.2fr",
-            gap: "40px",
-            marginBottom: "48px",
-          }}
-          className="dt-footer-grid"
-        >
+        <div className="dt-footer-grid">
           {/* Column 1: Brand */}
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>

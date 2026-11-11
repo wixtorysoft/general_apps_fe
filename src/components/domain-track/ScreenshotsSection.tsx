@@ -298,7 +298,7 @@ export function ScreenshotsSection() {
         </motion.div>
 
         {/* Filter Toolbar: Device Tabs (Centered, no grid toggle) */}
-        <div className="dt-toolbar" style={{ justifyContent: "center" }}>
+        <div className="dt-toolbar">
           {/* Device Tabs */}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", flexWrap: "wrap" }}>
             <button
@@ -340,7 +340,8 @@ export function ScreenshotsSection() {
         <div
           style={{
             position: "relative",
-            maxWidth: "1020px",
+            maxWidth: "1320px",
+            width: "100%",
             margin: "0 auto",
           }}
           onMouseEnter={() => setIsHovered(true)}

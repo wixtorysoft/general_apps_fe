@@ -254,11 +254,11 @@ h6 {
 
 .container {
   width: 100% !important;
-  max-width: 1240px;
+  max-width: 1440px !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  padding-left: 24px !important;
-  padding-right: 24px !important;
+  padding-left: clamp(16px, 2.5vw, 32px) !important;
+  padding-right: clamp(16px, 2.5vw, 32px) !important;
   box-sizing: border-box !important;
 }
 

@@ -806,7 +806,7 @@ export default function HubPortalPage() {
       <main style={{ flex: 1, position: "relative", zIndex: 1 }}>
         {/* Grand Hero Section */}
         <section style={{ padding: "80px 0 60px 0", textAlign: "center" }}>
-          <div className="container" style={{ maxWidth: "920px" }}>
+          <div className="container" style={{ maxWidth: "1120px" }}>
             {/* Pill Badge */}
             <div
               style={{
@@ -1027,7 +1027,7 @@ export default function HubPortalPage() {
 
         {/* Applications Showcase Sections (Alternating Layout matching /apps) */}
         <section id="apps" style={{ padding: "40px 0 80px 0" }}>
-          <div className="container" style={{ maxWidth: "1140px" }}>
+          <div className="container" style={{ maxWidth: "1400px" }}>
             <div
               style={{
                 textAlign: "center",

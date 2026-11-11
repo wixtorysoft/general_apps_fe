@@ -231,7 +231,7 @@ export default function AboutPage() {
 
         {/* Studio Life Visual Feature */}
         <section style={{ padding: "20px 0 60px 0" }}>
-          <div className="container" style={{ maxWidth: "1140px" }}>
+          <div className="container" style={{ maxWidth: "1380px" }}>
             <div
               className="glass-panel"
               style={{
@@ -359,7 +359,7 @@ export default function AboutPage() {
 
         {/* 4 Core Values */}
         <section style={{ padding: "40px 0 60px 0" }}>
-          <div className="container" style={{ maxWidth: "1140px" }}>
+          <div className="container" style={{ maxWidth: "1380px" }}>
             <div style={{ textAlign: "center", marginBottom: "48px" }}>
               <span
                 style={{
@@ -452,7 +452,7 @@ export default function AboutPage() {
 
         {/* Studio Numbers Banner */}
         <section style={{ padding: "20px 0 40px 0" }}>
-          <div className="container" style={{ maxWidth: "1140px" }}>
+          <div className="container" style={{ maxWidth: "1380px" }}>
             <div
               className="glass-panel"
               style={{

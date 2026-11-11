@@ -243,7 +243,7 @@ export default function VisionMissionPage() {
 
         {/* Vision & Mission Two Big Flagship Cards */}
         <section style={{ padding: "20px 0 60px 0" }}>
-          <div className="container" style={{ maxWidth: "1140px" }}>
+          <div className="container" style={{ maxWidth: "1380px" }}>
             <div
               style={{
                 display: "grid",
@@ -424,7 +424,7 @@ export default function VisionMissionPage() {
 
         {/* Strategic Commitments */}
         <section style={{ padding: "20px 0 60px 0" }}>
-          <div className="container" style={{ maxWidth: "1140px" }}>
+          <div className="container" style={{ maxWidth: "1380px" }}>
             <div style={{ textAlign: "center", marginBottom: "48px" }}>
               <span
                 style={{
@@ -517,7 +517,7 @@ export default function VisionMissionPage() {
 
         {/* Bottom CTA Banner */}
         <section style={{ padding: "20px 0 40px 0" }}>
-          <div className="container" style={{ maxWidth: "1140px" }}>
+          <div className="container" style={{ maxWidth: "1380px" }}>
             <div
               className="glass-panel"
               style={{

@@ -53,15 +53,7 @@ export function HeroSection() {
       />
 
       <div className="dt-container" style={{ position: "relative", zIndex: 1 }}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.1fr 0.9fr",
-            gap: "48px",
-            alignItems: "center",
-          }}
-          className="dt-hero-grid"
-        >
+        <div className="dt-hero-grid">
           {/* Left Column: Headlines & CTA */}
           <motion.div
             initial={{ opacity: 0, x: -35 }}

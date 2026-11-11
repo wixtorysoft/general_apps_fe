@@ -114,7 +114,7 @@ export function ContactSection() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          style={{ maxWidth: "560px", margin: "0 auto" }}
+          style={{ maxWidth: "680px", margin: "0 auto" }}
         >
           <div
             className="dt-card"

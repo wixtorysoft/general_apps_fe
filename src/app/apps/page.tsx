@@ -313,7 +313,7 @@ export default function AppsPage() {
 
         {/* Applications Showcase Sections (Alternating Layout) */}
         <section style={{ padding: "20px 0" }}>
-          <div className="container" style={{ maxWidth: "1140px" }}>
+          <div className="container" style={{ maxWidth: "1400px" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "80px" }}>
               {/* APP 1: WIXTORY LANGUAGE BOX (Icon Left, Text Right) */}
               <div

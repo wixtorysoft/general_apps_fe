@@ -31,7 +31,7 @@ export function FAQSection() {
 
   return (
     <section className="dt-section dt-section-alt1" id="faq">
-      <div className="dt-container" style={{ maxWidth: "860px" }}>
+      <div className="dt-container" style={{ maxWidth: "1060px" }}>
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

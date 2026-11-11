@@ -89,7 +89,7 @@ export default function DomainTrackPrivacyPolicyPage() {
   return (
     <PageLayout>
       <section className="dt-section dt-section-main" style={{ paddingTop: "40px", paddingBottom: "80px" }}>
-        <div className="dt-container" style={{ maxWidth: "900px" }}>
+        <div className="dt-container" style={{ maxWidth: "1080px" }}>
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -136,11 +136,12 @@
    ------------------------------------------------------------------------------ */
 .dt-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: clamp(16px, 2.5vw, 36px);
+  padding-right: clamp(16px, 2.5vw, 36px);
+  box-sizing: border-box;
 }
 
 .dt-section {
@@ -312,25 +313,61 @@
 /* ------------------------------------------------------------------------------
    5. RESPONSIVE GRIDS
    ------------------------------------------------------------------------------ */
+.dt-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(32px, 3.5vw, 64px);
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .dt-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+    text-align: center;
+  }
+}
+
+.dt-footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+  gap: clamp(24px, 3vw, 48px);
+  margin-bottom: 48px;
+}
+
+@media (max-width: 960px) {
+  .dt-footer-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 32px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .dt-footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+}
+
 .dt-grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: clamp(16px, 1.8vw, 24px);
 }
 
 .dt-grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: clamp(20px, 2.2vw, 32px);
 }
 
 .dt-grid-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
+  gap: clamp(20px, 2.5vw, 36px);
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1180px) {
   .dt-grid-4 {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
@@ -340,6 +377,7 @@
 @media (max-width: 960px) {
   .dt-grid-3 {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
 
@@ -348,7 +386,7 @@
   .dt-grid-3,
   .dt-grid-2 {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 18px;
   }
 }
 
@@ -458,10 +496,12 @@
 .dt-toolbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 36px;
+  gap: 12px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 36px auto;
   padding: 8px 14px;
   border-radius: 9999px;
   background: var(--dt-toolbar-bg);
