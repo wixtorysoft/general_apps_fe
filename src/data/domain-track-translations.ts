@@ -1828,18 +1828,149 @@ export const translations: Record<Language, Translations> = {
   },
 };
 
-export const screenshotData = [
-  { src: "/domain-track/screens/1-main.png", alt: "Main Screen" },
-  { src: "/domain-track/screens/2-search.png", alt: "Search Screen" },
-  { src: "/domain-track/screens/3-extension.png", alt: "Extension Selection" },
-  { src: "/domain-track/screens/4-search.png", alt: "Search Results" },
-  { src: "/domain-track/screens/13-searchResult.png", alt: "Search Results" },
-  { src: "/domain-track/screens/5-history.png", alt: "History Panel" },
-  { src: "/domain-track/screens/6-clearHistory.png", alt: "Clear History" },
-  { src: "/domain-track/screens/7-favorite.png", alt: "Favorites Panel" },
-  { src: "/domain-track/screens/8-clearFavorite.png", alt: "Clear Favorites" },
-  { src: "/domain-track/screens/9-setting.png", alt: "Settings Panel" },
-  { src: "/domain-track/screens/10-about.png", alt: "About Dialog" },
-  { src: "/domain-track/screens/11-help.png", alt: "Help Dialog" },
-  { src: "/domain-track/screens/12-languages.png", alt: "Language Settings" },
+export interface ScreenshotItem {
+  src: string;
+  alt: string;
+  device: "phone" | "tablet";
+  title: string;
+  category: "main" | "search" | "favorites" | "history" | "settings" | "about";
+}
+
+export const screenshotData: ScreenshotItem[] = [
+  // 1-main.png (Özel korunan ana ekran görüntüsü)
+  {
+    src: "/domain-track/screens/1-main.png",
+    alt: "Main Splash & Brand Screen",
+    device: "phone",
+    title: "Ana Giriş ve Marka Ekranı",
+    category: "main",
+  },
+  // Telefon Ekran Görüntüleri (12 adet)
+  {
+    src: "/domain-track/screens/Phone-DomainSearchScreen1.png",
+    alt: "Instant Domain Search & Availability",
+    device: "phone",
+    title: "Hızlı Alan Adı Arama ve Sorgulama",
+    category: "search",
+  },
+  {
+    src: "/domain-track/screens/Phone-DomainSearchScreen3.png",
+    alt: "Advanced Domain Search & Extensions",
+    device: "phone",
+    title: "Gelişmiş Alan Adı Arama ve Uzantı Seçimi",
+    category: "search",
+  },
+  {
+    src: "/domain-track/screens/Phone-DomainSearchScreenResult.png",
+    alt: "Detailed Domain Availability Results",
+    device: "phone",
+    title: "Detaylı Alan Adı Sorgulama Sonuçları",
+    category: "search",
+  },
+  {
+    src: "/domain-track/screens/Phone-DomainSearchExtensionScreen.png",
+    alt: "TLD Extensions Filter & Categories",
+    device: "phone",
+    title: "TLD Uzantı Filtreleme ve Kategoriler",
+    category: "search",
+  },
+  {
+    src: "/domain-track/screens/Phone-HistoryScreen.png",
+    alt: "Search History Log",
+    device: "phone",
+    title: "Sorgulama Geçmişi Kayıtları",
+    category: "history",
+  },
+  {
+    src: "/domain-track/screens/Phone-HistoryScreen2.png",
+    alt: "Search History Analysis & Tracking",
+    device: "phone",
+    title: "Geçmiş Alan Adı Takip Listesi",
+    category: "history",
+  },
+  {
+    src: "/domain-track/screens/Phone-FavoriteScreen.png",
+    alt: "Favorite Domains List",
+    device: "phone",
+    title: "Favori Alan Adları Listesi",
+    category: "favorites",
+  },
+  {
+    src: "/domain-track/screens/Phone-FavoriteScreen2.png",
+    alt: "Favorite Domains Management",
+    device: "phone",
+    title: "Favori Yönetimi ve Detaylı Takip",
+    category: "favorites",
+  },
+  {
+    src: "/domain-track/screens/Phone-SettingScreen.png",
+    alt: "Preferences & Theme Settings",
+    device: "phone",
+    title: "Ayarlar ve Dil Tercihleri",
+    category: "settings",
+  },
+  {
+    src: "/domain-track/screens/Phone-AboutScreen-1.png",
+    alt: "About Application Overview",
+    device: "phone",
+    title: "Uygulama Bilgileri ve Sürüm",
+    category: "about",
+  },
+  {
+    src: "/domain-track/screens/Phone-AboutScreen-2.png",
+    alt: "Features & Developer Legal Info",
+    device: "phone",
+    title: "Geliştirici ve Yasal Bilgiler",
+    category: "about",
+  },
+  // Tablet Ekran Görüntüleri (7 adet)
+  {
+    src: "/domain-track/screens/Tablet-DomainSearchScreen1.png",
+    alt: "Tablet Domain Search Dashboard",
+    device: "tablet",
+    title: "Tablet Geniş Ekran Alan Adı Arama",
+    category: "search",
+  },
+  {
+    src: "/domain-track/screens/Tablet-DomainSearchScreen2.png",
+    alt: "Tablet Extended Results Table",
+    device: "tablet",
+    title: "Tablet Arama Sonuç Tablosu",
+    category: "search",
+  },
+  {
+    src: "/domain-track/screens/Tablet-HistorysCREEN.png",
+    alt: "Tablet History Audit",
+    device: "tablet",
+    title: "Tablet Geçmiş Arama Kayıtları",
+    category: "history",
+  },
+  {
+    src: "/domain-track/screens/Tablet-FavoriteScreen-1.png",
+    alt: "Tablet Favorites Showcase",
+    device: "tablet",
+    title: "Tablet Favoriler Vitrini",
+    category: "favorites",
+  },
+  {
+    src: "/domain-track/screens/Tablet-FavoriteScreen-2.png",
+    alt: "Tablet Multi-domain Comparison",
+    device: "tablet",
+    title: "Tablet Çoklu Alan Adı Karşılaştırma",
+    category: "favorites",
+  },
+  {
+    src: "/domain-track/screens/Tablet-SettingScreen.png",
+    alt: "Tablet System Configuration",
+    device: "tablet",
+    title: "Tablet Sistem ve Yapılandırma",
+    category: "settings",
+  },
+  {
+    src: "/domain-track/screens/Tablet-AboutScreen-1.png",
+    alt: "Tablet Overview & Information",
+    device: "tablet",
+    title: "Tablet Bilgilendirme ve Detaylar",
+    category: "about",
+  },
 ];

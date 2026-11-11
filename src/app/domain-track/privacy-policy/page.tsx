@@ -118,10 +118,10 @@ export default function DomainTrackPrivacyPolicyPage() {
               </h1>
             </div>
 
-            <p style={{ fontSize: "18px", color: "rgba(255, 255, 255, 0.75)", fontWeight: 600, marginBottom: "8px" }}>
+            <p style={{ fontSize: "18px", color: "var(--dt-text-secondary)", fontWeight: 600, marginBottom: "8px" }}>
               {t.privacy_subtitle}
             </p>
-            <p style={{ fontSize: "14px", color: "rgba(255, 255, 255, 0.45)", fontFamily: "monospace" }}>
+            <p style={{ fontSize: "14px", color: "var(--dt-text-muted)", fontFamily: "monospace" }}>
               {t.privacy_effective_date}
             </p>
           </motion.div>
@@ -202,20 +202,18 @@ export default function DomainTrackPrivacyPolicyPage() {
                 gap: "8px",
                 padding: "12px 24px",
                 borderRadius: "14px",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
-                background: "rgba(255, 255, 255, 0.05)",
-                color: "rgba(255, 255, 255, 0.85)",
+                border: "1px solid var(--dt-card-border)",
+                background: "var(--dt-pill-bg)",
+                color: "var(--dt-text-primary)",
                 fontWeight: 600,
                 fontSize: "14.5px",
                 textDecoration: "none",
                 transition: "all 0.25s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
                 e.currentTarget.style.transform = "translateY(-2px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
@@ -243,7 +241,7 @@ export default function DomainTrackPrivacyPolicyPage() {
                     e.currentTarget.style.borderColor = section.borderColor;
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.1)";
+                    e.currentTarget.style.borderColor = "var(--dt-card-border, rgba(255, 255, 255, 0.1))";
                   }}
                 >
                   <div
@@ -281,36 +279,36 @@ export default function DomainTrackPrivacyPolicyPage() {
                   {/* Body Content */}
                   <div style={{ paddingLeft: "4px" }}>
                     {section.content && (
-                      <p style={{ fontSize: "15px", color: "rgba(255, 255, 255, 0.75)", lineHeight: "1.7", margin: 0 }}>
+                      <p style={{ fontSize: "15px", color: "var(--dt-text-secondary)", lineHeight: "1.7", margin: 0 }}>
                         {t[section.content]}
                       </p>
                     )}
 
                     {section.hasList && (
                       <div style={{ display: "flex", flexDirection: "column", gap: "14px", marginTop: "10px" }}>
-                        <div style={{ paddingLeft: "16px", borderLeft: "2px solid rgba(255, 255, 255, 0.15)" }}>
-                          <p style={{ fontSize: "14.5px", fontWeight: 700, color: "#ffffff", marginBottom: "4px" }}>
+                        <div style={{ paddingLeft: "16px", borderLeft: "2px solid var(--dt-card-border)" }}>
+                          <p style={{ fontSize: "14.5px", fontWeight: 700, color: "var(--dt-text-primary)", marginBottom: "4px" }}>
                             {t.privacy_section2_how}
                           </p>
-                          <p style={{ fontSize: "14px", color: "rgba(255, 255, 255, 0.7)", lineHeight: "1.6" }}>
+                          <p style={{ fontSize: "14px", color: "var(--dt-text-secondary)", lineHeight: "1.6" }}>
                             {t.privacy_section2_how_content}
                           </p>
                         </div>
 
-                        <div style={{ paddingLeft: "16px", borderLeft: "2px solid rgba(255, 255, 255, 0.15)" }}>
-                          <p style={{ fontSize: "14.5px", fontWeight: 700, color: "#ffffff", marginBottom: "4px" }}>
+                        <div style={{ paddingLeft: "16px", borderLeft: "2px solid var(--dt-card-border)" }}>
+                          <p style={{ fontSize: "14.5px", fontWeight: 700, color: "var(--dt-text-primary)", marginBottom: "4px" }}>
                             {t.privacy_section2_data}
                           </p>
-                          <p style={{ fontSize: "14px", color: "rgba(255, 255, 255, 0.7)", lineHeight: "1.6" }}>
+                          <p style={{ fontSize: "14px", color: "var(--dt-text-secondary)", lineHeight: "1.6" }}>
                             {t.privacy_section2_data_content}
                           </p>
                         </div>
 
-                        <div style={{ paddingLeft: "16px", borderLeft: "2px solid rgba(255, 255, 255, 0.15)" }}>
-                          <p style={{ fontSize: "14.5px", fontWeight: 700, color: "#ffffff", marginBottom: "4px" }}>
+                        <div style={{ paddingLeft: "16px", borderLeft: "2px solid var(--dt-card-border)" }}>
+                          <p style={{ fontSize: "14.5px", fontWeight: 700, color: "var(--dt-text-primary)", marginBottom: "4px" }}>
                             {t.privacy_section2_control}
                           </p>
-                          <p style={{ fontSize: "14px", color: "rgba(255, 255, 255, 0.7)", lineHeight: "1.6" }}>
+                          <p style={{ fontSize: "14px", color: "var(--dt-text-secondary)", lineHeight: "1.6" }}>
                             {t.privacy_section2_control_content}
                           </p>
                         </div>

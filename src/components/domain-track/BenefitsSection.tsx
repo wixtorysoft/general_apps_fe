@@ -64,15 +64,7 @@ export function BenefitsSection() {
           >
             {t.section_benefits}
           </h2>
-          <p
-            style={{
-              fontSize: "17px",
-              color: "rgba(255, 255, 255, 0.7)",
-              maxWidth: "680px",
-              margin: "0 auto",
-              lineHeight: "1.6",
-            }}
-          >
+          <p className="dt-subtitle">
             {t.section_benefits_desc}
           </p>
         </motion.div>
@@ -99,7 +91,7 @@ export function BenefitsSection() {
                   e.currentTarget.style.borderColor = card.borderColor;
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.1)";
+                  e.currentTarget.style.borderColor = "var(--dt-card-border)";
                 }}
               >
                 <div
@@ -132,7 +124,7 @@ export function BenefitsSection() {
                     style={{
                       fontSize: "19px",
                       fontWeight: 700,
-                      color: "#ffffff",
+                      color: "var(--dt-text-primary)",
                       marginBottom: "8px",
                     }}
                   >
@@ -141,7 +133,7 @@ export function BenefitsSection() {
                   <p
                     style={{
                       fontSize: "15px",
-                      color: "rgba(255, 255, 255, 0.72)",
+                      color: "var(--dt-text-secondary)",
                       lineHeight: "1.65",
                     }}
                   >

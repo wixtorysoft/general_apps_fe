@@ -2,6 +2,7 @@
 
 import React from "react";
 import "@/styles/domain-track.css";
+import { DomainTrackThemeScope } from "@/components/domain-track/DomainTrackThemeScope";
 import { Navbar } from "@/components/domain-track/Navbar";
 import { HeroSection } from "@/components/domain-track/HeroSection";
 import { ScreenshotsSection } from "@/components/domain-track/ScreenshotsSection";
@@ -14,7 +15,7 @@ import { Footer } from "@/components/domain-track/Footer";
 
 export default function DomainTrackHomePage() {
   return (
-    <div className="dt-root">
+    <DomainTrackThemeScope>
       <Navbar />
       <main style={{ flex: 1 }}>
         <HeroSection />
@@ -26,6 +27,6 @@ export default function DomainTrackHomePage() {
         <ContactSection />
       </main>
       <Footer />
-    </div>
+    </DomainTrackThemeScope>
   );
 }

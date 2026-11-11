@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useDomainTrackLanguageStore } from "@/store/domain-track-language-store";
+import { useDomainTrackThemeStore } from "@/store/domain-track-theme-store";
 
 const faqItems = [
   { qKey: "faq1_q" as const, aKey: "faq1_a" as const },
@@ -20,6 +21,8 @@ const faqItems = [
 
 export function FAQSection() {
   const { t } = useDomainTrackLanguageStore();
+  const { resolvedTheme } = useDomainTrackThemeStore();
+  const isLight = resolvedTheme === "light";
   const [openIndex, setOpenIndex] = useState<number | null>(0); // first item open by default
 
   const toggle = (idx: number) => {
@@ -69,7 +72,7 @@ export function FAQSection() {
                     style={{
                       transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
                       transition: "transform 0.25s ease",
-                      color: isOpen ? "#c084fc" : "rgba(255, 255, 255, 0.5)",
+                      color: isOpen ? (isLight ? "#7c3aed" : "#c084fc") : "var(--dt-text-muted)",
                       flexShrink: 0,
                     }}
                   >

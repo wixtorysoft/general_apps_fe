@@ -86,15 +86,7 @@ export function FeaturesSection() {
           >
             {t.section_features}
           </h2>
-          <p
-            style={{
-              fontSize: "17px",
-              color: "rgba(255, 255, 255, 0.7)",
-              maxWidth: "680px",
-              margin: "0 auto",
-              lineHeight: "1.6",
-            }}
-          >
+          <p className="dt-subtitle">
             {t.section_features_desc}
           </p>
         </motion.div>
@@ -122,7 +114,7 @@ export function FeaturesSection() {
                   e.currentTarget.style.borderColor = card.borderColor;
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.1)";
+                  e.currentTarget.style.borderColor = "var(--dt-card-border)";
                 }}
               >
                 {/* Animated colored top border line */}
@@ -157,7 +149,7 @@ export function FeaturesSection() {
                   style={{
                     fontSize: "20px",
                     fontWeight: 700,
-                    color: "#ffffff",
+                    color: "var(--dt-text-primary)",
                     marginBottom: "12px",
                   }}
                 >
@@ -168,7 +160,7 @@ export function FeaturesSection() {
                 <p
                   style={{
                     fontSize: "14.5px",
-                    color: "rgba(255, 255, 255, 0.72)",
+                    color: "var(--dt-text-secondary)",
                     lineHeight: "1.65",
                     marginBottom: "20px",
                     flexGrow: 1,

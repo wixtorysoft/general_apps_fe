@@ -1,21 +1,139 @@
 /* ==============================================================================
-   DOMAIN TRACK OFFICIAL DESIGN SYSTEM & STYLES
-   Tailored Chromatic Deep Blue Palette (#0F1E2B / #0B1A27 / #0D1C29 / #12202E)
-   Specular Glassmorphism, Dynamic Gradients, Responsive Grids & Micro-Interactions
+   DOMAIN TRACK OFFICIAL DESIGN SYSTEM & THEMING ENGINE (2026 SaaS SPEC)
+   Dual Mode: Specular Dark (#080D1A / #0F172A) & Luminous Porcelain (#F8FAFC / #FFFFFF)
+   Specular Glassmorphism, Adaptive Gradients, Linear Segmented Controls & Micro-Interactions
    ============================================================================== */
 
-/* Base container & typography */
+/* ------------------------------------------------------------------------------
+   1. ROOT THEME VARIABLES (Dark Default & Light Mode)
+   ------------------------------------------------------------------------------ */
 .dt-root {
+  /* Default: Dark Chromatic Palette */
+  --dt-bg-main: #080D1A;
+  --dt-bg-alt1: #0D1627;
+  --dt-bg-alt2: #09101F;
+  --dt-bg-alt3: #111C33;
+  --dt-bg-footer: #050811;
+
+  --dt-text-primary: #FFFFFF;
+  --dt-text-secondary: #94A3B8;
+  --dt-text-muted: #64748B;
+
+  --dt-card-bg: rgba(15, 23, 42, 0.65);
+  --dt-card-border: rgba(255, 255, 255, 0.08);
+  --dt-card-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.5);
+  --dt-card-hover-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.7);
+
+  --dt-nav-bg: rgba(8, 13, 26, 0.92);
+  --dt-nav-bg-top: rgba(8, 13, 26, 0.78);
+  --dt-nav-border: rgba(255, 255, 255, 0.08);
+  --dt-nav-text: rgba(255, 255, 255, 0.75);
+
+  --dt-pill-bg: rgba(255, 255, 255, 0.06);
+  --dt-pill-border: rgba(255, 255, 255, 0.12);
+  --dt-pill-text: rgba(255, 255, 255, 0.90);
+
+  /* Modern Segmented Toolbar Tokens */
+  --dt-toolbar-bg: rgba(15, 23, 42, 0.78);
+  --dt-toolbar-border: rgba(255, 255, 255, 0.12);
+  --dt-toolbar-shadow: 0 10px 32px -4px rgba(0, 0, 0, 0.5);
+  --dt-toolbar-btn-inactive-color: rgba(255, 255, 255, 0.72);
+  --dt-toolbar-btn-inactive-hover: rgba(255, 255, 255, 0.08);
+  --dt-toolbar-count-bg: rgba(255, 255, 255, 0.15);
+  --dt-toolbar-count-text: #FFFFFF;
+
+  --dt-subtle-box-bg: rgba(255, 255, 255, 0.04);
+  --dt-subtle-box-border: rgba(255, 255, 255, 0.08);
+
+  --dt-carousel-arrow-bg: rgba(15, 23, 42, 0.85);
+  --dt-carousel-arrow-border: rgba(255, 255, 255, 0.18);
+  --dt-carousel-arrow-color: #FFFFFF;
+  --dt-carousel-caption-bg: rgba(15, 23, 42, 0.80);
+  --dt-carousel-caption-border: rgba(255, 255, 255, 0.12);
+  --dt-carousel-caption-text: #FFFFFF;
+
+  --dt-accordion-bg: rgba(15, 23, 42, 0.55);
+  --dt-accordion-border: rgba(255, 255, 255, 0.08);
+  --dt-accordion-trigger-color: #FFFFFF;
+
+  --dt-grid-card-bg: rgba(15, 23, 42, 0.65);
+  --dt-grid-line: rgba(255, 255, 255, 0.04);
+  --dt-shimmer-color: rgba(255, 255, 255, 0.06);
+
+  --dt-halo-purple: rgba(168, 85, 247, 0.18);
+  --dt-halo-cyan: rgba(6, 182, 212, 0.16);
+
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #0F1E2B;
-  color: #ffffff;
+  background-color: var(--dt-bg-main);
+  color: var(--dt-text-primary);
   font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: clip;
   position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Light Theme Variables */
+.dt-root.dt-theme-light {
+  --dt-bg-main: #F8FAFC;
+  --dt-bg-alt1: #FFFFFF;
+  --dt-bg-alt2: #F1F5F9;
+  --dt-bg-alt3: #FFFFFF;
+  --dt-bg-footer: #090F1C;
+
+  --dt-text-primary: #0F172A;
+  --dt-text-secondary: #475569;
+  --dt-text-muted: #64748B;
+
+  --dt-card-bg: rgba(255, 255, 255, 0.92);
+  --dt-card-border: rgba(203, 213, 225, 0.85);
+  --dt-card-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  --dt-card-hover-shadow: 0 20px 40px -8px rgba(124, 58, 237, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+
+  --dt-nav-bg: rgba(255, 255, 255, 0.92);
+  --dt-nav-bg-top: rgba(255, 255, 255, 0.85);
+  --dt-nav-border: rgba(226, 232, 240, 0.95);
+  --dt-nav-text: #334155;
+
+  --dt-pill-bg: rgba(15, 23, 42, 0.04);
+  --dt-pill-border: rgba(203, 213, 225, 0.8);
+  --dt-pill-text: #1E293B;
+
+  /* Modern Segmented Toolbar Tokens for Light Mode */
+  --dt-toolbar-bg: rgba(255, 255, 255, 0.92);
+  --dt-toolbar-border: rgba(203, 213, 225, 0.85);
+  --dt-toolbar-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.07), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  --dt-toolbar-btn-inactive-color: #475569;
+  --dt-toolbar-btn-inactive-hover: rgba(15, 23, 42, 0.05);
+  --dt-toolbar-count-bg: rgba(15, 23, 42, 0.07);
+  --dt-toolbar-count-text: #334155;
+
+  --dt-subtle-box-bg: rgba(241, 245, 249, 0.85);
+  --dt-subtle-box-border: rgba(203, 213, 225, 0.8);
+
+  --dt-carousel-arrow-bg: #FFFFFF;
+  --dt-carousel-arrow-border: rgba(203, 213, 225, 0.9);
+  --dt-carousel-arrow-color: #0F172A;
+  --dt-carousel-caption-bg: rgba(255, 255, 255, 0.96);
+  --dt-carousel-caption-border: rgba(203, 213, 225, 0.9);
+  --dt-carousel-caption-text: #0F172A;
+
+  --dt-accordion-bg: #FFFFFF;
+  --dt-accordion-border: rgba(203, 213, 225, 0.85);
+  --dt-accordion-trigger-color: #0F172A;
+
+  --dt-grid-card-bg: #FFFFFF;
+  --dt-grid-line: rgba(15, 23, 42, 0.04);
+  --dt-shimmer-color: rgba(15, 23, 42, 0.03);
+
+  --dt-halo-purple: rgba(147, 51, 234, 0.08);
+  --dt-halo-cyan: rgba(14, 165, 233, 0.08);
+}
+
+/* ------------------------------------------------------------------------------
+   2. CONTAINERS & SECTIONS
+   ------------------------------------------------------------------------------ */
 .dt-container {
   width: 100%;
   max-width: 1200px;
@@ -25,38 +143,46 @@
   padding-right: 24px;
 }
 
-/* Sections */
 .dt-section {
   padding-top: 80px;
   padding-bottom: 80px;
   position: relative;
   overflow: hidden;
+  transition: background-color 0.3s ease;
 }
 
 .dt-section-main {
-  background-color: #0F1E2B;
+  background-color: var(--dt-bg-main);
 }
 
 .dt-section-alt1 {
-  background-color: #0B1A27;
+  background-color: var(--dt-bg-alt1);
 }
 
 .dt-section-alt2 {
-  background-color: #0D1C29;
+  background-color: var(--dt-bg-alt2);
 }
 
 .dt-section-alt3 {
-  background-color: #12202E;
+  background-color: var(--dt-bg-alt3);
 }
 
 .dt-section-footer {
-  background-color: #0A1621;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--dt-bg-footer);
+  border-top: 1px solid var(--dt-card-border);
 }
 
-/* Headings with Gradients */
+/* ------------------------------------------------------------------------------
+   3. ADAPTIVE GRADIENT HEADINGS & SUBTITLES
+   ------------------------------------------------------------------------------ */
 .dt-gradient-purple-pink {
   background: linear-gradient(135deg, #c084fc 0%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dt-root.dt-theme-light .dt-gradient-purple-pink {
+  background: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -67,8 +193,20 @@
   -webkit-text-fill-color: transparent;
 }
 
+.dt-root.dt-theme-light .dt-gradient-pink-orange {
+  background: linear-gradient(135deg, #db2777 0%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .dt-gradient-cyan-blue {
   background: linear-gradient(135deg, #22d3ee 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dt-root.dt-theme-light .dt-gradient-cyan-blue {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -79,21 +217,51 @@
   -webkit-text-fill-color: transparent;
 }
 
+.dt-root.dt-theme-light .dt-gradient-emerald-cyan {
+  background: linear-gradient(135deg, #059669 0%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .dt-gradient-emerald-teal {
   background: linear-gradient(135deg, #34d399 0%, #2dd4bf 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Glassmorphism Cards */
+.dt-root.dt-theme-light .dt-gradient-emerald-teal {
+  background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Global Subtitle & Typography Utility Classes */
+.dt-subtitle {
+  font-size: 16.5px;
+  color: var(--dt-text-secondary) !important;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.dt-body-text {
+  color: var(--dt-text-secondary) !important;
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------------------------
+   4. GLASSMORPHISM CARDS & SHIMMER
+   ------------------------------------------------------------------------------ */
 .dt-card {
   position: relative;
-  background: rgba(0, 0, 0, 0.42);
+  background: var(--dt-card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--dt-card-border);
   border-radius: 20px;
   overflow: hidden;
+  box-shadow: var(--dt-card-shadow);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.35s ease,
               box-shadow 0.35s ease;
@@ -101,7 +269,16 @@
 
 .dt-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--dt-card-hover-shadow);
+}
+
+.dt-card h2,
+.dt-card h3 {
+  color: var(--dt-text-primary) !important;
+}
+
+.dt-card p {
+  color: var(--dt-text-secondary) !important;
 }
 
 .dt-card-topline {
@@ -122,7 +299,7 @@
   position: absolute;
   inset: 0;
   transform: translateX(-100%);
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  background: linear-gradient(90deg, transparent, var(--dt-shimmer-color), transparent);
   transition: transform 0.7s ease;
   pointer-events: none;
   z-index: 1;
@@ -132,7 +309,15 @@
   transform: translateX(100%);
 }
 
-/* Grids */
+/* ------------------------------------------------------------------------------
+   5. RESPONSIVE GRIDS
+   ------------------------------------------------------------------------------ */
+.dt-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
 .dt-grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -145,103 +330,76 @@
   gap: 28px;
 }
 
-.dt-grid-4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+@media (max-width: 1100px) {
+  .dt-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 960px) {
   .dt-grid-3 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .dt-grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 640px) {
+  .dt-grid-4,
   .dt-grid-3,
-  .dt-grid-2,
-  .dt-grid-4 {
+  .dt-grid-2 {
     grid-template-columns: 1fr;
     gap: 20px;
   }
 }
 
-/* Pill Badges & Chips */
+/* ------------------------------------------------------------------------------
+   6. INTERACTIVE BADGES & PILLS
+   ------------------------------------------------------------------------------ */
 .dt-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 18px;
+  padding: 8px 16px;
   border-radius: 9999px;
+  background: var(--dt-pill-bg);
+  border: 1px solid var(--dt-pill-border);
   font-size: 13.5px;
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--dt-pill-text);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transition: all 0.25s ease;
 }
 
 .dt-pill:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.25);
   transform: translateY(-2px);
+  border-color: rgba(168, 85, 247, 0.45);
 }
 
-.dt-tag {
-  display: inline-block;
-  padding: 4px 12px;
-  border-radius: 9999px;
-  font-size: 12px;
-  font-weight: 500;
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.2s ease;
-}
-
-.dt-card:hover .dt-tag {
-  background: rgba(255, 255, 255, 0.14);
-  color: #ffffff;
-}
-
-/* Floating animation */
-@keyframes dtFloat {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-16px); }
-  100% { transform: translateY(0px); }
-}
-
-.dt-floating-logo {
-  animation: dtFloat 5s ease-in-out infinite;
-}
-
-/* Phone Mockup */
+/* ------------------------------------------------------------------------------
+   7. PHONE & TABLET DEVICE MOCKUPS
+   ------------------------------------------------------------------------------ */
 .dt-phone-mockup {
   position: relative;
-  background: #1a1a2e;
-  border: 12px solid rgba(255, 255, 255, 0.08);
+  background: #10141E;
+  border: 12px solid #1E293B;
   border-radius: 42px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8),
-              0 0 0 1px rgba(255, 255, 255, 0.06),
-              0 0 80px -20px rgba(139, 92, 246, 0.18);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75),
+              0 0 0 1px rgba(255, 255, 255, 0.08),
+              0 0 70px -20px rgba(139, 92, 246, 0.25);
   overflow: hidden;
   flex-shrink: 0;
 }
 
+.dt-root.dt-theme-light .dt-phone-mockup {
+  border-color: #0F172A;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.35),
+              0 0 0 1px rgba(15, 23, 42, 0.1),
+              0 0 50px -15px rgba(124, 58, 237, 0.25);
+}
+
 .dt-phone-notch {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 24px;
-  background: #1a1a2e;
-  border-bottom-left-radius: 14px;
-  border-bottom-right-radius: 14px;
-  z-index: 20;
+  display: none;
 }
 
 .dt-phone-screen {
@@ -256,58 +414,286 @@
   position: relative;
 }
 
-/* Navigation items */
-.dt-nav-link {
-  font-size: 14.5px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.72);
-  text-decoration: none;
-  padding: 6px 12px;
-  border-radius: 8px;
+.dt-tablet-mockup {
+  position: relative;
+  background: #10141E;
+  border: 12px solid #1E293B;
+  border-radius: 36px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75),
+              0 0 0 1px rgba(255, 255, 255, 0.08),
+              0 0 80px -20px rgba(6, 182, 212, 0.25);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.dt-root.dt-theme-light .dt-tablet-mockup {
+  border-color: #0F172A;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.35),
+              0 0 0 1px rgba(15, 23, 42, 0.1),
+              0 0 60px -15px rgba(14, 165, 233, 0.25);
+}
+
+.dt-tablet-screen {
+  width: 380px;
+  height: 506px;
+  background: #000000;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .dt-tablet-screen {
+    width: 290px;
+    height: 386px;
+  }
+}
+
+/* ------------------------------------------------------------------------------
+   8. MODERN SEGMENTED CONTROLS & SCREENSHOT TOOLBAR
+   ------------------------------------------------------------------------------ */
+.dt-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 36px;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  background: var(--dt-toolbar-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--dt-toolbar-border);
+  box-shadow: var(--dt-toolbar-shadow);
+  transition: all 0.3s ease;
+}
+
+.dt-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 13.5px;
+  font-weight: 600;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--dt-toolbar-btn-inactive-color);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dt-tab-btn:hover {
+  color: var(--dt-text-primary);
+  background: var(--dt-toolbar-btn-inactive-hover);
+  border-color: transparent;
+  transform: translateY(-1px);
+}
+
+.dt-tab-btn.active {
+  color: #FFFFFF !important;
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 4px 16px -2px rgba(124, 58, 237, 0.45) !important;
+}
+
+.dt-tab-count {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  background: var(--dt-toolbar-count-bg);
+  color: var(--dt-toolbar-count-text);
   transition: all 0.2s ease;
 }
 
-.dt-nav-link:hover,
-.dt-nav-link.active {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
+.dt-tab-btn.active .dt-tab-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
 }
 
-/* Accordion */
-.dt-accordion-item {
-  background: rgba(0, 0, 0, 0.42);
+.dt-view-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 9999px;
+  background: var(--dt-subtle-box-bg);
+  border: 1px solid var(--dt-subtle-box-border);
+}
+
+.dt-view-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: var(--dt-toolbar-btn-inactive-color);
+  transition: all 0.2s ease;
+}
+
+.dt-view-toggle-btn:hover {
+  color: var(--dt-text-primary);
+}
+
+.dt-view-toggle-btn.active {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 10px rgba(124, 58, 237, 0.35);
+}
+
+.dt-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--dt-carousel-arrow-bg);
   backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  margin-bottom: 12px;
-  overflow: hidden;
-  transition: all 0.25s ease;
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--dt-carousel-arrow-border);
+  color: var(--dt-carousel-arrow-color);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.dt-accordion-item:hover {
-  border-color: rgba(192, 132, 252, 0.3);
-  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4);
+.dt-carousel-arrow:hover {
+  transform: translateY(-50%) scale(1.08);
+  border-color: rgba(124, 58, 237, 0.5);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
+}
+
+.dt-carousel-caption {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: var(--dt-carousel-caption-bg);
+  border: 1px solid var(--dt-carousel-caption-border);
+  color: var(--dt-carousel-caption-text);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.dt-screenshots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 22px;
+  width: 100%;
+}
+
+.dt-gallery-card {
+  position: relative;
+  background: var(--dt-card-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--dt-card-border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--dt-card-shadow);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.dt-gallery-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(192, 132, 252, 0.5);
+  box-shadow: var(--dt-card-hover-shadow), 0 0 25px rgba(168, 85, 247, 0.2);
+}
+
+.dt-lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* ------------------------------------------------------------------------------
+   9. NAVIGATION LINKS
+   ------------------------------------------------------------------------------ */
+.dt-nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dt-nav-text);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.dt-nav-link:hover {
+  color: var(--dt-text-primary);
+  background: var(--dt-pill-bg);
+}
+
+.dt-nav-link.active {
+  color: #c084fc;
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.dt-root.dt-theme-light .dt-nav-link.active {
+  color: #7c3aed;
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.25);
+}
+
+/* ------------------------------------------------------------------------------
+   10. ACCORDION (FAQ)
+   ------------------------------------------------------------------------------ */
+.dt-accordion-item {
+  background: var(--dt-accordion-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--dt-accordion-border);
+  border-radius: 16px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  box-shadow: var(--dt-card-shadow);
+  transition: all 0.25s ease;
 }
 
 .dt-accordion-item.open {
   border-color: rgba(192, 132, 252, 0.5);
-  box-shadow: 0 12px 32px -4px rgba(192, 132, 252, 0.15);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 0 20px rgba(192, 132, 252, 0.15);
 }
 
 .dt-accordion-trigger {
   width: 100%;
   padding: 20px 24px;
+  background: transparent;
+  border: none;
+  color: var(--dt-accordion-trigger-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 600;
-  text-align: left;
   cursor: pointer;
+  text-align: left;
   transition: color 0.2s ease;
 }
 
@@ -315,66 +701,79 @@
   color: #c084fc;
 }
 
+.dt-root.dt-theme-light .dt-accordion-trigger:hover {
+  color: #7c3aed;
+}
+
 .dt-accordion-content {
   padding: 0 24px 20px 24px;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--dt-text-secondary);
   font-size: 15px;
   line-height: 1.65;
 }
 
-/* Store buttons */
-.dt-store-buttons-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  align-items: center;
+/* ------------------------------------------------------------------------------
+   11. STORE BUTTONS & CONTACT ROWS
+   ------------------------------------------------------------------------------ */
+.dt-contact-row {
+  background: var(--dt-pill-bg) !important;
+  border: 1px solid var(--dt-pill-border) !important;
+  color: var(--dt-text-primary) !important;
+  transition: all 0.25s ease !important;
 }
 
-.dt-store-buttons-col {
+.dt-contact-row:hover {
+  border-color: rgba(168, 85, 247, 0.45) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-2px) !important;
+}
+
+.dt-contact-row div div:last-child {
+  color: var(--dt-text-primary) !important;
+}
+
+.dt-contact-row div div:first-child {
+  color: var(--dt-text-muted) !important;
+}
+
+.dt-store-buttons-row {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-  max-width: 220px;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
 .dt-store-btn {
   display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
   gap: 14px;
-  height: 60px;
-  padding: 10px 20px;
-  border-radius: 14px;
-  background: linear-gradient(180deg, #101F2C 0%, #09131B 100%);
-  border: 1.5px solid rgba(255, 255, 255, 0.16);
-  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 200px;
 }
 
-/* Equal, consistent width in row layout */
-.dt-store-buttons-row .dt-store-btn {
-  width: 210px;
-  min-width: 210px;
-  flex: 0 0 210px;
-}
-
-/* Equal, consistent full width in column layout */
-.dt-store-buttons-col .dt-store-btn {
-  width: 100%;
-  max-width: 100%;
+.dt-root.dt-theme-light .dt-store-btn {
+  background: #0F172A;
+  color: #ffffff;
+  border: 1.5px solid rgba(15, 23, 42, 0.3);
+  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.25);
 }
 
 .dt-store-btn:hover {
-  background: linear-gradient(180deg, #182B3D 0%, #0D1A25 100%);
-  border-color: rgba(139, 92, 246, 0.7);
-  box-shadow: 0 10px 28px -4px rgba(139, 92, 246, 0.4), 0 2px 10px rgba(0, 0, 0, 0.5);
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 18px 36px -8px rgba(0, 0, 0, 0.6),
+              0 0 24px rgba(192, 132, 252, 0.3);
 }
 
 .dt-store-btn:active {
@@ -386,14 +785,14 @@
   height: 30px;
   display: flex;
   align-items: center;
-  justifyContent: center;
+  justify-content: center;
   flex-shrink: 0;
 }
 
 .dt-store-btn-content {
   display: flex;
   flex-direction: column;
-  justifyContent: center;
+  justify-content: center;
   align-items: flex-start;
   min-width: 0;
   overflow: hidden;
@@ -407,9 +806,6 @@
   letter-spacing: 0.06em;
   line-height: 1.15;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 130px;
 }
 
 .dt-store-btn-title {
@@ -422,18 +818,9 @@
   white-space: nowrap;
 }
 
-@media (max-width: 520px) {
-  .dt-store-buttons-row {
-    width: 100%;
-  }
-  .dt-store-buttons-row .dt-store-btn {
-    width: 100%;
-    min-width: 100%;
-    flex: 1 1 100%;
-  }
-}
-
-/* RTL Support for Arabic (ar) */
+/* ------------------------------------------------------------------------------
+   12. RTL & ACCESSIBILITY
+   ------------------------------------------------------------------------------ */
 [dir="rtl"] .dt-root {
   direction: rtl;
   text-align: right;
@@ -447,4 +834,87 @@
   text-align: right;
 }
 
+/* ------------------------------------------------------------------------------
+   13. MACBOOK BROWSER WINDOW CARDS (How to Use Section)
+   ------------------------------------------------------------------------------ */
+.dt-browser-card {
+  position: relative;
+  background: var(--dt-card-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--dt-card-border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--dt-card-shadow);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
 
+.dt-browser-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--dt-card-hover-shadow);
+}
+
+.dt-browser-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: var(--dt-subtle-box-bg);
+  border-bottom: 1px solid var(--dt-subtle-box-border);
+  gap: 12px;
+}
+
+.dt-traffic-lights {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.dt-traffic-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.dt-traffic-dot.close { background: #FF5F56; }
+.dt-traffic-dot.minimize { background: #FFBD2E; }
+.dt-traffic-dot.maximize { background: #27C93F; }
+
+.dt-browser-nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--dt-text-muted);
+  flex-shrink: 0;
+}
+
+.dt-browser-url-bar {
+  flex: 1;
+  max-width: 280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--dt-pill-bg);
+  border: 1px solid var(--dt-pill-border);
+  font-size: 11px;
+  font-family: monospace;
+  color: var(--dt-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dt-browser-body {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}

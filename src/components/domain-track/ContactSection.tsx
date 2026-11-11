@@ -12,6 +12,7 @@ import {
   Send,
 } from "lucide-react";
 import { useDomainTrackLanguageStore } from "@/store/domain-track-language-store";
+import { useDomainTrackThemeStore } from "@/store/domain-track-theme-store";
 
 function YoutubeIcon({ size = 20 }: { size?: number }) {
   return (
@@ -23,6 +24,8 @@ function YoutubeIcon({ size = 20 }: { size?: number }) {
 
 export function ContactSection() {
   const { language } = useDomainTrackLanguageStore();
+  const { resolvedTheme } = useDomainTrackThemeStore();
+  const isLight = resolvedTheme === "light";
   const isTr = language === "tr";
 
   return (
@@ -98,15 +101,7 @@ export function ContactSection() {
             {isTr ? "İletişim & Destek" : "Contact & Support"}
           </h2>
 
-          <p
-            style={{
-              fontSize: "16px",
-              color: "rgba(255, 255, 255, 0.65)",
-              maxWidth: "600px",
-              margin: "0 auto",
-              lineHeight: 1.6,
-            }}
-          >
+          <p className="dt-subtitle">
             {isTr
               ? "Sorularınız, önerileriniz veya iş birliği talepleriniz için Wixtory ekibiyle doğrudan iletişime geçin."
               : "Have questions, suggestions, or need assistance? Reach out to the Wixtory team directly."}
@@ -125,11 +120,11 @@ export function ContactSection() {
             className="dt-card"
             style={{
               borderRadius: "28px",
-              background: "rgba(13, 28, 41, 0.85)",
+              background: "var(--dt-card-bg)",
               backdropFilter: "blur(24px)",
               WebkitBackdropFilter: "blur(24px)",
-              border: "1px solid rgba(255, 255, 255, 0.12)",
-              boxShadow: "0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 35px rgba(34, 211, 238, 0.1)",
+              border: "1px solid var(--dt-card-border)",
+              boxShadow: "var(--dt-card-shadow)",
               overflow: "hidden",
             }}
           >
@@ -152,16 +147,16 @@ export function ContactSection() {
                   margin: "0 auto 16px auto",
                   padding: "10px",
                   borderRadius: "20px",
-                  background: "rgba(0, 0, 0, 0.5)",
-                  border: "1px solid rgba(34, 211, 238, 0.35)",
-                  boxShadow: "0 10px 25px rgba(34, 211, 238, 0.2)",
+                  background: "var(--dt-pill-bg)",
+                  border: "1px solid var(--dt-pill-border)",
+                  boxShadow: "0 10px 25px rgba(34, 211, 238, 0.15)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                 }}
               >
                 <Image
-                  src="/domain-track/logo.png"
+                  src={isLight ? "/domain-track/logo-dark.png" : "/domain-track/logo.png"}
                   alt="Wixtory"
                   width={56}
                   height={56}
@@ -174,7 +169,7 @@ export function ContactSection() {
                 style={{
                   fontSize: "26px",
                   fontWeight: 800,
-                  color: "#ffffff",
+                  color: "var(--dt-text-primary)",
                   letterSpacing: "-0.01em",
                   marginBottom: "4px",
                 }}
@@ -388,14 +383,15 @@ export function ContactSection() {
 
                 {/* Location */}
                 <div
+                  className="dt-contact-row"
                   style={{
                     display: "flex",
                     alignItems: "center",
                     gap: "14px",
                     padding: "14px 16px",
                     borderRadius: "16px",
-                    background: "rgba(255, 255, 255, 0.04)",
-                    border: "1px solid rgba(255, 255, 255, 0.08)",
+                    background: "var(--dt-pill-bg)",
+                    border: "1px solid var(--dt-pill-border)",
                   }}
                 >
                   <div
@@ -415,10 +411,10 @@ export function ContactSection() {
                     <MapPin size={20} />
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: "11px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "rgba(255, 255, 255, 0.5)" }}>
+                    <div style={{ fontSize: "11px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--dt-text-muted)" }}>
                       Location
                     </div>
-                    <div style={{ fontSize: "14px", fontWeight: 600, color: "rgba(255, 255, 255, 0.9)" }}>
+                    <div style={{ fontSize: "14px", fontWeight: 600, color: "var(--dt-text-primary)" }}>
                       Turkey
                     </div>
                   </div>
@@ -446,12 +442,12 @@ export function ContactSection() {
                     gap: "8px",
                     padding: "12px 18px",
                     borderRadius: "14px",
-                    background: "linear-gradient(135deg, #22d3ee 0%, #3b82f6 100%)",
-                    color: "#0B1A27",
+                    background: "linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)",
+                    color: "#ffffff",
                     fontWeight: 700,
                     fontSize: "13.5px",
                     textDecoration: "none",
-                    boxShadow: "0 8px 20px rgba(34, 211, 238, 0.25)",
+                    boxShadow: "0 8px 20px rgba(6, 182, 212, 0.25)",
                     transition: "all 0.2s ease",
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
@@ -473,26 +469,20 @@ export function ContactSection() {
                     gap: "8px",
                     padding: "12px 18px",
                     borderRadius: "14px",
-                    background: "rgba(255, 255, 255, 0.08)",
-                    border: "1px solid rgba(255, 255, 255, 0.15)",
+                    background: "linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%)",
                     color: "#ffffff",
                     fontWeight: 700,
                     fontSize: "13.5px",
                     textDecoration: "none",
+                    boxShadow: "0 8px 20px rgba(139, 92, 246, 0.25)",
                     transition: "all 0.2s ease",
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-2px)";
-                    e.currentTarget.style.background = "rgba(255, 255, 255, 0.12)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.background = "rgba(255, 255, 255, 0.08)";
-                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
                 >
-                  <Layers size={16} color="#22d3ee" />
+                  <Layers size={16} />
                   <span>apps.wixtory.com</span>
-                  <ExternalLink size={13} style={{ opacity: 0.6 }} />
+                  <ExternalLink size={13} style={{ opacity: 0.8 }} />
                 </a>
               </div>
             </div>

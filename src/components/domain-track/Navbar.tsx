@@ -4,9 +4,11 @@ import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Globe, Layers, ChevronDown, Check, ArrowLeft } from "lucide-react";
+import { Menu, X, ChevronDown, Check, ArrowLeft, Layers } from "lucide-react";
 import { useDomainTrackLanguageStore } from "@/store/domain-track-language-store";
-import { languages, Language } from "@/data/domain-track-translations";
+import { useDomainTrackThemeStore } from "@/store/domain-track-theme-store";
+import { languages } from "@/data/domain-track-translations";
+import { ThemeToggle } from "./ThemeToggle";
 
 function YoutubeIcon({ size = 18 }: { size?: number }) {
   return (
@@ -28,6 +30,8 @@ const navItems = [
 
 export function Navbar() {
   const { language, setLanguage, t } = useDomainTrackLanguageStore();
+  const { resolvedTheme } = useDomainTrackThemeStore();
+  const isLight = resolvedTheme === "light";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
@@ -62,11 +66,13 @@ export function Navbar() {
         left: 0,
         width: "100%",
         zIndex: 1000,
-        backgroundColor: scrolled ? "rgba(15, 30, 43, 0.94)" : "rgba(15, 30, 43, 0.8)",
+        backgroundColor: scrolled
+          ? "var(--dt-nav-bg, rgba(15, 30, 43, 0.94))"
+          : "var(--dt-nav-bg-top, rgba(15, 30, 43, 0.8))",
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
-        borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-        boxShadow: scrolled ? "0 10px 30px -10px rgba(0, 0, 0, 0.5)" : "none",
+        borderBottom: "1px solid var(--dt-nav-border, rgba(255, 255, 255, 0.1))",
+        boxShadow: scrolled ? "0 10px 30px -10px rgba(0, 0, 0, 0.25)" : "none",
         transition: "all 0.3s ease",
       }}
     >
@@ -79,7 +85,7 @@ export function Navbar() {
           height: "74px",
         }}
       >
-        {/* Brand Logo & Wixtory Apps Back Button (Matching Language Box) */}
+        {/* Brand Logo & Wixtory Apps Back Button */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <Link
             href="/"
@@ -89,9 +95,9 @@ export function Navbar() {
               gap: "6px",
               padding: "6px 12px",
               borderRadius: "8px",
-              background: "rgba(255, 255, 255, 0.08)",
-              border: "1px solid rgba(255, 255, 255, 0.14)",
-              color: "rgba(255, 255, 255, 0.85)",
+              background: "var(--dt-pill-bg, rgba(255, 255, 255, 0.08))",
+              border: "1px solid var(--dt-pill-border, rgba(255, 255, 255, 0.14))",
+              color: "var(--dt-text-primary, rgba(255, 255, 255, 0.85))",
               fontSize: "12px",
               fontWeight: 600,
               textDecoration: "none",
@@ -114,11 +120,11 @@ export function Navbar() {
             title="Wixtory Domain Track"
           >
             <Image
-              src="/domain-track/logo.png"
+              src={isLight ? "/domain-track/logo-dark.png" : "/domain-track/logo.png"}
               alt="Wixtory Domain Track Logo"
-              width={38}
-              height={38}
-              style={{ height: "38px", width: "auto" }}
+              width={40}
+              height={40}
+              style={{ height: "40px", width: "auto" }}
               priority
             />
           </Link>
@@ -145,9 +151,9 @@ export function Navbar() {
                 style={
                   isActive
                     ? {
-                        color: "#c084fc",
-                        background: "rgba(192, 132, 252, 0.12)",
-                        border: "1px solid rgba(192, 132, 252, 0.25)",
+                        color: isLight ? "#7c3aed" : "#c084fc",
+                        background: isLight ? "rgba(124, 58, 237, 0.08)" : "rgba(192, 132, 252, 0.12)",
+                        border: isLight ? "1px solid rgba(124, 58, 237, 0.25)" : "1px solid rgba(192, 132, 252, 0.25)",
                       }
                     : {}
                 }
@@ -158,8 +164,11 @@ export function Navbar() {
           })}
         </div>
 
-        {/* Right side: YouTube + Language Selector + Mobile Toggle */}
+        {/* Right side: YouTube + Theme Toggle + Language Selector + Mobile Toggle */}
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          {/* Theme Switcher Toggle (Light, Dark, System) */}
+          <ThemeToggle />
+
           {/* YouTube Channel Button */}
           <a
             href="https://www.youtube.com/@Wixtoryy"
@@ -202,9 +211,9 @@ export function Navbar() {
                 gap: "8px",
                 padding: "8px 14px",
                 borderRadius: "12px",
-                background: "rgba(255, 255, 255, 0.08)",
-                border: "1px solid rgba(255, 255, 255, 0.15)",
-                color: "#ffffff",
+                background: "var(--dt-pill-bg, rgba(255, 255, 255, 0.08))",
+                border: "1px solid var(--dt-pill-border, rgba(255, 255, 255, 0.15))",
+                color: "var(--dt-text-primary, #ffffff)",
                 fontSize: "13.5px",
                 fontWeight: 600,
                 cursor: "pointer",
@@ -234,13 +243,13 @@ export function Navbar() {
                   width: "190px",
                   maxHeight: "340px",
                   overflowY: "auto",
-                  backgroundColor: "#0D1C29",
+                  backgroundColor: "var(--dt-card-bg, #0D1C29)",
                   backdropFilter: "blur(20px)",
                   WebkitBackdropFilter: "blur(20px)",
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  border: "1px solid var(--dt-card-border, rgba(255, 255, 255, 0.15))",
                   borderRadius: "14px",
                   padding: "6px",
-                  boxShadow: "0 20px 40px rgba(0, 0, 0, 0.6)",
+                  boxShadow: "0 20px 40px rgba(0, 0, 0, 0.35)",
                   zIndex: 2000,
                 }}
               >
@@ -261,18 +270,22 @@ export function Navbar() {
                       border: "none",
                       backgroundColor:
                         language === opt.value
-                          ? "rgba(192, 132, 252, 0.18)"
+                          ? "rgba(168, 85, 247, 0.18)"
                           : "transparent",
-                      color: language === opt.value ? "#c084fc" : "#ffffff",
-                      fontSize: "13.5px",
+                      color:
+                        language === opt.value
+                          ? "#c084fc"
+                          : "var(--dt-text-primary, #ffffff)",
+                      fontSize: "13px",
                       fontWeight: language === opt.value ? 700 : 500,
                       cursor: "pointer",
+                      transition: "all 0.15s ease",
                       textAlign: "left",
-                      transition: "background-color 0.15s ease",
                     }}
                     onMouseEnter={(e) => {
                       if (language !== opt.value) {
-                        e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.08)";
+                        e.currentTarget.style.backgroundColor =
+                          "var(--dt-pill-bg, rgba(255, 255, 255, 0.08))";
                       }
                     }}
                     onMouseLeave={(e) => {
@@ -281,10 +294,10 @@ export function Navbar() {
                       }
                     }}
                   >
-                    <span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                       <span>{opt.flag}</span>
                       <span>{opt.label}</span>
-                    </span>
+                    </div>
                     {language === opt.value && <Check size={14} color="#c084fc" />}
                   </button>
                 ))}
@@ -296,15 +309,15 @@ export function Navbar() {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             style={{
-              display: "none",
+              display: "flex",
               alignItems: "center",
               justifyContent: "center",
               width: "40px",
               height: "40px",
               borderRadius: "10px",
-              background: "rgba(255, 255, 255, 0.08)",
-              border: "1px solid rgba(255, 255, 255, 0.12)",
-              color: "#ffffff",
+              background: "var(--dt-pill-bg, rgba(255, 255, 255, 0.08))",
+              border: "1px solid var(--dt-pill-border, rgba(255, 255, 255, 0.12))",
+              color: "var(--dt-text-primary, #ffffff)",
               cursor: "pointer",
             }}
             className="dt-mobile-toggle"
@@ -319,8 +332,8 @@ export function Navbar() {
       {mobileOpen && (
         <div
           style={{
-            backgroundColor: "#0F1E2B",
-            borderBottom: "1px solid rgba(255, 255, 255, 0.12)",
+            backgroundColor: "var(--dt-bg-alt1, #0F1E2B)",
+            borderBottom: "1px solid var(--dt-card-border, rgba(255, 255, 255, 0.12))",
             padding: "16px 24px 24px 24px",
             display: "flex",
             flexDirection: "column",
@@ -343,10 +356,10 @@ export function Navbar() {
                   fontSize: "15px",
                   fontWeight: 600,
                   textDecoration: "none",
-                  color: isActive ? "#c084fc" : "rgba(255, 255, 255, 0.85)",
+                  color: isActive ? "#c084fc" : "var(--dt-text-primary, rgba(255, 255, 255, 0.85))",
                   backgroundColor: isActive
                     ? "rgba(192, 132, 252, 0.12)"
-                    : "rgba(255, 255, 255, 0.04)",
+                    : "var(--dt-pill-bg, rgba(255, 255, 255, 0.04))",
                   border: isActive
                     ? "1px solid rgba(192, 132, 252, 0.3)"
                     : "1px solid transparent",
@@ -357,50 +370,55 @@ export function Navbar() {
             );
           })}
 
-          <a
-            href="https://www.youtube.com/@Wixtoryy"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setMobileOpen(false)}
-            style={{
-              padding: "12px 16px",
-              borderRadius: "10px",
-              fontSize: "15px",
-              fontWeight: 600,
-              textDecoration: "none",
-              color: "#ff4444",
-              backgroundColor: "rgba(239, 68, 68, 0.08)",
-              border: "1px solid rgba(239, 68, 68, 0.25)",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-            }}
-          >
-            <YoutubeIcon size={18} />
-            <span>YouTube @Wixtoryy</span>
-          </a>
+          <div style={{ display: "flex", gap: "10px", marginTop: "6px" }}>
+            <a
+              href="https://www.youtube.com/@Wixtoryy"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileOpen(false)}
+              style={{
+                flex: 1,
+                padding: "12px 16px",
+                borderRadius: "10px",
+                fontSize: "14px",
+                fontWeight: 600,
+                textDecoration: "none",
+                color: "#ff4444",
+                backgroundColor: "rgba(239, 68, 68, 0.08)",
+                border: "1px solid rgba(239, 68, 68, 0.25)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+              }}
+            >
+              <YoutubeIcon size={18} />
+              <span>YouTube</span>
+            </a>
 
-          <Link
-            href="/"
-            onClick={() => setMobileOpen(false)}
-            style={{
-              padding: "12px 16px",
-              borderRadius: "10px",
-              fontSize: "15px",
-              fontWeight: 600,
-              textDecoration: "none",
-              color: "#22d3ee",
-              backgroundColor: "rgba(34, 211, 238, 0.08)",
-              border: "1px solid rgba(34, 211, 238, 0.2)",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              marginTop: "8px",
-            }}
-          >
-            <Layers size={16} />
-            <span>← Wixtory Apps</span>
-          </Link>
+            <Link
+              href="/"
+              onClick={() => setMobileOpen(false)}
+              style={{
+                flex: 1,
+                padding: "12px 16px",
+                borderRadius: "10px",
+                fontSize: "14px",
+                fontWeight: 600,
+                textDecoration: "none",
+                color: "#22d3ee",
+                backgroundColor: "rgba(34, 211, 238, 0.08)",
+                border: "1px solid rgba(34, 211, 238, 0.2)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+              }}
+            >
+              <Layers size={16} />
+              <span>Wixtory</span>
+            </Link>
+          </div>
         </div>
       )}
 
@@ -421,7 +439,7 @@ export function Navbar() {
             display: flex !important;
           }
           .hidden-mobile {
-            display: none;
+            display: none !important;
           }
         }
       `}</style>

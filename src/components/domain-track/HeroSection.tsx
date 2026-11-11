@@ -3,12 +3,15 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Globe, Search, History, Star } from "lucide-react";
+import { Search, History, Star, ShieldCheck, Zap } from "lucide-react";
 import { useDomainTrackLanguageStore } from "@/store/domain-track-language-store";
+import { useDomainTrackThemeStore } from "@/store/domain-track-theme-store";
 import { StoreButtons } from "./StoreButtons";
 
 export function HeroSection() {
   const { t } = useDomainTrackLanguageStore();
+  const { resolvedTheme } = useDomainTrackThemeStore();
+  const isLight = resolvedTheme === "light";
 
   return (
     <section
@@ -28,7 +31,7 @@ export function HeroSection() {
           width: "550px",
           height: "550px",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(168, 85, 247, 0.16) 0%, rgba(236, 72, 153, 0.08) 50%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, rgba(236, 72, 153, 0.08) 50%, transparent 70%)",
           filter: "blur(90px)",
           pointerEvents: "none",
           zIndex: 0,
@@ -42,7 +45,7 @@ export function HeroSection() {
           width: "480px",
           height: "480px",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(6, 182, 212, 0.14) 0%, rgba(59, 130, 246, 0.06) 50%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(6, 182, 212, 0.16) 0%, rgba(59, 130, 246, 0.08) 50%, transparent 70%)",
           filter: "blur(90px)",
           pointerEvents: "none",
           zIndex: 0,
@@ -136,7 +139,7 @@ export function HeroSection() {
             <p
               style={{
                 fontSize: "17.5px",
-                color: "rgba(255, 255, 255, 0.72)",
+                color: "var(--dt-text-secondary)",
                 lineHeight: "1.65",
                 marginBottom: "36px",
                 maxWidth: "580px",
@@ -168,46 +171,157 @@ export function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Right Column: Floating 3D Logo */}
+          {/* Right Column: Modern 3D Device Showcase featuring 1-main.png & 3D Logo */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, x: 30 }}
+            initial={{ opacity: 0, scale: 0.92, x: 30 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
             style={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
               position: "relative",
+              minHeight: "520px",
             }}
           >
-            {/* Glowing Backdrop behind logo */}
+            {/* Glowing Backdrop behind device */}
             <div
               style={{
                 position: "absolute",
-                width: "360px",
-                height: "360px",
+                width: "420px",
+                height: "420px",
                 borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, rgba(236, 72, 153, 0.12) 50%, transparent 70%)",
-                filter: "blur(50px)",
+                background: "radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, rgba(56, 189, 248, 0.15) 50%, transparent 70%)",
+                filter: "blur(60px)",
                 zIndex: 0,
               }}
             />
 
-            {/* Floating Image */}
-            <div className="dt-floating-logo" style={{ position: "relative", zIndex: 1 }}>
-              <Image
-                src="/domain-track/logo.png"
-                alt="Wixtory Domain Track 3D Logo"
-                width={400}
-                height={400}
+            {/* Central Phone Mockup with 1-main.png */}
+            <div
+              style={{
+                position: "relative",
+                zIndex: 2,
+                transform: "rotate(-2deg)",
+                transition: "transform 0.4s ease",
+              }}
+              className="dt-hero-phone-wrap"
+            >
+              <div
+                className="dt-phone-mockup"
                 style={{
-                  width: "100%",
-                  maxWidth: "380px",
-                  height: "auto",
-                  filter: "drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6))",
+                  boxShadow: "0 30px 60px -15px rgba(0, 0, 0, 0.85), 0 0 45px rgba(168, 85, 247, 0.25)",
                 }}
-                priority
-              />
+              >
+                <div className="dt-phone-screen">
+                  <Image
+                    src="/domain-track/screens/Phone-DomainSearchScreen1.png"
+                    alt="Domain Track Domain Search Screen"
+                    width={272}
+                    height={572}
+                    style={{
+                      width: "272px",
+                      height: "572px",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
+                    priority
+                  />
+                </div>
+              </div>
+
+              {/* Floating Mini 3D Logo Badge */}
+              <motion.div
+                animate={{
+                  y: [0, -10, 0],
+                  rotate: [0, 2, 0],
+                }}
+                transition={{
+                  duration: 4.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                style={{
+                  position: "absolute",
+                  bottom: "-25px",
+                  right: "-35px",
+                  zIndex: 3,
+                  width: "110px",
+                  height: "110px",
+                  borderRadius: "26px",
+                  background: "var(--dt-card-bg)",
+                  backdropFilter: "blur(16px)",
+                  border: "1.5px solid var(--dt-card-border)",
+                  boxShadow: "var(--dt-card-shadow)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "10px",
+                }}
+              >
+                <Image
+                  src={isLight ? "/domain-track/logo-dark.png" : "/domain-track/logo.png"}
+                  alt="Wixtory Domain Track 3D Emblem"
+                  width={90}
+                  height={90}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    filter: "drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3))",
+                  }}
+                  priority
+                />
+              </motion.div>
+
+              {/* Floating Status Mini-Card */}
+              <motion.div
+                animate={{
+                  y: [0, 8, 0],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                style={{
+                  position: "absolute",
+                  top: "40px",
+                  left: "-45px",
+                  zIndex: 3,
+                  padding: "10px 16px",
+                  borderRadius: "16px",
+                  background: "var(--dt-card-bg)",
+                  backdropFilter: "blur(14px)",
+                  border: "1px solid var(--dt-card-border)",
+                  boxShadow: "var(--dt-card-shadow)",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                }}
+              >
+                <div
+                  style={{
+                    width: "32px",
+                    height: "32px",
+                    borderRadius: "10px",
+                    background: "rgba(56, 189, 248, 0.15)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#38bdf8",
+                  }}
+                >
+                  <Zap size={18} />
+                </div>
+                <div>
+                  <div style={{ fontSize: "12px", fontWeight: 700, color: "var(--dt-text-primary)" }}>
+                    Whois & DNS Instant
+                  </div>
+                  <div style={{ fontSize: "10px", color: "var(--dt-text-muted)" }}>
+                    100+ TLD Availability
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -217,7 +331,7 @@ export function HeroSection() {
         @media (max-width: 960px) {
           .dt-hero-grid {
             grid-template-columns: 1fr !important;
-            gap: 40px !important;
+            gap: 50px !important;
           }
         }
       `}</style>
