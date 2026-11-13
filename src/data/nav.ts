@@ -15,8 +15,7 @@ export const navLinks: NavLinkData[] = [
   { i18nKey: "nav_privacy", sectionId: "", href: "/language-box/privacy-policy" },
 ];
 
-export const LOGO_URL =
-  "https://raw.githubusercontent.com/celalaygar/main/refs/heads/main/project/language-box/Language-Box-Logo.png";
+export const LOGO_URL = "/language-box-logo.png";
 
 export const APP_STORE_URL = "https://apps.apple.com/tr/app/wixtory-language-box/id6761607811";
 export const GOOGLE_PLAY_URL =

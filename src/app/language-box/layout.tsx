@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Wixtory" }],
   icons: {
-    icon: "https://raw.githubusercontent.com/celalaygar/main/refs/heads/main/project/language-box/Language-Box-Logo.png",
+    icon: "/language-box-logo.png",
   },
   openGraph: {
     title: "Wixtory Language Box - Learn Languages Through Games",

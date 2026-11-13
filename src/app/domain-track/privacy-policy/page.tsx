@@ -193,7 +193,7 @@ export default function DomainTrackPrivacyPolicyPage() {
             </Link>
 
             <a
-              href="https://github.com/celalaygar/main/blob/main/project/wixtory-domain-track/privacy-policy.md"
+              href="/policies/domain-track-privacy-policy.md"
               target="_blank"
               rel="noopener noreferrer"
               style={{

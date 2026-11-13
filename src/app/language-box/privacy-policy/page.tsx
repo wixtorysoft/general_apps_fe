@@ -8,7 +8,7 @@ import { Shield, Mail, Lock, BarChart3, Smartphone, Server, Download, ExternalLi
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-const GITHUB_URL = "https://github.com/celalaygar/main/blob/main/project/language-box/privacy-policy.md";
+const POLICY_DOC_URL = "/policies/language-box-privacy-policy.md";
 
 const sections = [
   {
@@ -156,7 +156,7 @@ export default function PrivacyPolicyPage() {
                 <Download className="h-4 w-4" />
                 {t("privacy_download")}
               </Button>
-              <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+              <a href={POLICY_DOC_URL} target="_blank" rel="noopener noreferrer">
                 <Button
                   variant="outline"
                   className="border-white/10 bg-white/5 text-white/80 hover:bg-white/10 hover:text-white gap-2 px-6 rounded-xl transition-all duration-200 hover:scale-[1.02]"

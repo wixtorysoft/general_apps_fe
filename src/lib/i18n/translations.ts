@@ -236,7 +236,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     privacy_control_desc: 'You can use the "Clear Cache" button in the settings at any time to permanently delete this progress data from your device.',
     privacy_bottom_note: "Your privacy is our priority. No personal data is ever collected.",
     privacy_download: "Download Policy",
-    privacy_view_github: "View on GitHub",
+    privacy_view_github: "View Policy Document",
   },
   tr: {
     app_title: "Wixtory Language Box",
@@ -438,7 +438,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     privacy_control_desc: 'İlerleme verilerini cihazınızdan kalıcı olarak silmek için istediğiniz zaman ayarlardaki "Önbelleği Temizle" butonunu kullanabilirsiniz.',
     privacy_bottom_note: "Gizliliğiniz önceliğimizdir. Hiçbir kişisel veri asla toplanmaz.",
     privacy_download: "Politikayı İndir",
-    privacy_view_github: "GitHub'da Görüntüle",
+    privacy_view_github: "Politika Metnini Aç",
   },
   de: {
     app_title: "Wixtory Language Box",
@@ -628,7 +628,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     privacy_control_desc: 'Sie können jederzeit die Schaltfläche "Cache leeren" in den Einstellungen verwenden, um diese Fortschrittsdaten dauerhaft von Ihrem Gerät zu löschen.',
     privacy_bottom_note: "Ihre Privatsphäre ist unsere Priorität. Es werden niemals persönliche Daten erhoben.",
     privacy_download: "Richtlinie herunterladen",
-    privacy_view_github: "Auf GitHub ansehen",
+    privacy_view_github: "Dokument Öffnen",
   },
   it: {
     app_title: "Wixtory Language Box",
@@ -818,7 +818,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     privacy_control_desc: 'Puoi utilizzare il pulsante "Cancella Cache" nelle impostazioni in qualsiasi momento per eliminare definitivamente questi dati di progresso dal tuo dispositivo.',
     privacy_bottom_note: "La tua privacy è la nostra priorità. Nessun dato personale viene mai raccolto.",
     privacy_download: "Scarica Informativa",
-    privacy_view_github: "Visualizza su GitHub",
+    privacy_view_github: "Visualizza Documento",
   },
   pr: {
     app_title: "Wixtory Language Box",
@@ -1008,7 +1008,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     privacy_control_desc: 'Você pode usar o botão "Limpar Cache" nas configurações a qualquer momento para excluir permanentemente esses dados de progresso do seu dispositivo.',
     privacy_bottom_note: "Sua privacidade é nossa prioridade. Nenhum dado pessoal é coletado.",
     privacy_download: "Baixar Política",
-    privacy_view_github: "Ver no GitHub",
+    privacy_view_github: "Ver Documento",
   },
   es: {
     app_title: "Wixtory Language Box",
@@ -1198,7 +1198,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     privacy_control_desc: 'Puede usar el botón "Borrar Caché" en la configuración en cualquier momento para eliminar permanentemente estos datos de progreso de su dispositivo.',
     privacy_bottom_note: "Su privacidad es nuestra prioridad. Nunca se recopilan datos personales.",
     privacy_download: "Descargar Política",
-    privacy_view_github: "Ver en GitHub",
+    privacy_view_github: "Ver Documento",
   },
   fr: {
     app_title: "Wixtory Language Box",
@@ -1388,7 +1388,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     privacy_control_desc: 'Vous pouvez utiliser le bouton "Vider le Cache" dans les paramètres à tout moment pour supprimer définitivement ces données de progression de votre appareil.',
     privacy_bottom_note: "Votre vie privée est notre priorité. Aucune donnée personnelle n'est jamais collectée.",
     privacy_download: "Télécharger la Politique",
-    privacy_view_github: "Voir sur GitHub",
+    privacy_view_github: "Voir le Document",
   },
   sq: {
     app_title: "Wixtory Language Box",
@@ -1578,7 +1578,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     privacy_control_desc: 'Mund të përdorni butonin "Pastro Cache" në cilësimet në çdo kohë për të fshirë përgjithmonë këto të dhëna progresi nga pajisja juaj.',
     privacy_bottom_note: "Privatësia juaj është prioriteti ynë. Asnjë e dhënë personale nuk mbledhet kurrë.",
     privacy_download: "Shkarko Politikën",
-    privacy_view_github: "Shiko në GitHub",
+    privacy_view_github: "Shiko Dokumentin",
   },
   hu: {
     app_title: "Wixtory Language Box",
@@ -1768,7 +1768,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     privacy_control_desc: 'Bármikor használhatja a "Gyorsítótár Törlése" gombot a beállításokban, hogy véglegesen törölje ezeket az előrehaladási adatokat az eszközéről.',
     privacy_bottom_note: "Az Ön magánszférája a prioritásunk. Személyes adatot soha nem gyűjtünk.",
     privacy_download: "Szabályzat Letöltése",
-    privacy_view_github: "Megtekintés GitHubon",
+    privacy_view_github: "Dokumentum Megtekintése",
   },
   ru: {
     app_title: "Wixtory Language Box",
@@ -1958,7 +1958,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     privacy_control_desc: 'Вы можете использовать кнопку "Очистить кэш" в настройках в любое время, чтобы навсегда удалить данные о прогрессе с вашего устройства.',
     privacy_bottom_note: "Ваша конфиденциальность — наш приоритет. Персональные данные никогда не собираются.",
     privacy_download: "Скачать Политику",
-    privacy_view_github: "Смотреть на GitHub",
+    privacy_view_github: "Открыть Документ",
   },
   pt: {},
   ar: {
@@ -2160,7 +2160,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     privacy_control_desc: 'يمكنك استخدام خيار "مسح التخزين المؤقت" في الإعدادات في أي وقت لحذف بيانات التقدم نهائياً.',
     privacy_bottom_note: "خصوصيتكم هي أولويتنا الدائمة. لا يتم جمع أو تتبع أي بيانات شخصية على الإطلاق.",
     privacy_download: "تحميل الوثيقة",
-    privacy_view_github: "عرض على GitHub",
+    privacy_view_github: "عرض الوثيقة",
   },
   ja: {
     app_title: "Wixtory Language Box",
@@ -2361,7 +2361,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     privacy_control_desc: "設定の「キャッシュをクリア」ボタンにより、端末内の進捗データをいつでも完全に削除できます。",
     privacy_bottom_note: "ユーザーのプライバシー保護を最優先事項としています。",
     privacy_download: "ポリシーをダウンロード",
-    privacy_view_github: "GitHubで見る",
+    privacy_view_github: "文書を見る",
   },
   zh: {
     app_title: "Wixtory Language Box",
@@ -2562,7 +2562,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     privacy_control_desc: "您可随时在设置中点击“清除缓存”以彻底删除设备上的所有进度数据。",
     privacy_bottom_note: "保护您的隐私是我们不变的首要承诺。",
     privacy_download: "下载政策文本",
-    privacy_view_github: "在 GitHub 上查看",
+    privacy_view_github: "查看政策文本",
   },
 };
 

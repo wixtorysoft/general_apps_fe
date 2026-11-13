@@ -102,9 +102,9 @@ export const legalI18n: I18nRecord = {
     ja: "文書をダウンロード", zh: "下载政策文件", ar: "تحميل الوثيقة"
   },
   view_github: {
-    tr: "GitHub'da Görüntüle", en: "View on GitHub", it: "Vedi su GitHub", pt: "Ver no GitHub",
-    es: "Ver en GitHub", fr: "Voir sur GitHub", de: "Auf GitHub Anzeigen", ru: "Открыть на GitHub",
-    ja: "GitHubで見る", zh: "在 GitHub 查看", ar: "عرض على GitHub"
+    tr: "Politika Metnini Aç", en: "View Policy Document", it: "Visualizza Documento", pt: "Ver Documento",
+    es: "Ver Documento", fr: "Voir le Document", de: "Dokument Öffnen", ru: "Открыть Документ",
+    ja: "文書を見る", zh: "查看政策文本", ar: "عرض الوثيقة"
   },
   contact_heading: {
     tr: "İletişim & Geliştirici", en: "Contact & Developer", it: "Contatti & Sviluppatore", pt: "Contato & Desenvolvedor",
