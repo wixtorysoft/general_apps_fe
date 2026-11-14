@@ -1,19 +1,24 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { resolveI18n } from "@/i18n";
+import { ThemeLogo } from "@/components/ThemeLogo";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { LanguageToggle } from "@/components/LanguageToggle";
 import {
   Compass,
   ArrowLeft,
   Home,
   Sparkles,
   Gamepad2,
+  Globe,
   Moon,
   MessageSquare,
   PlaySquare,
-  ExternalLink,
+  ArrowUpRight,
 } from "lucide-react";
 
 export default function NotFound() {
@@ -31,188 +36,413 @@ export default function NotFound() {
     {
       title: resolveI18n("notFound", "language_box_title", language),
       href: "/language-box",
-      category: "Eğitim & Dil Oyunları",
+      category: resolveI18n("notFound", "cat_education", language),
       icon: Gamepad2,
-      gradient: "from-emerald-500/20 to-teal-500/10 border-emerald-500/30 text-emerald-500",
-      accent: "text-emerald-500",
+      accent: "#10b981",
+      bgLight: "rgba(16, 185, 129, 0.12)",
+    },
+    {
+      title: resolveI18n("notFound", "domain_track_title", language),
+      href: "/domain-track",
+      category: resolveI18n("notFound", "cat_domain", language),
+      icon: Globe,
+      accent: "#0284c7",
+      bgLight: "rgba(2, 132, 199, 0.12)",
     },
     {
       title: resolveI18n("notFound", "astrovibe_title", language),
       href: "/#astrovibe",
-      category: "Astroloji, Tarot & Stil",
+      category: resolveI18n("notFound", "cat_astro", language),
       icon: Moon,
-      gradient: "from-purple-500/20 to-indigo-500/10 border-purple-500/30 text-purple-400",
-      accent: "text-purple-400",
+      accent: "#8b5cf6",
+      bgLight: "rgba(139, 92, 246, 0.12)",
     },
     {
       title: resolveI18n("notFound", "excuse_title", language),
       href: "/#excuse",
-      category: "Mizah & Sosyal Savunma",
+      category: resolveI18n("notFound", "cat_excuse", language),
       icon: MessageSquare,
-      gradient: "from-amber-500/20 to-orange-500/10 border-amber-500/30 text-amber-500",
-      accent: "text-amber-500",
+      accent: "#f59e0b",
+      bgLight: "rgba(245, 158, 11, 0.12)",
     },
     {
       title: resolveI18n("notFound", "player_title", language),
       href: "/player",
-      category: "Medya & Reel Flow",
+      category: resolveI18n("notFound", "cat_player", language),
       icon: PlaySquare,
-      gradient: "from-cyan-500/20 to-blue-500/10 border-cyan-500/30 text-cyan-400",
-      accent: "text-cyan-400",
+      accent: "#06b6d4",
+      bgLight: "rgba(6, 182, 212, 0.12)",
     },
   ];
 
   return (
     <div
-      className="min-h-screen flex flex-col justify-between relative overflow-hidden"
       style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
         backgroundColor: "var(--bg-primary)",
         color: "var(--text-main)",
+        position: "relative",
+        overflowX: "hidden",
       }}
     >
       {/* Dynamic Ambient Background Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-sky-400/15 via-emerald-400/10 to-indigo-500/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[360px] h-[360px] bg-teal-400/10 rounded-full blur-[100px] pointer-events-none" />
+      <div
+        style={{
+          position: "absolute",
+          top: "20%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "min(700px, 90vw)",
+          height: "min(700px, 90vw)",
+          background: "radial-gradient(circle, var(--primary-glow) 0%, transparent 70%)",
+          borderRadius: "50%",
+          filter: "blur(90px)",
+          pointerEvents: "none",
+          opacity: 0.8,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "10%",
+          right: "5%",
+          width: "350px",
+          height: "350px",
+          background: "radial-gradient(circle, var(--secondary-glow) 0%, transparent 70%)",
+          borderRadius: "50%",
+          filter: "blur(80px)",
+          pointerEvents: "none",
+          opacity: 0.6,
+        }}
+      />
 
-      {/* Compact Top Navigation Bar */}
-      <header className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center justify-between">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-3 group transition-transform duration-200 hover:scale-105"
-        >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-sky-500/20 text-white font-bold text-lg">
-            W
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className="font-extrabold text-base tracking-tight" style={{ color: "var(--text-main)" }}>
-              WIXTORY
-            </span>
-            <span className="text-[10px] font-semibold tracking-wider uppercase opacity-60" style={{ color: "var(--text-secondary)" }}>
-              Apps & Software Ecosystem
-            </span>
-          </div>
-        </Link>
-
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition-all duration-200 hover:-translate-y-0.5"
+      {/* Modern Top Navigation Bar */}
+      <header
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 900,
+          width: "100%",
+          background: "var(--bg-glass)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          borderBottom: "1px solid var(--border-subtle)",
+        }}
+      >
+        <div
+          className="container"
           style={{
-            backgroundColor: "var(--bg-card)",
-            borderColor: "var(--border-subtle)",
-            color: "var(--text-main)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            height: "76px",
           }}
         >
-          <Home className="w-4 h-4 text-sky-500" />
-          <span>{homeBtn}</span>
-        </Link>
+          {/* Official Brand Logo */}
+          <Link
+            href="/"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              textDecoration: "none",
+              transition: "transform 0.2s ease",
+            }}
+          >
+            <ThemeLogo height={34} />
+          </Link>
+
+          {/* Quick Header Controls */}
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <LanguageToggle />
+            <ThemeToggle />
+            <Link
+              href="/"
+              className="btn-secondary"
+              style={{
+                padding: "8px 16px",
+                fontSize: "13px",
+                borderRadius: "10px",
+                textDecoration: "none",
+              }}
+            >
+              <Home size={15} style={{ color: "var(--primary)" }} />
+              <span className="hide-mobile">{homeBtn}</span>
+            </Link>
+          </div>
+        </div>
       </header>
 
-      {/* Main 404 Hero Area */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 max-w-4xl mx-auto text-center w-full">
-        {/* Glowing Badge */}
-        <div
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs sm:text-sm font-semibold mb-6 shadow-sm animate-pulse"
-          style={{
-            backgroundColor: "var(--badge-bg)",
-            borderColor: "var(--border-active)",
-            color: "var(--primary)",
-          }}
-        >
-          <Compass className="w-4 h-4 animate-spin" style={{ animationDuration: "12s" }} />
-          <span>{badgeText}</span>
+      {/* Main 404 Hero Stage */}
+      <main
+        className="container"
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          paddingTop: "50px",
+          paddingBottom: "60px",
+          textAlign: "center",
+          position: "relative",
+          zIndex: 10,
+        }}
+      >
+        {/* Top Status Pill */}
+        <div style={{ marginBottom: "20px" }}>
+          <span
+            className="pill-badge"
+            style={{
+              padding: "7px 18px",
+              fontSize: "13px",
+              boxShadow: "0 4px 14px -2px var(--primary-glow)",
+            }}
+          >
+            <Compass
+              size={15}
+              style={{
+                animation: "spinSlow 12s linear infinite",
+              }}
+            />
+            <span>{badgeText}</span>
+          </span>
         </div>
 
-        {/* 404 Number Glitch/Specular Display */}
-        <div className="relative mb-4 select-none">
+        {/* 404 Hero Monument */}
+        <div
+          style={{
+            position: "relative",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: "16px",
+            userSelect: "none",
+          }}
+        >
           <div
-            className="text-8xl sm:text-9xl md:text-[140px] font-black tracking-tighter leading-none bg-gradient-to-r from-sky-500 via-indigo-500 to-cyan-400 bg-clip-text text-transparent drop-shadow-sm"
+            style={{
+              fontSize: "clamp(88px, 14vw, 150px)",
+              fontWeight: 900,
+              lineHeight: 1,
+              letterSpacing: "-0.04em",
+              fontFamily: "'Space Grotesk', -apple-system, sans-serif",
+              background: "linear-gradient(135deg, var(--text-main) 10%, var(--primary) 55%, var(--secondary) 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              filter: "drop-shadow(0 14px 28px var(--primary-glow))",
+            }}
           >
             404
           </div>
-          <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
-            <Sparkles className="w-32 h-32 text-sky-400" />
+          {/* Orbital micro decoration */}
+          <div
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              pointerEvents: "none",
+            }}
+          >
+            <Sparkles
+              size={36}
+              style={{
+                color: "var(--primary)",
+                animation: "pulse404 3s ease-in-out infinite",
+              }}
+            />
           </div>
         </div>
 
-        {/* Title & Description */}
+        {/* Headline */}
         <h1
-          className="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4 max-w-2xl leading-snug"
-          style={{ color: "var(--text-main)" }}
+          style={{
+            fontSize: "clamp(24px, 4vw, 36px)",
+            fontWeight: 800,
+            marginBottom: "14px",
+            maxWidth: "680px",
+            letterSpacing: "-0.02em",
+            color: "var(--text-main)",
+          }}
         >
           {titleText}
         </h1>
 
+        {/* Description */}
         <p
-          className="text-base sm:text-lg max-w-xl mx-auto mb-8 leading-relaxed opacity-80"
-          style={{ color: "var(--text-secondary)" }}
+          style={{
+            fontSize: "clamp(15px, 2vw, 17px)",
+            lineHeight: 1.6,
+            maxWidth: "580px",
+            margin: "0 auto 32px auto",
+            color: "var(--text-secondary)",
+          }}
         >
           {descText}
         </p>
 
-        {/* Primary Action Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-14">
+        {/* Action Buttons */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "14px",
+            flexWrap: "wrap",
+            marginBottom: "52px",
+          }}
+        >
           <Link
             href="/"
-            className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold text-sm sm:text-base shadow-lg shadow-sky-500/25 hover:from-sky-400 hover:to-indigo-500 hover:shadow-sky-500/35 hover:-translate-y-0.5 transition-all duration-200"
+            className="btn-primary"
+            style={{
+              textDecoration: "none",
+              padding: "13px 28px",
+              borderRadius: "14px",
+            }}
           >
-            <Home className="w-4 h-4" />
+            <Home size={17} />
             <span>{homeBtn}</span>
           </Link>
 
           <button
             onClick={() => router.back()}
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl border font-bold text-sm sm:text-base transition-all duration-200 hover:-translate-y-0.5"
+            className="btn-secondary"
             style={{
-              backgroundColor: "var(--bg-card)",
-              borderColor: "var(--border-subtle)",
-              color: "var(--text-main)",
+              padding: "13px 24px",
+              borderRadius: "14px",
+              cursor: "pointer",
             }}
           >
-            <ArrowLeft className="w-4 h-4 opacity-70" />
+            <ArrowLeft size={16} />
             <span>{backBtn}</span>
           </button>
         </div>
 
-        {/* Popular Apps Quick Links */}
-        <div className="w-full">
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <div className="h-px w-12 bg-current opacity-20" />
+        {/* Popular Apps Quick Access Grid */}
+        <div style={{ width: "100%", maxWidth: "840px" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "14px",
+              marginBottom: "20px",
+            }}
+          >
+            <div
+              style={{
+                height: "1px",
+                flex: 1,
+                maxWidth: "60px",
+                background: "var(--border-subtle)",
+              }}
+            />
             <span
-              className="text-xs sm:text-sm font-bold uppercase tracking-widest opacity-60"
-              style={{ color: "var(--text-secondary)" }}
+              style={{
+                fontSize: "12px",
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                color: "var(--text-muted)",
+              }}
             >
               {exploreTitle}
             </span>
-            <div className="h-px w-12 bg-current opacity-20" />
+            <div
+              style={{
+                height: "1px",
+                flex: 1,
+                maxWidth: "60px",
+                background: "var(--border-subtle)",
+              }}
+            />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-left">
+          <div className="nf-apps-grid">
             {featuredApps.map((app, idx) => {
               const Icon = app.icon;
               return (
                 <Link
                   key={idx}
                   href={app.href}
-                  className="group flex items-center justify-between p-4 rounded-2xl border transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                  className="glass-card"
                   style={{
-                    backgroundColor: "var(--bg-card)",
-                    borderColor: "var(--border-subtle)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    padding: "18px 22px",
+                    borderRadius: "16px",
+                    textDecoration: "none",
+                    textAlign: "left",
                   }}
                 >
-                  <div className="flex items-center gap-3.5 min-w-0">
-                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border bg-gradient-to-br ${app.gradient}`}>
-                      <Icon className="w-5 h-5" />
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "14px",
+                      minWidth: 0,
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "44px",
+                        height: "44px",
+                        borderRadius: "12px",
+                        backgroundColor: app.bgLight,
+                        border: `1px solid ${app.accent}33`,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: app.accent,
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Icon size={22} />
                     </div>
-                    <div className="min-w-0">
-                      <div className="text-[11px] font-semibold uppercase tracking-wider opacity-60" style={{ color: "var(--text-secondary)" }}>
+                    <div style={{ minWidth: 0 }}>
+                      <div
+                        style={{
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          textTransform: "uppercase",
+                          letterSpacing: "0.04em",
+                          color: "var(--text-muted)",
+                          marginBottom: "2px",
+                        }}
+                      >
                         {app.category}
                       </div>
-                      <div className="text-sm font-bold truncate group-hover:text-sky-500 transition-colors" style={{ color: "var(--text-main)" }}>
+                      <div
+                        style={{
+                          fontSize: "14px",
+                          fontWeight: 700,
+                          color: "var(--text-main)",
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
                         {app.title}
                       </div>
                     </div>
                   </div>
-                  <ExternalLink className="w-4 h-4 opacity-30 group-hover:opacity-80 group-hover:translate-x-0.5 transition-all shrink-0 ml-3" />
+
+                  <ArrowUpRight
+                    size={18}
+                    style={{
+                      color: "var(--text-muted)",
+                      flexShrink: 0,
+                      marginLeft: "12px",
+                      transition: "transform 0.2s ease, color 0.2s ease",
+                    }}
+                  />
                 </Link>
               );
             })}
@@ -220,11 +450,20 @@ export default function NotFound() {
         </div>
       </main>
 
-      {/* Footer minimal info */}
-      <footer className="relative z-10 w-full py-6 text-center text-xs opacity-50" style={{ color: "var(--text-secondary)" }}>
-        © {new Date().getFullYear()} Wixtory Ecosystem • All rights reserved.
+      {/* Minimal Brand Footer */}
+      <footer
+        style={{
+          borderTop: "1px solid var(--border-subtle)",
+          padding: "20px 0",
+          textAlign: "center",
+          fontSize: "12px",
+          color: "var(--text-muted)",
+        }}
+      >
+        <div className="container">
+          © {new Date().getFullYear()} Wixtory Ecosystem • All rights reserved.
+        </div>
       </footer>
     </div>
   );
 }
-

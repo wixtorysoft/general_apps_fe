@@ -103,43 +103,95 @@ export function PageTransitionLoader() {
   if (!isLoading && progress === 0) return null;
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 top-0 z-[99999] transition-all">
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 99999,
+        pointerEvents: "none",
+        width: "100%",
+      }}
+    >
       {/* Top glowing progress bar */}
       <div
-        className="h-[3px] w-full transition-all ease-out"
         style={{
+          height: "3.5px",
           width: `${progress}%`,
-          transitionDuration: progress === 100 ? "200ms" : "300ms",
+          transition: progress === 100 ? "width 200ms ease-out" : "width 300ms ease-out",
           background: "linear-gradient(90deg, #0284c7 0%, #06b6d4 35%, #10b981 70%, #6366f1 100%)",
-          boxShadow: "0 0 12px rgba(6, 182, 212, 0.8), 0 0 24px rgba(16, 185, 129, 0.4)",
+          boxShadow: "0 0 14px rgba(6, 182, 212, 0.85), 0 0 24px rgba(16, 185, 129, 0.5)",
         }}
       />
 
-      {/* Floating Centered Transition Pill (Appears gracefully on longer transitions) */}
+      {/* Floating Centered Transition Pill */}
       <div
-        className={`fixed top-5 left-1/2 -translate-x-1/2 transition-all duration-300 ease-out ${
-          showPill ? "opacity-100 translate-y-0 scale-100" : "opacity-0 -translate-y-4 scale-95"
-        }`}
+        style={{
+          position: "fixed",
+          top: "20px",
+          left: "50%",
+          transform: showPill ? "translateX(-50%) translateY(0) scale(1)" : "translateX(-50%) translateY(-12px) scale(0.95)",
+          opacity: showPill ? 1 : 0,
+          transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+          zIndex: 99999,
+          pointerEvents: "none",
+        }}
       >
         <div
-          className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border shadow-xl backdrop-blur-md"
           style={{
-            backgroundColor: "var(--bg-glass, rgba(255, 255, 255, 0.88))",
-            borderColor: "var(--border-active, rgba(2, 132, 199, 0.35))",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "10px",
+            padding: "8px 18px",
+            borderRadius: "9999px",
+            border: "1px solid var(--border-active, rgba(2, 132, 199, 0.4))",
+            backgroundColor: "var(--bg-glass, rgba(255, 255, 255, 0.92))",
             color: "var(--text-main, #0c2340)",
+            boxShadow: "0 12px 36px -6px var(--primary-glow, rgba(2, 132, 199, 0.35))",
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
           }}
         >
-          <div className="relative w-4 h-4 flex items-center justify-center">
-            <Loader2 className="w-4 h-4 text-sky-500 animate-spin" />
-            <Sparkles className="w-2.5 h-2.5 text-emerald-400 absolute" />
+          <div
+            style={{
+              position: "relative",
+              width: "16px",
+              height: "16px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Loader2
+              size={16}
+              style={{
+                color: "var(--primary, #0284c7)",
+                animation: "spinSlow 1.5s linear infinite",
+              }}
+            />
+            <Sparkles
+              size={10}
+              style={{
+                color: "var(--secondary, #06b6d4)",
+                position: "absolute",
+              }}
+            />
           </div>
-          <span className="text-xs font-bold tracking-wide">
+          <span style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "0.03em" }}>
             Wixtory Yükleniyor...
           </span>
-          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping ml-0.5" />
+          <span
+            style={{
+              width: "6px",
+              height: "6px",
+              borderRadius: "50%",
+              backgroundColor: "var(--primary, #0284c7)",
+              boxShadow: "0 0 8px var(--primary, #0284c7)",
+            }}
+          />
         </div>
       </div>
     </div>
   );
 }
-

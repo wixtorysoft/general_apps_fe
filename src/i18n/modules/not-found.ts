@@ -8,9 +8,15 @@ export type NotFoundKey =
   | "back_button"
   | "explore_apps"
   | "language_box_title"
+  | "domain_track_title"
   | "astrovibe_title"
   | "excuse_title"
-  | "player_title";
+  | "player_title"
+  | "cat_education"
+  | "cat_domain"
+  | "cat_astro"
+  | "cat_excuse"
+  | "cat_player";
 
 export const notFoundI18n: I18nRecord<NotFoundKey> = {
   badge: {
@@ -104,6 +110,19 @@ export const notFoundI18n: I18nRecord<NotFoundKey> = {
     zh: "Wixtory Language Box — 通过8款游戏学习语言",
     ar: "Wixtory Language Box — تعلم اللغات عبر 8 ألعاب تفاعلية",
   },
+  domain_track_title: {
+    tr: "Wixtory Domain Track — Domain, SSL & DNS Takip Platformu",
+    en: "Wixtory Domain Track — Domain, SSL & DNS Monitoring",
+    it: "Wixtory Domain Track — Monitoraggio Dominio, SSL e DNS",
+    pt: "Wixtory Domain Track — Monitoramento de Domínio, SSL e DNS",
+    es: "Wixtory Domain Track — Monitoreo de Dominios, SSL y DNS",
+    fr: "Wixtory Domain Track — Surveillance de Domaine, SSL et DNS",
+    de: "Wixtory Domain Track — Domain-, SSL- und DNS-Überwachung",
+    ru: "Wixtory Domain Track — Мониторинг доменов, SSL и DNS",
+    ja: "Wixtory Domain Track — ドメイン・SSL・DNS監視",
+    zh: "Wixtory Domain Track — 域名、SSL与DNS全方位监控",
+    ar: "Wixtory Domain Track — منصة مراقبة النطاقات وSSL وDNS",
+  },
   astrovibe_title: {
     tr: "AstroVibe — Burç, Tarot ve Protez Tırnak",
     en: "AstroVibe — Horoscope, Tarot & Nail Art",
@@ -142,6 +161,71 @@ export const notFoundI18n: I18nRecord<NotFoundKey> = {
     ja: "Wixtory Player — 縦型リールメディアプレーヤー",
     zh: "Wixtory Player — 垂直流媒体播放器",
     ar: "Wixtory Player — مشغل وسائط البكرات الرأسية",
+  },
+  cat_education: {
+    tr: "Eğitim & Dil Oyunları",
+    en: "Education & Language Games",
+    it: "Educazione & Giochi Linguistici",
+    pt: "Educação & Jogos de Idiomas",
+    es: "Educación & Juegos de Idiomas",
+    fr: "Éducation & Jeux de Langues",
+    de: "Bildung & Sprachspiele",
+    ru: "Обучение и Языковые Игры",
+    ja: "教育・語学ゲーム",
+    zh: "教育与语言游戏",
+    ar: "التعليم وألعاب اللغة",
+  },
+  cat_domain: {
+    tr: "Alan Adı, SSL & DNS Takip",
+    en: "Domain, SSL & DNS Monitoring",
+    it: "Monitoraggio Dominio, SSL e DNS",
+    pt: "Monitoramento de Domínio, SSL e DNS",
+    es: "Monitoreo de Dominio, SSL y DNS",
+    fr: "Surveillance Domaine, SSL & DNS",
+    de: "Domain-, SSL- & DNS-Tracking",
+    ru: "Мониторинг Доменов, SSL и DNS",
+    ja: "ドメイン・SSL・DNS監視",
+    zh: "域名、SSL与DNS监控",
+    ar: "تتبع النطاقات وSSL وDNS",
+  },
+  cat_astro: {
+    tr: "Astroloji, Tarot & Stil",
+    en: "Astrology, Tarot & Style",
+    it: "Astrologia, Tarocchi & Stile",
+    pt: "Astrologia, Tarô & Estilo",
+    es: "Astrología, Tarot y Estilo",
+    fr: "Astrologie, Tarot & Style",
+    de: "Astrologie, Tarot & Stil",
+    ru: "Астрология, Таро и Стиль",
+    ja: "占星術・タロット・スタイル",
+    zh: "星座占卜、塔罗与时尚",
+    ar: "علم الفلك والتاروت والأناقة",
+  },
+  cat_excuse: {
+    tr: "Mizah & Sosyal Savunma",
+    en: "Humor & Social Defense",
+    it: "Umorismo & Difesa Sociale",
+    pt: "Humor & Defesa Social",
+    es: "Humor y Defensa Social",
+    fr: "Humour & Défense Sociale",
+    de: "Humor & Soziale Verteidigung",
+    ru: "Юмор и Социальная Защита",
+    ja: "ユーモア・ソーシャルディフェンス",
+    zh: "幽默与社交救星",
+    ar: "الفكاهة والدفاع الاجتماعي",
+  },
+  cat_player: {
+    tr: "Medya & Reel Flow",
+    en: "Media & Reel Flow",
+    it: "Media & Flusso Reel",
+    pt: "Mídia & Fluxo Reel",
+    es: "Medios y Flujo de Reels",
+    fr: "Médias & Flux Reel",
+    de: "Medien & Reel-Flow",
+    ru: "Медиа и Вертикальные Рилсы",
+    ja: "メディア・リールフロー",
+    zh: "媒体与垂直流播放",
+    ar: "الوسائط وبكرات الفيديو",
   },
 };
 
