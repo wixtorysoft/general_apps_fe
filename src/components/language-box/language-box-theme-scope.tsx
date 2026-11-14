@@ -19,9 +19,9 @@ export function LanguageBoxThemeScope({
 
   const activeTheme = mounted
     ? theme === "system"
-      ? resolvedTheme || "dark"
-      : theme || "dark"
-    : "dark";
+      ? resolvedTheme || "light"
+      : theme || "light"
+    : "light";
 
   useEffect(() => {
     if (!mounted) return;

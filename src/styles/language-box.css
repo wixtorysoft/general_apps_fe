@@ -418,14 +418,37 @@
   color: #1e293b !important;
 }
 
-/* Store Buttons on Light Mode */
+/* Store Buttons on Light Mode & All Themes (Guaranteed Crisp White Text) */
+.store-btn,
+.store-btn *,
+.store-btn-apple,
+.store-btn-apple *,
+.store-btn-google,
+.store-btn-google *,
+.language-box-scope .store-btn,
+.language-box-scope .store-btn *,
+.language-box-scope.light .store-btn,
+.language-box-scope.light .store-btn *,
+.language-box-scope.emerald .store-btn,
+.language-box-scope.emerald .store-btn *,
 .language-box-scope.light .bg-\[\#000000\],
 .language-box-scope.light .bg-\[\#000000\] * {
   color: #ffffff !important;
 }
 
+.store-btn .store-btn-sub,
+.language-box-scope .store-btn .store-btn-sub,
+.language-box-scope.light .store-btn .store-btn-sub,
+.language-box-scope.emerald .store-btn .store-btn-sub,
 .language-box-scope.light .bg-\[\#000000\] .text-white\/70 {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.store-btn .store-btn-title,
+.language-box-scope .store-btn .store-btn-title,
+.language-box-scope.light .store-btn .store-btn-title,
+.language-box-scope.emerald .store-btn .store-btn-title {
+  color: #ffffff !important;
 }
 
 /* Select & Dropdown menus in Light Mode */

@@ -50,9 +50,9 @@ export default function LanguageBoxLayout({
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="dark"
+      defaultTheme="light"
       themes={["light", "dark", "emerald", "system"]}
-      enableSystem
+      enableSystem={false}
     >
       <LanguageProvider>
         <LanguageBoxThemeScope className={`language-box-scope ${geistSans.variable} ${geistMono.variable} min-h-screen bg-background text-foreground antialiased selection:bg-emerald-500 selection:text-white font-sans`}>

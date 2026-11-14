@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { Suspense } from "react";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { CookieConsentBanner } from "@/components/CookieConsentBanner";
+import { PageTransitionLoader } from "@/components/PageTransitionLoader";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -58,6 +60,9 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <LanguageProvider>
           <ThemeProvider>
+            <Suspense fallback={null}>
+              <PageTransitionLoader />
+            </Suspense>
             {children}
             <CookieConsentBanner />
           </ThemeProvider>

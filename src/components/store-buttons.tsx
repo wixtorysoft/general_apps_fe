@@ -1,13 +1,14 @@
 "use client";
 
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/data";
-import { useLanguage } from "@/context/LanguageContext";
+import { useLanguage } from "@/lib/i18n/language-context";
 import { resolveI18n } from "@/i18n";
 
-function AppleLogo({ className }: { className?: string }) {
+function AppleLogo({ className, style }: { className?: string; style?: React.CSSProperties }) {
   return (
     <svg
       className={className}
+      style={style}
       viewBox="0 0 24 24"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
@@ -43,12 +44,12 @@ function GooglePlayLogo({ className }: { className?: string }) {
       />
       <path
         d="M17.092 8.65L4.517 1.935C4.354 1.841 4.186 1.744 3.967 1.744C3.827 1.744 3.703 1.791 3.609 1.868L13.792 12.027L3.609 22.186C3.703 22.263 3.827 22.31 3.967 22.31C4.186 22.31 4.354 22.213 4.517 22.119L17.092 15.404L14.073 12.381L13.792 12.662V12.027V11.392L14.073 11.673L17.092 8.65Z"
-        fill="url(#paint0_linear)"
+        fill="url(#paint0_linear_root)"
         opacity="0.2"
       />
       <defs>
         <linearGradient
-          id="paint0_linear"
+          id="paint0_linear_root"
           x1="13.792"
           y1="12.027"
           x2="13.792"
@@ -65,8 +66,8 @@ function GooglePlayLogo({ className }: { className?: string }) {
 
 export function StoreButtons() {
   const { language } = useLanguage();
-  const applePrefix = resolveI18n("common", "download_on_app_store", language);
-  const googlePrefix = resolveI18n("common", "get_it_on_google_play", language);
+  const applePrefix = resolveI18n("common", "download_on_app_store", language) || "Download on the";
+  const googlePrefix = resolveI18n("common", "get_it_on_google_play", language) || "GET IT ON";
 
   return (
     <div className="flex flex-wrap gap-3">
@@ -75,14 +76,21 @@ export function StoreButtons() {
         href={APP_STORE_URL || undefined}
         target="_blank"
         rel="noopener noreferrer"
-        className="group inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-[#000000] border border-[#424242] hover:border-[#6e6e6e] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-white/5"
+        className="store-btn store-btn-apple group inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-black border border-white/20 hover:border-white/40 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/25"
+        style={{ backgroundColor: "#000000", color: "#ffffff" }}
       >
-        <AppleLogo className="h-7 w-7 text-white shrink-0" />
-        <div className="flex flex-col leading-none">
-          <span className="text-[10px] font-normal text-white/70 uppercase tracking-wide">
+        <AppleLogo className="h-7 w-7 text-white shrink-0" style={{ color: "#ffffff", fill: "#ffffff" }} />
+        <div className="flex flex-col leading-none text-left">
+          <span
+            className="store-btn-sub text-[10px] font-normal uppercase tracking-wide"
+            style={{ color: "rgba(255, 255, 255, 0.75)" }}
+          >
             {applePrefix}
           </span>
-          <span className="text-base font-semibold text-white -mt-0.5">
+          <span
+            className="store-btn-title text-base font-semibold -mt-0.5"
+            style={{ color: "#ffffff" }}
+          >
             App Store
           </span>
         </div>
@@ -93,14 +101,21 @@ export function StoreButtons() {
         href={GOOGLE_PLAY_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="group inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-[#000000] border border-[#424242] hover:border-[#6e6e6e] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-white/5"
+        className="store-btn store-btn-google group inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-black border border-white/20 hover:border-white/40 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/25"
+        style={{ backgroundColor: "#000000", color: "#ffffff" }}
       >
         <GooglePlayLogo className="h-7 w-7 shrink-0" />
-        <div className="flex flex-col leading-none">
-          <span className="text-[10px] font-normal text-white/70 uppercase tracking-wide">
+        <div className="flex flex-col leading-none text-left">
+          <span
+            className="store-btn-sub text-[10px] font-normal uppercase tracking-wide"
+            style={{ color: "rgba(255, 255, 255, 0.75)" }}
+          >
             {googlePrefix}
           </span>
-          <span className="text-base font-semibold text-white -mt-0.5">
+          <span
+            className="store-btn-title text-base font-semibold -mt-0.5"
+            style={{ color: "#ffffff" }}
+          >
             Google Play
           </span>
         </div>

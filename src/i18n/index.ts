@@ -7,6 +7,7 @@ import { commonI18n } from "./modules/common";
 import { developerI18n } from "./modules/developer";
 import { cookieI18n } from "./modules/cookie";
 import { wixtoryPlayerI18n } from "./modules/wixtory-player";
+import { notFoundI18n } from "./modules/not-found";
 
 export * from "./types";
 export * from "./modules/legal";
@@ -17,6 +18,7 @@ export * from "./modules/common";
 export * from "./modules/developer";
 export * from "./modules/cookie";
 export * from "./modules/wixtory-player";
+export * from "./modules/not-found";
 
 export const I18N_MODULES = {
   navigation: navigationI18n,
@@ -27,6 +29,7 @@ export const I18N_MODULES = {
   ecosystem: ecosystemI18n,
   cookie: cookieI18n,
   wixtoryPlayer: wixtoryPlayerI18n,
+  notFound: notFoundI18n,
 } as const;
 
 export type I18nModuleName = keyof typeof I18N_MODULES;
