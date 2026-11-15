@@ -1,6 +1,49 @@
 import { I18nRecord } from "../types";
 
 export const navigationI18n: I18nRecord = {
+  home: {
+    tr: "Ana Sayfa", en: "Home", it: "Home", pt: "Início", es: "Inicio",
+    fr: "Accueil", de: "Startseite", ru: "Главная", ja: "ホーム", zh: "首页", ar: "الرئيسية"
+  },
+  projects: {
+    tr: "Projeler", en: "Projects", it: "Progetti", pt: "Projetos", es: "Proyectos",
+    fr: "Projets", de: "Projekte", ru: "Проекты", ja: "プロジェクト", zh: "项目矩阵", ar: "المشاريع"
+  },
+  all_projects: {
+    tr: "Tüm Projeler", en: "All Projects", it: "Tutti i Progetti", pt: "Todos os Projetos", es: "Todos los Proyectos",
+    fr: "Tous les Projets", de: "Alle Projekte", ru: "Все Проекты", ja: "全プロジェクト", zh: "全部项目", ar: "جميع المشاريع"
+  },
+  projects_desc: {
+    tr: "Wixtory Amiral Gemisi Uygulamaları", en: "Wixtory Flagship Applications", it: "Applicazioni di Punta Wixtory",
+    pt: "Aplicativos Principais Wixtory", es: "Aplicaciones Principales de Wixtory", fr: "Applications Phares Wixtory",
+    de: "Wixtory Flaggschiff-Apps", ru: "Флагманские Приложения Wixtory", ja: "Wixtoryフラッグシップアプリ",
+    zh: "Wixtory 旗舰级应用矩阵", ar: "تطبيقات Wixtory الرائدة"
+  },
+  view_all_projects: {
+    tr: "Tüm Projeleri Keşfet", en: "Explore All Projects", it: "Esplora Tutti i Progetti", pt: "Explorar Todos os Projetos",
+    es: "Explorar Todos los Proyectos", fr: "Explorer Tous les Projets", de: "Alle Projekte Erkunden", ru: "Изучить Все Проекты",
+    ja: "全プロジェクトを見る", zh: "浏览全部项目", ar: "استكشاف جميع المشاريع"
+  },
+  explore: {
+    tr: "Keşfet", en: "Explore", it: "Esplora", pt: "Explorar", es: "Explorar",
+    fr: "Explorer", de: "Entdecken", ru: "Исследовать", ja: "見つける", zh: "探索", ar: "استكشف"
+  },
+  all_games: {
+    tr: "Tüm Oyunlar", en: "All Games", it: "Tutti i Giochi", pt: "Todos os Jogos", es: "Todos los Juegos",
+    fr: "Tous les Jeux", de: "Alle Spiele", ru: "Все Игры", ja: "すべてのゲーム", zh: "全部游戏", ar: "جميع الألعاب"
+  },
+  games_desc: {
+    tr: "8 İnteraktif Dil & Zeka Oyunu", en: "8 Interactive Language & Brain Games", it: "8 Giochi Interattivi di Lingua", pt: "8 Jogos Interativos de Idiomas", es: "8 Juegos Interactivos de Idiomas",
+    fr: "8 Jeux Interactifs de Langues", de: "8 Interaktive Sprachspiele", ru: "8 Интерактивных Языковых Игр", ja: "8つの対話型語学ゲーム", zh: "8 款互动语言益智游戏", ar: "8 ألعاب لغوية تفاعلية"
+  },
+  view_all_games: {
+    tr: "Tüm Oyunları Gör", en: "View All Games", it: "Vedi Tutti i Giochi", pt: "Ver Todos os Jogos", es: "Ver Todos los Juegos",
+    fr: "Voir Tous les Jeux", de: "Alle Spiele Anzeigen", ru: "Посмотреть Все Игры", ja: "全ゲームを見る", zh: "查看全部游戏", ar: "عرض جميع الألعاب"
+  },
+  contact: {
+    tr: "İletişim", en: "Contact", it: "Contatto", pt: "Contato", es: "Contacto",
+    fr: "Contact", de: "Kontakt", ru: "Контакты", ja: "お問い合わせ", zh: "联系我们", ar: "اتصل بنا"
+  },
   apps: {
     tr: "Uygulamalar", en: "Apps", it: "App", pt: "Aplicativos", es: "Aplicaciones",
     fr: "Applications", de: "Apps", ru: "Приложения", ja: "アプリ", zh: "应用", ar: "التطبيقات"

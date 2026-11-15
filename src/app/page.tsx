@@ -20,6 +20,8 @@ import {
   ChevronRight,
   Globe,
   ExternalLink,
+  Gamepad2,
+  MessageSquare,
 } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageToggle } from "@/components/LanguageToggle";
@@ -28,6 +30,7 @@ import { resolveI18n, ecosystemI18n, LanguageCode } from "@/i18n";
 import { MainNavbar } from "@/components/MainNavbar";
 import { MainFooter } from "@/components/MainFooter";
 import { StoreBadgesRow } from "@/components/games/StoreBadges";
+import { HeroOrbitalShowcase } from "@/components/home/HeroOrbitalShowcase";
 
 export default function HubPortalPage() {
   const { t, language } = useLanguage();
@@ -804,161 +807,259 @@ export default function HubPortalPage() {
 
       {/* Main Content */}
       <main style={{ flex: 1, position: "relative", zIndex: 1 }}>
-        {/* Grand Hero Section */}
-        <section style={{ padding: "80px 0 60px 0", textAlign: "center" }}>
-          <div className="container" style={{ maxWidth: "1120px" }}>
-            {/* Pill Badge */}
+        {/* Grand Split 2-Column Hero Section with Orbital App Showcase */}
+        <section
+          style={{
+            position: "relative",
+            padding: "64px 0 56px 0",
+            overflow: "hidden",
+          }}
+        >
+          {/* Animated Ambient Background Lines & Light Beams */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              pointerEvents: "none",
+              overflow: "hidden",
+              zIndex: 0,
+            }}
+          >
             <div
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "8px 18px",
-                borderRadius: "9999px",
-                background: "rgba(139, 92, 246, 0.12)",
-                border: "1px solid rgba(139, 92, 246, 0.35)",
-                color: "#8B5CF6",
-                fontSize: "12.5px",
-                fontWeight: 700,
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                marginBottom: "24px",
-                boxShadow: "0 0 24px -4px rgba(139, 92, 246, 0.25)",
+                position: "absolute",
+                top: "10%",
+                left: "45%",
+                transform: "translate(-50%, -50%)",
+                width: "min(950px, 95vw)",
+                height: "600px",
+                background: "radial-gradient(ellipse at center, rgba(16, 185, 129, 0.1) 0%, rgba(6, 182, 212, 0.05) 45%, transparent 75%)",
+                filter: "blur(80px)",
               }}
-            >
-              <Sparkles size={15} />
-              <span>Wixtory Apps</span>
-            </div>
-
-            {/* Display Headline */}
-            <h1
-              style={{
-                fontSize: "clamp(34px, 5.5vw, 62px)",
-                fontWeight: 850,
-                letterSpacing: "-0.035em",
-                lineHeight: "1.12",
-                marginBottom: "22px",
-                color: "var(--text-main)",
-              }}
-            >
-              {hStr("hero_pre")}
-              <span
+            />
+            {/* Subtle Vertical Flow Lines */}
+            {[6, 18, 32, 48, 64, 78, 92].map((leftPct, i) => (
+              <div
+                key={i}
                 style={{
-                  background: "linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #3B82F6 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
+                  position: "absolute",
+                  left: `${leftPct}%`,
+                  top: 0,
+                  bottom: 0,
+                  width: "1px",
+                  background: "linear-gradient(to bottom, transparent, rgba(16, 185, 129, 0.1), transparent)",
+                  opacity: 0.5,
                 }}
-              >
-                {hStr("hero_title")}
-              </span>
-            </h1>
+              />
+            ))}
+          </div>
 
-            {/* Subtitle */}
-            <p
-              style={{
-                fontSize: "clamp(16px, 2vw, 19px)",
-                color: "var(--text-secondary)",
-                lineHeight: "1.65",
-                maxWidth: "760px",
-                margin: "0 auto 36px auto",
-              }}
-            >
-              {(() => {
-                const raw = resolveI18n(ecosystemI18n, "ecosystem_lead", language);
-                const parts = raw.split(/(\{langBox\}|\{domainTrack\}|\{astroVibe\}|\{excuse\}|\{soon\})/g);
-                return parts.map((part, idx) => {
-                  if (part === "{langBox}") return <strong key={idx}>Wixtory Language Box</strong>;
-                  if (part === "{domainTrack}") return <strong key={idx}>Wixtory: Domain Track</strong>;
-                  if (part === "{astroVibe}") return <strong key={idx}>AstroVibe</strong>;
-                  if (part === "{excuse}") return <strong key={idx}>Excuse AI</strong>;
-                  if (part === "{soon}") return <span key={idx} style={{ color: "#F59E0B", fontWeight: 700 }}>{t("coming_soon")}</span>;
-                  return part;
-                });
-              })()}
-            </p>
-
-            {/* Hero Interactive CTAs */}
+          <div className="container" style={{ maxWidth: "1280px", position: "relative", zIndex: 1 }}>
+            {/* Split 2-Column Grid: Left Content / Right Orbital Showcase */}
             <div
               style={{
-                display: "flex",
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+                gap: "48px",
                 alignItems: "center",
-                justifyContent: "center",
-                gap: "16px",
-                flexWrap: "wrap",
-                marginBottom: "48px",
+                marginBottom: "56px",
               }}
             >
-              <a
-                href="#apps"
-                className="btn-cosmic"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  padding: "14px 30px",
-                  borderRadius: "16px",
-                  background: "linear-gradient(135deg, #10B981 0%, #06B6D4 100%)",
-                  color: "#ffffff",
-                  fontSize: "15px",
-                  fontWeight: 700,
-                  textDecoration: "none",
-                  boxShadow: "0 10px 28px -6px rgba(16, 185, 129, 0.55)",
-                  transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px) scale(1.02)";
-                  e.currentTarget.style.boxShadow = "0 14px 36px -4px rgba(16, 185, 129, 0.7)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0) scale(1)";
-                  e.currentTarget.style.boxShadow = "0 10px 28px -6px rgba(16, 185, 129, 0.55)";
-                }}
-              >
-                <span>{hStr("explore_apps_btn")}</span>
-                <ArrowRight size={17} />
-              </a>
+              {/* Left Column: Wixtory Apps Value Proposition */}
+              <div style={{ textAlign: "left" }}>
+                {/* Pulsing Pill Badge */}
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    padding: "7px 18px",
+                    borderRadius: "9999px",
+                    background: "rgba(16, 185, 129, 0.08)",
+                    border: "1px solid rgba(16, 185, 129, 0.3)",
+                    backdropFilter: "blur(16px)",
+                    WebkitBackdropFilter: "blur(16px)",
+                    marginBottom: "22px",
+                    boxShadow: "0 0 24px -4px rgba(16, 185, 129, 0.2)",
+                  }}
+                >
+                  <span
+                    style={{
+                      width: "8px",
+                      height: "8px",
+                      borderRadius: "50%",
+                      backgroundColor: "#10b981",
+                      boxShadow: "0 0 10px #10b981",
+                      display: "inline-block",
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontSize: "12px",
+                      fontWeight: 800,
+                      letterSpacing: "0.08em",
+                      textTransform: "uppercase",
+                      background: "linear-gradient(135deg, #10b981 0%, #06b6d4 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    Wixtory Apps & Software Studio
+                  </span>
+                </div>
 
-              <a
-                href="#about"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  padding: "14px 26px",
-                  borderRadius: "16px",
-                  background: "var(--bg-glass)",
-                  border: "1px solid var(--border-subtle)",
-                  color: "var(--text-main)",
-                  fontSize: "15px",
-                  fontWeight: 600,
-                  textDecoration: "none",
-                  backdropFilter: "blur(12px)",
-                  WebkitBackdropFilter: "blur(12px)",
-                  boxShadow: "var(--shadow-card)",
-                  transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.borderColor = "var(--border-active)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.borderColor = "var(--border-subtle)";
-                }}
-              >
-                <Compass size={17} color="var(--primary)" />
-                <span>{hStr("ecosystem_vision_btn")}</span>
-              </a>
+                {/* Display Headline */}
+                <h1
+                  style={{
+                    fontSize: "clamp(34px, 4.6vw, 56px)",
+                    fontWeight: 900,
+                    letterSpacing: "-0.035em",
+                    lineHeight: "1.14",
+                    marginBottom: "20px",
+                    color: "var(--text-main)",
+                  }}
+                >
+                  <span>{resolveI18n("ecosystem", "hero_headline_1", language)}</span>
+                  <br />
+                  <span
+                    style={{
+                      background: "linear-gradient(135deg, #10b981 0%, #06b6d4 45%, #8b5cf6 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    {resolveI18n("ecosystem", "hero_headline_2", language)}
+                  </span>
+                </h1>
+
+                {/* Short, Impactful 2-Line Description (No word-dump) */}
+                <p
+                  style={{
+                    fontSize: "16px",
+                    color: "var(--text-secondary)",
+                    lineHeight: "1.7",
+                    maxWidth: "520px",
+                    margin: "0 0 32px 0",
+                  }}
+                >
+                  {resolveI18n("ecosystem", "hero_concise_sub", language)}
+                </p>
+
+                {/* Hero Interactive CTAs: Ekosistemi Keşfet & İletişim / Destek */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "14px",
+                    flexWrap: "wrap",
+                    marginBottom: "32px",
+                  }}
+                >
+                  <a
+                    href="#apps"
+                    className="btn-cosmic"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "10px",
+                      padding: "14px 28px",
+                      borderRadius: "16px",
+                      background: "linear-gradient(135deg, #10B981 0%, #06B6D4 100%)",
+                      color: "#ffffff",
+                      fontSize: "14.5px",
+                      fontWeight: 800,
+                      textDecoration: "none",
+                      boxShadow: "0 10px 28px -6px rgba(16, 185, 129, 0.55)",
+                      transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "translateY(-2px) scale(1.02)";
+                      e.currentTarget.style.boxShadow = "0 14px 36px -4px rgba(16, 185, 129, 0.7)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "translateY(0) scale(1)";
+                      e.currentTarget.style.boxShadow = "0 10px 28px -6px rgba(16, 185, 129, 0.55)";
+                    }}
+                  >
+                    <span>{resolveI18n("ecosystem", "explore_ecosystem_btn", language)}</span>
+                    <ArrowRight size={16} />
+                  </a>
+
+                  <Link
+                    href="/contact"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      padding: "14px 24px",
+                      borderRadius: "16px",
+                      background: "var(--bg-glass)",
+                      border: "1px solid var(--border-subtle)",
+                      color: "var(--text-main)",
+                      fontSize: "14.5px",
+                      fontWeight: 700,
+                      textDecoration: "none",
+                      backdropFilter: "blur(16px)",
+                      WebkitBackdropFilter: "blur(16px)",
+                      boxShadow: "var(--shadow-card)",
+                      transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "translateY(-2px)";
+                      e.currentTarget.style.borderColor = "rgba(16, 185, 129, 0.5)";
+                      e.currentTarget.style.backgroundColor = "rgba(16, 185, 129, 0.05)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.borderColor = "var(--border-subtle)";
+                      e.currentTarget.style.backgroundColor = "var(--bg-glass)";
+                    }}
+                  >
+                    <MessageSquare size={16} color="#10b981" />
+                    <span>{resolveI18n("ecosystem", "contact_us_btn", language)}</span>
+                  </Link>
+                </div>
+
+                {/* Quick Quality Bullets */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "18px",
+                    flexWrap: "wrap",
+                    fontSize: "12.5px",
+                    fontWeight: 700,
+                    color: "var(--text-muted)",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                    <CheckCircle2 size={15} color="#10b981" />
+                    <span>5 Amiral Ürün</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                    <CheckCircle2 size={15} color="#06b6d4" />
+                    <span>11 Dil Desteği</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                    <CheckCircle2 size={15} color="#8b5cf6" />
+                    <span>%100 Cihaz İçi Gizlilik</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Rotating Circular / Orbital App Showcase */}
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <HeroOrbitalShowcase />
+              </div>
             </div>
 
             {/* Quick Metrics / Value Badges */}
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-                gap: "14px",
-                maxWidth: "840px",
-                margin: "0 auto",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "16px",
+                width: "100%",
               }}
             >
               {[
@@ -966,43 +1067,62 @@ export default function HubPortalPage() {
                   icon: <Zap size={16} color="#10B981" />,
                   title: t("feature_flagship_apps_title"),
                   desc: t("feature_flagship_apps_desc"),
+                  accent: "#10b981",
+                  bgLight: "rgba(16, 185, 129, 0.1)",
                 },
                 {
                   icon: <Globe size={16} color="#06B6D4" />,
                   title: t("feature_global_languages_title"),
                   desc: t("feature_global_languages_desc"),
+                  accent: "#06b6d4",
+                  bgLight: "rgba(6, 182, 212, 0.1)",
                 },
                 {
                   icon: <Shield size={16} color="#10B981" />,
                   title: t("feature_privacy_title"),
                   desc: t("feature_privacy_desc"),
+                  accent: "#10b981",
+                  bgLight: "rgba(16, 185, 129, 0.1)",
                 },
                 {
                   icon: <Cpu size={16} color="#F59E0B" />,
                   title: t("feature_flutter_cdn_title"),
                   desc: t("feature_flutter_cdn_desc"),
+                  accent: "#f59e0b",
+                  bgLight: "rgba(245, 158, 11, 0.1)",
                 },
               ].map((item, idx) => (
                 <div
                   key={idx}
+                  className="glass-card"
                   style={{
-                    padding: "14px 16px",
-                    borderRadius: "16px",
-                    background: "var(--bg-glass)",
+                    padding: "16px 18px",
+                    borderRadius: "18px",
+                    background: "var(--bg-card)",
                     border: "1px solid var(--border-subtle)",
                     display: "flex",
                     alignItems: "center",
-                    gap: "12px",
+                    gap: "14px",
                     textAlign: "left",
-                    backdropFilter: "blur(12px)",
+                    backdropFilter: "blur(14px)",
+                    transition: "all 0.25s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                    e.currentTarget.style.borderColor = `${item.accent}55`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.borderColor = "var(--border-subtle)";
                   }}
                 >
                   <div
                     style={{
-                      width: "36px",
-                      height: "36px",
-                      borderRadius: "10px",
-                      background: "var(--badge-bg)",
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "12px",
+                      background: item.bgLight,
+                      border: `1px solid ${item.accent}33`,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -1012,10 +1132,10 @@ export default function HubPortalPage() {
                     {item.icon}
                   </div>
                   <div>
-                    <div style={{ fontSize: "13px", fontWeight: 700, color: "var(--text-main)", lineHeight: 1.2 }}>
+                    <div style={{ fontSize: "13px", fontWeight: 800, color: "var(--text-main)", lineHeight: 1.25 }}>
                       {item.title}
                     </div>
-                    <div style={{ fontSize: "11px", color: "var(--text-muted)", marginTop: "2px" }}>
+                    <div style={{ fontSize: "11px", color: "var(--text-secondary)", marginTop: "3px" }}>
                       {item.desc}
                     </div>
                   </div>
@@ -1341,8 +1461,8 @@ export default function HubPortalPage() {
                       borderRadius: "48px",
                       overflow: "hidden",
                       boxShadow: "0 24px 56px -12px rgba(139, 92, 246, 0.3)",
-                      border: "2px solid rgba(139, 92, 246, 0.35)",
-                      background: "linear-gradient(135deg, #0F1E2B 0%, #1A1A2E 100%)",
+                      background: "var(--bg-card)",
+                      border: "2px solid var(--border-subtle)",
                       position: "relative",
                       transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                       display: "flex",
@@ -1354,10 +1474,20 @@ export default function HubPortalPage() {
                     onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
                   >
                     <Image
-                      src="/apps/domain-track-icon.png"
+                      src="/domain-track/logo-dark.png"
                       alt="Wixtory: Domain Track App Icon"
                       width={300}
                       height={300}
+                      className="theme-logo-light"
+                      priority
+                      style={{ objectFit: "contain", borderRadius: "32px" }}
+                    />
+                    <Image
+                      src="/domain-track/logo.png"
+                      alt="Wixtory: Domain Track App Icon"
+                      width={300}
+                      height={300}
+                      className="theme-logo-dark"
                       priority
                       style={{ objectFit: "contain", borderRadius: "32px" }}
                     />
@@ -1934,222 +2064,380 @@ export default function HubPortalPage() {
           </div>
         </section>
 
-        {/* Ecosystem Philosophy & Architecture Section */}
-        <section id="about" style={{ padding: "40px 0 80px 0" }}>
-          <div className="container">
+        {/* Ecosystem Philosophy & Architecture Section (Language Box Caliber Aesthetic) */}
+        <section id="about" style={{ padding: "60px 0 90px 0", position: "relative" }}>
+          {/* Subtle Ambient Glow */}
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "min(900px, 95vw)",
+              height: "450px",
+              background: "radial-gradient(ellipse at center, rgba(16, 185, 129, 0.08) 0%, rgba(139, 92, 246, 0.05) 50%, transparent 75%)",
+              filter: "blur(90px)",
+              pointerEvents: "none",
+            }}
+          />
+
+          <div className="container" style={{ position: "relative", zIndex: 1 }}>
             <div
-              className="glass-panel"
+              className="glass-card"
               style={{
-                padding: "clamp(36px, 5vw, 64px)",
                 borderRadius: "32px",
                 border: "1px solid var(--border-subtle)",
                 background: "var(--bg-card)",
-                boxShadow: "var(--shadow-card)",
+                boxShadow: "0 24px 60px -20px rgba(0, 0, 0, 0.1)",
                 position: "relative",
                 overflow: "hidden",
               }}
             >
-              <div style={{ textAlign: "center", maxWidth: "780px", margin: "0 auto 48px auto" }}>
-                <div
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    padding: "6px 16px",
-                    borderRadius: "9999px",
-                    background: "var(--badge-bg)",
-                    border: "1px solid var(--border-active)",
-                    color: "var(--primary)",
-                    fontSize: "12px",
-                    fontWeight: 800,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.06em",
-                    marginBottom: "16px",
-                  }}
-                >
-                  <Compass size={14} />
-                  <span>{hStr("vision_section_badge")}</span>
-                </div>
-
-                <h2
-                  style={{
-                    fontSize: "clamp(26px, 4vw, 40px)",
-                    fontWeight: 850,
-                    letterSpacing: "-0.03em",
-                    lineHeight: "1.2",
-                    marginBottom: "16px",
-                  }}
-                >
-                  {hStr("philosophy_h2")}
-                </h2>
-
-                <p
-                  style={{
-                    fontSize: "16px",
-                    color: "var(--text-secondary)",
-                    lineHeight: "1.65",
-                    margin: 0,
-                  }}
-                >
-                  {hStr("philosophy_sub")}
-                </p>
-              </div>
-
-              {/* 3 Pillars Grid */}
+              {/* Top Accent Gradient Bar */}
               <div
                 style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                  gap: "24px",
+                  height: "4px",
+                  background: "linear-gradient(90deg, #10b981 0%, #06b6d4 50%, #8b5cf6 100%)",
                 }}
-              >
-                <div
-                  style={{
-                    padding: "30px",
-                    borderRadius: "22px",
-                    background: "var(--bg-glass)",
-                    border: "1px solid var(--border-subtle)",
-                    transition: "all 0.3s ease",
-                  }}
-                >
+              />
+
+              <div style={{ padding: "clamp(40px, 6vw, 72px) clamp(24px, 4vw, 56px)" }}>
+                <div style={{ textAlign: "center", maxWidth: "780px", margin: "0 auto 52px auto" }}>
+                  {/* Badge */}
                   <div
                     style={{
-                      width: "48px",
-                      height: "48px",
-                      borderRadius: "14px",
-                      background: "rgba(2, 132, 199, 0.12)",
-                      display: "flex",
+                      display: "inline-flex",
                       alignItems: "center",
-                      justifyContent: "center",
-                      color: "var(--primary)",
-                      marginBottom: "16px",
+                      gap: "8px",
+                      padding: "7px 20px",
+                      borderRadius: "9999px",
+                      background: "rgba(16, 185, 129, 0.08)",
+                      border: "1px solid rgba(16, 185, 129, 0.3)",
+                      color: "#10b981",
+                      fontSize: "12px",
+                      fontWeight: 800,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.08em",
+                      marginBottom: "18px",
                     }}
                   >
-                    <Zap size={22} />
+                    <Compass size={15} />
+                    <span>{hStr("vision_section_badge")}</span>
                   </div>
-                  <h3 style={{ fontSize: "18px", fontWeight: 700, marginBottom: "8px", color: "var(--text-main)" }}>
-                    {hStr("pillar_zero_bloat")}
-                  </h3>
-                  <p style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.6", margin: 0 }}>
-                    {hStr("pillar_zero_bloat_desc")}
+
+                  <h2
+                    style={{
+                      fontSize: "clamp(28px, 4.2vw, 44px)",
+                      fontWeight: 900,
+                      letterSpacing: "-0.03em",
+                      lineHeight: "1.18",
+                      marginBottom: "18px",
+                      color: "var(--text-main)",
+                    }}
+                  >
+                    <span
+                      style={{
+                        background: "linear-gradient(135deg, var(--text-main) 30%, #10b981 100%)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                      }}
+                    >
+                      {hStr("philosophy_h2")}
+                    </span>
+                  </h2>
+
+                  <p
+                    style={{
+                      fontSize: "16.5px",
+                      color: "var(--text-secondary)",
+                      lineHeight: "1.7",
+                      margin: 0,
+                    }}
+                  >
+                    {hStr("philosophy_sub")}
                   </p>
                 </div>
 
+                {/* 3 Pillars Grid */}
                 <div
                   style={{
-                    padding: "30px",
-                    borderRadius: "22px",
-                    background: "var(--bg-glass)",
-                    border: "1px solid var(--border-subtle)",
-                    transition: "all 0.3s ease",
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                    gap: "24px",
                   }}
                 >
+                  {/* Pillar 1 */}
                   <div
+                    className="glass-card"
                     style={{
-                      width: "48px",
-                      height: "48px",
-                      borderRadius: "14px",
-                      background: "rgba(16, 185, 129, 0.12)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "#10B981",
-                      marginBottom: "16px",
+                      padding: "32px 28px",
+                      borderRadius: "24px",
+                      background: "var(--bg-glass)",
+                      border: "1px solid var(--border-subtle)",
+                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                      position: "relative",
+                      overflow: "hidden",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "translateY(-4px)";
+                      e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.45)";
+                      e.currentTarget.style.boxShadow = "0 16px 36px -8px rgba(6, 182, 212, 0.15)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.borderColor = "var(--border-subtle)";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   >
-                    <Lock size={22} />
+                    <div
+                      style={{
+                        width: "52px",
+                        height: "52px",
+                        borderRadius: "16px",
+                        background: "rgba(6, 182, 212, 0.12)",
+                        border: "1px solid rgba(6, 182, 212, 0.3)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "#06b6d4",
+                        marginBottom: "20px",
+                      }}
+                    >
+                      <Zap size={24} />
+                    </div>
+                    <h3
+                      style={{
+                        fontSize: "19px",
+                        fontWeight: 800,
+                        marginBottom: "10px",
+                        color: "var(--text-main)",
+                        letterSpacing: "-0.01em",
+                      }}
+                    >
+                      {hStr("pillar_zero_bloat")}
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: "14.5px",
+                        color: "var(--text-secondary)",
+                        lineHeight: "1.65",
+                        margin: 0,
+                      }}
+                    >
+                      {hStr("pillar_zero_bloat_desc")}
+                    </p>
                   </div>
-                  <h3 style={{ fontSize: "18px", fontWeight: 700, marginBottom: "8px", color: "var(--text-main)" }}>
-                    {hStr("pillar_unified_privacy")}
-                  </h3>
-                  <p style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.6", margin: 0 }}>
-                    {hStr("pillar_unified_privacy_desc")}
-                  </p>
-                </div>
 
-                <div
-                  style={{
-                    padding: "30px",
-                    borderRadius: "22px",
-                    background: "var(--bg-glass)",
-                    border: "1px solid var(--border-subtle)",
-                    transition: "all 0.3s ease",
-                  }}
-                >
+                  {/* Pillar 2 */}
                   <div
+                    className="glass-card"
                     style={{
-                      width: "48px",
-                      height: "48px",
-                      borderRadius: "14px",
-                      background: "rgba(139, 92, 246, 0.12)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "#8B5CF6",
-                      marginBottom: "16px",
+                      padding: "32px 28px",
+                      borderRadius: "24px",
+                      background: "var(--bg-glass)",
+                      border: "1px solid var(--border-subtle)",
+                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                      position: "relative",
+                      overflow: "hidden",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "translateY(-4px)";
+                      e.currentTarget.style.borderColor = "rgba(16, 185, 129, 0.45)";
+                      e.currentTarget.style.boxShadow = "0 16px 36px -8px rgba(16, 185, 129, 0.15)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.borderColor = "var(--border-subtle)";
+                      e.currentTarget.style.boxShadow = "none";
                     }}
                   >
-                    <Cpu size={22} />
+                    <div
+                      style={{
+                        width: "52px",
+                        height: "52px",
+                        borderRadius: "16px",
+                        background: "rgba(16, 185, 129, 0.12)",
+                        border: "1px solid rgba(16, 185, 129, 0.3)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "#10b981",
+                        marginBottom: "20px",
+                      }}
+                    >
+                      <Lock size={24} />
+                    </div>
+                    <h3
+                      style={{
+                        fontSize: "19px",
+                        fontWeight: 800,
+                        marginBottom: "10px",
+                        color: "var(--text-main)",
+                        letterSpacing: "-0.01em",
+                      }}
+                    >
+                      {hStr("pillar_unified_privacy")}
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: "14.5px",
+                        color: "var(--text-secondary)",
+                        lineHeight: "1.65",
+                        margin: 0,
+                      }}
+                    >
+                      {hStr("pillar_unified_privacy_desc")}
+                    </p>
                   </div>
-                  <h3 style={{ fontSize: "18px", fontWeight: 700, marginBottom: "8px", color: "var(--text-main)" }}>
-                    {hStr("pillar_modern_flutter")}
-                  </h3>
-                  <p style={{ fontSize: "14px", color: "var(--text-secondary)", lineHeight: "1.6", margin: 0 }}>
-                    {hStr("pillar_modern_flutter_desc")}
-                  </p>
+
+                  {/* Pillar 3 */}
+                  <div
+                    className="glass-card"
+                    style={{
+                      padding: "32px 28px",
+                      borderRadius: "24px",
+                      background: "var(--bg-glass)",
+                      border: "1px solid var(--border-subtle)",
+                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                      position: "relative",
+                      overflow: "hidden",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "translateY(-4px)";
+                      e.currentTarget.style.borderColor = "rgba(139, 92, 246, 0.45)";
+                      e.currentTarget.style.boxShadow = "0 16px 36px -8px rgba(139, 92, 246, 0.15)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.borderColor = "var(--border-subtle)";
+                      e.currentTarget.style.boxShadow = "none";
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "52px",
+                        height: "52px",
+                        borderRadius: "16px",
+                        background: "rgba(139, 92, 246, 0.12)",
+                        border: "1px solid rgba(139, 92, 246, 0.3)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "#8b5cf6",
+                        marginBottom: "20px",
+                      }}
+                    >
+                      <Cpu size={24} />
+                    </div>
+                    <h3
+                      style={{
+                        fontSize: "19px",
+                        fontWeight: 800,
+                        marginBottom: "10px",
+                        color: "var(--text-main)",
+                        letterSpacing: "-0.01em",
+                      }}
+                    >
+                      {hStr("pillar_modern_flutter")}
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: "14.5px",
+                        color: "var(--text-secondary)",
+                        lineHeight: "1.65",
+                        margin: 0,
+                      }}
+                    >
+                      {hStr("pillar_modern_flutter_desc")}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Global Infrastructure Banner */}
-        <section style={{ padding: "0 0 80px 0" }}>
+        {/* Global Infrastructure & Performance Metrics Banner */}
+        <section style={{ padding: "0 0 90px 0" }}>
           <div className="container">
             <div
-              className="glass-panel"
+              className="glass-card"
               style={{
-                padding: "36px 44px",
-                borderRadius: "24px",
+                padding: "44px 36px",
+                borderRadius: "28px",
                 border: "1px solid var(--border-subtle)",
+                background: "var(--bg-card)",
+                boxShadow: "0 20px 48px -15px rgba(0, 0, 0, 0.08)",
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-                gap: "32px",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "36px",
                 textAlign: "center",
+                position: "relative",
+                overflow: "hidden",
               }}
             >
               <div>
-                <div style={{ fontSize: "36px", fontWeight: 900, color: "var(--primary)", marginBottom: "6px" }}>
+                <div
+                  style={{
+                    fontSize: "clamp(36px, 4vw, 44px)",
+                    fontWeight: 900,
+                    letterSpacing: "-0.02em",
+                    background: "linear-gradient(135deg, #10b981 0%, #06b6d4 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    marginBottom: "8px",
+                  }}
+                >
                   {hStr("metric_lang_num")}
                 </div>
-                <div style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-main)" }}>
+                <div style={{ fontSize: "15px", fontWeight: 800, color: "var(--text-main)" }}>
                   {hStr("metric_lang_title")}
                 </div>
-                <div style={{ fontSize: "12px", color: "var(--text-secondary)", marginTop: "4px" }}>
+                <div style={{ fontSize: "12.5px", color: "var(--text-secondary)", marginTop: "4px" }}>
                   {hStr("metric_lang_desc")}
                 </div>
               </div>
 
               <div>
-                <div style={{ fontSize: "36px", fontWeight: 900, color: "var(--secondary)", marginBottom: "6px" }}>
+                <div
+                  style={{
+                    fontSize: "clamp(36px, 4vw, 44px)",
+                    fontWeight: 900,
+                    letterSpacing: "-0.02em",
+                    background: "linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    marginBottom: "8px",
+                  }}
+                >
                   %100
                 </div>
-                <div style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-main)" }}>
+                <div style={{ fontSize: "15px", fontWeight: 800, color: "var(--text-main)" }}>
                   {hStr("metric_privacy_title")}
                 </div>
-                <div style={{ fontSize: "12px", color: "var(--text-secondary)", marginTop: "4px" }}>
+                <div style={{ fontSize: "12.5px", color: "var(--text-secondary)", marginTop: "4px" }}>
                   {hStr("metric_privacy_desc")}
                 </div>
               </div>
 
               <div>
-                <div style={{ fontSize: "36px", fontWeight: 900, color: "#8B5CF6", marginBottom: "6px" }}>
-                  100% Native
+                <div
+                  style={{
+                    fontSize: "clamp(36px, 4vw, 44px)",
+                    fontWeight: 900,
+                    letterSpacing: "-0.02em",
+                    background: "linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    marginBottom: "8px",
+                  }}
+                >
+                  60 - 120 FPS
                 </div>
-                <div style={{ fontSize: "14px", fontWeight: 700, color: "var(--text-main)" }}>
+                <div style={{ fontSize: "15px", fontWeight: 800, color: "var(--text-main)" }}>
                   {hStr("metric_ui_title")}
                 </div>
-                <div style={{ fontSize: "12px", color: "var(--text-secondary)", marginTop: "4px" }}>
+                <div style={{ fontSize: "12.5px", color: "var(--text-secondary)", marginTop: "4px" }}>
                   {hStr("metric_ui_desc")}
                 </div>
               </div>

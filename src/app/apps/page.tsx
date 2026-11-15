@@ -556,8 +556,8 @@ export default function AppsPage() {
                       borderRadius: "48px",
                       overflow: "hidden",
                       boxShadow: "0 24px 56px -12px rgba(139, 92, 246, 0.3)",
-                      border: "2px solid rgba(139, 92, 246, 0.35)",
-                      background: "linear-gradient(135deg, #0F1E2B 0%, #1A1A2E 100%)",
+                      background: "var(--bg-card)",
+                      border: "2px solid var(--border-subtle)",
                       position: "relative",
                       transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                       display: "flex",
@@ -569,10 +569,20 @@ export default function AppsPage() {
                     onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
                   >
                     <Image
-                      src="/apps/domain-track-icon.png"
+                      src="/domain-track/logo-dark.png"
                       alt="Wixtory: Domain Track App Icon"
                       width={300}
                       height={300}
+                      className="theme-logo-light"
+                      priority
+                      style={{ objectFit: "contain", borderRadius: "32px" }}
+                    />
+                    <Image
+                      src="/domain-track/logo.png"
+                      alt="Wixtory: Domain Track App Icon"
+                      width={300}
+                      height={300}
+                      className="theme-logo-dark"
                       priority
                       style={{ objectFit: "contain", borderRadius: "32px" }}
                     />
