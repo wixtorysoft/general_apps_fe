@@ -12,27 +12,16 @@ import { FAQSection } from "@/components/app-detail/FAQSection";
 import { FinalCallToAction } from "@/components/app-detail/FinalCallToAction";
 import { AppDetailFooter } from "@/components/app-detail/AppDetailFooter";
 
-export const metadata: Metadata = {
-  title: "AstroVibe — Kozmik Astroloji, 3D Tarot & Protez Tırnak Stil Rehberi",
-  description:
-    "Astrolojiyi salt metin yorumlarından çıkarıp editoryal bir stil ve yaşam tarzı deneyimine dönüştürün. Burcunuza özel tırnak tasarımları, 3D tarot açılımları ve günlük burç yorumları.",
-  keywords: [
-    "AstroVibe",
-    "Astroloji",
-    "Burç Yorumları",
-    "Tarot Açılımı",
-    "Protez Tırnak",
-    "Nail Art",
-    "Zodyak Stili",
-    "Doğal Taşlar",
-  ],
-  openGraph: {
-    title: "AstroVibe — Kozmik Astroloji & Stil Rehberi",
-    description:
-      "Burcunuza özel protez tırnak stilleri, 3D tarot açılımları ve günlük burç analizleri tek bir uygulamada.",
-    type: "website",
-  },
-};
+import { constructMetadata } from "@/lib/seo-config";
+
+export const metadata: Metadata = constructMetadata({
+  path: "/astrovibe",
+  titleKey: "astrovibe_title",
+  descKey: "astrovibe_desc",
+  keywordsKey: "site_keywords",
+  ogImage: "/apps/astrovibe-icon.png",
+  ogImageAlt: "AstroVibe Cosmic Astrology & Nail Art",
+});
 
 export default function AstroVibePage() {
   const app = APPS_DETAILED_DATA.astrovibe;

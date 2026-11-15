@@ -1,8 +1,22 @@
+# ==============================================================================
+# WIXTORY APPS (apps.wixtory.com) ROBOTS DIRECTIVES
+# ==============================================================================
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
 User-agent: Googlebot
 Allow: /
+Disallow: /api/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /api/
+
+User-agent: Applebot
+Allow: /
+Disallow: /api/
 
 User-agent: Twitterbot
 Allow: /
@@ -10,5 +24,6 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
+# Canonical Sitemap
+Sitemap: https://apps.wixtory.com/sitemap.xml
+Host: https://apps.wixtory.com

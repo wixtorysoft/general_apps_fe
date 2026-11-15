@@ -9,6 +9,7 @@ import { cookieI18n } from "./modules/cookie";
 import { wixtoryPlayerI18n } from "./modules/wixtory-player";
 import { notFoundI18n } from "./modules/not-found";
 import { contactI18n } from "./modules/contact";
+import { seoI18n } from "./modules/seo";
 
 export * from "./types";
 export * from "./modules/legal";
@@ -21,6 +22,7 @@ export * from "./modules/cookie";
 export * from "./modules/wixtory-player";
 export * from "./modules/not-found";
 export * from "./modules/contact";
+export * from "./modules/seo";
 
 export const I18N_MODULES = {
   navigation: navigationI18n,
@@ -33,6 +35,7 @@ export const I18N_MODULES = {
   wixtoryPlayer: wixtoryPlayerI18n,
   notFound: notFoundI18n,
   contact: contactI18n,
+  seo: seoI18n,
 } as const;
 
 export type I18nModuleName = keyof typeof I18N_MODULES;

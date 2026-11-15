@@ -12,26 +12,16 @@ import { FAQSection } from "@/components/app-detail/FAQSection";
 import { FinalCallToAction } from "@/components/app-detail/FinalCallToAction";
 import { AppDetailFooter } from "@/components/app-detail/AppDetailFooter";
 
-export const metadata: Metadata = {
-  title: "Excuse AI — Yapay Zeka Destekli Hayat Kurtaran Mazeret & Senaryo Üretici",
-  description:
-    "Toplantılardan, uzayan buluşmalardan veya acil durumlardan sıyrılmak için gerçekçi, kanıtlı ve akıllı mazeretler üreten yapay zeka asistanı.",
-  keywords: [
-    "Excuse AI",
-    "Mazeret Üretici",
-    "Yapay Zeka Mazeret",
-    "Sahte Çağrı",
-    "Gecikme Bahanesi",
-    "Kurumsal Mazeret",
-    "AI Asistan",
-  ],
-  openGraph: {
-    title: "Excuse AI — Hayat Kurtaran Mazeret Asistanınız",
-    description:
-      "Trafik, teknik arıza, sağlık ve kurumsal senaryolar için sesli ve görsel kanıt simülasyonlu mazeret üretici.",
-    type: "website",
-  },
-};
+import { constructMetadata } from "@/lib/seo-config";
+
+export const metadata: Metadata = constructMetadata({
+  path: "/excuse",
+  titleKey: "excuse_title",
+  descKey: "excuse_desc",
+  keywordsKey: "site_keywords",
+  ogImage: "/apps/excuse-icon.png",
+  ogImageAlt: "Wixtory Excuse AI Assistant",
+});
 
 export default function ExcusePage() {
   const app = APPS_DETAILED_DATA.excuse;
